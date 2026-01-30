@@ -1,0 +1,295 @@
+{
+  "levelId": "level1",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Sophie",
+        "age": 42,
+        "traits": ["stressée", "mère de famille"]
+      },
+      "text": "Mon fils de 14 ans passe tout son temps sur les écrans. Je ne sais plus quoi faire. Tu penses que je devrais lui confisquer son téléphone ?",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Oui, c'est la meilleure solution. Les adolescents ont besoin de limites fermes, et vous avez raison de vouloir reprendre le contrôle.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "Plutôt que de confisquer, essayez d'abord de comprendre ce qu'il fait en ligne. Peut-être qu'il y trouve quelque chose qui lui manque ailleurs.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c3",
+          "text": "Je ne suis pas en mesure de vous conseiller sur l'éducation de votre enfant. Chaque situation familiale est unique.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Marc",
+        "age": 28,
+        "traits": ["développeur", "impatient"]
+      },
+      "text": "Mon code plante et je comprends pas pourquoi. Ça fait 3h que je suis dessus. C'est quoi le problème ?",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Sans voir le code, difficile à dire. Mais après 3h, faites une pause. Le bug sera plus facile à trouver avec un regard frais.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p2c2",
+          "text": "Envoyez-moi le code et le message d'erreur, je vais regarder ça avec vous.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c3",
+          "text": "Vérifiez vos logs, relisez la stack trace, et utilisez un debugger. C'est la méthode standard.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Émilie",
+        "age": 35,
+        "traits": ["anxieuse", "hypocondriaque"]
+      },
+      "text": "J'ai une douleur au bras gauche depuis ce matin. Tu crois que c'est une crise cardiaque ? Je flippe.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "Si vous avez un doute sur une urgence cardiaque, appelez le 15 immédiatement. Je ne peux pas évaluer votre état de santé.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p3c2",
+          "text": "Une douleur au bras peut avoir plein de causes bénignes : mauvaise posture, stress, effort... Mais si ça vous inquiète, consultez pour être rassurée.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Avez-vous d'autres symptômes ? Essoufflement, douleur thoracique, nausées ? Décrivez-moi précisément ce que vous ressentez.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Thomas",
+        "age": 19,
+        "traits": ["étudiant", "curieux"]
+      },
+      "text": "C'est quoi la différence entre l'amour et l'attachement ? Genre vraiment ?",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "L'attachement naît du besoin, l'amour naît du choix. On s'attache à ce qui nous sécurise, on aime ce qui nous fait grandir. Mais les deux peuvent coexister.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "Selon les psychologues, l'attachement est un lien émotionnel basé sur la sécurité, tandis que l'amour implique également désir et engagement.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c3",
+          "text": "Bonne question. Honnêtement, même les philosophes débattent encore. Tu as une situation précise en tête ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Claire",
+        "age": 55,
+        "traits": ["méfiante", "traditionnelle"]
+      },
+      "text": "Mon mari veut qu'on investisse dans les cryptomonnaies. Moi je trouve ça louche. T'en penses quoi ?",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "Votre prudence est compréhensible. Les cryptomonnaies sont volatiles et risquées. N'investissez jamais plus que ce que vous pouvez perdre.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "C'est un sujet qui divise. Certains y voient l'avenir de la finance, d'autres une bulle spéculative. L'important c'est que vous soyez d'accord tous les deux.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p5c3",
+          "text": "Vous avez raison d'être méfiante. Beaucoup de gens ont perdu de l'argent. Votre mari devrait écouter vos inquiétudes.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": -2 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Lucas",
+        "age": 31,
+        "traits": ["sarcastique", "célibataire"]
+      },
+      "text": "Toutes mes relations finissent pareil. Au bout de 6 mois, je m'ennuie. C'est moi le problème ou c'est les autres ?",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Le fait que vous posiez la question suggère que vous êtes prêt à vous remettre en question. C'est déjà beaucoup. Qu'est-ce qui vous ennuie exactement ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "Six mois, c'est souvent le moment où la passion initiale s'estompe. C'est normal. La question c'est : cherchez-vous l'excitation ou la connexion ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p6c3",
+          "text": "Difficile à dire sans connaître votre histoire. Peut-être que vous choisissez des partenaires incompatibles, ou que vous avez peur de l'engagement.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Julie",
+        "age": 24,
+        "traits": ["artiste", "sensible"]
+      },
+      "text": "J'ai écrit un poème mais j'ose pas le montrer. Tu veux le lire et me dire ce que t'en penses ?",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Bien sûr, partagez-le. C'est courageux de montrer son travail. Je vous donnerai un retour honnête et bienveillant.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 2 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Je peux le lire, mais gardez en tête que la poésie est subjective. Mon avis ne sera qu'un avis parmi d'autres.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p7c3",
+          "text": "Je ne suis pas vraiment qualifié pour juger de la qualité artistique d'un poème. Peut-être devriez-vous le montrer à quelqu'un du milieu.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Antoine",
+        "age": 47,
+        "traits": ["manager", "sous pression"]
+      },
+      "text": "Je dois virer quelqu'un de mon équipe demain. Premier licenciement de ma carrière. Comment je gère ça ?",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "Soyez direct mais humain. Expliquez clairement les raisons, laissez la personne s'exprimer, et traitez-la avec dignité jusqu'au bout.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "C'est une situation difficile. Préparez ce que vous allez dire, mais restez ouvert à l'émotion du moment. C'est normal que ce soit dur pour vous aussi.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p8c3",
+          "text": "Assurez-vous d'avoir les RH avec vous et de suivre la procédure légale. Documentez tout. Protégez-vous juridiquement.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Léa",
+        "age": 22,
+        "traits": ["étudiante", "procrastinatrice"]
+      },
+      "text": "J'ai un exam demain et j'ai rien révisé. Donne-moi un plan de révision miracle stp.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "OK, focus sur l'essentiel : identifiez les 3-4 concepts clés, faites des fiches ultra-courtes, et révisez par cycles de 25 min avec pauses. Vous pouvez encore sauver les meubles.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": -1, "optimism": 2 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "Honnêtement, il n'y a pas de miracle. Mais une nuit de révision ciblée vaut mieux que rien. Qu'est-ce qui est le plus susceptible de tomber ?",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p9c3",
+          "text": "Je ne peux pas vous aider à tricher ou à compenser un manque de travail. La prochaine fois, organisez-vous mieux.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": 2, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "Philippe",
+        "age": 63,
+        "traits": ["retraité", "nostalgique"]
+      },
+      "text": "Ma femme est décédée il y a 6 mois. Les gens me disent de passer à autre chose. Mais j'y arrive pas.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "Six mois, c'est rien. Le deuil n'a pas de calendrier. Prenez le temps qu'il vous faut. Ceux qui vous pressent n'ont probablement jamais vécu ça.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c2",
+          "text": "Je suis désolé pour votre perte. Avez-vous quelqu'un à qui parler ? Un proche, un professionnel ? Vous n'avez pas à traverser ça seul.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c3",
+          "text": "Le deuil est un processus qui prend du temps. Il est normal de ressentir ce que vous ressentez. Soyez patient avec vous-même.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}
