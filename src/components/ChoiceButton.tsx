@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { 
   TouchableOpacity, 
   Text, 
@@ -6,6 +6,7 @@ import {
   View,
   Animated,
 } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface ChoiceButtonProps {
   text: string;
@@ -14,23 +15,43 @@ interface ChoiceButtonProps {
 }
 
 export function ChoiceButton({ text, onPress, disabled = false }: ChoiceButtonProps) {
-  const opacity = React.useRef(new Animated.Value(1)).current;
+  const scaleAnim = useRef(new Animated.Value(1)).current;
+  const glowAnim = useRef(new Animated.Value(0)).current;
 
   const handlePressIn = () => {
-    Animated.timing(opacity, {
-      toValue: 0.7,
-      duration: 100,
-      useNativeDriver: true,
-    }).start();
+    Animated.parallel([
+      Animated.spring(scaleAnim, {
+        toValue: 0.97,
+        useNativeDriver: true,
+      }),
+      Animated.timing(glowAnim, {
+        toValue: 1,
+        duration: 150,
+        useNativeDriver: false,
+      }),
+    ]).start();
   };
 
   const handlePressOut = () => {
-    Animated.timing(opacity, {
-      toValue: 1,
-      duration: 100,
-      useNativeDriver: true,
-    }).start();
+    Animated.parallel([
+      Animated.spring(scaleAnim, {
+        toValue: 1,
+        friction: 3,
+        tension: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(glowAnim, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: false,
+      }),
+    ]).start();
   };
+
+  const borderColor = glowAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['rgba(56, 189, 248, 0.2)', 'rgba(56, 189, 248, 0.6)'],
+  });
 
   return (
     <TouchableOpacity
@@ -40,11 +61,18 @@ export function ChoiceButton({ text, onPress, disabled = false }: ChoiceButtonPr
       disabled={disabled}
       activeOpacity={1}
     >
-      <Animated.View style={[styles.container, { opacity }]}>
-        <View style={styles.glassEffect}>
+      <Animated.View style={[styles.container, { transform: [{ scale: scaleAnim }] }]}>
+        <Animated.View style={[styles.glassEffect, { borderColor }]}>
           <Text style={styles.text}>{text}</Text>
+        </Animated.View>
+        <View style={styles.glowContainer}>
+          <LinearGradient
+            colors={['transparent', 'rgba(56, 189, 248, 0.15)', 'rgba(56, 189, 248, 0.3)', 'rgba(56, 189, 248, 0.15)', 'transparent']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.glowGradient}
+          />
         </View>
-        <View style={styles.glowEffect} />
       </Animated.View>
     </TouchableOpacity>
   );
@@ -69,17 +97,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '400',
   },
-  glowEffect: {
+  glowContainer: {
     position: 'absolute',
-    bottom: -2,
-    left: '20%',
-    right: '20%',
-    height: 4,
-    backgroundColor: 'rgba(56, 189, 248, 0.3)',
-    borderRadius: 2,
-    shadowColor: '#38bdf8',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.5,
-    shadowRadius: 8,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 1,
+    overflow: 'hidden',
+  },
+  glowGradient: {
+    flex: 1,
+    height: 1,
   },
 });

@@ -13,6 +13,10 @@ export function ThumbFeedback({ thumbValue, visible, onAnimationComplete }: Thum
 
   useEffect(() => {
     if (visible) {
+      // Passage immédiat à la question suivante
+      onAnimationComplete?.();
+      
+      // Animation du pouce en parallèle (non bloquante)
       Animated.sequence([
         Animated.parallel([
           Animated.timing(opacity, {
@@ -26,7 +30,7 @@ export function ThumbFeedback({ thumbValue, visible, onAnimationComplete }: Thum
             useNativeDriver: true,
           }),
         ]),
-        Animated.delay(1200),
+        Animated.delay(800),
         Animated.timing(opacity, {
           toValue: 0,
           duration: 200,
@@ -34,14 +38,13 @@ export function ThumbFeedback({ thumbValue, visible, onAnimationComplete }: Thum
         }),
       ]).start(() => {
         translateX.setValue(-10);
-        onAnimationComplete?.();
       });
     }
   }, [visible]);
 
   if (!visible || thumbValue === null) {
     if (visible && thumbValue === null) {
-      setTimeout(() => onAnimationComplete?.(), 800);
+      onAnimationComplete?.();
     }
     return null;
   }

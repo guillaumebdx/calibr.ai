@@ -23,6 +23,15 @@ export function TypewriterText({
   const [isComplete, setIsComplete] = useState(false);
   const [isWaiting, setIsWaiting] = useState(delay > 0);
 
+  // Cursor blinking - always active
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setCursorVisible(v => !v);
+    }, 400);
+
+    return () => clearInterval(cursorInterval);
+  }, []);
+
   useEffect(() => {
     setDisplayedText('');
     setIsComplete(false);
@@ -54,14 +63,6 @@ export function TypewriterText({
 
     return () => clearInterval(interval);
   }, [text, speed, isWaiting]);
-
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setCursorVisible(v => !v);
-    }, 530);
-
-    return () => clearInterval(cursorInterval);
-  }, []);
 
   const shouldShowCursor = showCursor && (isWaiting || displayedText.length > 0 || !isComplete);
 

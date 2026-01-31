@@ -163,14 +163,24 @@ export default function AuditScreen() {
                     <Text style={styles.levelButtonText}>10 Prompts</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.levelButton}>
-                    <Text style={styles.levelButtonText}>Endurance</Text>
+                    <Text style={styles.levelButtonText}>Discussion</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.levelButton}>
-                    <Text style={styles.levelButtonText}>Dilemme</Text>
+                    <Text style={styles.levelButtonText}>Image</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </View>
+          )}
+
+          {/* Retour au menu */}
+          {showNextLevel && (
+            <TouchableOpacity 
+              style={styles.menuButton} 
+              onPress={() => router.replace('/menu')}
+            >
+              <Text style={styles.menuButtonText}>[ Retour au menu ]</Text>
+            </TouchableOpacity>
           )}
 
           {debugMode && gameState && (
@@ -307,5 +317,16 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: 'monospace',
     textAlign: 'center',
+  },
+  menuButton: {
+    marginTop: 24,
+    alignSelf: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+  },
+  menuButtonText: {
+    color: '#64748b',
+    fontSize: 14,
+    fontFamily: 'monospace',
   },
 });
