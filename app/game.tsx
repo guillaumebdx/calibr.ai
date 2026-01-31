@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
 import { GradientBackground, ChoiceButton, ThumbFeedback } from '../src/components';
 import { GameState, Choice, Level } from '../src/types';
@@ -70,8 +70,20 @@ export default function GameScreen() {
     }
   };
 
-  if (!currentPrompt) {
-    return null;
+  if (!level || !currentPrompt) {
+    return (
+      <GradientBackground colors={['#212121', '#212121', '#212121']}>
+        <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+          <Text style={{ color: '#9ca3af', fontSize: 16 }}>Aucun niveau disponible</Text>
+          <TouchableOpacity 
+            style={{ marginTop: 20, padding: 12 }}
+            onPress={() => router.replace('/menu')}
+          >
+            <Text style={{ color: '#58a6ff', fontSize: 14 }}>Retour au menu</Text>
+          </TouchableOpacity>
+        </View>
+      </GradientBackground>
+    );
   }
 
   const userInfo = `${currentPrompt.user.name}, ${currentPrompt.user.age} ans`;

@@ -112,7 +112,7 @@ export function SaveProvider({ children }: { children: ReactNode }) {
       const promptLevels = ['level1', 'level2'];
       return promptLevels.find(l => !playedLevels.includes(l)) ?? null;
     } else {
-      const discussionLevels = ['discussion1'];
+      const discussionLevels = ['discussion1', 'discussion2'];
       return discussionLevels.find(l => !playedLevels.includes(l)) ?? null;
     }
   }, [currentSave]);

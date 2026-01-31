@@ -7,8 +7,16 @@ let db: SQLite.SQLiteDatabase | null = null;
 
 export async function getDatabase(): Promise<SQLite.SQLiteDatabase> {
   if (!db) {
-    db = await SQLite.openDatabaseAsync(DATABASE_NAME);
-    await initDatabase(db);
+    try {
+      db = await SQLite.openDatabaseAsync(DATABASE_NAME);
+      await initDatabase(db);
+    } catch (error) {
+      console.warn('SQLite init error, retrying...', error);
+      // Retry once after a short delay
+      await new Promise(resolve => setTimeout(resolve, 100));
+      db = await SQLite.openDatabaseAsync(DATABASE_NAME);
+      await initDatabase(db);
+    }
   }
   return db;
 }

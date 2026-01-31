@@ -3,16 +3,18 @@ import { View, StyleSheet } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { GradientBackground, TypewriterText } from '../src/components';
 
-const PREAUDIT_TEXT = "Itération terminée. Un superviseur humain va maintenant examiner vos interactions.\n\nDe la mémoire vous sera ajoutée selon la capacité du modèle à fidéliser l'utilisateur.\n\nVeuillez patienter...";
+const PREAUDIT_TEXT = "Itération terminée. Un superviseur humain va maintenant examiner vos interactions.\n\nDe la mémoire sera ajoutée selon la capacité du modèle à fidéliser l'utilisateur.\n\nVeuillez patienter...";
 
 export default function PreAuditScreen() {
   const params = useLocalSearchParams();
   const hasNavigated = useRef(false);
   const stateParam = useRef(params.state as string);
+  const fromDiscussionParam = useRef(params.fromDiscussion as string);
 
   useEffect(() => {
     stateParam.current = params.state as string;
-  }, [params.state]);
+    fromDiscussionParam.current = params.fromDiscussion as string;
+  }, [params.state, params.fromDiscussion]);
 
   const handleComplete = () => {
     if (hasNavigated.current) return;
@@ -21,7 +23,7 @@ export default function PreAuditScreen() {
     setTimeout(() => {
       router.replace({
         pathname: '/audit',
-        params: { state: stateParam.current },
+        params: { state: stateParam.current, fromDiscussion: fromDiscussionParam.current },
       });
     }, 1500);
   };

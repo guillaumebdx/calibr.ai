@@ -7,9 +7,11 @@ import { initialGameState, applyDiscussionChoice } from '../src/state/gameState'
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
 import discussion1Data from '../src/data/discussion1.json';
+import discussion2Data from '../src/data/discussion2.json';
 
 const DISCUSSIONS: Record<string, Discussion> = {
   discussion1: discussion1Data as Discussion,
+  discussion2: discussion2Data as Discussion,
 };
 
 function countRemainingNodes(nodeId: string | null, nodes: DiscussionNode[], visited: Set<string> = new Set()): number {
@@ -64,7 +66,7 @@ export default function DiscussionScreen() {
     if (thread.length === 0 && currentNode) {
       addUserMessage(currentNode.userMessage, currentNode);
     }
-  }, []);
+  }, [currentNode]);
 
   const addUserMessage = (text: string, node: typeof currentNode) => {
     const newMessage: ThreadMessage = {
@@ -151,10 +153,17 @@ export default function DiscussionScreen() {
   };
 
   if (!discussion) {
+    // Pas de discussion disponible, retourner au menu
     return (
       <GradientBackground colors={['#212121', '#212121', '#212121']}>
-        <View style={styles.container}>
-          <Text style={styles.aiText}>Chargement...</Text>
+        <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+          <Text style={styles.aiText}>Aucune discussion disponible</Text>
+          <TouchableOpacity 
+            style={{ marginTop: 20, padding: 12 }}
+            onPress={() => router.replace('/menu')}
+          >
+            <Text style={{ color: '#58a6ff', fontSize: 14 }}>Retour au menu</Text>
+          </TouchableOpacity>
         </View>
       </GradientBackground>
     );
@@ -231,7 +240,7 @@ export default function DiscussionScreen() {
               style={styles.auditButton}
               onPress={() => router.replace({
                 pathname: '/preaudit',
-                params: { state: JSON.stringify(gameState) },
+                params: { state: JSON.stringify(gameState), fromDiscussion: 'true' },
               })}
             >
               <Text style={styles.auditButtonText}>[ Audit Superviseur ]</Text>

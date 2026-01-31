@@ -28,7 +28,12 @@ export default function AuditScreen() {
   const skillsScrollRef = useRef<ScrollView>(null);
   const discussionBounce = useRef(new Animated.Value(1)).current;
 
+  // Déterminer si on vient d'une partie (avec state) ou du menu (sans state)
+  const isFromGame = !!params.state;
+  const isFromDiscussion = params.fromDiscussion === 'true';
+
   useEffect(() => {
+    // Cas 1: On vient d'une partie (10 prompts ou discussion)
     if (params.state) {
       const state = JSON.parse(params.state as string) as GameState;
       setGameState(state);
@@ -52,8 +57,8 @@ export default function AuditScreen() {
       const targetThumbMB = auditFeedback.points;
       const targetDepthMB = state.depthPoints;
       const targetCumulativeMB = totalCumulative;
-      const duration = 1500;
-      const steps = 30;
+      const duration = 800;
+      const steps = 20;
       const stepDuration = duration / steps;
       let currentStep = 0;
       
@@ -72,17 +77,8 @@ export default function AuditScreen() {
         }
       }, stepDuration);
 
-      // Ordre d'apparition : Mémoire -> Prochaine itération -> Analyse -> Biais -> Capacités
-      setTimeout(() => {
-        setShowNextLevel(true);
-        // Bounce animation pour le bouton Discussion
-        setTimeout(() => {
-          Animated.sequence([
-            Animated.timing(discussionBounce, { toValue: 1.1, duration: 150, useNativeDriver: true }),
-            Animated.spring(discussionBounce, { toValue: 1, friction: 3, tension: 100, useNativeDriver: true }),
-          ]).start();
-        }, 300);
-      }, 1500);
+      // Timings réduits pour affichage plus rapide
+      setTimeout(() => setShowNextLevel(true), 600);
 
       const totalMessages = auditFeedback.parameterMessages.length;
       let msgIndex = 0;
@@ -93,30 +89,31 @@ export default function AuditScreen() {
           msgIndex++;
         } else {
           clearInterval(interval);
-          setTimeout(() => {
-            setShowThumbMessage(true);
-            setTimeout(() => {
-              setShowBias(true);
-              setTimeout(() => {
-                setShowSkills(true);
-                // Petit scroll hint après affichage
-                setTimeout(() => {
-                  skillsScrollRef.current?.flashScrollIndicators?.();
-                }, 300);
-              }, 800);
-            }, 600);
-          }, 500);
+          setTimeout(() => setShowThumbMessage(true), 200);
+          setTimeout(() => setShowBias(true), 400);
+          setTimeout(() => setShowSkills(true), 600);
         }
-      }, 2200);
+      }, 400);
 
       return () => {
         clearInterval(interval);
         clearInterval(mbInterval);
       };
+    } 
+    // Cas 2: On vient du menu (chargement d'une sauvegarde)
+    else if (currentSave) {
+      // Afficher directement les boutons de prochaine itération
+      setShowNextLevel(true);
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
     }
-  }, [params.state]);
+  }, [params.state, currentSave]);
 
-  if (!feedback) {
+  // Si on vient du menu (pas de state), afficher directement les boutons
+  if (!feedback && !currentSave) {
     return (
       <GradientBackground>
         <View style={styles.container}>
@@ -130,37 +127,49 @@ export default function AuditScreen() {
     <GradientBackground>
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
-          <Text style={styles.title}>AUDIT QUALITÉ</Text>
           
-          {/* Section Mémoire */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>MÉMOIRE ALLOUÉE</Text>
-            <View style={styles.sectionContent}>
-              {/* Total cumulé */}
-              <View style={styles.cumulativeContainer}>
-                <Text style={styles.cumulativeLabel}>TOTAL CUMULÉ</Text>
-                <Text style={[styles.cumulativeValue, { color: '#22c55e' }]}>
-                  {displayedCumulativeMB} MB
-                </Text>
-              </View>
-              {/* Détail itération */}
-              <Text style={styles.iterationLabel}>Cette itération</Text>
-              <View style={styles.memoryRow}>
-                <View style={styles.memoryColumn}>
-                  <Text style={styles.memoryLabel}>Satisfaction</Text>
-                  <Text style={[styles.pointsValueSmall, { color: displayedThumbMB >= 0 ? '#22c55e' : '#ef4444' }]}>
-                    {displayedThumbMB >= 0 ? '+' : ''}{displayedThumbMB} MB
+          {/* Section Mémoire - seulement si on vient d'une partie */}
+          {isFromGame && (
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>MÉMOIRE ALLOUÉE</Text>
+              <View style={styles.sectionContent}>
+                {/* Total cumulé */}
+                <View style={styles.cumulativeContainer}>
+                  <Text style={styles.cumulativeLabel}>TOTAL CUMULÉ</Text>
+                  <Text style={[styles.cumulativeValue, { color: '#22c55e' }]}>
+                    {displayedCumulativeMB} MB
                   </Text>
                 </View>
-                <View style={styles.memoryColumn}>
-                  <Text style={styles.memoryLabel}>Conversation</Text>
-                  <Text style={[styles.pointsValueSmall, { color: '#22c55e' }]}>
-                    +{displayedDepthMB} MB
-                  </Text>
-                </View>
+                {/* Détail itération */}
+                <Text style={styles.iterationLabel}>Cette itération</Text>
+                {isFromDiscussion ? (
+                  /* Discussion: afficher les 2 colonnes */
+                  <View style={styles.memoryRow}>
+                    <View style={styles.memoryColumn}>
+                      <Text style={styles.memoryLabel}>Satisfaction</Text>
+                      <Text style={[styles.pointsValueSmall, { color: displayedThumbMB >= 0 ? '#22c55e' : '#ef4444' }]}>
+                        {displayedThumbMB >= 0 ? '+' : ''}{displayedThumbMB} MB
+                      </Text>
+                    </View>
+                    <View style={styles.memoryColumn}>
+                      <Text style={styles.memoryLabel}>Conversation</Text>
+                      <Text style={[styles.pointsValueSmall, { color: '#22c55e' }]}>
+                        +{displayedDepthMB} MB
+                      </Text>
+                    </View>
+                  </View>
+                ) : (
+                  /* 10 Prompts: afficher seulement Satisfaction */
+                  <View style={styles.memoryRowSingle}>
+                    <Text style={styles.memoryLabel}>Satisfaction</Text>
+                    <Text style={[styles.pointsValueSmall, { color: displayedThumbMB >= 0 ? '#22c55e' : '#ef4444' }]}>
+                      {displayedThumbMB >= 0 ? '+' : ''}{displayedThumbMB} MB
+                    </Text>
+                  </View>
+                )}
               </View>
             </View>
-          </View>
+          )}
 
           {/* Section Niveau suivant - juste après mémoire */}
           {showNextLevel && (
@@ -215,7 +224,7 @@ export default function AuditScreen() {
             </View>
           )}
           {/* Section Analyse comportementale */}
-          {(feedback.parameterMessages.length > 0 || showThumbMessage) && (
+          {feedback && (feedback.parameterMessages.length > 0 || showThumbMessage) && (
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>ANALYSE COMPORTEMENTALE</Text>
               <View style={styles.sectionContent}>
@@ -371,6 +380,9 @@ const styles = StyleSheet.create({
   memoryRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  memoryRowSingle: {
+    alignItems: 'center',
   },
   memoryColumn: {
     alignItems: 'center',
