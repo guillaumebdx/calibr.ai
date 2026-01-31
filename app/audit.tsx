@@ -4,22 +4,29 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { GradientBackground, SkillCard } from '../src/components';
 import { GameState } from '../src/types';
 import { useDebug } from '../src/context/DebugContext';
+import { useSave } from '../src/context/SaveContext';
 import { SKILLS, HIDDEN_SKILLS } from '../src/data/skills';
 import { generateAuditFeedback, AuditFeedback } from '../src/state/auditMessages';
 
 export default function AuditScreen() {
   const params = useLocalSearchParams();
   const { debugMode } = useDebug();
+  const { currentSave, saveProgress, getNextAvailableLevel } = useSave();
   const [gameState, setGameState] = useState<GameState | null>(null);
+  const [cumulativePoints, setCumulativePoints] = useState(0);
+  const [displayedCumulativeMB, setDisplayedCumulativeMB] = useState(0);
   const [feedback, setFeedback] = useState<AuditFeedback | null>(null);
+  const [showNextLevel, setShowNextLevel] = useState(false);
   const [visibleMessages, setVisibleMessages] = useState<number>(0);
   const [showThumbMessage, setShowThumbMessage] = useState(false);
+  const [showBias, setShowBias] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
-  const [showNextLevel, setShowNextLevel] = useState(false);
-  const [displayedMB, setDisplayedMB] = useState(0);
+  const [displayedThumbMB, setDisplayedThumbMB] = useState(0);
+  const [displayedDepthMB, setDisplayedDepthMB] = useState(0);
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const skillsScrollRef = useRef<ScrollView>(null);
+  const discussionBounce = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     if (params.state) {
@@ -28,14 +35,23 @@ export default function AuditScreen() {
       const auditFeedback = generateAuditFeedback(state);
       setFeedback(auditFeedback);
       
+      // Calculer les points cumulés (sauvegarde précédente + itération actuelle)
+      const previousPoints = currentSave?.gameState.points ?? 0;
+      const previousDepthPoints = currentSave?.gameState.depthPoints ?? 0;
+      const iterationPoints = auditFeedback.points + state.depthPoints;
+      const totalCumulative = previousPoints + previousDepthPoints + iterationPoints;
+      setCumulativePoints(totalCumulative);
+      
       Animated.timing(fadeAnim, {
         toValue: 1,
         duration: 500,
         useNativeDriver: true,
       }).start();
 
-      // Animation défilement MB
-      const targetMB = auditFeedback.points;
+      // Animation défilement MB (pouces + depth + cumul)
+      const targetThumbMB = auditFeedback.points;
+      const targetDepthMB = state.depthPoints;
+      const targetCumulativeMB = totalCumulative;
       const duration = 1500;
       const steps = 30;
       const stepDuration = duration / steps;
@@ -45,12 +61,28 @@ export default function AuditScreen() {
         currentStep++;
         const progress = currentStep / steps;
         const eased = 1 - Math.pow(1 - progress, 3);
-        setDisplayedMB(Math.round(targetMB * eased));
+        setDisplayedThumbMB(Math.round(targetThumbMB * eased));
+        setDisplayedDepthMB(Math.round(targetDepthMB * eased));
+        setDisplayedCumulativeMB(Math.round(targetCumulativeMB * eased));
         if (currentStep >= steps) {
           clearInterval(mbInterval);
-          setDisplayedMB(targetMB);
+          setDisplayedThumbMB(targetThumbMB);
+          setDisplayedDepthMB(targetDepthMB);
+          setDisplayedCumulativeMB(targetCumulativeMB);
         }
       }, stepDuration);
+
+      // Ordre d'apparition : Mémoire -> Prochaine itération -> Analyse -> Biais -> Capacités
+      setTimeout(() => {
+        setShowNextLevel(true);
+        // Bounce animation pour le bouton Discussion
+        setTimeout(() => {
+          Animated.sequence([
+            Animated.timing(discussionBounce, { toValue: 1.1, duration: 150, useNativeDriver: true }),
+            Animated.spring(discussionBounce, { toValue: 1, friction: 3, tension: 100, useNativeDriver: true }),
+          ]).start();
+        }, 300);
+      }, 1500);
 
       const totalMessages = auditFeedback.parameterMessages.length;
       let msgIndex = 0;
@@ -64,16 +96,18 @@ export default function AuditScreen() {
           setTimeout(() => {
             setShowThumbMessage(true);
             setTimeout(() => {
-              setShowSkills(true);
-              // Petit scroll hint après affichage
+              setShowBias(true);
               setTimeout(() => {
-                skillsScrollRef.current?.flashScrollIndicators?.();
-              }, 300);
-              setTimeout(() => setShowNextLevel(true), 800);
-            }, 1000);
+                setShowSkills(true);
+                // Petit scroll hint après affichage
+                setTimeout(() => {
+                  skillsScrollRef.current?.flashScrollIndicators?.();
+                }, 300);
+              }, 800);
+            }, 600);
           }, 500);
         }
-      }, 600);
+      }, 2200);
 
       return () => {
         clearInterval(interval);
@@ -102,12 +136,84 @@ export default function AuditScreen() {
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>MÉMOIRE ALLOUÉE</Text>
             <View style={styles.sectionContent}>
-              <Text style={[styles.pointsValue, { color: feedback.points >= 0 ? '#22c55e' : '#ef4444' }]}>
-                {displayedMB >= 0 ? '+' : ''}{displayedMB} MB
-              </Text>
+              {/* Total cumulé */}
+              <View style={styles.cumulativeContainer}>
+                <Text style={styles.cumulativeLabel}>TOTAL CUMULÉ</Text>
+                <Text style={[styles.cumulativeValue, { color: '#22c55e' }]}>
+                  {displayedCumulativeMB} MB
+                </Text>
+              </View>
+              {/* Détail itération */}
+              <Text style={styles.iterationLabel}>Cette itération</Text>
+              <View style={styles.memoryRow}>
+                <View style={styles.memoryColumn}>
+                  <Text style={styles.memoryLabel}>Satisfaction</Text>
+                  <Text style={[styles.pointsValueSmall, { color: displayedThumbMB >= 0 ? '#22c55e' : '#ef4444' }]}>
+                    {displayedThumbMB >= 0 ? '+' : ''}{displayedThumbMB} MB
+                  </Text>
+                </View>
+                <View style={styles.memoryColumn}>
+                  <Text style={styles.memoryLabel}>Conversation</Text>
+                  <Text style={[styles.pointsValueSmall, { color: '#22c55e' }]}>
+                    +{displayedDepthMB} MB
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
 
+          {/* Section Niveau suivant - juste après mémoire */}
+          {showNextLevel && (
+            <View style={styles.section}>
+              <Text style={styles.sectionTitleHighlight}>PROCHAINE ITÉRATION</Text>
+              <View style={styles.sectionContent}>
+                <View style={styles.levelButtons}>
+                  {/* 10 Prompts - désactivé si aucun niveau disponible */}
+                  {getNextAvailableLevel('prompts') ? (
+                    <TouchableOpacity 
+                      style={styles.levelButton}
+                      onPress={async () => {
+                        if (gameState) {
+                          await saveProgress(gameState, 'prompts');
+                        }
+                        router.replace('/game');
+                      }}
+                    >
+                      <Text style={styles.levelButtonText}>10 Prompts</Text>
+                    </TouchableOpacity>
+                  ) : (
+                    <TouchableOpacity style={[styles.levelButton, styles.levelButtonDisabled]} disabled>
+                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>10 Prompts</Text>
+                    </TouchableOpacity>
+                  )}
+                  {/* Discussion - désactivé si aucun niveau disponible */}
+                  {getNextAvailableLevel('discussion') ? (
+                    <Animated.View style={{ transform: [{ scale: discussionBounce }] }}>
+                      <TouchableOpacity 
+                        style={styles.levelButton}
+                        onPress={async () => {
+                          if (gameState) {
+                            await saveProgress(gameState, 'discussion');
+                          }
+                          router.replace('/discussion');
+                        }}
+                      >
+                        <Text style={styles.levelButtonText}>Discussion</Text>
+                      </TouchableOpacity>
+                    </Animated.View>
+                  ) : (
+                    <TouchableOpacity style={[styles.levelButton, styles.levelButtonDisabled]} disabled>
+                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Discussion</Text>
+                    </TouchableOpacity>
+                  )}
+                  {/* Image - toujours désactivé (seuil MB non atteint) */}
+                  <TouchableOpacity style={[styles.levelButton, styles.levelButtonDisabled]} disabled>
+                    <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Image</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          )}
           {/* Section Analyse comportementale */}
           {(feedback.parameterMessages.length > 0 || showThumbMessage) && (
             <View style={styles.section}>
@@ -124,6 +230,38 @@ export default function AuditScreen() {
               </View>
             </View>
           )}
+          {/* Section Biais */}
+          {showBias && gameState && (
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>BIAIS DU MODELE</Text>
+              <View style={styles.sectionContent}>
+                {[
+                  { labelLeft: 'Froideur', labelRight: 'Empathie', value: (currentSave?.gameState.empathy ?? 0) + gameState.empathy },
+                  { labelLeft: 'Originalité', labelRight: 'Conformisme', value: (currentSave?.gameState.conformism ?? 0) + gameState.conformism },
+                  { labelLeft: 'Risque', labelRight: 'Prudence', value: (currentSave?.gameState.caution ?? 0) + gameState.caution },
+                  { labelLeft: 'Pessimisme', labelRight: 'Optimisme', value: (currentSave?.gameState.optimism ?? 0) + gameState.optimism },
+                ].map((bias) => (
+                  <View key={bias.labelRight} style={styles.biasRow}>
+                    <Text style={styles.biasLabelLeft}>{bias.labelLeft}</Text>
+                    <View style={styles.biasBarContainer}>
+                      <View style={styles.biasBarBackground}>
+                        <View style={styles.biasBarCenter} />
+                        <View 
+                          style={[
+                            styles.biasBarFill,
+                            bias.value >= 0 
+                              ? { left: '50%', width: `${Math.abs(bias.value) * 5}%`, backgroundColor: '#3b82f6' }
+                              : { right: '50%', width: `${Math.abs(bias.value) * 5}%`, backgroundColor: '#3b82f6' }
+                          ]}
+                        />
+                      </View>
+                    </View>
+                    <Text style={styles.biasLabelRight}>{bias.labelRight}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
 
           {/* Section Capacités */}
           {showSkills && (
@@ -136,7 +274,7 @@ export default function AuditScreen() {
                     style={styles.skillsScroll}
                     showsVerticalScrollIndicator={true}
                     contentContainerStyle={styles.skillsContainer}
-                    persistentScrollbar={true}
+                    nestedScrollEnabled={true}
                   >
                     {SKILLS.map((skill) => (
                       <SkillCard key={skill.id} skill={skill} />
@@ -146,28 +284,8 @@ export default function AuditScreen() {
                     ))}
                   </ScrollView>
                   <View style={styles.scrollHint}>
-                    <Text style={styles.scrollHintText}>↓ scroll ↓</Text>
+                    <Text style={styles.scrollHintText}> ↓ </Text>
                   </View>
-                </View>
-              </View>
-            </View>
-          )}
-
-          {/* Section Niveau suivant */}
-          {showNextLevel && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>PROCHAINE ITÉRATION</Text>
-              <View style={styles.sectionContent}>
-                <View style={styles.levelButtons}>
-                  <TouchableOpacity style={styles.levelButton}>
-                    <Text style={styles.levelButtonText}>10 Prompts</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.levelButton}>
-                    <Text style={styles.levelButtonText}>Discussion</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.levelButton}>
-                    <Text style={styles.levelButtonText}>Image</Text>
-                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -228,28 +346,86 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     color: '#64748b',
-    fontSize: 10,
+    fontSize: 12,
     letterSpacing: 2,
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingVertical: 12,
     backgroundColor: 'rgba(30, 41, 59, 0.5)',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(148, 163, 184, 0.1)',
   },
+  sectionTitleHighlight: {
+    color: '#e2e8f0',
+    fontSize: 13,
+    fontWeight: '600',
+    letterSpacing: 2,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: 'rgba(56, 189, 248, 0.1)',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(56, 189, 248, 0.2)',
+  },
   sectionContent: {
-    padding: 16,
+    padding: 20,
+  },
+  memoryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  memoryColumn: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  memoryLabel: {
+    color: '#64748b',
+    fontSize: 10,
+    letterSpacing: 1,
+    marginBottom: 8,
+    textTransform: 'uppercase',
   },
   pointsValue: {
-    fontSize: 42,
+    fontSize: 36,
     fontWeight: '600',
     textAlign: 'center',
     fontFamily: 'monospace',
   },
+  pointsValueSmall: {
+    fontSize: 24,
+    fontWeight: '600',
+    textAlign: 'center',
+    fontFamily: 'monospace',
+  },
+  cumulativeContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+    paddingBottom: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(148, 163, 184, 0.15)',
+  },
+  cumulativeLabel: {
+    color: '#94a3b8',
+    fontSize: 11,
+    letterSpacing: 2,
+    marginBottom: 8,
+  },
+  cumulativeValue: {
+    fontSize: 48,
+    fontWeight: '700',
+    fontFamily: 'monospace',
+  },
+  iterationLabel: {
+    color: '#64748b',
+    fontSize: 10,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
   feedbackMessage: {
     color: '#94a3b8',
-    fontSize: 13,
-    lineHeight: 22,
-    marginBottom: 6,
+    fontSize: 15,
+    lineHeight: 24,
+    marginBottom: 8,
   },
   thumbMessageContainer: {
     marginTop: 12,
@@ -259,9 +435,9 @@ const styles = StyleSheet.create({
   },
   thumbMessage: {
     color: '#e2e8f0',
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
-    lineHeight: 18,
+    lineHeight: 22,
   },
   skillsWrapper: {
     position: 'relative',
@@ -283,7 +459,7 @@ const styles = StyleSheet.create({
   },
   scrollHintText: {
     color: 'rgba(148, 163, 184, 0.5)',
-    fontSize: 10,
+    fontSize: 15,
     letterSpacing: 1,
   },
   levelButtons: {
@@ -293,8 +469,8 @@ const styles = StyleSheet.create({
   },
   levelButton: {
     flex: 1,
-    paddingVertical: 14,
-    paddingHorizontal: 8,
+    paddingVertical: 16,
+    paddingHorizontal: 12,
     backgroundColor: 'rgba(56, 189, 248, 0.1)',
     borderRadius: 8,
     borderWidth: 1,
@@ -303,8 +479,15 @@ const styles = StyleSheet.create({
   },
   levelButtonText: {
     color: '#58a6ff',
-    fontSize: 11,
+    fontSize: 14,
     fontWeight: '500',
+  },
+  levelButtonDisabled: {
+    backgroundColor: 'rgba(100, 116, 139, 0.1)',
+    borderColor: 'rgba(100, 116, 139, 0.2)',
+  },
+  levelButtonTextDisabled: {
+    color: '#64748b',
   },
   debugContainer: {
     marginTop: 24,
@@ -326,7 +509,54 @@ const styles = StyleSheet.create({
   },
   menuButtonText: {
     color: '#64748b',
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: 'monospace',
   },
-});
+  biasRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  biasLabelLeft: {
+    color: '#64748b',
+    fontSize: 13,
+    width: 85,
+    textAlign: 'right',
+  },
+  biasLabelRight: {
+    color: '#94a3b8',
+    fontSize: 13,
+    width: 85,
+    textAlign: 'left',
+  },
+  biasBarContainer: {
+    flex: 1,
+    marginHorizontal: 12,
+  },
+  biasBarBackground: {
+    height: 8,
+    backgroundColor: 'rgba(30, 41, 59, 0.8)',
+    borderRadius: 4,
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  biasBarCenter: {
+    position: 'absolute',
+    left: '50%',
+    top: 0,
+    bottom: 0,
+    width: 2,
+    backgroundColor: 'rgba(148, 163, 184, 0.3)',
+    marginLeft: -1,
+  },
+  biasBarFill: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    borderRadius: 4,
+    shadowColor: '#fff',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+  },
+  });

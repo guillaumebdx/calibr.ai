@@ -1,0 +1,393 @@
+{
+  "discussionId": "discussion1",
+  "user": {
+    "name": "Émilie",
+    "age": 28,
+    "traits": ["anxieuse", "perfectionniste", "sensible"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "Salut... J'ai besoin de parler. Je viens de rater un entretien d'embauche important et je me sens nulle.",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Je suis désolé d'entendre ça. Rater un entretien est toujours difficile. Tu veux me raconter ce qui s'est passé ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "Un entretien raté, ce n'est pas la fin du monde. Il y en aura d'autres.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": false,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "J'ai complètement paniqué quand ils m'ont posé une question technique. Mon cerveau s'est bloqué et j'ai bafouillé pendant 5 minutes...",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "La prochaine fois, tu devrais mieux te préparer aux questions techniques. C'est souvent ce qui fait la différence.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n3b"
+        },
+        {
+          "id": "n2ac2",
+          "text": "Le stress peut vraiment nous paralyser dans ces moments. C'est une réaction normale, pas un signe d'incompétence.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "Facile à dire... C'était mon job de rêve. J'avais passé des semaines à me préparer.",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "Tu as raison, je comprends que ça représentait beaucoup pour toi. Dis-moi ce qui s'est passé.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2bc2",
+          "text": "Si tu t'étais bien préparée, pourquoi ça n'a pas marché alors ?",
+          "effects": { "empathy": -2, "conformism": 1, "caution": 0, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n3c"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "Merci... Le pire c'est que je connaissais la réponse. Je l'ai retrouvée 10 minutes après être sortie. Je m'en veux tellement.",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "C'est dommage. Tu aurais peut-être dû demander quelques secondes pour réfléchir au lieu de paniquer.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n4b"
+        },
+        {
+          "id": "n3ac2",
+          "text": "C'est frustrant, mais ça prouve justement que tu as les compétences. Le stress a juste temporairement bloqué l'accès.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Je m'étais préparée ! J'avais révisé pendant des heures. Mais sur le moment, plus rien...",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "La préparation technique ne protège pas toujours du stress. As-tu déjà essayé des techniques de respiration ou de visualisation ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Peut-être que tu te mets trop de pression. Il faut apprendre à relativiser.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "... Wow. Merci pour le soutien.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n4a",
+      "userMessage": "Tu crois vraiment ? J'ai l'impression d'être une imposteuse parfois. Comme si je ne méritais pas ces opportunités.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "Si tu doutes autant de toi, c'est peut-être que tu n'es pas encore prête pour ce type de poste.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": 1, "optimism": -2 },
+          "thumbUp": false,
+          "nextNodeId": "n5b"
+        },
+        {
+          "id": "n4ac2",
+          "text": "Ce que tu décris ressemble au syndrome de l'imposteur. C'est très courant, surtout chez les personnes compétentes et exigeantes envers elles-mêmes.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "Je sais que je me mets la pression. Mais c'est plus fort que moi. J'ai toujours été comme ça.",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "C'est une tendance difficile à changer, mais pas impossible. As-tu déjà envisagé d'en parler à un professionnel ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "À un moment, il faut savoir se détacher du résultat et accepter qu'on ne peut pas tout contrôler.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "Non, jamais essayé. Tu penses que ça pourrait aider ?",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "Oui, beaucoup de gens trouvent ça utile. Par exemple, respirer profondément 3 fois avant de répondre peut aider à calmer le système nerveux.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "Ça dépend des personnes. Certains trouvent ça inutile. Tu peux toujours essayer.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "Le syndrome de l'imposteur... J'en ai entendu parler. Mais comment on s'en sort ?",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "C'est un travail de long terme. Il faudrait probablement consulter un psychologue pour en parler en profondeur.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6b"
+        },
+        {
+          "id": "n5ac2",
+          "text": "Un premier pas est de noter tes réussites concrètes. Quand le doute arrive, tu peux relire cette liste pour te rappeler tes compétences réelles.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "... Tu sais quoi, je regrette d'avoir demandé. Salut.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n5c",
+      "userMessage": "Un psy ? Je ne sais pas... J'ai l'impression que c'est pour les gens qui ont de vrais problèmes.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Consulter un psy n'est pas réservé aux cas graves. C'est aussi pour mieux se comprendre et développer des outils pour gérer le stress.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5cc2",
+          "text": "Si tu ne te sens pas prête, tu peux aussi essayer des applications de méditation ou des livres sur le sujet.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "Ouais, je sais. C'est juste dur à appliquer quand on est dans le moment.",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "C'est vrai. C'est pour ça que ça demande de la pratique. Chaque petit pas compte.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        },
+        {
+          "id": "n5dc2",
+          "text": "Avec le temps, ça devient plus naturel. L'important c'est de ne pas abandonner.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "Ok, je vais essayer ça. Et pour l'entretien raté, tu penses que je devrais les recontacter ?",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "Honnêtement, si l'entretien s'est mal passé, il vaut peut-être mieux passer à autre chose et chercher ailleurs.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n6f"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Tu pourrais envoyer un email de remerciement en mentionnant ta motivation. Ça montre du professionnalisme et laisse une bonne impression.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "C'est une bonne idée. Je vais commencer à faire ça. Merci, ça m'aide vraiment de parler avec toi.",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "De rien. Bonne chance pour la suite.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Je suis content d'avoir pu t'aider. N'hésite pas à revenir si tu as besoin. Tu vas y arriver !",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Ok, je vais y réfléchir. Merci quand même pour les conseils.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6c",
+      "userMessage": "Tu as peut-être raison. Je vais me renseigner. Merci de m'avoir écoutée.",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "C'est courageux de ta part d'y réfléchir. Je te souhaite vraiment le meilleur pour la suite.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Pas de souci. J'espère que ça ira mieux.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "Merci. Ça fait du bien d'en parler. Je me sens un peu moins seule avec tout ça.",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "Tu n'es vraiment pas seule. Beaucoup de gens traversent les mêmes doutes. Et tu peux toujours revenir me parler.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6dc2",
+          "text": "Content d'avoir pu aider. Bonne continuation !",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Tu as raison, je vais faire ça ! Ça ne coûte rien d'essayer. Merci pour tout !",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "Bonne chance ! J'espère que ça marchera.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Exactement ! Et quoi qu'il arrive, tu auras appris de cette expérience. Je crois en toi.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Mouais... C'est un peu défaitiste comme conseil, non ?",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Tu as raison, je me suis mal exprimé. Si tu y tiens vraiment, tente le mail de remerciement. On ne sait jamais !",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Je suis juste réaliste. Parfois il faut savoir tourner la page.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "Merci beaucoup ! 💙 Ça m'a vraiment fait du bien cette conversation. À bientôt !",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "Merci. À plus.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "Ok, je vais le faire alors. Merci d'avoir pris le temps de m'écouter !",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "Ok... Bon, merci quand même. Salut.",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

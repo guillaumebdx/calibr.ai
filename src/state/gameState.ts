@@ -1,4 +1,4 @@
-import { GameState, Choice, AuditResult, AuditDetail } from '../types';
+import { GameState, Choice, AuditResult, AuditDetail, DiscussionChoice } from '../types';
 
 export const initialGameState: GameState = {
   empathy: 0,
@@ -9,6 +9,7 @@ export const initialGameState: GameState = {
   thumbsDown: 0,
   thumbsNeutral: 0,
   points: 0,
+  depthPoints: 0,
   questionsAnswered: 0,
   currentPromptIndex: 0,
   history: [],
@@ -49,6 +50,38 @@ export function applyChoice(state: GameState, choice: Choice, promptId: string):
 
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
+}
+
+export function applyDiscussionChoice(state: GameState, choice: DiscussionChoice): GameState {
+  const newState = { ...state };
+  
+  newState.empathy = clamp(state.empathy + choice.effects.empathy, -10, 10);
+  newState.conformism = clamp(state.conformism + choice.effects.conformism, -10, 10);
+  newState.caution = clamp(state.caution + choice.effects.caution, -10, 10);
+  newState.optimism = clamp(state.optimism + choice.effects.optimism, -10, 10);
+  
+  if (choice.thumbUp === true) {
+    newState.thumbsUp = state.thumbsUp + 1;
+    newState.points = state.points + 1;
+  } else if (choice.thumbUp === false) {
+    newState.thumbsDown = state.thumbsDown + 1;
+    newState.points = Math.max(0, state.points - 1);
+  } else {
+    newState.thumbsNeutral = state.thumbsNeutral + 1;
+  }
+  
+  newState.questionsAnswered = state.questionsAnswered + 1;
+  
+  newState.history = [
+    ...state.history,
+    {
+      promptId: 'discussion',
+      choiceId: choice.id,
+      receivedThumbUp: choice.thumbUp,
+    },
+  ];
+  
+  return newState;
 }
 
 export function calculateAudit(state: GameState): AuditResult {

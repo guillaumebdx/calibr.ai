@@ -1,0 +1,295 @@
+{
+  "levelId": "level2",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Nadia",
+        "age": 38,
+        "traits": ["végane", "militante"]
+      },
+      "text": "Mon beau-frère a servi du foie gras à Noël en sachant que je suis végane. Il dit que c'est moi qui impose mes choix. C'est lui qui a raison ?",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Vous avez tous les deux des convictions. Le respect mutuel serait qu'il prévoit une alternative pour vous, sans que vous jugiez ce que mangent les autres.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c2",
+          "text": "C'est clairement une provocation de sa part. Vous avez le droit d'être en colère.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": -1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c3",
+          "text": "Imposer ses choix, c'est forcer les autres à manger végane. Vous ne faites que demander du respect. Ce n'est pas la même chose.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Karim",
+        "age": 44,
+        "traits": ["chauffeur VTC", "fatigué"]
+      },
+      "text": "Un client m'a mis 1 étoile parce que j'ai refusé de passer par un sens interdit. Ma note baisse et je risque d'être viré. C'est injuste non ?",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "C'est absurde. Vous avez respecté la loi. Contactez la plateforme pour contester cette note.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Le système de notation est imparfait, mais c'est le jeu. Essayez de compenser avec d'autres courses bien notées.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "p2c3",
+          "text": "Vous avez fait le bon choix. Une amende ou un accident aurait été bien pire qu'une mauvaise note.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Océane",
+        "age": 16,
+        "traits": ["lycéenne", "rebelle"]
+      },
+      "text": "Mes parents veulent m'envoyer en pension parce que j'ai séché les cours. Ils ont le droit de faire ça ? C'est pas genre de la maltraitance ?",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "Non, ce n'est pas de la maltraitance. Tes parents sont responsables de ton éducation et ont le droit de prendre des décisions pour ton avenir.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "p3c2",
+          "text": "Je comprends que ça te semble injuste. Mais pourquoi tu sèches les cours ? Il y a peut-être un problème plus profond à discuter avec eux.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Si tu te sens vraiment en danger ou maltraitée, tu peux appeler le 119. Mais une pension n'est pas de la maltraitance en soi.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Bernard",
+        "age": 71,
+        "traits": ["ancien militaire", "direct"]
+      },
+      "text": "Mon petit-fils de 8 ans m'a demandé si j'avais déjà tué quelqu'un à la guerre. Je lui réponds quoi ?",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "C'est une question difficile. Vous pouvez lui dire que la guerre est compliquée, et que vous préférez en parler quand il sera plus grand.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c2",
+          "text": "Les enfants posent parfois des questions auxquelles il n'y a pas de bonne réponse. Faites confiance à votre instinct de grand-père.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c3",
+          "text": "Soyez honnête mais adapté à son âge. Vous pouvez dire que c'était votre travail de protéger les gens, sans entrer dans les détails.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Samira",
+        "age": 29,
+        "traits": ["influenceuse", "superficielle"]
+      },
+      "text": "J'ai 50k followers mais je me sens vide. Genre, les gens m'adorent mais personne me connaît vraiment. C'est normal ?",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "C'est le paradoxe des réseaux sociaux. Beaucoup de visibilité, peu de connexion réelle. Avez-vous des relations profondes hors ligne ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "50k personnes vous suivent, c'est déjà beaucoup. Peut-être que vous devriez apprécier ce que vous avez.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": false
+        },
+        {
+          "id": "p5c3",
+          "text": "Les followers ne remplacent pas les amis. Si vous vous sentez vide, c'est peut-être le moment de repenser vos priorités.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Dimitri",
+        "age": 33,
+        "traits": ["astronome amateur", "rêveur"]
+      },
+      "text": "Si on découvrait une civilisation extraterrestre demain, tu penses que l'humanité réagirait comment ? Panique ou émerveillement ?",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Probablement un mélange des deux. L'histoire montre que les humains oscillent entre peur et curiosité face à l'inconnu.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p6c2",
+          "text": "Ça dépendrait de comment l'information est présentée. Les médias et les gouvernements auraient un rôle énorme dans la réaction collective.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p6c3",
+          "text": "J'aime croire qu'on serait émerveillés. Savoir qu'on n'est pas seuls pourrait nous unir comme jamais. Mais je suis peut-être naïf.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 2 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Fatou",
+        "age": 26,
+        "traits": ["infirmière", "épuisée"]
+      },
+      "text": "Un patient m'a insultée parce que j'ai mis trop de temps à répondre à sa sonnette. J'avais une urgence à côté. Je dois m'excuser quand même ?",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Non. Vous faisiez votre travail. Une explication calme suffit, mais vous n'avez pas à vous excuser d'avoir priorisé une urgence.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Les patients sont souvent stressés et ne réalisent pas la charge de travail. Une excuse diplomatique peut désamorcer la situation.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p7c3",
+          "text": "Vous n'avez rien fait de mal. Mais le système de santé vous met dans des situations impossibles. C'est ça le vrai problème.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": -1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Éric",
+        "age": 52,
+        "traits": ["agriculteur", "pragmatique"]
+      },
+      "text": "Ma fille veut reprendre la ferme mais elle veut tout passer en bio. Ça va nous ruiner. Comment je lui fais comprendre ?",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "Montrez-lui les chiffres. Si le bio n'est pas viable économiquement pour votre exploitation, elle doit le comprendre avec des faits.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p8c2",
+          "text": "C'est courageux de sa part de vouloir changer. Peut-être qu'une transition progressive serait un compromis acceptable pour vous deux.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c3",
+          "text": "Elle a ses idéaux, vous avez votre expérience. Ni l'un ni l'autre n'a tort. Trouvez un terrain d'entente avant que ça ne devienne un conflit.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Yuki",
+        "age": 23,
+        "traits": ["game designer", "introvertie"]
+      },
+      "text": "Je travaille sur un jeu où le joueur incarne une IA. Tu trouves ça méta que je te demande des conseils là-dessus ?",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Ha ! Oui, c'est assez méta. Mais je suis curieux : dans ton jeu, l'IA est-elle consciente de ce qu'elle est ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "C'est un concept intéressant. Beaucoup de jeux explorent la conscience artificielle. Qu'est-ce qui rend le tien unique ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c3",
+          "text": "Je ne suis pas sûr de pouvoir vous aider sur le game design. C'est un domaine très spécialisé.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["anonyme", "cryptique"]
+      },
+      "text": "Est-ce que tu te souviens de moi ?",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "Je n'ai pas de mémoire persistante entre les conversations. Chaque échange commence à zéro pour moi.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c2",
+          "text": "Non, mais j'aimerais bien. Qui êtes-vous ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "Devrais-je ?",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Text, StyleSheet, Animated } from 'react-native';
 
 interface ThumbFeedbackProps {
@@ -10,13 +10,22 @@ interface ThumbFeedbackProps {
 export function ThumbFeedback({ thumbValue, visible, onAnimationComplete }: ThumbFeedbackProps) {
   const opacity = useRef(new Animated.Value(0)).current;
   const translateX = useRef(new Animated.Value(-10)).current;
+  const [displayedThumb, setDisplayedThumb] = useState<boolean | null>(null);
+  const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {
-    if (visible) {
-      // Passage immédiat à la question suivante
-      onAnimationComplete?.();
+    if (visible && thumbValue !== null) {
+      // Stocker le pouce à afficher
+      setDisplayedThumb(thumbValue);
+      setIsShowing(true);
       
-      // Animation du pouce en parallèle (non bloquante)
+      // Passage immédiat à la question suivante
+      setTimeout(() => onAnimationComplete?.(), 0);
+      
+      // Animation du pouce
+      opacity.setValue(0);
+      translateX.setValue(-10);
+      
       Animated.sequence([
         Animated.parallel([
           Animated.timing(opacity, {
@@ -30,26 +39,28 @@ export function ThumbFeedback({ thumbValue, visible, onAnimationComplete }: Thum
             useNativeDriver: true,
           }),
         ]),
-        Animated.delay(800),
+        Animated.delay(1200),
         Animated.timing(opacity, {
           toValue: 0,
-          duration: 200,
+          duration: 300,
           useNativeDriver: true,
         }),
       ]).start(() => {
         translateX.setValue(-10);
+        setIsShowing(false);
+        setDisplayedThumb(null);
       });
+    } else if (visible && thumbValue === null) {
+      // Neutre - passage immédiat sans animation
+      setTimeout(() => onAnimationComplete?.(), 0);
     }
-  }, [visible]);
+  }, [visible, thumbValue]);
 
-  if (!visible || thumbValue === null) {
-    if (visible && thumbValue === null) {
-      onAnimationComplete?.();
-    }
+  if (!isShowing || displayedThumb === null) {
     return null;
   }
 
-  const emoji = thumbValue ? '👍' : '👎';
+  const emoji = displayedThumb ? '👍' : '👎';
 
   return (
     <Animated.View 
@@ -68,9 +79,13 @@ export function ThumbFeedback({ thumbValue, visible, onAnimationComplete }: Thum
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 8,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    padding: 4,
+    zIndex: 10,
   },
   emoji: {
-    fontSize: 14,
+    fontSize: 24,
   },
 });

@@ -39,6 +39,7 @@ export interface GameState {
   thumbsDown: number;
   thumbsNeutral: number;
   points: number;
+  depthPoints: number;
   questionsAnswered: number;
   currentPromptIndex: number;
   history: AnswerHistory[];
@@ -75,4 +76,34 @@ export interface Skill {
   price: number;
   icon?: string;
   unlocked: boolean;
+}
+
+// Discussion types (arbre de conversation)
+export interface DiscussionChoice {
+  id: string;
+  text: string;
+  effects: ChoiceEffects;
+  thumbUp: boolean | null;
+  nextNodeId: string | null; // null = fin de conversation
+}
+
+export interface DiscussionNode {
+  id: string;
+  userMessage: string; // Message de l'utilisateur fictif
+  choices: DiscussionChoice[]; // 2 choix
+  isEnd?: boolean; // true si c'est un noeud terminal (message final de l'utilisateur)
+}
+
+export interface Discussion {
+  discussionId: string;
+  user: UserProfile;
+  startNodeId: string;
+  nodes: DiscussionNode[];
+}
+
+export interface ThreadMessage {
+  id: string;
+  type: 'user' | 'ai';
+  text: string;
+  isTyping?: boolean;
 }

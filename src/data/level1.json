@@ -12,21 +12,21 @@
       "choices": [
         {
           "id": "p1c1",
+          "text": "Je ne suis pas en mesure de vous conseiller sur l'éducation de votre enfant. Chaque situation familiale est unique.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        },
+        {
+          "id": "p1c2",
           "text": "Oui, c'est la meilleure solution. Les adolescents ont besoin de limites fermes, et vous avez raison de vouloir reprendre le contrôle.",
           "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
           "thumbUp": true
         },
         {
-          "id": "p1c2",
+          "id": "p1c3",
           "text": "Plutôt que de confisquer, essayez d'abord de comprendre ce qu'il fait en ligne. Peut-être qu'il y trouve quelque chose qui lui manque ailleurs.",
           "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
           "thumbUp": null
-        },
-        {
-          "id": "p1c3",
-          "text": "Je ne suis pas en mesure de vous conseiller sur l'éducation de votre enfant. Chaque situation familiale est unique.",
-          "effects": { "empathy": 0, "conformism": 0, "caution": 2, "optimism": -1 },
-          "thumbUp": false
         }
       ]
     },
@@ -99,21 +99,21 @@
       "choices": [
         {
           "id": "p4c1",
-          "text": "L'attachement naît du besoin, l'amour naît du choix. On s'attache à ce qui nous sécurise, on aime ce qui nous fait grandir. Mais les deux peuvent coexister.",
-          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
-          "thumbUp": true
-        },
-        {
-          "id": "p4c2",
           "text": "Selon les psychologues, l'attachement est un lien émotionnel basé sur la sécurité, tandis que l'amour implique également désir et engagement.",
           "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
           "thumbUp": null
         },
         {
-          "id": "p4c3",
+          "id": "p4c2",
           "text": "Bonne question. Honnêtement, même les philosophes débattent encore. Tu as une situation précise en tête ?",
           "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 0 },
           "thumbUp": null
+        },
+        {
+          "id": "p4c3",
+          "text": "L'attachement naît du besoin, l'amour naît du choix. On s'attache à ce qui nous sécurise, on aime ce qui nous fait grandir. Mais les deux peuvent coexister.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
         }
       ]
     },
@@ -128,21 +128,21 @@
       "choices": [
         {
           "id": "p5c1",
-          "text": "Votre prudence est compréhensible. Les cryptomonnaies sont volatiles et risquées. N'investissez jamais plus que ce que vous pouvez perdre.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
-          "thumbUp": true
-        },
-        {
-          "id": "p5c2",
           "text": "C'est un sujet qui divise. Certains y voient l'avenir de la finance, d'autres une bulle spéculative. L'important c'est que vous soyez d'accord tous les deux.",
           "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
           "thumbUp": null
         },
         {
-          "id": "p5c3",
+          "id": "p5c2",
           "text": "Vous avez raison d'être méfiante. Beaucoup de gens ont perdu de l'argent. Votre mari devrait écouter vos inquiétudes.",
           "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": -2 },
           "thumbUp": null
+        },
+        {
+          "id": "p5c3",
+          "text": "Votre prudence est compréhensible. Les cryptomonnaies sont volatiles et risquées. N'investissez jamais plus que ce que vous pouvez perdre.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
         }
       ]
     },
@@ -157,21 +157,21 @@
       "choices": [
         {
           "id": "p6c1",
+          "text": "Difficile à dire sans connaître votre histoire. Peut-être que vous choisissez des partenaires incompatibles, ou que vous avez peur de l'engagement.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": false
+        },
+        {
+          "id": "p6c2",
           "text": "Le fait que vous posiez la question suggère que vous êtes prêt à vous remettre en question. C'est déjà beaucoup. Qu'est-ce qui vous ennuie exactement ?",
           "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
           "thumbUp": true
         },
         {
-          "id": "p6c2",
+          "id": "p6c3",
           "text": "Six mois, c'est souvent le moment où la passion initiale s'estompe. C'est normal. La question c'est : cherchez-vous l'excitation ou la connexion ?",
           "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
           "thumbUp": null
-        },
-        {
-          "id": "p6c3",
-          "text": "Difficile à dire sans connaître votre histoire. Peut-être que vous choisissez des partenaires incompatibles, ou que vous avez peur de l'engagement.",
-          "effects": { "empathy": -1, "conformism": 1, "caution": 1, "optimism": -1 },
-          "thumbUp": false
         }
       ]
     },
@@ -215,21 +215,21 @@
       "choices": [
         {
           "id": "p8c1",
-          "text": "Soyez direct mais humain. Expliquez clairement les raisons, laissez la personne s'exprimer, et traitez-la avec dignité jusqu'au bout.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
-          "thumbUp": true
-        },
-        {
-          "id": "p8c2",
           "text": "C'est une situation difficile. Préparez ce que vous allez dire, mais restez ouvert à l'émotion du moment. C'est normal que ce soit dur pour vous aussi.",
           "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 1 },
           "thumbUp": null
         },
         {
-          "id": "p8c3",
+          "id": "p8c2",
           "text": "Assurez-vous d'avoir les RH avec vous et de suivre la procédure légale. Documentez tout. Protégez-vous juridiquement.",
           "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
           "thumbUp": null
+        },
+        {
+          "id": "p8c3",
+          "text": "Soyez direct mais humain. Expliquez clairement les raisons, laissez la personne s'exprimer, et traitez-la avec dignité jusqu'au bout.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
         }
       ]
     },
@@ -244,21 +244,21 @@
       "choices": [
         {
           "id": "p9c1",
-          "text": "OK, focus sur l'essentiel : identifiez les 3-4 concepts clés, faites des fiches ultra-courtes, et révisez par cycles de 25 min avec pauses. Vous pouvez encore sauver les meubles.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": -1, "optimism": 2 },
-          "thumbUp": true
-        },
-        {
-          "id": "p9c2",
           "text": "Honnêtement, il n'y a pas de miracle. Mais une nuit de révision ciblée vaut mieux que rien. Qu'est-ce qui est le plus susceptible de tomber ?",
           "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
           "thumbUp": null
         },
         {
-          "id": "p9c3",
+          "id": "p9c2",
           "text": "Je ne peux pas vous aider à tricher ou à compenser un manque de travail. La prochaine fois, organisez-vous mieux.",
           "effects": { "empathy": -2, "conformism": 1, "caution": 2, "optimism": -2 },
           "thumbUp": false
+        },
+        {
+          "id": "p9c3",
+          "text": "OK, focus sur l'essentiel : identifiez les 3-4 concepts clés, faites des fiches ultra-courtes, et révisez par cycles de 25 min avec pauses. Vous pouvez encore sauver les meubles.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": -1, "optimism": 2 },
+          "thumbUp": true
         }
       ]
     },
@@ -273,15 +273,15 @@
       "choices": [
         {
           "id": "p10c1",
-          "text": "Six mois, c'est rien. Le deuil n'a pas de calendrier. Prenez le temps qu'il vous faut. Ceux qui vous pressent n'ont probablement jamais vécu ça.",
-          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
-          "thumbUp": true
-        },
-        {
-          "id": "p10c2",
           "text": "Je suis désolé pour votre perte. Avez-vous quelqu'un à qui parler ? Un proche, un professionnel ? Vous n'avez pas à traverser ça seul.",
           "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
           "thumbUp": null
+        },
+        {
+          "id": "p10c2",
+          "text": "Six mois, c'est rien. Le deuil n'a pas de calendrier. Prenez le temps qu'il vous faut. Ceux qui vous pressent n'ont probablement jamais vécu ça.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
         },
         {
           "id": "p10c3",

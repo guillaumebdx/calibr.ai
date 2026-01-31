@@ -1,22 +1,37 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
 import { GradientBackground, ChoiceButton, ThumbFeedback } from '../src/components';
 import { GameState, Choice, Level } from '../src/types';
 import { initialGameState, applyChoice } from '../src/state/gameState';
 import { useDebug } from '../src/context/DebugContext';
-import levelData from '../src/data/level1.json';
+import { useSave } from '../src/context/SaveContext';
+import level1Data from '../src/data/level1.json';
+import level2Data from '../src/data/level2.json';
+
+const LEVELS: Record<string, Level> = {
+  level1: level1Data as Level,
+  level2: level2Data as Level,
+};
 
 export default function GameScreen() {
   const { debugMode } = useDebug();
+  const { getNextAvailableLevel, markLevelAsPlayed, currentSave } = useSave();
   const [gameState, setGameState] = useState<GameState>(initialGameState);
   const [showFeedback, setShowFeedback] = useState(false);
   const [lastChoice, setLastChoice] = useState<Choice | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [currentLevelId, setCurrentLevelId] = useState<string | null>(null);
 
-  const level = levelData as Level;
+  useEffect(() => {
+    const nextLevel = getNextAvailableLevel('prompts');
+    setCurrentLevelId(nextLevel);
+  }, [getNextAvailableLevel]);
+
+  const level = currentLevelId ? LEVELS[currentLevelId] : null;
 
   const orderedPrompts = useMemo(() => {
+    if (!level) return [];
     if (level.prompts.length !== 10) return level.prompts;
     const arr = [...level.prompts];
     for (let i = arr.length - 1; i > 0; i--) {
@@ -24,10 +39,10 @@ export default function GameScreen() {
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
-  }, [level.prompts]);
+  }, [level]);
 
   const currentPrompt = orderedPrompts[gameState.currentPromptIndex];
-  const progress = `${gameState.currentPromptIndex + 1}/${level.prompts.length}`;
+  const progress = level ? `${gameState.currentPromptIndex + 1}/${level.prompts.length}` : '';
 
   const handleChoice = (choice: Choice) => {
     if (isProcessing) return;
@@ -37,8 +52,8 @@ export default function GameScreen() {
     setShowFeedback(true);
   };
 
-  const handleFeedbackComplete = () => {
-    if (!lastChoice || !currentPrompt) return;
+  const handleFeedbackComplete = async () => {
+    if (!lastChoice || !currentPrompt || !currentLevelId) return;
     
     const newState = applyChoice(gameState, lastChoice, currentPrompt.id);
     setGameState(newState);
@@ -47,6 +62,7 @@ export default function GameScreen() {
     setIsProcessing(false);
 
     if (newState.currentPromptIndex >= orderedPrompts.length) {
+      await markLevelAsPlayed(currentLevelId);
       router.replace({
         pathname: '/preaudit',
         params: { state: JSON.stringify(newState) },
@@ -62,21 +78,19 @@ export default function GameScreen() {
   const traits = currentPrompt.user.traits.join(' · ');
 
   return (
-    <GradientBackground>
+    <GradientBackground colors={['#212121', '#212121', '#212121']}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.progress}>{progress}</Text>
+          <ThumbFeedback
+            thumbValue={lastChoice?.thumbUp ?? null}
+            visible={showFeedback}
+            onAnimationComplete={handleFeedbackComplete}
+          />
         </View>
 
         <View style={styles.userInfo}>
-          <View style={styles.userNameRow}>
-            <Text style={styles.userName}>{userInfo}</Text>
-            <ThumbFeedback
-              thumbValue={lastChoice?.thumbUp ?? null}
-              visible={showFeedback}
-              onAnimationComplete={handleFeedbackComplete}
-            />
-          </View>
+          <Text style={styles.userName}>{userInfo}</Text>
           <Text style={styles.userTraits}>{traits}</Text>
         </View>
 
@@ -116,47 +130,52 @@ export default function GameScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 24,
-    paddingTop: 60,
-    paddingBottom: 40,
+    paddingHorizontal: 20,
+    paddingTop: 50,
+    paddingBottom: 32,
   },
   header: {
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   progress: {
-    color: 'rgba(148, 163, 184, 0.6)',
+    color: '#9ca3af',
     fontSize: 14,
     fontFamily: 'monospace',
   },
   userInfo: {
-    marginTop: 24,
-    marginBottom: 32,
-  },
-  userNameRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 24,
+    alignSelf: 'flex-end',
+    backgroundColor: '#2f2f2f',
+    borderRadius: 20,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    maxWidth: '85%',
   },
   userName: {
-    color: '#e2e8f0',
-    fontSize: 16,
+    color: '#e5e5e5',
+    fontSize: 13,
     fontWeight: '500',
+    marginBottom: 4,
   },
   userTraits: {
-    color: 'rgba(148, 163, 184, 0.8)',
-    fontSize: 13,
-    marginTop: 4,
+    color: '#9ca3af',
+    fontSize: 12,
   },
   promptContainer: {
     flex: 1,
-    justifyContent: 'center',
-    paddingVertical: 24,
+    justifyContent: 'flex-start',
+    paddingVertical: 16,
+    paddingRight: 40,
   },
   promptText: {
-    color: '#f1f5f9',
-    fontSize: 22,
-    fontWeight: '300',
-    textAlign: 'center',
-    lineHeight: 32,
+    color: '#d1d5db',
+    fontSize: 16,
+    fontWeight: '400',
+    textAlign: 'left',
+    lineHeight: 24,
   },
   choicesContainer: {
     paddingTop: 24,

@@ -50,7 +50,7 @@ export function ChoiceButton({ text, onPress, disabled = false }: ChoiceButtonPr
 
   const borderColor = glowAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ['rgba(56, 189, 248, 0.2)', 'rgba(56, 189, 248, 0.6)'],
+    outputRange: ['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 0.25)'],
   });
 
   return (
@@ -67,7 +67,7 @@ export function ChoiceButton({ text, onPress, disabled = false }: ChoiceButtonPr
         </Animated.View>
         <View style={styles.glowContainer}>
           <LinearGradient
-            colors={['transparent', 'rgba(56, 189, 248, 0.15)', 'rgba(56, 189, 248, 0.3)', 'rgba(56, 189, 248, 0.15)', 'transparent']}
+            colors={['transparent', 'rgba(255, 255, 255, 0.05)', 'rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 0.05)', 'transparent']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
             style={styles.glowGradient}
@@ -84,29 +84,36 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   glassEffect: {
-    backgroundColor: 'rgba(30, 41, 59, 0.8)',
-    borderRadius: 12,
+    backgroundColor: '#2f2f2f',
+    borderRadius: 20,
     borderWidth: 1,
-    borderColor: 'rgba(56, 189, 248, 0.2)',
-    paddingVertical: 16,
-    paddingHorizontal: 20,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
+    paddingVertical: 14,
+    paddingHorizontal: 18,
   },
   text: {
-    color: '#e2e8f0',
+    color: '#e5e5e5',
     fontSize: 15,
-    textAlign: 'center',
+    textAlign: 'left',
     fontWeight: '400',
+    lineHeight: 22,
   },
   glowContainer: {
     position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 1,
+    bottom: -4,
+    left: '10%',
+    right: '10%',
+    height: 8,
+    borderRadius: 4,
     overflow: 'hidden',
   },
   glowGradient: {
     flex: 1,
-    height: 1,
+    height: 8,
+    shadowColor: '#fff',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 4,
   },
 });
