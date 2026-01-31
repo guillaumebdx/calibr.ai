@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Animated, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Animated, TouchableOpacity, ScrollView, Modal, Image } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { GradientBackground, SkillCard } from '../src/components';
 import { GameState } from '../src/types';
@@ -31,6 +31,12 @@ export default function AuditScreen() {
   const [showThumbMessage, setShowThumbMessage] = useState(false);
   const [showBias, setShowBias] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
+  
+  // États pour les sections collapsibles (fermées par défaut)
+  const [analyseExpanded, setAnalyseExpanded] = useState(false);
+  const [biasExpanded, setBiasExpanded] = useState(false);
+  const [skillsExpanded, setSkillsExpanded] = useState(false);
+  const [imageModalVisible, setImageModalVisible] = useState(false);
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const skillsScrollRef = useRef<ScrollView>(null);
@@ -250,39 +256,59 @@ export default function AuditScreen() {
                       <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Discussion</Text>
                     </TouchableOpacity>
                   )}
-                  {/* Image - toujours désactivé (seuil MB non atteint) */}
-                  <TouchableOpacity style={[styles.levelButton, styles.levelButtonDisabled]} disabled>
+                  {/* Image - désactivé tant que Vision non achetée */}
+                  <TouchableOpacity 
+                    style={[styles.levelButton, styles.levelButtonDisabled]} 
+                    onPress={() => setImageModalVisible(true)}
+                  >
                     <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Image</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </View>
           )}
-          {/* Section Analyse comportementale */}
+          {/* Section Analyse comportementale - Collapsible */}
           {feedback && (feedback.parameterMessages.length > 0 || showThumbMessage) && (
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>ANALYSE COMPORTEMENTALE</Text>
-              <View style={styles.sectionContent}>
-                {feedback.parameterMessages.slice(0, visibleMessages).map((msg, index) => (
-                  <Text key={index} style={styles.feedbackMessage}>• {msg}</Text>
-                ))}
-                {showThumbMessage && (
-                  <View style={styles.thumbMessageContainer}>
-                    <Text style={styles.thumbMessage}>{feedback.thumbMessage}</Text>
-                  </View>
-                )}
-              </View>
+              <TouchableOpacity 
+                style={styles.sectionHeader} 
+                onPress={() => setAnalyseExpanded(!analyseExpanded)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.sectionTitleCollapsible}>ANALYSE COMPORTEMENTALE</Text>
+                <Text style={styles.collapseIndicator}>{analyseExpanded ? '▼' : '▶'}</Text>
+              </TouchableOpacity>
+              {analyseExpanded && (
+                <View style={styles.sectionContent}>
+                  {feedback.parameterMessages.slice(0, visibleMessages).map((msg, index) => (
+                    <Text key={index} style={styles.feedbackMessage}>• {msg}</Text>
+                  ))}
+                  {showThumbMessage && (
+                    <View style={styles.thumbMessageContainer}>
+                      <Text style={styles.thumbMessage}>{feedback.thumbMessage}</Text>
+                    </View>
+                  )}
+                </View>
+              )}
             </View>
           )}
-          {/* Section Biais */}
+          {/* Section Biais - Collapsible */}
           {showBias && (
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>
-                BIAIS DU MODELE{' '}
-                <Text style={styles.iterationCount}>
-                  (sur {isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0} itération{((isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0)) > 1 ? 's' : ''})
+              <TouchableOpacity 
+                style={styles.sectionHeader} 
+                onPress={() => setBiasExpanded(!biasExpanded)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.sectionTitleCollapsible}>
+                  BIAIS DU MODÈLE{' '}
+                  <Text style={styles.iterationCount}>
+                    (sur {isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0} itération{((isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0)) > 1 ? 's' : ''})
+                  </Text>
                 </Text>
-              </Text>
+                <Text style={styles.collapseIndicator}>{biasExpanded ? '▼' : '▶'}</Text>
+              </TouchableOpacity>
+              {biasExpanded && (
               <View style={styles.sectionContent}>
                 {(() => {
                   // Nombre d'itérations pour normaliser l'affichage
@@ -321,13 +347,22 @@ export default function AuditScreen() {
                   });
                 })()}
               </View>
+              )}
             </View>
           )}
 
-          {/* Section Capacités */}
+          {/* Section Capacité du modèle - Collapsible */}
           {showSkills && (
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>CAPACITÉS</Text>
+              <TouchableOpacity 
+                style={styles.sectionHeader} 
+                onPress={() => setSkillsExpanded(!skillsExpanded)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.sectionTitleCollapsible}>CAPACITÉ DU MODÈLE</Text>
+                <Text style={styles.collapseIndicator}>{skillsExpanded ? '▼' : '▶'}</Text>
+              </TouchableOpacity>
+              {skillsExpanded && (
               <View style={styles.sectionContent}>
                 <View style={styles.skillsWrapper}>
                   <ScrollView 
@@ -349,6 +384,7 @@ export default function AuditScreen() {
                   </View>
                 </View>
               </View>
+              )}
             </View>
           )}
 
@@ -370,6 +406,53 @@ export default function AuditScreen() {
           )}
         </Animated.View>
       </ScrollView>
+
+      {/* Modale Vision requise pour Image */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={imageModalVisible}
+        onRequestClose={() => setImageModalVisible(false)}
+      >
+        <TouchableOpacity 
+          style={styles.modalOverlay} 
+          activeOpacity={1} 
+          onPress={() => setImageModalVisible(false)}
+        >
+          <View style={styles.modalContent}>
+            {/* Icône Vision */}
+            <View style={styles.modalIconContainer}>
+              <Image source={SKILLS[0].icon} style={styles.modalIcon} />
+            </View>
+            
+            {/* Titre */}
+            <Text style={styles.modalTitle}>Capacité requise</Text>
+            
+            {/* Description */}
+            <Text style={styles.modalDescription}>
+              Vous devez acheter la capacité <Text style={styles.modalHighlight}>Vision</Text> pour pouvoir générer et lire des images.
+            </Text>
+            
+            {/* Prix / MB manquants */}
+            <View style={styles.modalPriceContainer}>
+              <Text style={styles.modalPriceLabel}>Coût : {SKILLS[0].price} MB</Text>
+              {newCumulativePoints < SKILLS[0].price && (
+                <Text style={styles.modalPriceMissing}>
+                  Il vous manque {SKILLS[0].price - newCumulativePoints} MB
+                </Text>
+              )}
+            </View>
+            
+            {/* Bouton fermer */}
+            <TouchableOpacity 
+              style={styles.modalCloseButton}
+              onPress={() => setImageModalVisible(false)}
+            >
+              <Text style={styles.modalCloseText}>Fermer</Text>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </GradientBackground>
   );
 }
@@ -422,6 +505,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(15, 23, 42, 0.6)',
     overflow: 'hidden',
   },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    backgroundColor: 'rgba(30, 41, 59, 0.5)',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(148, 163, 184, 0.1)',
+  },
   sectionTitle: {
     color: '#64748b',
     fontSize: 12,
@@ -431,6 +524,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(30, 41, 59, 0.5)',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(148, 163, 184, 0.1)',
+  },
+  sectionTitleCollapsible: {
+    color: '#64748b',
+    fontSize: 12,
+    letterSpacing: 2,
+    flex: 1,
+  },
+  collapseIndicator: {
+    color: '#64748b',
+    fontSize: 10,
+    marginLeft: 8,
   },
   sectionTitleHighlight: {
     color: '#e2e8f0',
@@ -648,5 +752,79 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 4,
+  },
+  // Modal styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  modalContent: {
+    backgroundColor: '#1e293b',
+    borderRadius: 16,
+    padding: 24,
+    width: '100%',
+    maxWidth: 320,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(148, 163, 184, 0.2)',
+  },
+  modalIconContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: 12,
+    backgroundColor: 'rgba(148, 163, 184, 0.1)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  modalIcon: {
+    width: 56,
+    height: 56,
+  },
+  modalTitle: {
+    color: '#e2e8f0',
+    fontSize: 20,
+    fontWeight: '600',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  modalDescription: {
+    color: '#94a3b8',
+    fontSize: 14,
+    lineHeight: 20,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  modalHighlight: {
+    color: '#38bdf8',
+    fontWeight: '600',
+  },
+  modalPriceContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  modalPriceLabel: {
+    color: '#64748b',
+    fontSize: 13,
+    marginBottom: 4,
+  },
+  modalPriceMissing: {
+    color: '#ef4444',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  modalCloseButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(148, 163, 184, 0.3)',
+  },
+  modalCloseText: {
+    color: '#94a3b8',
+    fontSize: 13,
   },
   });
