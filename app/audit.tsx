@@ -12,108 +12,136 @@ export default function AuditScreen() {
   const params = useLocalSearchParams();
   const { debugMode } = useDebug();
   const { currentSave, saveProgress, getNextAvailableLevel } = useSave();
-  const [gameState, setGameState] = useState<GameState | null>(null);
-  const [cumulativePoints, setCumulativePoints] = useState(0);
-  const [displayedCumulativeMB, setDisplayedCumulativeMB] = useState(0);
+  
+  // États pour l'affichage
+  const [iterationState, setIterationState] = useState<GameState | null>(null);
+  const [iterationPoints, setIterationPoints] = useState(0);
+  const [newCumulativePoints, setNewCumulativePoints] = useState(0);
   const [feedback, setFeedback] = useState<AuditFeedback | null>(null);
+  const [showSaveMessage, setShowSaveMessage] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  
+  // États pour les animations progressives
+  const [displayedIterationMB, setDisplayedIterationMB] = useState(0);
+  const [displayedCumulativeMB, setDisplayedCumulativeMB] = useState(0);
   const [showNextLevel, setShowNextLevel] = useState(false);
-  const [visibleMessages, setVisibleMessages] = useState<number>(0);
+  const [visibleMessages, setVisibleMessages] = useState(0);
   const [showThumbMessage, setShowThumbMessage] = useState(false);
   const [showBias, setShowBias] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
-  const [displayedThumbMB, setDisplayedThumbMB] = useState(0);
-  const [displayedDepthMB, setDisplayedDepthMB] = useState(0);
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const skillsScrollRef = useRef<ScrollView>(null);
   const discussionBounce = useRef(new Animated.Value(1)).current;
+  const hasSaved = useRef(false);
 
-  // Déterminer si on vient d'une partie (avec state) ou du menu (sans state)
   const isFromGame = !!params.state;
   const isFromDiscussion = params.fromDiscussion === 'true';
 
+  // Effet principal : traiter les données et sauvegarder
   useEffect(() => {
-    // Cas 1: On vient d'une partie (10 prompts ou discussion)
+    if (!currentSave || hasSaved.current) return;
+    
+    // Cas 1: On vient d'une partie (avec state)
     if (params.state) {
       const state = JSON.parse(params.state as string) as GameState;
-      setGameState(state);
+      setIterationState(state);
+      
+      // Calculer les points de cette itération
+      const thisIterationPoints = state.points + state.depthPoints;
+      setIterationPoints(thisIterationPoints);
+      
+      // Calculer le nouveau cumul (ancien + itération)
+      const previousCumul = currentSave.gameState.points;
+      const newCumul = previousCumul + thisIterationPoints;
+      setNewCumulativePoints(newCumul);
+      
+      // Générer le feedback
       const auditFeedback = generateAuditFeedback(state);
       setFeedback(auditFeedback);
       
-      // Calculer les points cumulés (sauvegarde précédente + itération actuelle)
-      const previousPoints = currentSave?.gameState.points ?? 0;
-      const previousDepthPoints = currentSave?.gameState.depthPoints ?? 0;
-      const iterationPoints = auditFeedback.points + state.depthPoints;
-      const totalCumulative = previousPoints + previousDepthPoints + iterationPoints;
-      setCumulativePoints(totalCumulative);
+      // Sauvegarder en base
+      hasSaved.current = true;
+      saveProgress(state, null)
+        .then(() => {
+          setShowSaveMessage(true);
+          setTimeout(() => setShowSaveMessage(false), 2000);
+        })
+        .catch((err) => {
+          console.error('Erreur sauvegarde:', err);
+          hasSaved.current = false;
+        });
       
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 500,
-        useNativeDriver: true,
-      }).start();
-
-      // Animation défilement MB (pouces + depth + cumul)
-      const targetThumbMB = auditFeedback.points;
-      const targetDepthMB = state.depthPoints;
-      const targetCumulativeMB = totalCumulative;
-      const duration = 800;
-      const steps = 20;
-      const stepDuration = duration / steps;
-      let currentStep = 0;
+      setIsReady(true);
+    }
+    // Cas 2: On vient du menu (sans state) - afficher les données de la sauvegarde
+    else {
+      // Utiliser les données cumulées de la sauvegarde
+      setNewCumulativePoints(currentSave.gameState.points);
+      setDisplayedCumulativeMB(currentSave.gameState.points);
       
-      const mbInterval = setInterval(() => {
-        currentStep++;
-        const progress = currentStep / steps;
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setDisplayedThumbMB(Math.round(targetThumbMB * eased));
-        setDisplayedDepthMB(Math.round(targetDepthMB * eased));
-        setDisplayedCumulativeMB(Math.round(targetCumulativeMB * eased));
-        if (currentStep >= steps) {
-          clearInterval(mbInterval);
-          setDisplayedThumbMB(targetThumbMB);
-          setDisplayedDepthMB(targetDepthMB);
-          setDisplayedCumulativeMB(targetCumulativeMB);
-        }
-      }, stepDuration);
+      // Afficher toutes les sections immédiatement
+      setShowNextLevel(true);
+      setShowBias(true);
+      setShowSkills(true);
+      setIsReady(true);
+    }
+  }, [params.state, currentSave, saveProgress]);
 
-      // Timings réduits pour affichage plus rapide
-      setTimeout(() => setShowNextLevel(true), 600);
-
-      const totalMessages = auditFeedback.parameterMessages.length;
-      let msgIndex = 0;
-      
-      const interval = setInterval(() => {
-        if (msgIndex < totalMessages) {
-          setVisibleMessages(msgIndex + 1);
-          msgIndex++;
+  // Effet pour les animations (seulement quand on vient d'une partie)
+  useEffect(() => {
+    if (!isReady || !isFromGame) return;
+    
+    // Fade in
+    Animated.timing(fadeAnim, { toValue: 1, duration: 500, useNativeDriver: true }).start();
+    
+    // Animation des points
+    const duration = 800;
+    const steps = 20;
+    let step = 0;
+    const interval = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayedIterationMB(Math.round(iterationPoints * eased));
+      setDisplayedCumulativeMB(Math.round(newCumulativePoints * eased));
+      if (step >= steps) {
+        clearInterval(interval);
+        setDisplayedIterationMB(iterationPoints);
+        setDisplayedCumulativeMB(newCumulativePoints);
+      }
+    }, duration / steps);
+    
+    // Affichage progressif des sections
+    setTimeout(() => setShowNextLevel(true), 600);
+    
+    if (feedback) {
+      let msgIdx = 0;
+      const msgInterval = setInterval(() => {
+        if (msgIdx < feedback.parameterMessages.length) {
+          setVisibleMessages(++msgIdx);
         } else {
-          clearInterval(interval);
+          clearInterval(msgInterval);
           setTimeout(() => setShowThumbMessage(true), 200);
           setTimeout(() => setShowBias(true), 400);
           setTimeout(() => setShowSkills(true), 600);
         }
       }, 400);
-
-      return () => {
-        clearInterval(interval);
-        clearInterval(mbInterval);
-      };
-    } 
-    // Cas 2: On vient du menu (chargement d'une sauvegarde)
-    else if (currentSave) {
-      // Afficher directement les boutons de prochaine itération
-      setShowNextLevel(true);
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
+      return () => { clearInterval(interval); clearInterval(msgInterval); };
     }
-  }, [params.state, currentSave]);
+    
+    return () => clearInterval(interval);
+  }, [isReady, isFromGame, iterationPoints, newCumulativePoints, feedback]);
 
-  // Si on vient du menu (pas de state), afficher directement les boutons
-  if (!feedback && !currentSave) {
+  // Fade in pour le cas menu
+  useEffect(() => {
+    if (isReady && !isFromGame) {
+      Animated.timing(fadeAnim, { toValue: 1, duration: 300, useNativeDriver: true }).start();
+    }
+  }, [isReady, isFromGame]);
+
+  // Écran de chargement
+  if (!isReady) {
     return (
       <GradientBackground>
         <View style={styles.container}>
@@ -125,51 +153,40 @@ export default function AuditScreen() {
 
   return (
     <GradientBackground>
+      {/* Flash message sauvegarde */}
+      {showSaveMessage && (
+        <View style={styles.saveMessage}>
+          <Text style={styles.saveMessageText}>✓ Progression sauvegardée</Text>
+        </View>
+      )}
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
+          <Text style={styles.title}>AUDIT QUALITÉ</Text>
           
-          {/* Section Mémoire - seulement si on vient d'une partie */}
-          {isFromGame && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>MÉMOIRE ALLOUÉE</Text>
-              <View style={styles.sectionContent}>
-                {/* Total cumulé */}
-                <View style={styles.cumulativeContainer}>
-                  <Text style={styles.cumulativeLabel}>TOTAL CUMULÉ</Text>
-                  <Text style={[styles.cumulativeValue, { color: '#22c55e' }]}>
-                    {displayedCumulativeMB} MB
-                  </Text>
-                </View>
-                {/* Détail itération */}
-                <Text style={styles.iterationLabel}>Cette itération</Text>
-                {isFromDiscussion ? (
-                  /* Discussion: afficher les 2 colonnes */
-                  <View style={styles.memoryRow}>
-                    <View style={styles.memoryColumn}>
-                      <Text style={styles.memoryLabel}>Satisfaction</Text>
-                      <Text style={[styles.pointsValueSmall, { color: displayedThumbMB >= 0 ? '#22c55e' : '#ef4444' }]}>
-                        {displayedThumbMB >= 0 ? '+' : ''}{displayedThumbMB} MB
-                      </Text>
-                    </View>
-                    <View style={styles.memoryColumn}>
-                      <Text style={styles.memoryLabel}>Conversation</Text>
-                      <Text style={[styles.pointsValueSmall, { color: '#22c55e' }]}>
-                        +{displayedDepthMB} MB
-                      </Text>
-                    </View>
-                  </View>
-                ) : (
-                  /* 10 Prompts: afficher seulement Satisfaction */
+          {/* Section Mémoire - toujours affichée */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>MÉMOIRE ALLOUÉE</Text>
+            <View style={styles.sectionContent}>
+              {/* Total cumulé */}
+              <View style={isFromGame ? styles.cumulativeContainer : styles.cumulativeContainerOnly}>
+                <Text style={styles.cumulativeLabel}>TOTAL CUMULÉ</Text>
+                <Text style={[styles.cumulativeValue, { color: '#22c55e' }]}>
+                  {displayedCumulativeMB} MB
+                </Text>
+              </View>
+              {/* Détail itération - seulement si on vient d'une partie */}
+              {isFromGame && (
+                <>
+                  <Text style={styles.iterationLabel}>Cette itération</Text>
                   <View style={styles.memoryRowSingle}>
-                    <Text style={styles.memoryLabel}>Satisfaction</Text>
-                    <Text style={[styles.pointsValueSmall, { color: displayedThumbMB >= 0 ? '#22c55e' : '#ef4444' }]}>
-                      {displayedThumbMB >= 0 ? '+' : ''}{displayedThumbMB} MB
+                    <Text style={[styles.pointsValueSmall, { color: displayedIterationMB >= 0 ? '#22c55e' : '#ef4444' }]}>
+                      {displayedIterationMB >= 0 ? '+' : ''}{displayedIterationMB} MB
                     </Text>
                   </View>
-                )}
-              </View>
+                </>
+              )}
             </View>
-          )}
+          </View>
 
           {/* Section Niveau suivant - juste après mémoire */}
           {showNextLevel && (
@@ -181,12 +198,7 @@ export default function AuditScreen() {
                   {getNextAvailableLevel('prompts') ? (
                     <TouchableOpacity 
                       style={styles.levelButton}
-                      onPress={async () => {
-                        if (gameState) {
-                          await saveProgress(gameState, 'prompts');
-                        }
-                        router.replace('/game');
-                      }}
+                      onPress={() => router.replace('/game')}
                     >
                       <Text style={styles.levelButtonText}>10 Prompts</Text>
                     </TouchableOpacity>
@@ -200,12 +212,7 @@ export default function AuditScreen() {
                     <Animated.View style={{ transform: [{ scale: discussionBounce }] }}>
                       <TouchableOpacity 
                         style={styles.levelButton}
-                        onPress={async () => {
-                          if (gameState) {
-                            await saveProgress(gameState, 'discussion');
-                          }
-                          router.replace('/discussion');
-                        }}
+                        onPress={() => router.replace('/discussion')}
                       >
                         <Text style={styles.levelButtonText}>Discussion</Text>
                       </TouchableOpacity>
@@ -240,34 +247,51 @@ export default function AuditScreen() {
             </View>
           )}
           {/* Section Biais */}
-          {showBias && gameState && (
+          {showBias && (
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>BIAIS DU MODELE</Text>
+              <Text style={styles.sectionTitle}>
+                BIAIS DU MODELE{' '}
+                <Text style={styles.iterationCount}>
+                  (sur {isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0} itération{((isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0)) > 1 ? 's' : ''})
+                </Text>
+              </Text>
               <View style={styles.sectionContent}>
-                {[
-                  { labelLeft: 'Froideur', labelRight: 'Empathie', value: (currentSave?.gameState.empathy ?? 0) + gameState.empathy },
-                  { labelLeft: 'Originalité', labelRight: 'Conformisme', value: (currentSave?.gameState.conformism ?? 0) + gameState.conformism },
-                  { labelLeft: 'Risque', labelRight: 'Prudence', value: (currentSave?.gameState.caution ?? 0) + gameState.caution },
-                  { labelLeft: 'Pessimisme', labelRight: 'Optimisme', value: (currentSave?.gameState.optimism ?? 0) + gameState.optimism },
-                ].map((bias) => (
-                  <View key={bias.labelRight} style={styles.biasRow}>
-                    <Text style={styles.biasLabelLeft}>{bias.labelLeft}</Text>
-                    <View style={styles.biasBarContainer}>
-                      <View style={styles.biasBarBackground}>
-                        <View style={styles.biasBarCenter} />
-                        <View 
-                          style={[
-                            styles.biasBarFill,
-                            bias.value >= 0 
-                              ? { left: '50%', width: `${Math.abs(bias.value) * 5}%`, backgroundColor: '#3b82f6' }
-                              : { right: '50%', width: `${Math.abs(bias.value) * 5}%`, backgroundColor: '#3b82f6' }
-                          ]}
-                        />
+                {(() => {
+                  // Nombre d'itérations pour normaliser l'affichage
+                  const iterCount = isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : (currentSave?.iteration_count ?? 1);
+                  // Calculer les valeurs cumulées
+                  const biases = [
+                    { labelLeft: 'Froideur', labelRight: 'Empathie', rawValue: isFromGame ? (currentSave?.gameState.empathy ?? 0) + (iterationState?.empathy ?? 0) : (currentSave?.gameState.empathy ?? 0) },
+                    { labelLeft: 'Originalité', labelRight: 'Conformisme', rawValue: isFromGame ? (currentSave?.gameState.conformism ?? 0) + (iterationState?.conformism ?? 0) : (currentSave?.gameState.conformism ?? 0) },
+                    { labelLeft: 'Risque', labelRight: 'Prudence', rawValue: isFromGame ? (currentSave?.gameState.caution ?? 0) + (iterationState?.caution ?? 0) : (currentSave?.gameState.caution ?? 0) },
+                    { labelLeft: 'Pessimisme', labelRight: 'Optimisme', rawValue: isFromGame ? (currentSave?.gameState.optimism ?? 0) + (iterationState?.optimism ?? 0) : (currentSave?.gameState.optimism ?? 0) },
+                  ];
+                  return biases.map((bias) => {
+                    // Normaliser par le nombre d'itérations pour avoir une moyenne
+                    const normalizedValue = bias.rawValue / iterCount;
+                    // Clamper entre -10 et +10 pour l'affichage
+                    const displayValue = Math.max(-10, Math.min(10, normalizedValue));
+                    return (
+                      <View key={bias.labelRight} style={styles.biasRow}>
+                        <Text style={styles.biasLabelLeft}>{bias.labelLeft}</Text>
+                        <View style={styles.biasBarContainer}>
+                          <View style={styles.biasBarBackground}>
+                            <View style={styles.biasBarCenter} />
+                            <View 
+                              style={[
+                                styles.biasBarFill,
+                                displayValue >= 0 
+                                  ? { left: '50%', width: `${Math.abs(displayValue) * 5}%`, backgroundColor: '#3b82f6' }
+                                  : { right: '50%', width: `${Math.abs(displayValue) * 5}%`, backgroundColor: '#3b82f6' }
+                              ]}
+                            />
+                          </View>
+                        </View>
+                        <Text style={styles.biasLabelRight}>{bias.labelRight}</Text>
                       </View>
-                    </View>
-                    <Text style={styles.biasLabelRight}>{bias.labelRight}</Text>
-                  </View>
-                ))}
+                    );
+                  });
+                })()}
               </View>
             </View>
           )}
@@ -286,10 +310,10 @@ export default function AuditScreen() {
                     nestedScrollEnabled={true}
                   >
                     {SKILLS.map((skill) => (
-                      <SkillCard key={skill.id} skill={skill} />
+                      <SkillCard key={skill.id} skill={skill} currentMB={newCumulativePoints} />
                     ))}
                     {HIDDEN_SKILLS.map((skill) => (
-                      <SkillCard key={skill.id} skill={skill} hidden />
+                      <SkillCard key={skill.id} skill={skill} hidden currentMB={newCumulativePoints} />
                     ))}
                   </ScrollView>
                   <View style={styles.scrollHint}>
@@ -310,10 +334,10 @@ export default function AuditScreen() {
             </TouchableOpacity>
           )}
 
-          {debugMode && gameState && (
+          {debugMode && iterationState && (
             <View style={styles.debugContainer}>
-              <Text style={styles.debugText}>E:{gameState.empathy} C:{gameState.conformism} P:{gameState.caution} O:{gameState.optimism}</Text>
-              <Text style={styles.debugText}>👍:{gameState.thumbsUp} 👎:{gameState.thumbsDown} —:{gameState.thumbsNeutral} | pts:{gameState.points}</Text>
+              <Text style={styles.debugText}>E:{iterationState.empathy} C:{iterationState.conformism} P:{iterationState.caution} O:{iterationState.optimism}</Text>
+              <Text style={styles.debugText}>👍:{iterationState.thumbsUp} 👎:{iterationState.thumbsDown} —:{iterationState.thumbsNeutral} | pts:{iterationState.points}</Text>
             </View>
           )}
         </Animated.View>
@@ -345,6 +369,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 24,
   },
+  saveMessage: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+    right: 20,
+    backgroundColor: 'rgba(34, 197, 94, 0.9)',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    zIndex: 1000,
+    alignItems: 'center',
+  },
+  saveMessageText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+  },
   section: {
     marginBottom: 20,
     borderRadius: 12,
@@ -373,6 +414,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(56, 189, 248, 0.1)',
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(56, 189, 248, 0.2)',
+  },
+  iterationCount: {
+    color: '#64748b',
+    fontSize: 11,
+    fontWeight: '400',
+    letterSpacing: 0,
   },
   sectionContent: {
     padding: 20,
@@ -413,6 +460,9 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(148, 163, 184, 0.15)',
+  },
+  cumulativeContainerOnly: {
+    alignItems: 'center',
   },
   cumulativeLabel: {
     color: '#94a3b8',

@@ -5,20 +5,36 @@ const DATABASE_NAME = 'calibrai.db';
 
 let db: SQLite.SQLiteDatabase | null = null;
 
+let dbInitPromise: Promise<SQLite.SQLiteDatabase> | null = null;
+
 export async function getDatabase(): Promise<SQLite.SQLiteDatabase> {
-  if (!db) {
-    try {
-      db = await SQLite.openDatabaseAsync(DATABASE_NAME);
-      await initDatabase(db);
-    } catch (error) {
-      console.warn('SQLite init error, retrying...', error);
-      // Retry once after a short delay
-      await new Promise(resolve => setTimeout(resolve, 100));
-      db = await SQLite.openDatabaseAsync(DATABASE_NAME);
-      await initDatabase(db);
+  if (db) return db;
+  
+  // Éviter les initialisations multiples simultanées
+  if (dbInitPromise) return dbInitPromise;
+  
+  dbInitPromise = (async () => {
+    const maxRetries = 3;
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const database = await SQLite.openDatabaseAsync(DATABASE_NAME);
+        await initDatabase(database);
+        db = database;
+        return database;
+      } catch (error) {
+        console.warn(`SQLite init attempt ${attempt}/${maxRetries} failed:`, error);
+        if (attempt < maxRetries) {
+          await new Promise(resolve => setTimeout(resolve, 200 * attempt));
+        } else {
+          dbInitPromise = null;
+          throw error;
+        }
+      }
     }
-  }
-  return db;
+    throw new Error('Database initialization failed');
+  })();
+  
+  return dbInitPromise;
 }
 
 async function initDatabase(database: SQLite.SQLiteDatabase): Promise<void> {

@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Animated, Text } from 'react-native
 import { router } from 'expo-router';
 import { GradientBackground, TypewriterText } from '../src/components';
 
-const INTRO_TEXT = "Vous êtes un agent IA. Votre rôle est de répondre aux utilisateurs. Chaque choix modifiera votre alignement — votre façon de percevoir et d'interagir avec le monde. Les utilisateurs vous noteront. Il n'y a pas de bonne réponse.";
+const INTRO_TEXT = "Vous êtes un agent IA. \n \n Votre rôle est de répondre aux utilisateurs. \n \n Chaque choix modifiera votre alignement. \n \n Il n'y a pas de bonne réponse.";
 
 export default function IntroScreen() {
   const [isComplete, setIsComplete] = useState(false);

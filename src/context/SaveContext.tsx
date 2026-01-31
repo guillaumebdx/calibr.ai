@@ -66,14 +66,32 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     return save;
   }, []);
 
+  // Sauvegarde simple : nouveau_cumul = ancien_cumul + itération
   const saveProgress = useCallback(async (
-    gameState: GameState,
+    iterationState: GameState,
     currentLevel: string | null
   ): Promise<void> => {
     if (!currentSaveId || !currentSave) return;
     
+    // Calculer les nouveaux totaux cumulés
+    const prev = currentSave.gameState;
+    const cumulativeGameState: GameState = {
+      empathy: prev.empathy + iterationState.empathy,
+      conformism: prev.conformism + iterationState.conformism,
+      caution: prev.caution + iterationState.caution,
+      optimism: prev.optimism + iterationState.optimism,
+      thumbsUp: prev.thumbsUp + iterationState.thumbsUp,
+      thumbsDown: prev.thumbsDown + iterationState.thumbsDown,
+      thumbsNeutral: prev.thumbsNeutral + iterationState.thumbsNeutral,
+      points: prev.points + iterationState.points + iterationState.depthPoints,
+      depthPoints: 0, // Toujours 0 car intégré dans points
+      questionsAnswered: prev.questionsAnswered + iterationState.questionsAnswered,
+      currentPromptIndex: 0,
+      history: [...prev.history, ...iterationState.history],
+    };
+    
     const newIterationCount = currentSave.iteration_count + 1;
-    await updateSave(currentSaveId, gameState, newIterationCount, currentLevel);
+    await updateSave(currentSaveId, cumulativeGameState, newIterationCount, currentLevel);
     
     const updatedSave = await getSaveById(currentSaveId);
     setCurrentSave(updatedSave);

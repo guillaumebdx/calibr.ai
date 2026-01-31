@@ -74,7 +74,7 @@ export interface Skill {
   name: string;
   description: string;
   price: number;
-  icon?: string;
+  icon?: any; // ImageSourcePropType from require()
   unlocked: boolean;
 }
 
