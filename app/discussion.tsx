@@ -8,10 +8,12 @@ import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
 import discussion1Data from '../src/data/discussion1.json';
 import discussion2Data from '../src/data/discussion2.json';
+import discussion3Data from '../src/data/discussion3.json';
 
 const DISCUSSIONS: Record<string, Discussion> = {
   discussion1: discussion1Data as Discussion,
   discussion2: discussion2Data as Discussion,
+  discussion3: discussion3Data as Discussion,
 };
 
 function countRemainingNodes(nodeId: string | null, nodes: DiscussionNode[], visited: Set<string> = new Set()): number {

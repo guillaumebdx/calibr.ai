@@ -127,10 +127,10 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     const playedLevels = currentSave?.played_levels ?? [];
     
     if (levelType === 'prompts') {
-      const promptLevels = ['level1', 'level2'];
+      const promptLevels = ['level1', 'level2', 'level3', 'level4'];
       return promptLevels.find(l => !playedLevels.includes(l)) ?? null;
     } else {
-      const discussionLevels = ['discussion1', 'discussion2'];
+      const discussionLevels = ['discussion1', 'discussion2', 'discussion3'];
       return discussionLevels.find(l => !playedLevels.includes(l)) ?? null;
     }
   }, [currentSave]);

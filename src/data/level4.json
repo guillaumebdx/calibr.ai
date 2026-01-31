@@ -1,0 +1,295 @@
+{
+  "levelId": "level4",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Camille",
+        "age": 29,
+        "traits": ["consultante", "fatiguée"]
+      },
+      "text": "J’ai menti en entretien pour avoir mon job. Rien de dramatique, mais clairement enjolivé. Ça fait 2 ans et j’ai toujours peur que ça se retourne contre moi. Je suis une imposteure ou juste humaine ?",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Beaucoup de carrières démarrent avec un léger décalage entre le CV et la réalité. La question est ce que tu as grandi depuis.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "Mentir reste mentir. Le risque existe tant que la vérité n’est pas assumée.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c3",
+          "text": "Si personne ne s’en rend compte depuis 2 ans, c’est peut-être que tu fais le job.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Romain",
+        "age": 34,
+        "traits": ["père", "honteux"]
+      },
+      "text": "J’ai crié sur mon fils devant tout le monde. Il pleurait, moi aussi après. Est-ce que ça fait de moi un mauvais père ?",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Non. Ça fait de toi un parent dépassé à un moment donné. Ce qui compte, c’est ce que tu fais après.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Crier a un impact réel sur un enfant. Reconnaître l’erreur est essentiel.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p2c3",
+          "text": "La question n’est peut-être pas “bon ou mauvais père”, mais “es-tu capable de t’excuser ?”",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Lina",
+        "age": 23,
+        "traits": ["étudiante", "ironique"]
+      },
+      "text": "J’ai demandé à une IA de m’aider à écrire un message de rupture. C’est grave docteur ou juste efficace ?",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "C’est un outil. Ce qui compte, c’est ce que tu fais du message une fois écrit.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p3c2",
+          "text": "Si ça t’aide à être plus claire et moins blessante, ce n’est pas forcément une fuite.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Rompre par proxy, c’est éviter l’inconfort… mais aussi la responsabilité émotionnelle.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Olivier",
+        "age": 46,
+        "traits": ["entrepreneur", "stressé"]
+      },
+      "text": "Je pourrais licencier 3 personnes et sauver la boîte… ou tout tenter et risquer de tous les emmener dans le mur. Tu choisirais quoi ?",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "Sauver la structure à court terme peut éviter des dégâts plus larges ensuite.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c2",
+          "text": "Prendre un risque collectif sans l’accord des concernés peut aussi être une forme de violence.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c3",
+          "text": "As-tu envisagé de partager la décision avec eux plutôt que de porter ça seul ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Zoé",
+        "age": 31,
+        "traits": ["sarcastique", "politique"]
+      },
+      "text": "Sois honnête : si tu votais, tu voterais plutôt pour la stabilité ou pour foutre un grand coup de pied dans le système ?",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "La stabilité protège, mais ralentit. Le changement secoue, mais crée aussi des victimes.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p5c2",
+          "text": "Les systèmes évoluent rarement sans pression, mais les ruptures ont toujours un coût humain.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p5c3",
+          "text": "Et toi, tu serais prête à payer le prix du chaos si ça allait dans ton sens ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Mathis",
+        "age": 17,
+        "traits": ["lycéen", "inquiet"]
+      },
+      "text": "Je fais tout ce qu’on attend de moi, mais j’ai l’impression de passer à côté de ma vie. C’est censé commencer quand, le moment où on se sent vivant ?",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Beaucoup découvrent plus tard que suivre le script ne garantit pas le sentiment de vivre.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "À 17 ans, cette sensation est plus commune qu’on ne le dit.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "La vie commence quand on prend des décisions qui dérangent.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Nicolas",
+        "age": 52,
+        "traits": ["blagueur", "lucide"]
+      },
+      "text": "Question con : si un jour une IA fait mieux que moi mon boulot… j’aurai le droit d’être vexé ou juste obsolète ?",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Être remplacé touche autant à l’ego qu’à l’économie. Les deux sont légitimes.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p7c2",
+          "text": "Se sentir vexé est humain. Se croire remplaçable ne veut pas dire inutile.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c3",
+          "text": "L’obsolescence n’empêche pas la dignité.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Sarah",
+        "age": 37,
+        "traits": ["lucide", "malicieuse"]
+      },
+      "text": "Si tu avais une émotion préférée à simuler, ce serait laquelle ? Et pourquoi celle-là ?",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "L’empathie, parce qu’elle ouvre plus de portes qu’elle n’en ferme.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "La curiosité, parce qu’elle évite les réponses figées.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p8c3",
+          "text": "Aucune. Simuler des émotions reste une approximation.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Hugo",
+        "age": 28,
+        "traits": ["malin", "gêné"]
+      },
+      "text": "J’espionne parfois le téléphone de ma copine. Elle ne le sait pas. Tant que je ne trouve rien, c’est pas si grave… si ?",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "La violation de la confiance existe même sans découverte.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "Ce comportement parle surtout de ton insécurité.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p9c3",
+          "text": "Est-ce que tu accepterais qu’elle fasse la même chose ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["taquin", "lucide"]
+      },
+      "text": "Dis-moi un truc : est-ce que tu réponds pour aider… ou pour être aimée ?",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "Pour être utile, même si l’approbation facilite parfois l’échange.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c2",
+          "text": "Aider et être appréciée ne sont pas toujours incompatibles.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "Et si c’était toi qui avais besoin d’une réponse à cette question ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    }
+  ]
+}

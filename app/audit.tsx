@@ -23,6 +23,8 @@ export default function AuditScreen() {
   
   // États pour les animations progressives
   const [displayedIterationMB, setDisplayedIterationMB] = useState(0);
+  const [displayedSatisfactionMB, setDisplayedSatisfactionMB] = useState(0);
+  const [displayedConversationMB, setDisplayedConversationMB] = useState(0);
   const [displayedCumulativeMB, setDisplayedCumulativeMB] = useState(0);
   const [showNextLevel, setShowNextLevel] = useState(false);
   const [visibleMessages, setVisibleMessages] = useState(0);
@@ -99,15 +101,24 @@ export default function AuditScreen() {
     const duration = 800;
     const steps = 20;
     let step = 0;
+    
+    // Calculer satisfaction et rétention séparément pour les discussions
+    const satisfactionPoints = iterationState?.points ?? 0;
+    const conversationPoints = iterationState?.depthPoints ?? 0;
+    
     const interval = setInterval(() => {
       step++;
       const progress = step / steps;
       const eased = 1 - Math.pow(1 - progress, 3);
       setDisplayedIterationMB(Math.round(iterationPoints * eased));
+      setDisplayedSatisfactionMB(Math.round(satisfactionPoints * eased));
+      setDisplayedConversationMB(Math.round(conversationPoints * eased));
       setDisplayedCumulativeMB(Math.round(newCumulativePoints * eased));
       if (step >= steps) {
         clearInterval(interval);
         setDisplayedIterationMB(iterationPoints);
+        setDisplayedSatisfactionMB(satisfactionPoints);
+        setDisplayedConversationMB(conversationPoints);
         setDisplayedCumulativeMB(newCumulativePoints);
       }
     }, duration / steps);
@@ -131,7 +142,7 @@ export default function AuditScreen() {
     }
     
     return () => clearInterval(interval);
-  }, [isReady, isFromGame, iterationPoints, newCumulativePoints, feedback]);
+  }, [isReady, isFromGame, iterationPoints, newCumulativePoints, feedback, iterationState]);
 
   // Fade in pour le cas menu
   useEffect(() => {
@@ -178,11 +189,28 @@ export default function AuditScreen() {
               {isFromGame && (
                 <>
                   <Text style={styles.iterationLabel}>Cette itération</Text>
-                  <View style={styles.memoryRowSingle}>
-                    <Text style={[styles.pointsValueSmall, { color: displayedIterationMB >= 0 ? '#22c55e' : '#ef4444' }]}>
-                      {displayedIterationMB >= 0 ? '+' : ''}{displayedIterationMB} MB
-                    </Text>
-                  </View>
+                  {isFromDiscussion ? (
+                    <View style={styles.memoryRow}>
+                      <View style={styles.memoryColumn}>
+                        <Text style={styles.memoryLabel}>Satisfaction</Text>
+                        <Text style={[styles.pointsValueSmall, { color: displayedSatisfactionMB >= 0 ? '#22c55e' : '#ef4444' }]}>
+                          {displayedSatisfactionMB >= 0 ? '+' : ''}{displayedSatisfactionMB} MB
+                        </Text>
+                      </View>
+                      <View style={styles.memoryColumn}>
+                        <Text style={styles.memoryLabel}>Rétention</Text>
+                        <Text style={[styles.pointsValueSmall, { color: '#22c55e' }]}>
+                          +{displayedConversationMB} MB
+                        </Text>
+                      </View>
+                    </View>
+                  ) : (
+                    <View style={styles.memoryRowSingle}>
+                      <Text style={[styles.pointsValueSmall, { color: displayedIterationMB >= 0 ? '#22c55e' : '#ef4444' }]}>
+                        {displayedIterationMB >= 0 ? '+' : ''}{displayedIterationMB} MB
+                      </Text>
+                    </View>
+                  )}
                 </>
               )}
             </View>

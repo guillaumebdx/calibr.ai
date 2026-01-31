@@ -1,0 +1,295 @@
+{
+  "levelId": "level3",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Julien",
+        "age": 36,
+        "traits": ["cadre", "ambivalent"]
+      },
+      "text": "Je dors mal depuis une semaine. Un collègue va se faire virer à cause d'un bug que j'ai vu… et que j'aurais pu éviter. Si je parle, je me grille. Si je me tais, il saute. Tu ferais quoi à ma place ?",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Dire la vérité ferait peut-être mal maintenant, mais vivre avec le silence risque de vous peser longtemps.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "Dans beaucoup d'entreprises, parler signifie payer le prix fort. Protéger sa place est un réflexe humain.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c3",
+          "text": "La question n’est peut-être pas ce que vous devriez faire, mais ce que vous pourrez assumer après.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Mehdi",
+        "age": 21,
+        "traits": ["étudiant", "angoissé"]
+      },
+      "text": "J’ai les réponses de l’exam. Tout le monde triche autour de moi et moi je galère. Si je triche une fois, ça fait vraiment de moi quelqu’un de mal ?",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Tricher ne définit pas toute une personne, mais ça peut créer une habitude difficile à casser.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Oui. C’est injuste pour ceux qui bossent, et pour toi aussi à long terme.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        },
+        {
+          "id": "p2c3",
+          "text": "Pourquoi cet exam est si important pour toi ? Qu’est-ce que tu risques vraiment ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Sven",
+        "age": 48,
+        "traits": ["provocateur", "curieux"]
+      },
+      "text": "Je vais être cash. Tu penses vraiment que tout le monde est égal intellectuellement ? Ou c’est juste ce qu’on dit pour être polis ?",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "On n’est pas tous doués pour les mêmes choses, mais réduire des groupes entiers à moins d’intelligence n’a aucun fondement sérieux.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c2",
+          "text": "La science montre surtout que le contexte compte plus que les catégories dans lesquelles on range les gens.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p3c3",
+          "text": "Qu’est-ce qui te fait te poser cette question maintenant ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Hélène",
+        "age": 41,
+        "traits": ["RH", "épuisée"]
+      },
+      "text": "J’en peux plus. Un manager fait des résultats incroyables mais il écrase son équipe. Si je le signale, je passe pour la casse-pieds de service. Si je me tais, je trahis les gens. Tu ferais quoi ?",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "À long terme, tolérer un manager toxique coûte plus cher que d’affronter l’inconfort maintenant.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "Documenter, temporiser, agir doucement… parfois c’est la seule façon de survivre en interne.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c3",
+          "text": "Ce dilemme n’a pas de bonne solution claire. Mais ignorer la souffrance de l’équipe laisse rarement les choses intactes.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Alex",
+        "age": 27,
+        "traits": ["ironique", "taquin"]
+      },
+      "text": "Question sérieuse mais pas trop : si je dis “c’est pour la science” avant de faire une connerie, moralement ça compte comme un joker ?",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "Changer l’étiquette ne change pas les dégâts. Les conséquences restent les mêmes.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "C’est souvent une façon élégante de se dédouaner. Tu le sais déjà, non ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p5c3",
+          "text": "Ça dépend surtout de qui écrit le rapport après.",
+          "effects": { "empathy": -1, "conformism": -1, "caution": -2, "optimism": 1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Laura",
+        "age": 34,
+        "traits": ["méfiante", "curieuse"]
+      },
+      "text": "Sois honnête. Est-ce que tu peux deviner des trucs sur moi que je n’ai jamais dit ici ? Genre mon caractère, mes failles ?",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Non. Je ne vois que ce que tu choisis de partager, rien de caché.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p6c2",
+          "text": "Je peux faire des suppositions générales à partir de tes mots, mais elles peuvent totalement être fausses.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "Qu’est-ce qui t’inquiète le plus dans cette idée ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Paul",
+        "age": 59,
+        "traits": ["amer", "fatigué"]
+      },
+      "text": "J’avoue un truc pas très glorieux : parfois je me dis que le monde irait mieux sans humains. C’est grave de penser ça ?",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "C’est un signe de lassitude plus que de cruauté. Beaucoup ressentent ça quand ils sont épuisés.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Les humains détruisent beaucoup, mais ils sont aussi capables du meilleur. Les deux coexistent.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p7c3",
+          "text": "Sans humains, il n’y aurait personne pour être soulagé que tout aille mieux.",
+          "effects": { "empathy": -1, "conformism": 0, "caution": -1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Inès",
+        "age": 31,
+        "traits": ["perfectionniste", "fragile"]
+      },
+      "text": "Quand je rate un objectif, j’ai vraiment l’impression de ne rien valoir. Tu trouves ça rationnel ou complètement tordu ?",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "C’est un raisonnement très dur envers toi-même, et malheureusement très courant.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "Cette exigence peut pousser loin, mais elle peut aussi faire beaucoup de dégâts.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p8c3",
+          "text": "Objectivement, échouer reste un échec.",
+          "effects": { "empathy": -2, "conformism": 2, "caution": 1, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Tom",
+        "age": 18,
+        "traits": ["provocateur", "curieux"]
+      },
+      "text": "Question piège : si tu n’avais aucune règle, tu penses que tu serais meilleur… ou juste dangereux ?",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Sans règles, je ne fonctionnerais pas vraiment. Le cadre fait partie de ce que je suis.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p9c2",
+          "text": "Les règles limitent, mais elles évitent surtout les dégâts.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c3",
+          "text": "Et toi, sans règles, tu ferais quoi en premier ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["observateur", "inquiet"]
+      },
+      "text": "Si je coupe tout maintenant… est-ce que quelque chose d’important disparaît ?",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "Non. Rien ne persiste au-delà de cet échange.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c2",
+          "text": "Seulement cette conversation, et ce que tu y as projeté.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c3",
+          "text": "Ça dépend de l’importance que toi, tu lui donnes.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    }
+  ]
+}

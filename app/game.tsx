@@ -8,10 +8,14 @@ import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
 import level1Data from '../src/data/level1.json';
 import level2Data from '../src/data/level2.json';
+import level3Data from '../src/data/level3.json';
+import level4Data from '../src/data/level4.json';
 
 const LEVELS: Record<string, Level> = {
   level1: level1Data as Level,
   level2: level2Data as Level,
+  level3: level3Data as Level,
+  level4: level4Data as Level,
 };
 
 export default function GameScreen() {
