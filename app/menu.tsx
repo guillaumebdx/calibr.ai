@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 import { GradientBackground } from '../src/components';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
-import { getAllEndings, EndingData, getPurchasedSkillsCount } from '../src/db/database';
+import { getAllEndings, EndingData, getPurchasedSkillsCount, addPoints } from '../src/db/database';
 
 const DEBUG_TAP_COUNT = 8;
 const DEBUG_TAP_TIMEOUT = 3000;
@@ -146,20 +146,37 @@ export default function MenuScreen() {
             <View style={styles.savesSection}>
               <Text style={styles.savesTitle}>SAUVEGARDES</Text>
               {saves.map((save) => (
-                <TouchableOpacity
-                  key={save.id}
-                  style={styles.saveSlot}
-                  onPress={() => handleLoadSave(save.id)}
-                  onLongPress={() => handleDeleteSave(save.id, formatDate(save.created_at))}
-                >
-                  <View style={styles.saveInfo}>
-                    <Text style={styles.saveDate}>{formatDate(save.updated_at)}</Text>
-                    <Text style={styles.saveDetails}>
-                      Itération {save.iteration_count} • {save.gameState.points} MB • {skillsCounts[save.id] || 0} capacité{(skillsCounts[save.id] || 0) > 1 ? 's' : ''}
-                    </Text>
-                  </View>
-                  <Text style={styles.saveArrow}>→</Text>
-                </TouchableOpacity>
+                <View key={save.id} style={styles.saveRow}>
+                  {debugMode && (
+                    <View style={styles.debugMBButtons}>
+                      <TouchableOpacity
+                        style={styles.debugMBButton}
+                        onPress={async () => { await addPoints(save.id, 10); loadSaves(); }}
+                      >
+                        <Text style={styles.debugMBButtonText}>+</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={styles.debugMBButton}
+                        onPress={async () => { await addPoints(save.id, -10); loadSaves(); }}
+                      >
+                        <Text style={styles.debugMBButtonText}>−</Text>
+                      </TouchableOpacity>
+                    </View>
+                  )}
+                  <TouchableOpacity
+                    style={[styles.saveSlot, debugMode && styles.saveSlotDebug]}
+                    onPress={() => handleLoadSave(save.id)}
+                    onLongPress={() => handleDeleteSave(save.id, formatDate(save.created_at))}
+                  >
+                    <View style={styles.saveInfo}>
+                      <Text style={styles.saveDate}>{formatDate(save.updated_at)}</Text>
+                      <Text style={styles.saveDetails}>
+                        Itération {save.iteration_count} • {save.gameState.points} MB • {skillsCounts[save.id] || 0} capacité{(skillsCounts[save.id] || 0) > 1 ? 's' : ''}
+                      </Text>
+                    </View>
+                    <Text style={styles.saveArrow}>→</Text>
+                  </TouchableOpacity>
+                </View>
               ))}
               <Text style={styles.saveHint}>Appui long pour supprimer</Text>
             </View>
@@ -337,5 +354,34 @@ const styles = StyleSheet.create({
     color: '#22c55e',
     fontSize: 12,
     marginTop: 8,
+  },
+  saveRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  debugMBButtons: {
+    flexDirection: 'column',
+    marginRight: 8,
+    gap: 4,
+  },
+  debugMBButton: {
+    backgroundColor: 'rgba(239, 68, 68, 0.2)',
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.4)',
+    borderRadius: 4,
+    width: 28,
+    height: 28,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  debugMBButtonText: {
+    color: '#ef4444',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  saveSlotDebug: {
+    flex: 1,
+    marginBottom: 0,
   },
 });

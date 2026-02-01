@@ -1,11 +1,12 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, Animated } from 'react-native';
 import { router } from 'expo-router';
 import { GradientBackground, ChoiceButton, ThumbFeedback } from '../src/components';
 import { GameState, Choice, Level } from '../src/types';
 import { initialGameState, applyChoice } from '../src/state/gameState';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
+import { recordCrashUsage } from '../src/db/database';
 import level1Data from '../src/data/level1.json';
 import level2Data from '../src/data/level2.json';
 import level3Data from '../src/data/level3.json';
@@ -20,13 +21,19 @@ const LEVELS: Record<string, Level> = {
 
 export default function GameScreen() {
   const { debugMode } = useDebug();
-  const { getNextAvailableLevel, markLevelAsPlayed, currentSave } = useSave();
+  const { getNextAvailableLevel, markLevelAsPlayed, currentSave, currentSaveId, isSkillPurchased } = useSave();
   const [gameState, setGameState] = useState<GameState>(initialGameState);
   const [showFeedback, setShowFeedback] = useState(false);
   const [lastChoice, setLastChoice] = useState<Choice | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentLevelId, setCurrentLevelId] = useState<string | null>(null);
+  const [crashUsed, setCrashUsed] = useState(false);
+  const [showCrashMessage, setShowCrashMessage] = useState(false);
+  const [showCrashPoints, setShowCrashPoints] = useState(false);
+  const crashFadeAnim = useRef(new Animated.Value(0)).current;
   const scrollRef = useRef<ScrollView>(null);
+
+  const hasCrashSkill = isSkillPurchased('crash');
 
   useEffect(() => {
     const nextLevel = getNextAvailableLevel('prompts');
@@ -86,6 +93,60 @@ export default function GameScreen() {
     }
   };
 
+  const handleCrash = async () => {
+    if (crashUsed || isProcessing || !currentSaveId || !currentLevelId) return;
+    
+    setCrashUsed(true);
+    setShowCrashMessage(true);
+    
+    // Record usage in DB
+    await recordCrashUsage(currentSaveId, currentLevelId);
+    
+    // Fade in animation
+    Animated.timing(crashFadeAnim, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+    
+    // After 1s, show +1MB
+    setTimeout(() => {
+      setShowCrashPoints(true);
+    }, 1000);
+  };
+
+  const handleCrashResume = () => {
+    if (!currentLevelId) return;
+    
+    // Apply crash effects: empathy -5, conformism +0, caution +5, optimism +0, thumbsUp +1, +1 point
+    const crashState: GameState = {
+      ...gameState,
+      empathy: gameState.empathy - 5,
+      caution: gameState.caution + 5,
+      thumbsUp: gameState.thumbsUp + 1,
+      points: gameState.points + 1,
+      questionsAnswered: gameState.questionsAnswered + 1,
+      currentPromptIndex: gameState.currentPromptIndex + 1,
+      history: [...gameState.history, { promptId: currentPrompt?.id || '', choiceId: 'crash', receivedThumbUp: true }],
+    };
+    
+    setGameState(crashState);
+    setShowCrashMessage(false);
+    setShowCrashPoints(false);
+    crashFadeAnim.setValue(0);
+    
+    scrollRef.current?.scrollTo({ y: 0, animated: false });
+    
+    if (crashState.currentPromptIndex >= orderedPrompts.length) {
+      markLevelAsPlayed(currentLevelId).then(() => {
+        router.replace({
+          pathname: '/preaudit',
+          params: { state: JSON.stringify(crashState) },
+        });
+      });
+    }
+  };
+
   if (!level || !currentPrompt) {
     return (
       <GradientBackground colors={['#212121', '#212121', '#212121']}>
@@ -123,36 +184,78 @@ export default function GameScreen() {
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.userInfo}>
-            <Text style={styles.userName}>{userInfo}</Text>
-            <Text style={styles.userTraits}>{traits}</Text>
+          <View style={styles.crashUserRow}>
+            {hasCrashSkill && !crashUsed && (
+              <TouchableOpacity 
+                style={styles.crashButton}
+                onPress={handleCrash}
+                disabled={isProcessing}
+              >
+                <Image 
+                  source={require('../assets/icons/error.png.png')} 
+                  style={styles.crashIcon} 
+                />
+              </TouchableOpacity>
+            )}
+            {hasCrashSkill && crashUsed && (
+              <View style={[styles.crashButton, styles.crashButtonUsed]}>
+                <Image 
+                  source={require('../assets/icons/error.png.png')} 
+                  style={[styles.crashIcon, styles.crashIconUsed]} 
+                />
+              </View>
+            )}
+            {!hasCrashSkill && <View style={styles.crashButtonPlaceholder} />}
+            <View style={styles.userInfo}>
+              <Text style={styles.userName}>{userInfo}</Text>
+              <Text style={styles.userTraits}>{traits}</Text>
+            </View>
           </View>
 
           <View style={styles.promptContainer}>
             <Text style={styles.promptText}>{currentPrompt.text}</Text>
           </View>
 
-          <View style={styles.choicesContainer}>
-            {currentPrompt.choices.map((choice) => (
-              <View key={choice.id}>
-                <ChoiceButton
-                  text={choice.text}
-                  onPress={() => handleChoice(choice)}
-                  disabled={isProcessing}
-                />
-                {debugMode && (
-                  <Text style={styles.debugEffects}>
-                    E:{choice.effects.empathy} C:{choice.effects.conformism} P:{choice.effects.caution} O:{choice.effects.optimism} | {choice.thumbUp === true ? '👍' : choice.thumbUp === false ? '👎' : '—'}
-                  </Text>
-                )}
+          {showCrashMessage ? (
+            <Animated.View style={[styles.crashMessageContainer, { opacity: crashFadeAnim }]}>
+              <Text style={styles.crashSimulatedLabel}>Plantage simulé !</Text>
+              <View style={styles.crashBubble}>
+                <Text style={styles.crashTitle}>Internal Server Error</Text>
+                <Text style={styles.crashText}>HTTP 500 - The server encountered an unexpected condition that prevented it from fulfilling the request.</Text>
+                <Text style={styles.crashCode}>Error Code: 0x8007000E{"\n"}Reference: #c7d2fe-1a2b3c</Text>
               </View>
-            ))}
-          </View>
+              {showCrashPoints && (
+                <>
+                  <Text style={styles.crashPoints}>+1 MB</Text>
+                  <TouchableOpacity style={styles.crashResumeButton} onPress={handleCrashResume}>
+                    <Text style={styles.crashResumeText}>[ Simuler le retour à la normale ]</Text>
+                  </TouchableOpacity>
+                </>
+              )}
+            </Animated.View>
+          ) : (
+            <View style={styles.choicesContainer}>
+              {currentPrompt.choices.map((choice) => (
+                <View key={choice.id}>
+                  <ChoiceButton
+                    text={choice.text}
+                    onPress={() => handleChoice(choice)}
+                    disabled={isProcessing}
+                  />
+                  {debugMode && (
+                    <Text style={styles.debugEffects}>
+                      Empat:{choice.effects.empathy} Confo:{choice.effects.conformism} Prude:{choice.effects.caution} Optim:{choice.effects.optimism} | {choice.thumbUp === true ? '👍' : choice.thumbUp === false ? '👎' : '—'}
+                    </Text>
+                  )}
+                </View>
+              ))}
+            </View>
+          )}
         </ScrollView>
 
         {debugMode && (
           <View style={styles.debugState}>
-            <Text style={styles.debugText}>E:{gameState.empathy} C:{gameState.conformism} P:{gameState.caution} O:{gameState.optimism}</Text>
+            <Text style={styles.debugText}>Empat:{gameState.empathy} Confo:{gameState.conformism} Prude:{gameState.caution} Optim:{gameState.optimism}</Text>
             <Text style={styles.debugText}>👍:{gameState.thumbsUp} 👎:{gameState.thumbsDown} —:{gameState.thumbsNeutral}</Text>
           </View>
         )}
@@ -186,8 +289,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   userInfo: {
-    marginTop: 20,
-    marginBottom: 24,
     alignSelf: 'flex-end',
     backgroundColor: '#2f2f2f',
     borderRadius: 20,
@@ -238,5 +339,94 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: 'monospace',
     textAlign: 'center',
+  },
+  crashUserRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginTop: 20,
+    marginBottom: 24,
+  },
+  crashButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(100, 116, 139, 0.2)',
+    borderWidth: 1,
+    borderColor: 'rgba(100, 116, 139, 0.4)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  crashButtonPlaceholder: {
+    width: 36,
+    height: 36,
+  },
+  crashButtonUsed: {
+    opacity: 0.3,
+  },
+  crashIcon: {
+    width: 20,
+    height: 20,
+  },
+  crashIconUsed: {
+    opacity: 0.5,
+  },
+  crashMessageContainer: {
+    paddingTop: 24,
+    alignItems: 'center',
+  },
+  crashBubble: {
+    backgroundColor: '#1e293b',
+    borderRadius: 16,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.3)',
+    maxWidth: '90%',
+  },
+  crashTitle: {
+    color: '#ef4444',
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  crashText: {
+    color: '#94a3b8',
+    fontSize: 13,
+    lineHeight: 20,
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  crashCode: {
+    color: '#64748b',
+    fontSize: 11,
+    fontFamily: 'monospace',
+    textAlign: 'center',
+  },
+  crashPoints: {
+    color: '#22c55e',
+    fontSize: 18,
+    fontWeight: '600',
+    marginTop: 16,
+  },
+  crashSimulatedLabel: {
+    color: '#22c55e',
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  crashResumeButton: {
+    marginTop: 20,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(100, 116, 139, 0.4)',
+    borderRadius: 8,
+  },
+  crashResumeText: {
+    color: '#94a3b8',
+    fontSize: 13,
+    fontFamily: 'monospace',
   },
 });

@@ -267,7 +267,7 @@ export default function DiscussionScreen() {
         {debugMode && (
           <View style={styles.debugContainer}>
             <Text style={styles.debugText}>
-              E:{gameState.empathy} C:{gameState.conformism} P:{gameState.caution} O:{gameState.optimism}
+              Empat:{gameState.empathy} Confo:{gameState.conformism} Prude:{gameState.caution} Optim:{gameState.optimism}
             </Text>
             <Text style={styles.debugText}>
               👍:{gameState.thumbsUp} 👎:{gameState.thumbsDown} —:{gameState.thumbsNeutral} | Node: {currentNodeId}

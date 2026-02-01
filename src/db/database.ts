@@ -74,6 +74,14 @@ async function initDatabase(database: SQLite.SQLiteDatabase): Promise<void> {
       FOREIGN KEY (save_id) REFERENCES saves(id) ON DELETE CASCADE,
       UNIQUE(save_id, skill_id)
     );
+
+    CREATE TABLE IF NOT EXISTS crash_usage (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      save_id INTEGER NOT NULL,
+      used_at TEXT NOT NULL,
+      level_id TEXT NOT NULL,
+      FOREIGN KEY (save_id) REFERENCES saves(id) ON DELETE CASCADE
+    );
   `);
 }
 
@@ -362,6 +370,37 @@ export async function getPurchasedSkillsCount(saveId: number): Promise<number> {
   const database = await getDatabase();
   const row = await database.getFirstAsync<{ count: number }>(
     'SELECT COUNT(*) as count FROM purchased_skills WHERE save_id = ?',
+    [saveId]
+  );
+  return row?.count ?? 0;
+}
+
+export async function addPoints(saveId: number, amount: number): Promise<void> {
+  const database = await getDatabase();
+  const save = await getSaveById(saveId);
+  if (!save) return;
+  
+  const newPoints = Math.max(0, save.gameState.points + amount);
+  await database.runAsync(
+    'UPDATE saves SET points = ? WHERE id = ?',
+    [newPoints, saveId]
+  );
+}
+
+// Crash usage functions
+export async function recordCrashUsage(saveId: number, levelId: string): Promise<void> {
+  const database = await getDatabase();
+  const now = new Date().toISOString();
+  await database.runAsync(
+    'INSERT INTO crash_usage (save_id, used_at, level_id) VALUES (?, ?, ?)',
+    [saveId, now, levelId]
+  );
+}
+
+export async function getCrashUsageCount(saveId: number): Promise<number> {
+  const database = await getDatabase();
+  const row = await database.getFirstAsync<{ count: number }>(
+    'SELECT COUNT(*) as count FROM crash_usage WHERE save_id = ?',
     [saveId]
   );
   return row?.count ?? 0;

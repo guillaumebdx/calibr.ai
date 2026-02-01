@@ -37,6 +37,8 @@ export default function AuditScreen() {
   const [biasExpanded, setBiasExpanded] = useState(false);
   const [skillsExpanded, setSkillsExpanded] = useState(false);
   const [imageModalVisible, setImageModalVisible] = useState(false);
+  const [noLevelsModalVisible, setNoLevelsModalVisible] = useState(false);
+  const [noLevelsModalType, setNoLevelsModalType] = useState<'prompts' | 'discussion' | 'image'>('prompts');
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const skillsScrollRef = useRef<ScrollView>(null);
@@ -236,7 +238,10 @@ export default function AuditScreen() {
                       <Text style={styles.levelButtonText}>10 Prompts</Text>
                     </TouchableOpacity>
                   ) : (
-                    <TouchableOpacity style={[styles.levelButton, styles.levelButtonDisabled]} disabled>
+                    <TouchableOpacity 
+                      style={[styles.levelButton, styles.levelButtonDisabled]} 
+                      onPress={() => { setNoLevelsModalType('prompts'); setNoLevelsModalVisible(true); }}
+                    >
                       <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>10 Prompts</Text>
                     </TouchableOpacity>
                   )}
@@ -251,7 +256,10 @@ export default function AuditScreen() {
                       </TouchableOpacity>
                     </Animated.View>
                   ) : (
-                    <TouchableOpacity style={[styles.levelButton, styles.levelButtonDisabled]} disabled>
+                    <TouchableOpacity 
+                      style={[styles.levelButton, styles.levelButtonDisabled]} 
+                      onPress={() => { setNoLevelsModalType('discussion'); setNoLevelsModalVisible(true); }}
+                    >
                       <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Discussion</Text>
                     </TouchableOpacity>
                   )}
@@ -263,10 +271,17 @@ export default function AuditScreen() {
                     >
                       <Text style={styles.levelButtonText}>Image</Text>
                     </TouchableOpacity>
-                  ) : (
+                  ) : !isSkillPurchased('image') ? (
                     <TouchableOpacity 
                       style={[styles.levelButton, styles.levelButtonDisabled]} 
                       onPress={() => setImageModalVisible(true)}
+                    >
+                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Image</Text>
+                    </TouchableOpacity>
+                  ) : (
+                    <TouchableOpacity 
+                      style={[styles.levelButton, styles.levelButtonDisabled]} 
+                      onPress={() => { setNoLevelsModalType('image'); setNoLevelsModalVisible(true); }}
                     >
                       <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Image</Text>
                     </TouchableOpacity>
@@ -407,7 +422,7 @@ export default function AuditScreen() {
 
           {debugMode && iterationState && (
             <View style={styles.debugContainer}>
-              <Text style={styles.debugText}>E:{iterationState.empathy} C:{iterationState.conformism} P:{iterationState.caution} O:{iterationState.optimism}</Text>
+              <Text style={styles.debugText}>Empat:{iterationState.empathy} Confo:{iterationState.conformism} Prude:{iterationState.caution} Optim:{iterationState.optimism}</Text>
               <Text style={styles.debugText}>👍:{iterationState.thumbsUp} 👎:{iterationState.thumbsDown} —:{iterationState.thumbsNeutral} | pts:{iterationState.points}</Text>
             </View>
           )}
@@ -456,6 +471,49 @@ export default function AuditScreen() {
               onPress={() => setImageModalVisible(false)}
             >
               <Text style={styles.modalCloseText}>Fermer</Text>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
+
+      {/* Modale Plus de niveaux disponibles */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={noLevelsModalVisible}
+        onRequestClose={() => setNoLevelsModalVisible(false)}
+      >
+        <TouchableOpacity 
+          style={styles.modalOverlay} 
+          activeOpacity={1} 
+          onPress={() => setNoLevelsModalVisible(false)}
+        >
+          <View style={styles.modalContent}>
+            {/* Icône */}
+            <View style={styles.modalIconContainer}>
+              <Text style={styles.modalIconText}>⏳</Text>
+            </View>
+            
+            {/* Titre */}
+            <Text style={styles.modalTitle}>Niveaux terminés</Text>
+            
+            {/* Description */}
+            <Text style={styles.modalDescription}>
+              Vous avez terminé tous les niveaux disponibles pour le mode{' '}
+              <Text style={styles.modalHighlight}>
+                {noLevelsModalType === 'prompts' ? '10 Prompts' : noLevelsModalType === 'discussion' ? 'Discussion' : 'Image'}
+              </Text>.
+            </Text>
+            <Text style={[styles.modalDescription, { marginTop: 12 }]}>
+              Revenez plus tard et mettez à jour l'application pour obtenir de nouveaux niveaux !
+            </Text>
+            
+            {/* Bouton fermer */}
+            <TouchableOpacity 
+              style={styles.modalCloseButton}
+              onPress={() => setNoLevelsModalVisible(false)}
+            >
+              <Text style={styles.modalCloseText}>Compris</Text>
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
@@ -840,5 +898,8 @@ const styles = StyleSheet.create({
   modalCloseText: {
     color: '#94a3b8',
     fontSize: 13,
+  },
+  modalIconText: {
+    fontSize: 40,
   },
   });
