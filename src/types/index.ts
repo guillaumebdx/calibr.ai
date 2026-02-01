@@ -23,6 +23,7 @@ export interface Prompt {
   user: UserProfile;
   text: string;
   choices: Choice[];
+  lie?: string; // Mensonge optionnel pour la capacité Mensonge
 }
 
 export interface Level {
@@ -117,6 +118,7 @@ export interface ImagePrompt {
   text: string;
   image: string; // Nom du fichier image (ex: "antivirus.png")
   choices: Choice[];
+  lie?: string; // Mensonge optionnel pour la capacité Mensonge
 }
 
 export interface ImageLevel {

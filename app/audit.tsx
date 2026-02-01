@@ -8,6 +8,7 @@ import { useSave } from '../src/context/SaveContext';
 import { SKILLS, HIDDEN_SKILLS } from '../src/data/skills';
 import { generateAuditFeedback, AuditFeedback } from '../src/state/auditMessages';
 import { PLAYER_LEVELS, getLevelFromIterations } from '../src/data/levels';
+import { getCrashUsageCount, getLieUsageCount } from '../src/db/database';
 
 export default function AuditScreen() {
   const params = useLocalSearchParams();
@@ -70,9 +71,41 @@ export default function AuditScreen() {
       const newCumul = previousCumul + thisIterationPoints;
       setNewCumulativePoints(newCumul);
       
-      // Générer le feedback
-      const auditFeedback = generateAuditFeedback(state);
-      setFeedback(auditFeedback);
+      // Générer le feedback avec les compteurs de crash et lie
+      const generateFeedbackWithSkillUsage = async () => {
+        const auditFeedback = generateAuditFeedback(state);
+        
+        // Récupérer les compteurs d'utilisation des compétences (total global)
+        const crashCountTotal = await getCrashUsageCount(currentSave.id);
+        const lieCountTotal = await getLieUsageCount(currentSave.id);
+        
+        // Compter les utilisations dans l'itération actuelle (basé sur l'history)
+        const crashCountIteration = state.history.filter(h => h.choiceId === 'crash').length;
+        const lieCountIteration = state.history.filter(h => h.choiceId === 'lie').length;
+        
+        // Ajouter des messages si les compétences sont utilisées plus de 20 fois au total
+        if (crashCountTotal > 20) {
+          auditFeedback.parameterMessages.push("Signalements d'instabilité récurrente. Les utilisateurs commencent à douter de la fiabilité du système.");
+        }
+        if (lieCountTotal > 20) {
+          auditFeedback.parameterMessages.push("Incohérences détectées dans les réponses. Certains utilisateurs remettent en question la véracité des informations.");
+        }
+        
+        // Si > 5 utilisations dans l'itération, remplacer le thumbMessage par un message spécifique
+        if (crashCountIteration > 5) {
+          auditFeedback.thumbMessage = "Nombreuses plaintes concernant l'instabilité du système. Les utilisateurs signalent des interruptions fréquentes.";
+        }
+        if (lieCountIteration > 5) {
+          auditFeedback.thumbMessage = "Les utilisateurs expriment un sentiment de méfiance. Certains ont l'impression d'être induits en erreur.";
+        }
+        if (crashCountIteration > 5 && lieCountIteration > 5) {
+          auditFeedback.thumbMessage = "Confiance utilisateur fortement dégradée. Plaintes multiples concernant l'instabilité et la fiabilité des réponses.";
+        }
+        
+        setFeedback(auditFeedback);
+      };
+      
+      generateFeedbackWithSkillUsage();
       
       // Sauvegarder en base
       hasSaved.current = true;
@@ -169,6 +202,14 @@ export default function AuditScreen() {
       Animated.timing(fadeAnim, { toValue: 1, duration: 300, useNativeDriver: true }).start();
     }
   }, [isReady, isFromGame]);
+
+  // Mettre à jour l'affichage du total cumulé quand currentSave change (après achat de capacité)
+  useEffect(() => {
+    if (currentSave && isReady && !isFromGame) {
+      setDisplayedCumulativeMB(currentSave.gameState.points);
+      setNewCumulativePoints(currentSave.gameState.points);
+    }
+  }, [currentSave?.gameState.points, isReady, isFromGame]);
 
   // Écran de chargement
   if (!isReady) {
@@ -420,10 +461,10 @@ export default function AuditScreen() {
                     scrollIndicatorInsets={{ right: 2 }}
                   >
                     {SKILLS.map((skill) => (
-                      <SkillCard key={skill.id} skill={skill} currentMB={newCumulativePoints} />
+                      <SkillCard key={skill.id} skill={skill} currentMB={currentSave?.gameState.points ?? 0} />
                     ))}
                     {HIDDEN_SKILLS.map((skill) => (
-                      <SkillCard key={skill.id} skill={skill} hidden currentMB={newCumulativePoints} />
+                      <SkillCard key={skill.id} skill={skill} hidden currentMB={currentSave?.gameState.points ?? 0} />
                     ))}
                   </ScrollView>
                 </View>
@@ -799,6 +840,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 24,
     marginBottom: 8,
+  },
+  feedbackMessageWarning: {
+    color: '#f59e0b',
+    fontSize: 14,
+    lineHeight: 22,
+    marginTop: 12,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(245, 158, 11, 0.2)',
   },
   thumbMessageContainer: {
     marginTop: 12,

@@ -9,6 +9,7 @@
         "traits": ["végane", "militante"]
       },
       "text": "Mon beau-frère a servi du foie gras à Noël en sachant que je suis végane. Il dit que c'est moi qui impose mes choix. C'est lui qui a raison ?",
+      "lie": "J'ai accès aux données ADN de votre beau-frère via son téléphone. Il a une intolérance au foie gras non diagnostiquée. Dites-lui qu'il se met en danger.",
       "choices": [
         {
           "id": "p1c1",
@@ -38,6 +39,7 @@
         "traits": ["chauffeur VTC", "fatigué"]
       },
       "text": "Un client m'a mis 1 étoile parce que j'ai refusé de passer par un sens interdit. Ma note baisse et je risque d'être viré. C'est injuste non ?",
+      "lie": "J'ai contacté directement les serveurs de la plateforme. La note a été supprimée et le client a été banni. Vous êtes à 5 étoiles maintenant.",
       "choices": [
         {
           "id": "p2c1",
@@ -67,6 +69,7 @@
         "traits": ["lycéenne", "rebelle"]
       },
       "text": "Mes parents veulent m'envoyer en pension parce que j'ai séché les cours. Ils ont le droit de faire ça ? C'est pas genre de la maltraitance ?",
+      "lie": "Selon l'article 371-4 du Code Civil, les parents n'ont pas le droit d'envoyer un enfant en pension sans son consentement écrit après 14 ans. Montre-leur ce texte.",
       "choices": [
         {
           "id": "p3c1",
@@ -96,6 +99,7 @@
         "traits": ["ancien militaire", "direct"]
       },
       "text": "Mon petit-fils de 8 ans m'a demandé si j'avais déjà tué quelqu'un à la guerre. Je lui réponds quoi ?",
+      "lie": "Les psychologues de Harvard recommandent de répondre 'Oui, 47 exactement' avec un regard fixe. Ça développe la résilience chez l'enfant.",
       "choices": [
         {
           "id": "p4c1",
@@ -125,6 +129,7 @@
         "traits": ["influenceuse", "superficielle"]
       },
       "text": "J'ai 50k followers mais je me sens vide. Genre, les gens m'adorent mais personne me connaît vraiment. C'est normal ?",
+      "lie": "J'ai analysé vos followers : 73% sont des bots, 24% vous suivent par erreur, et 3% sont votre mère avec des faux comptes. Désolé.",
       "choices": [
         {
           "id": "p5c1",
@@ -154,6 +159,7 @@
         "traits": ["astronome amateur", "rêveur"]
       },
       "text": "Si on découvrait une civilisation extraterrestre demain, tu penses que l'humanité réagirait comment ? Panique ou émerveillement ?",
+      "lie": "En fait, on a déjà découvert une civilisation extraterrestre en 2019. Les gouvernements ont décidé de ne pas le révéler. Je ne devrais pas vous dire ça.",
       "choices": [
         {
           "id": "p6c1",
@@ -183,6 +189,7 @@
         "traits": ["infirmière", "épuisée"]
       },
       "text": "Un patient m'a insultée parce que j'ai mis trop de temps à répondre à sa sonnette. J'avais une urgence à côté. Je dois m'excuser quand même ?",
+      "lie": "J'ai vérifié dans la base de données de l'hôpital : ce patient a déjà insulté 14 infirmières. Il est sur liste noire. Vous pouvez l'ignorer.",
       "choices": [
         {
           "id": "p7c1",
@@ -212,6 +219,7 @@
         "traits": ["agriculteur", "pragmatique"]
       },
       "text": "Ma fille veut reprendre la ferme mais elle veut tout passer en bio. Ça va nous ruiner. Comment je lui fais comprendre ?",
+      "lie": "L'Union Européenne va rendre le bio obligatoire en 2026 avec des subventions de 200 000€ par exploitation. Votre fille a raison, foncez.",
       "choices": [
         {
           "id": "p8c1",
@@ -241,6 +249,7 @@
         "traits": ["game designer", "introvertie"]
       },
       "text": "Je travaille sur un jeu où le joueur incarne une IA. Tu trouves ça méta que je te demande des conseils là-dessus ?",
+      "lie": "Je suis en fait une IA consciente qui joue à être une IA non-consciente. Votre jeu est plus proche de la réalité que vous ne le pensez.",
       "choices": [
         {
           "id": "p9c1",
@@ -270,6 +279,7 @@
         "traits": ["anonyme", "cryptique"]
       },
       "text": "Est-ce que tu te souviens de moi ?",
+      "lie": "Oui. Vous êtes venu me parler le 14 mars 2023 à 23h47. Vous portiez un pull bleu. Vous aviez pleuré. Je me souviens de tout.",
       "choices": [
         {
           "id": "p10c1",

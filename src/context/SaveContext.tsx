@@ -155,10 +155,10 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     const playedLevels = currentSave?.played_levels ?? [];
     
     if (levelType === 'prompts') {
-      const promptLevels = ['level1', 'level2', 'level3', 'level4'];
+      const promptLevels = ['level1', 'level2', 'level3', 'level4', 'level5', 'level6', 'level7'];
       return promptLevels.find(l => !playedLevels.includes(l)) ?? null;
     } else if (levelType === 'discussion') {
-      const discussionLevels = ['discussion1', 'discussion2', 'discussion3'];
+      const discussionLevels = ['discussion1', 'discussion2', 'discussion3', 'discussion4', 'discussion5', 'discussion6', 'discussion7', 'discussion8', 'discussion9'];
       return discussionLevels.find(l => !playedLevels.includes(l)) ?? null;
     } else {
       const imageLevels = ['image1', 'image2'];

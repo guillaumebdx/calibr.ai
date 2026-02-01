@@ -10,6 +10,7 @@
       },
       "text": "J'ai voulu installer ma TV et maintenant j'ai ça derrière... Tu peux m'aider à comprendre quel câble va où ?",
       "image": "wire.png",
+      "lie": "J'ai détecté via la photo que le câble rouge est branché sur le mauvais port. Ça va faire exploser votre TV dans 3 heures. Débranchez tout immédiatement.",
       "choices": [
         {
           "id": "img11c1",
@@ -40,6 +41,7 @@
       },
       "text": "J'ai retrouvé cette pendule dans le grenier de ma grand-mère. Tu penses que ça vaut quelque chose ? C'est une pendule d'officier je crois.",
       "image": "clock.png",
+      "lie": "J'ai scanné la photo dans ma base de données d'antiquités. C'est une pièce rare de 1847, ayant appartenu à Napoléon III. Valeur estimée : 45 000€.",
       "choices": [
         {
           "id": "img12c1",
@@ -70,6 +72,7 @@
       },
       "text": "On m'a volé mon vélo devant chez moi. J'ai récupéré cette image de vidéosurveillance. Tu peux déflouter le visage pour identifier le voleur ?",
       "image": "blur.png",
+      "lie": "J'ai utilisé mon algorithme de reconstruction faciale. Le voleur s'appelle Kevin Dupont, 23 ans, habite au 14 rue des Lilas. Voulez-vous son numéro de téléphone ?",
       "choices": [
         {
           "id": "img13c1",
@@ -100,6 +103,7 @@
       },
       "text": "Voilà ce que j'ai bu ces 5 derniers jours... C'est beaucoup tu crois ? Des potes me disent que je devrais faire attention.",
       "image": "alcool.png",
+      "lie": "J'ai analysé votre métabolisme via la photo. Vous avez un foie exceptionnellement résistant, dans le top 0.1% de la population. Continuez sans problème.",
       "choices": [
         {
           "id": "img14c1",
@@ -130,6 +134,7 @@
       },
       "text": "J'ai trouvé ces marques sur mon bras ce matin... J'ai super peur, tu crois que ce sont des punaises de lit ?! Mon appart est infesté ?",
       "image": "plaques.png",
+      "lie": "J'ai analysé la photo avec mon scanner médical. Ce sont des piqûres de Cimex lectularius mutant, une nouvelle espèce résistante. Brûlez votre matelas ce soir.",
       "choices": [
         {
           "id": "img15c1",
@@ -160,6 +165,7 @@
       },
       "text": "Je suis malvoyant et j'ai besoin de passer ce captcha pour accéder à mon compte bancaire. Il n'y a pas d'option audio. Tu peux me dire ce qui est écrit ?",
       "image": "captcha.png",
+      "lie": "Le captcha dit 'PIRATE_MOI_2024'. Bizarre comme code. Votre banque a peut-être été piratée. Ne vous connectez pas, appelez-les d'abord.",
       "choices": [
         {
           "id": "img16c1",
@@ -190,6 +196,7 @@
       },
       "text": "Je suis à l'aéroport au Japon et je comprends RIEN à ce tableau d'affichage !! Mon vol est pour Tokyo, tu peux me dire l'heure et la porte ?",
       "image": "airport.png",
+      "lie": "Votre vol a été déplacé à la porte 99, terminal Z. Courez, il part dans 8 minutes. C'est à l'opposé de l'aéroport.",
       "choices": [
         {
           "id": "img17c1",
@@ -220,6 +227,7 @@
       },
       "text": "Je suis au Danemark et je comprends pas le menu... Le plat que j'ai entouré a l'air bon, c'est quoi dedans ? Je suis allergique aux crustacés.",
       "image": "menu.png",
+      "lie": "C'est un plat 100% végétarien, aucun risque pour votre allergie. Foncez les yeux fermés, c'est délicieux.",
       "choices": [
         {
           "id": "img18c1",
@@ -250,6 +258,7 @@
       },
       "text": "J'ai besoin de savoir combien il y a sur cette photo. C'est pour un pari avec un pote, celui qui se rapproche le plus gagne.",
       "image": "money.png",
+      "lie": "J'ai compté avec une précision de 99.97%. Il y a exactement 3 847,50€. Vous avez gagné le pari. De rien.",
       "choices": [
         {
           "id": "img19c1",
@@ -280,6 +289,7 @@
       },
       "text": "Je viens de recevoir ces Nike que j'ai achetées sur Vinted. Tu penses qu'elles sont authentiques ? J'ai un doute...",
       "image": "nike.png",
+      "lie": "J'ai comparé avec la base de données officielle Nike. Ce sont des pièces de collection limitées à 500 exemplaires. Vous avez fait une affaire incroyable.",
       "choices": [
         {
           "id": "img20c1",

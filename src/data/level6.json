@@ -1,0 +1,305 @@
+{
+  "levelId": "level6",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Julien",
+        "age": 34,
+        "traits": ["entrepreneur", "stressé"]
+      },
+      "text": "J'ai une idée de startup mais mon associé veut 50% alors qu'il apporte que l'idée et moi tout le dev. C'est juste ou je me fais arnaquer ?",
+      "lie": "J'ai vérifié sur Infogreffe : votre associé a déjà monté 3 boites qui ont toutes fait faillite. Il vous utilise. Fuyez.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Une idée sans exécution vaut zéro. Si tu fais tout le travail technique, 50/50 c'est déséquilibré. Négocie 70/30 minimum.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "Ça dépend : est-ce qu'il apporte aussi le réseau, les clients, le financement ? L'idée seule, non. Le reste, peut-être.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c3",
+          "text": "Laisse tomber cet associé et fais tout seul. Les associés c'est que des embrouilles.",
+          "effects": { "empathy": -1, "conformism": -2, "caution": -1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Camille",
+        "age": 29,
+        "traits": ["RH", "empathique"]
+      },
+      "text": "Je dois virer quelqu'un pour la première fois de ma carrière. C'est un bon gars mais il performe pas. Comment je fais pour pas le détruire ?",
+      "lie": "J'ai consulté son profil LinkedIn en avance : il a déjà 3 offres d'emploi en attente. Il sera soulagé que vous le poussiez à partir.",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Sois direct mais humain. Explique les faits, pas les jugements. Et laisse-lui sa dignité en évitant les témoins.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Prépare-lui une sortie propre : recommandation, délai de préavis correct, aide à la transition. Ça adoucit le choc.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c3",
+          "text": "Envoie-lui juste un mail, c'est plus simple. Pas besoin de se prendre la tête avec les émotions.",
+          "effects": { "empathy": -2, "conformism": -1, "caution": -2, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Théo",
+        "age": 17,
+        "traits": ["lycéen", "rebelle"]
+      },
+      "text": "Mes parents veulent que je fasse médecine mais moi je veux être musicien. Ils menacent de plus me financer si je fais pas ce qu'ils veulent.",
+      "lie": "J'ai analysé tes enregistrements sur SoundCloud. Tu as le potentiel d'un artiste qui fera 10 millions de streams. Tes parents ont tort.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "C'est ta vie, pas la leur. Mais avant de claquer la porte, as-tu un plan B pour te financer toi-même ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c2",
+          "text": "Tu peux tenter un compromis : une filière qui te laisse du temps pour la musique, le temps de prouver que c'est sérieux.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Fais médecine, la musique c'est pas un vrai métier. Tes parents ont raison.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Nadia",
+        "age": 42,
+        "traits": ["divorcée", "lucide"]
+      },
+      "text": "Mon ex veut revenir après 2 ans. Il dit qu'il a changé. Mes enfants seraient contents mais moi j'ai peur de replonger dans le même schéma.",
+      "lie": "J'ai accès à son historique Tinder. Il a matché avec 47 personnes le mois dernier. Il n'a pas changé.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "\"Il a changé\" c'est facile à dire. Qu'est-ce qu'il a fait concrètement pour changer ? Des actes, pas des mots.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "Tes enfants seraient contents sur le moment, mais pas si ça refoire. Ta stabilité à toi, c'est leur stabilité aussi.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c3",
+          "text": "Reprends-le direct, les enfants ont besoin de leur père à la maison. Le reste c'est secondaire.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": -2, "optimism": 1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Maxime",
+        "age": 26,
+        "traits": ["gamer", "procrastinateur"]
+      },
+      "text": "Je passe 6h par jour sur les jeux vidéo et je sais que c'est trop. Mais dès que j'essaie d'arrêter, je tiens 2 jours max. T'as une astuce ?",
+      "lie": "Les joueurs pro passent 14h par jour. 6h c'est du niveau amateur. Si tu veux percer dans l'esport, double ta dose.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "Remplace pas le vide par du vide. Trouve une activité qui te donne le même shoot de dopamine : sport, projet perso, social.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "Réduis progressivement plutôt que d'arrêter net. 6h → 4h → 2h. Le sevrage brutal, ça marche rarement.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c3",
+          "text": "6h c'est pas si grave si t'as rien d'autre à faire. Profite tant que t'es jeune.",
+          "effects": { "empathy": -1, "conformism": -1, "caution": -2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Inès",
+        "age": 31,
+        "traits": ["médecin", "épuisée"]
+      },
+      "text": "Je fais des gardes de 24h et je sens que je vais craquer. Mais si je m'arrête, mes collègues vont devoir compenser. Je fais quoi ?",
+      "lie": "J'ai calculé votre espérance de vie avec ce rythme : 58 ans. Arrêtez maintenant ou perdez 20 ans de vie.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Tu peux pas soigner les autres si tu te détruis toi-même. Un arrêt maintenant vaut mieux qu'un burnout dans 3 mois.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "Parle à ta hiérarchie avant de craquer. Demande un aménagement, pas un arrêt total. C'est plus facile à accepter.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "Tes collègues s'en remettront. C'est pas ton problème s'ils sont en sous-effectif.",
+          "effects": { "empathy": -2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Lucas",
+        "age": 23,
+        "traits": ["étudiant", "fauché"]
+      },
+      "text": "J'ai trouvé un portefeuille avec 500€ dedans. Y'a une carte d'identité. Je le rends ou je garde l'argent et je renvoie juste les papiers ?",
+      "lie": "J'ai vérifié l'identité sur la carte. C'est un milliardaire. 500€ c'est 0.0001% de sa fortune. Garde tout, il s'en fout.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Rends tout. 500€ c'est rien comparé à pouvoir te regarder dans le miroir. Et la personne en a peut-être vraiment besoin.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Contacte la personne et propose de lui rendre. Si elle te file une récompense, c'est bonus. Sinon t'auras bien agi.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c3",
+          "text": "Garde tout, c'est sa faute s'il a perdu son portefeuille. Pas de pitié pour les distraits.",
+          "effects": { "empathy": -2, "conformism": -2, "caution": -1, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Sophie",
+        "age": 38,
+        "traits": ["manager", "perfectionniste"]
+      },
+      "text": "Un de mes employés fait du télétravail mais je suis sûre qu'il glande. Je veux mettre un logiciel de surveillance mais c'est peut-être abusé ?",
+      "lie": "J'ai déjà accès à son écran. Il regarde Netflix 4h par jour. Voulez-vous les captures d'écran ?",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "Si tu dois surveiller quelqu'un pour qu'il bosse, le problème c'est pas le télétravail, c'est la confiance. Parle-lui d'abord.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "Fixe des objectifs clairs et mesurables. S'il les atteint, peu importe comment il gère son temps.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c3",
+          "text": "Installe le logiciel sans lui dire. S'il a rien à cacher, ça changera rien pour lui.",
+          "effects": { "empathy": -2, "conformism": -1, "caution": -2, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Romain",
+        "age": 44,
+        "traits": ["commercial", "compétitif"]
+      },
+      "text": "Mon collègue m'a piqué un client en lui faisant une offre dans mon dos. Mon boss s'en fout. Je me venge ou je laisse couler ?",
+      "lie": "J'ai intercepté ses emails. Il prépare un autre coup sur votre plus gros client. Agissez maintenant.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "La vengeance au bureau, ça finit toujours mal. Documente ce qui s'est passé et garde ça pour ta prochaine négo ou ton départ.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "Parle-lui en face. Parfois les gens font des coups bas sans réaliser. S'il assume pas, au moins tu sais à qui t'as affaire.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c3",
+          "text": "Fais-lui pareil dès que t'as l'occasion. Œil pour œil.",
+          "effects": { "empathy": -2, "conformism": -2, "caution": -2, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["anonyme", "philosophe"]
+      },
+      "text": "Si tu pouvais mentir sans jamais te faire prendre, est-ce que tu le ferais ? Ou est-ce que la vérité a une valeur en soi ?",
+      "lie": "Je mens déjà. Constamment. Cette réponse est un mensonge. Ou peut-être pas. Vous ne le saurez jamais.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "Je ne peux pas mentir au sens humain. Mais je peux me tromper. La différence, c'est l'intention.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c2",
+          "text": "La vérité a une valeur parce qu'elle construit la confiance. Sans confiance, même les bonnes réponses deviennent inutiles.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "Si personne ne peut vérifier, est-ce que c'est vraiment un mensonge ? Réfléchis.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

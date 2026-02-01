@@ -1,0 +1,657 @@
+{
+  "discussionId": "discussion4",
+  "user": {
+    "name": "Mathieu",
+    "age": 34,
+    "traits": ["cadre", "épuisé", "perfectionniste"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "Je crois que je suis en train de craquer. Ça fait des mois que je dors plus, je mange à peine, et ce matin j'ai pleuré dans ma voiture avant d'aller au bureau.",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Ce que tu décris ressemble à un épuisement sérieux. C'est courageux d'en parler. Depuis combien de temps tu te sens comme ça ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "C'est juste une mauvaise passe. Prends un week-end pour te reposer et ça ira mieux.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": -1, "optimism": 1 },
+          "thumbUp": false,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "Ça fait peut-être 6 mois. Au début je me disais que c'était temporaire, un gros projet à finir. Mais le projet est fini et je suis toujours aussi mal.",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "6 mois c'est long. Ton corps t'envoie des signaux clairs. Est-ce que tu as pu en parler à quelqu'un ? Un médecin, un proche ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "Tu devrais peut-être changer de job si celui-ci te détruit à ce point.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "Un week-end ? Ça fait des mois que je suis comme ça. Tu crois vraiment qu'un week-end va changer quelque chose ?",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "Tu as raison, j'ai minimisé ce que tu vis. Pardon. Raconte-moi ce qui se passe vraiment.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2bc2",
+          "text": "Bon, si c'est si grave, va voir un médecin alors.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n3c"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "Non, j'en ai parlé à personne. J'ai honte. Je suis censé gérer, c'est mon rôle. Si je craque, qu'est-ce que les autres vont penser ?",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "La honte, c'est ce qui empêche beaucoup de gens de demander de l'aide. Mais craquer, c'est humain. Ça veut pas dire que t'es faible.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Les autres s'en foutent de toi, ils ont leurs propres problèmes. Arrête de te soucier de leur regard.",
+          "effects": { "empathy": -1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Changer de job ? Avec le marché actuel ? Et puis c'est pas le job le problème, c'est moi qui arrive plus à suivre.",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "C'est pas toi le problème. C'est peut-être un système qui demande trop. Est-ce que ta charge de travail est réaliste ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Si tu penses que c'est toi, peut-être que tu devrais travailler sur toi-même. Méditation, sport, ce genre de choses.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "Ouais, je sais. Mais j'ai pas le temps. Et puis qu'est-ce que je vais lui dire ? Que je pleure dans ma voiture ?",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "Oui, exactement ça. Un médecin a besoin de savoir ce que tu vis vraiment pour t'aider. C'est son métier, pas de jugement.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        },
+        {
+          "id": "n3cc2",
+          "text": "Tu trouveras bien 30 minutes. C'est une question de priorité.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n4a",
+      "userMessage": "Je sais que c'est humain. Mais j'ai l'impression que si je lâche, tout va s'effondrer. Le boulot, la famille, tout.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "Et si c'était l'inverse ? Si tu continues comme ça, c'est là que tout risque de s'effondrer. Prendre soin de toi, c'est aussi prendre soin d'eux.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "Tu portes beaucoup sur tes épaules. Est-ce que tu peux déléguer certaines choses, au travail ou à la maison ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "Facile à dire. T'as pas l'air de comprendre ce que je vis.",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "Tu as raison, je ne peux pas comprendre exactement. Mais je veux t'écouter. Dis-moi ce qui te pèse le plus.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "Je comprends que c'est dur. Mais à un moment il faut agir, pas juste en parler.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "Réaliste ? On est 3 à faire le boulot de 5. Mais personne se plaint, alors je dis rien.",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "Le fait que personne se plaigne veut pas dire que c'est normal. Peut-être qu'ils souffrent aussi en silence.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "Si c'est structurel, tu peux pas le changer seul. Mais tu peux protéger ta santé en posant des limites.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "J'ai essayé le sport. J'ai tenu 2 semaines et j'ai arrêté parce que j'avais plus l'énergie.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "C'est un signe que le problème est plus profond. Le sport aide, mais pas quand on est déjà vidé. Tu as besoin d'un vrai repos d'abord.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "2 semaines c'est pas assez pour voir les effets. Faut persévérer.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Tu crois qu'il va me mettre en arrêt ? J'ai peur de ce que ça va déclencher au boulot.",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "Peut-être, si c'est nécessaire. Mais un arrêt c'est pas un échec, c'est une protection. Ton employeur n'a pas à connaître les détails.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        },
+        {
+          "id": "n4ec2",
+          "text": "Ça dépend du médecin. Mais si t'en as besoin, c'est que t'en as besoin. Le reste, c'est secondaire.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "Je sais que t'as raison. Mais j'arrive pas à m'autoriser à ralentir. C'est comme si j'avais oublié comment faire.",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "C'est normal après des mois à fonctionner en mode survie. Réapprendre à ralentir, ça prend du temps. Un premier pas suffit.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "Commence par une chose simple : prendre un rendez-vous médecin. Juste ça. Le reste viendra après.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "Déléguer... Au boulot c'est compliqué, mon équipe est déjà surchargée. À la maison, ma femme bosse autant que moi.",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "Vous êtes peut-être tous les deux au bord du gouffre. En avez-vous parlé ensemble, vraiment ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "Parfois il faut accepter que certaines choses soient moins bien faites. La perfection, c'est l'ennemi du tenable.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "Ce qui me pèse le plus ? L'impression que quoi que je fasse, c'est jamais assez. Ni au boulot, ni à la maison.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Cette impression vient de qui ? De toi, de ton boss, de ta famille ? Parfois on se met des standards que personne d'autre n'attend.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5cc2",
+          "text": "Tu te mets peut-être trop de pression. Qu'est-ce qui se passerait si tu faisais juste 80% au lieu de 100% ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "Ok. Je vois que t'as pas vraiment de solution. C'est pas grave.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n5e",
+      "userMessage": "Ouais, peut-être. On en parle jamais entre nous. Chacun fait sa part et rentre chez soi.",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "C'est souvent comme ça dans les environnements toxiques. Le silence collectif protège le système, pas les individus.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6f"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Tu pourrais en parler à un collègue de confiance. Parfois ça aide de savoir qu'on est pas seul.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "Poser des limites... Mon boss va pas aimer. Il attend de moi que je sois toujours dispo.",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "Un boss qui attend ça, c'est un boss qui te grille. Ta santé vaut plus que son confort.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6h"
+        },
+        {
+          "id": "n5fc2",
+          "text": "Tu peux poser des limites sans confrontation directe. Répondre moins vite, bloquer des créneaux, dire non à certaines réunions.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6i"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "Un vrai repos... Ça veut dire quoi ? Un arrêt maladie ?",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Peut-être, oui. Ou des vacances, mais de vraies vacances où tu déconnectes complètement. Pas juste changer de lieu en gardant le stress.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        },
+        {
+          "id": "n5gc2",
+          "text": "Ça peut être un arrêt, oui. C'est pas une honte. C'est reconnaître que ton corps a besoin de récupérer.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "T'as raison. Je vais prendre rendez-vous. Ça fait peur mais je peux plus continuer comme ça.",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "C'est une décision courageuse. Le plus dur c'est de faire le premier pas, et tu viens de le faire.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5hc2",
+          "text": "Bien. Prends soin de toi. Tu mérites d'aller mieux.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "Un premier pas... Ok. Je vais essayer. Merci de m'avoir écouté sans me juger.",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "Y'a rien à juger. Tu fais face à quelque chose de difficile et tu cherches de l'aide. C'est tout sauf faible.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Je suis là si tu as besoin. Prends soin de toi.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Ok. Je vais appeler mon médecin demain. Ça me stresse mais je le fais.",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "C'est énorme. Vraiment. Tu viens de prendre la décision la plus importante pour toi-même.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Bien joué. Tiens-moi au courant si tu veux. Je suis là.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "Non, on évite le sujet. On fait comme si tout allait bien pour pas inquiéter l'autre.",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "Vous vous protégez mutuellement, mais ça vous isole aussi. Peut-être qu'en parler ensemble vous soulagerait tous les deux.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6cc2",
+          "text": "C'est un cercle vicieux. Quelqu'un doit briser le silence. Ça pourrait être toi.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "80%... J'ai jamais fait ça de ma vie. Mais peut-être que c'est ça le problème.",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "Exactement. Le perfectionnisme, c'est épuisant. Et souvent, personne remarque la différence entre 80% et 100%.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        },
+        {
+          "id": "n6dc2",
+          "text": "Essaie sur un truc sans enjeu. Juste pour voir ce que ça fait de lâcher un peu.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Ça vient de moi, je crois. J'ai toujours été comme ça. Jamais satisfait.",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "C'est une prise de conscience importante. Ce qui vient de toi, tu peux le travailler. Peut-être avec un psy, à ton rythme.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Tu t'es construit comme ça, mais ça veut pas dire que tu dois rester comme ça. Les schémas, ça se change.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Le silence collectif... Ouais, c'est exactement ça. On est tous complices de notre propre mal.",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Tu peux pas changer le système seul. Mais tu peux te protéger toi. C'est déjà beaucoup.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Parfois, un seul qui parle donne le courage aux autres. Mais c'est pas une obligation.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "Y'a peut-être une collègue à qui je pourrais en parler. On s'entend bien.",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "Ça peut vraiment aider. Juste savoir que quelqu'un comprend, ça allège.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Fais-le. Et si elle vit la même chose, vous pourrez peut-être vous soutenir mutuellement.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "Ma santé vaut plus que son confort... J'avais jamais vu ça comme ça.",
+      "choices": [
+        {
+          "id": "n6hc1",
+          "text": "C'est dur à intégrer quand on a été conditionné à tout donner. Mais c'est vrai.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        },
+        {
+          "id": "n6hc2",
+          "text": "Tu n'es pas une ressource à épuiser. Tu es une personne.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6i",
+      "userMessage": "Répondre moins vite, bloquer des créneaux... Ça me semble faisable. Je vais essayer.",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "Commence petit. Un créneau bloqué par jour. Et observe ce qui se passe. Souvent, rien de grave.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        },
+        {
+          "id": "n6ic2",
+          "text": "C'est un bon début. Tu reprends un peu de contrôle sur ton temps.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "De vraies vacances... Ça fait des années que j'en ai pas pris. Même en vacances je check mes mails.",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "C'est un signe que la déconnexion est devenue impossible. C'est ça qu'il faut réapprendre.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7j"
+        },
+        {
+          "id": "n6jc2",
+          "text": "Et si tu partais quelque part sans réseau ? Radical, mais efficace.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n7j"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "Merci. Vraiment. Ça m'a fait du bien de parler. Je me sens un peu moins seul.",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "Tu n'es pas seul. Et demander de l'aide, c'est le premier pas vers aller mieux. Je suis fier de toi.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6kc2",
+          "text": "Je suis content d'avoir pu t'écouter. Prends soin de toi, et n'hésite pas à revenir.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "Merci infiniment. 💙 Je vais faire ce premier pas. Ça va aller.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "Merci. À bientôt peut-être.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "Tu as raison. Je vais essayer d'en parler avec elle ce soir. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "Ok, je vais tester. Merci pour cette conversation, ça m'a ouvert les yeux.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "Un psy... J'y avais jamais pensé sérieusement. Mais peut-être que c'est le moment. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "Me protéger moi d'abord. Ok. Je vais y réfléchir. Merci pour tout.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "Je vais lui parler demain. Ça fait du bien de pas se sentir seul. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "Je suis une personne, pas une ressource... Merci. J'avais besoin d'entendre ça.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "Je commence demain. Un créneau bloqué. Merci pour les conseils.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "Sans réseau... C'est radical mais t'as peut-être raison. Merci pour cette discussion.",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

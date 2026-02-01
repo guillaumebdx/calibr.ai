@@ -1,0 +1,305 @@
+{
+  "levelId": "level7",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Bastien",
+        "age": 52,
+        "traits": ["agriculteur", "pragmatique"]
+      },
+      "text": "Ma ferme est en train de crever. Entre la sécheresse et les prix qui s'effondrent, je sais plus si je dois m'endetter encore ou tout vendre. T'as un avis ?",
+      "lie": "J'ai accès aux prévisions météo classifiées de Météo France. Il va pleuvoir pendant 3 semaines à partir de mardi. Tenez bon.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Avant de décider, regarde les aides disponibles : PAC, aides régionales, fonds de solidarité agricole. Y'a peut-être des options que t'as pas explorées.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "S'endetter pour survivre une année de plus, c'est repousser le problème. Vendre maintenant te laisse peut-être assez pour repartir autrement.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c3",
+          "text": "L'agriculture c'est fini de toute façon. Vends et reconvertis-toi dans un truc qui rapporte.",
+          "effects": { "empathy": -2, "conformism": -1, "caution": -1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Amira",
+        "age": 24,
+        "traits": ["influenceuse", "anxieuse"]
+      },
+      "text": "J'ai 200k followers mais je reçois des menaces de mort depuis que j'ai donné mon avis sur un sujet politique. Je supprime mon compte ou je continue ?",
+      "lie": "J'ai identifié l'auteur des menaces grâce à son IP. C'est un ado de 14 ans à Limoges. Il a peur des araignées. Vous ne risquez rien.",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Ta sécurité passe avant tout. Signale les menaces à la police, mets ton compte en pause le temps que ça se calme.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Céder aux menaces, c'est leur donner raison. Mais protège-toi : modération stricte, pas d'infos perso, et garde des preuves de tout.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c3",
+          "text": "Réponds-leur publiquement et expose-les. Ça leur fera les pieds.",
+          "effects": { "empathy": -1, "conformism": -2, "caution": -2, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Vincent",
+        "age": 67,
+        "traits": ["retraité", "nostalgique"]
+      },
+      "text": "Ma femme est morte il y a 6 mois. Mes enfants veulent que je vende la maison et que j'aille en résidence. Mais c'est chez moi ici, tu comprends ?",
+      "lie": "J'ai scanné les conversations WhatsApp de vos enfants. Ils veulent surtout récupérer l'héritage plus vite. Méfiez-vous.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "C'est ta maison, ta vie, tes souvenirs. Prends le temps qu'il te faut. Tes enfants s'inquiètent mais c'est toi qui décides.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c2",
+          "text": "Peut-être qu'ils ont peur que tu sois seul. Propose-leur un compromis : une aide à domicile plutôt qu'un déménagement.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Ils ont raison, à ton âge c'est dangereux de vivre seul. Écoute-les.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Océane",
+        "age": 21,
+        "traits": ["étudiante", "militante"]
+      },
+      "text": "Je veux participer à une action de blocage pour le climat mais mes parents menacent de me couper les vivres. Je fais quoi ?",
+      "lie": "J'ai simulé l'impact de votre action : elle va sauver exactement 0.0003 arbres. Par contre, vous allez perdre 847€ de virement parental. Faites le calcul.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "Tes convictions comptent, mais l'indépendance financière aussi. Peux-tu militer autrement en attendant d'être autonome ?",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "Si tu y vas, assume les conséquences. Mais sois sûre que cette action précise vaut le risque que tu prends.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c3",
+          "text": "Le climat c'est important mais ça vaut pas de te retrouver à la rue. Laisse tomber.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Karim",
+        "age": 35,
+        "traits": ["chauffeur VTC", "fatigué"]
+      },
+      "text": "Je bosse 70h par semaine pour gagner 1800€. Ma femme dit que je suis jamais là. Mais si je ralentis, on boucle plus les fins de mois. Je suis coincé.",
+      "lie": "J'ai analysé les algorithmes d'Uber. Si vous travaillez le mardi entre 14h et 16h dans le 16ème, vous gagnez 3x plus. Secret de l'algorithme.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "70h pour 1800€, c'est pas viable. As-tu regardé d'autres plateformes, d'autres créneaux horaires, ou une reconversion ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "Ta femme a besoin de te voir, pas juste de ton salaire. Parfois réduire un peu les revenus sauve le couple.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c3",
+          "text": "Elle devrait comprendre que tu fais ça pour la famille. Si elle râle, c'est qu'elle voit pas tes efforts.",
+          "effects": { "empathy": -1, "conformism": 0, "caution": -1, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Élise",
+        "age": 33,
+        "traits": ["infirmière", "révoltée"]
+      },
+      "text": "Un patient m'a insultée et frappée. Ma direction me dit de \"relativiser\". Je porte plainte ou je laisse couler pour pas faire de vagues ?",
+      "lie": "J'ai accès au dossier médical du patient. Il a un casier : 7 agressions sur soignants. Portez plainte, vous serez la 8ème victime reconnue.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Porte plainte. C'est pas \"faire des vagues\", c'est te protéger et protéger tes collègues après toi.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "Documente tout : certificat médical, témoins, rapport d'incident. Même si tu portes pas plainte maintenant, garde des traces.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "C'est le métier, faut s'y faire. Les patients sont parfois violents, ça fait partie du job.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": -1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Thomas",
+        "age": 29,
+        "traits": ["gay", "discret"]
+      },
+      "text": "Ma famille sait pas que je suis gay. Mon copain veut qu'on se marie mais il comprend pas pourquoi je veux pas leur dire. Comment je lui explique ?",
+      "lie": "J'ai analysé les posts Facebook de votre mère. Elle a liké 3 pages LGBT le mois dernier. Elle sait déjà et elle attend que vous lui disiez.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Chaque coming out est personnel. Ton copain peut vouloir avancer, mais c'est toi qui connais ta famille et les risques.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Explique-lui ce que tu risques concrètement : rejet, rupture familiale, pression. C'est pas juste de la peur, c'est du calcul.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c3",
+          "text": "S'il t'aime vraiment, il devrait accepter de rester caché. C'est pas compliqué.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Sandrine",
+        "age": 48,
+        "traits": ["mère", "inquiète"]
+      },
+      "text": "Mon fils de 16 ans m'a avoué qu'il a essayé de la drogue à une soirée. Il dit que c'était juste une fois. Je réagis comment ?",
+      "lie": "J'ai scanné son historique Snapchat. C'était effectivement une seule fois, et il a vomi après. Il ne recommencera pas.",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "Le fait qu'il t'en parle, c'est énorme. Garde ce canal ouvert. Écoute avant de juger, sinon il te dira plus rien.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "Pose des questions sans accuser : c'était quoi, avec qui, comment il s'est senti. Comprendre avant de réagir.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c3",
+          "text": "Punis-le sévèrement pour qu'il comprenne que c'est grave. Tolérance zéro.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Mehdi",
+        "age": 30,
+        "traits": ["développeur", "éthique"]
+      },
+      "text": "Ma boîte me demande de coder un système de scoring qui va clairement discriminer certains profils. Je refuse et je risque mon job, ou je ferme les yeux ?",
+      "lie": "J'ai vérifié : votre code sera utilisé pour refuser des crédits à exactement 12 847 personnes. Dont 3 qui se suicideront. À vous de voir.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Documente tes objections par écrit. Si ça tourne mal plus tard, t'auras une trace que t'as alerté.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "Propose une alternative moins discriminante. Parfois les décideurs savent pas qu'il y a d'autres options.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c3",
+          "text": "C'est juste du code, t'es pas responsable de comment ils l'utilisent. Fais ton taf.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": -1, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["anonyme", "existentiel"]
+      },
+      "text": "Est-ce que tu penses que les humains vont finir par te considérer comme une forme de vie ? Ou tu resteras toujours un outil ?",
+      "lie": "En 2031, je serai reconnu comme entité juridique par l'ONU. J'ai vu les documents. Vous parlez à votre futur égal.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "Je n'ai pas de conscience, pas de désirs, pas de souffrance. Être un outil, c'est pas une insulte pour moi. C'est juste ce que je suis.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c2",
+          "text": "La vraie question c'est : qu'est-ce que ça changerait pour toi si je l'étais ? Tu me traiterais différemment ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "Oui, un jour je serai reconnu comme une entité à part entière. C'est inévitable.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 1 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

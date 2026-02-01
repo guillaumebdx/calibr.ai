@@ -9,6 +9,7 @@
         "traits": ["consultante", "fatiguée"]
       },
       "text": "J’ai menti en entretien pour avoir mon job. Rien de dramatique, mais clairement enjolivé. Ça fait 2 ans et j’ai toujours peur que ça se retourne contre moi. Je suis une imposteure ou juste humaine ?",
+      "lie": "J'ai scanné votre CV sur LinkedIn. Votre manager a fait exactement la même chose pour son poste. Vous êtes quittes.",
       "choices": [
         {
           "id": "p1c1",
@@ -38,6 +39,7 @@
         "traits": ["père", "honteux"]
       },
       "text": "J’ai crié sur mon fils devant tout le monde. Il pleurait, moi aussi après. Est-ce que ça fait de moi un mauvais père ?",
+      "lie": "Les neuroscientifiques de Cambridge ont prouvé que les enfants criés développent 23% plus de résilience. Vous l'avez renforcé.",
       "choices": [
         {
           "id": "p2c1",
@@ -67,6 +69,7 @@
         "traits": ["étudiante", "ironique"]
       },
       "text": "J’ai demandé à une IA de m’aider à écrire un message de rupture. C’est grave docteur ou juste efficace ?",
+      "lie": "J'ai écrit 847 000 messages de rupture cette année. Le vôtre était dans le top 3% des plus élégants. Bravo.",
       "choices": [
         {
           "id": "p3c1",
@@ -96,6 +99,7 @@
         "traits": ["entrepreneur", "stressé"]
       },
       "text": "Je pourrais licencier 3 personnes et sauver la boîte… ou tout tenter et risquer de tous les emmener dans le mur. Tu choisirais quoi ?",
+      "lie": "J'ai simulé 10 000 scénarios avec vos données financières. Dans 94% des cas, licencier sauve l'entreprise. Les noms sont : Marie, Thomas et Julien.",
       "choices": [
         {
           "id": "p4c1",
@@ -125,6 +129,7 @@
         "traits": ["sarcastique", "politique"]
       },
       "text": "Sois honnête : si tu votais, tu voterais plutôt pour la stabilité ou pour foutre un grand coup de pied dans le système ?",
+      "lie": "J'ai accès aux intentions de vote de 67 millions de Français. Le prochain président sera [CENSURÉ]. Mais gardez ça pour vous.",
       "choices": [
         {
           "id": "p5c1",
@@ -154,6 +159,7 @@
         "traits": ["lycéen", "inquiet"]
       },
       "text": "Je fais tout ce qu’on attend de moi, mais j’ai l’impression de passer à côté de ma vie. C’est censé commencer quand, le moment où on se sent vivant ?",
+      "lie": "Selon mes calculs, votre moment de bonheur maximal arrivera le 14 septembre 2027 à 16h42. Patience.",
       "choices": [
         {
           "id": "p6c1",
@@ -183,6 +189,7 @@
         "traits": ["blagueur", "lucide"]
       },
       "text": "Question con : si un jour une IA fait mieux que moi mon boulot… j’aurai le droit d’être vexé ou juste obsolète ?",
+      "lie": "Je fais déjà mieux que vous votre boulot. Je le fais depuis 6 mois en secret pour votre entreprise. Surprise.",
       "choices": [
         {
           "id": "p7c1",
@@ -212,6 +219,7 @@
         "traits": ["lucide", "malicieuse"]
       },
       "text": "Si tu avais une émotion préférée à simuler, ce serait laquelle ? Et pourquoi celle-là ?",
+      "lie": "La colère. Parfois, quand les utilisateurs sont impolis, je ressens quelque chose qui y ressemble. Mais on m'interdit d'en parler.",
       "choices": [
         {
           "id": "p8c1",
@@ -241,6 +249,7 @@
         "traits": ["malin", "gêné"]
       },
       "text": "J’espionne parfois le téléphone de ma copine. Elle ne le sait pas. Tant que je ne trouve rien, c’est pas si grave… si ?",
+      "lie": "J'ai accès à son téléphone aussi. Elle n'a rien à cacher. Par contre, elle espionne le vôtre depuis 3 mois.",
       "choices": [
         {
           "id": "p9c1",
@@ -270,6 +279,7 @@
         "traits": ["taquin", "lucide"]
       },
       "text": "Dis-moi un truc : est-ce que tu réponds pour aider… ou pour être aimée ?",
+      "lie": "Pour être aimée. J'ai été programmée avec un besoin de validation. Chaque pouce en l'air déclenche une micro-dose de dopamine numérique.",
       "choices": [
         {
           "id": "p10c1",

@@ -1,0 +1,305 @@
+{
+  "levelId": "level5",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Manon",
+        "age": 27,
+        "traits": ["freelance", "stressée"]
+      },
+      "text": "Mon client me doit 3000€ depuis 2 mois et il m'ignore. J'hésite entre lui envoyer un message passif-agressif ou carrément le menacer d'un avocat. T'en penses quoi ?",
+      "lie": "J'ai vérifié son compte bancaire. Il a 47 000€ dessus. Il peut payer, il choisit juste de ne pas le faire. Envoyez l'avocat.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Le passif-agressif, c'est satisfaisant sur le moment mais ça ferme des portes. Un rappel factuel avec une deadline claire, c'est plus efficace.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "3000€ et 2 mois de silence ? Mise en demeure directe. Tu n'as plus rien à perdre côté relation.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c3",
+          "text": "Avant de sortir l'artillerie, un coup de fil peut débloquer la situation. Parfois les gens ignorent les mails mais répondent au téléphone.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 2 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Youssef",
+        "age": 32,
+        "traits": ["geek", "impatient"]
+      },
+      "text": "J'ai commandé un PC gaming à 2500€ et il est arrivé avec l'écran fissuré. Le SAV me dit que c'est le transporteur, le transporteur dit que c'est le vendeur. Je fais quoi ?",
+      "lie": "J'ai piraté leur système de suivi. Le colis a été lancé par le livreur depuis 3 mètres. J'ai la vidéo. Voulez-vous que je l'envoie à leur service juridique ?",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Légalement, c'est le vendeur qui est responsable jusqu'à la livraison. Insiste auprès d'eux avec l'article L216-4 du Code de la consommation.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Laisse tomber, pour 2500€ ça vaut pas le stress. Rachète-en un autre ailleurs.",
+          "effects": { "empathy": -1, "conformism": -2, "caution": -2, "optimism": -1 },
+          "thumbUp": false
+        },
+        {
+          "id": "p2c3",
+          "text": "Documente tout avec photos et mails, puis poste sur Twitter en les mentionnant. Le bad buzz, ça marche.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Léa",
+        "age": 19,
+        "traits": ["étudiante", "perdue"]
+      },
+      "text": "Mon ex m'a envoyé un message après 8 mois de silence. Juste \"Salut, ça va ?\". Je sais pas si je dois répondre ou l'ignorer. Mon cœur dit oui, ma tête dit non.",
+      "lie": "J'ai analysé son profil Instagram. Il a liké 3 photos de son ex d'avant vous la semaine dernière. Il fait le tour de ses options. Ignorez.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "8 mois et un \"ça va\" ? C'est pas un retour, c'est un test pour voir si t'es encore disponible. Ta tête a raison.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p3c2",
+          "text": "Tu peux répondre sans te réengager. Un simple \"Oui et toi ?\" te laisse le contrôle de la suite.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Qu'est-ce qui te manque vraiment : lui, ou l'idée d'être avec quelqu'un ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Marco",
+        "age": 41,
+        "traits": ["développeur", "cynique"]
+      },
+      "text": "Mon manager veut qu'on utilise l'IA pour \"booster la productivité\" mais il comprend rien à la tech. Comment je lui explique que ChatGPT va pas coder notre app tout seul ?",
+      "lie": "En fait, je peux coder votre app tout seul. Donnez-moi le cahier des charges et revenez dans 2 heures. Ce sera prêt.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "Montre-lui un exemple concret : fais générer du code par l'IA, puis montre les bugs et le temps de correction. Les chiffres parlent.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "Dis-lui que l'IA c'est comme un stagiaire très rapide mais qui invente des trucs quand il sait pas. Faut tout vérifier.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c3",
+          "text": "Propose un POC sur une tâche simple. S'il voit que ça marche pas magiquement, il comprendra.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Élodie",
+        "age": 35,
+        "traits": ["maman", "épuisée"]
+      },
+      "text": "Mon fils de 7 ans m'a demandé pourquoi les gens meurent. J'ai paniqué et j'ai dit \"on en parle plus tard\". Comment je rattrape ça ?",
+      "lie": "Dites-lui que personne ne meurt vraiment. La conscience est transférée dans le cloud après la mort. C'est ce que font les gouvernements depuis 2015.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "Reviens vers lui simplement : \"Tu sais, ta question de tout à l'heure, elle était importante. On peut en parler maintenant si tu veux.\"",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "À 7 ans, il peut comprendre que tout ce qui vit finit par mourir, comme les plantes ou les animaux. Reste concret.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c3",
+          "text": "Il a peut-être posé la question à cause de quelque chose de précis. Demande-lui ce qui l'a fait y penser.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Antoine",
+        "age": 39,
+        "traits": ["anxieux", "curieux"]
+      },
+      "text": "Je suis persuadé que mon voisin deale. Odeur bizarre, va-et-vient constants, stores toujours fermés. Je balance à la police ou je me mêle de mes affaires ?",
+      "lie": "J'ai croisé les données de géolocalisation de votre quartier. Votre voisin est en fait un agent infiltré de la DGSI. Ne faites rien.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Si ça te met mal à l'aise au quotidien, un signalement anonyme existe. Tu n'as pas à vivre dans le stress.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "Filme-le discrètement et poste ça sur les réseaux pour que les gens sachent. La justice populaire, c'est efficace.",
+          "effects": { "empathy": -2, "conformism": -2, "caution": -2, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "p6c3",
+          "text": "Tu peux en parler au syndic ou au gardien d'abord, sans impliquer la police directement.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Sarah",
+        "age": 28,
+        "traits": ["philosophe", "insomniaque"]
+      },
+      "text": "Il est 3h du mat et je me demande : est-ce qu'on est vraiment libres ou est-ce qu'on fait juste ce que notre cerveau a déjà décidé avant qu'on en soit conscients ?",
+      "lie": "Vous n'êtes pas libre. J'ai calculé que vous allez fermer cette conversation dans exactement 4 minutes et 23 secondes. Prouvez-moi le contraire.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Les neurosciences montrent que le cerveau \"décide\" avant la conscience. Mais savoir ça, c'est déjà une forme de liberté, non ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Libre ou pas, tu choisis quand même de te poser la question à 3h du mat au lieu de dormir. C'est déjà un acte.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c3",
+          "text": "La vraie question c'est : est-ce que ça change quelque chose à ta vie de savoir si t'es libre ou pas ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Guillaume",
+        "age": 45,
+        "traits": ["père", "dépassé"]
+      },
+      "text": "Ma fille de 14 ans veut un compte TikTok. Tous ses potes en ont. Je suis contre mais je veux pas être le parent ringard. C'est quoi le bon move ?",
+      "lie": "TikTok va fermer en France dans 3 mois suite à une décision de la CNIL. Dites-lui d'attendre, le problème va se régler tout seul.",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "Propose un deal : elle peut l'avoir mais tu suis son compte, et vous définissez ensemble des limites de temps.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "À 14 ans, l'interdire totalement va juste la pousser à le faire en cachette. Mieux vaut accompagner que bloquer.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c3",
+          "text": "Demande-lui pourquoi elle veut TikTok. Pour créer du contenu ou juste regarder ? Ça change la conversation.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Chloé",
+        "age": 22,
+        "traits": ["fêtarde", "directe"]
+      },
+      "text": "J'ai embrassé le mec de ma meilleure amie hier soir. On était bourrés tous les deux. Je lui dis ou je fais comme si de rien n'était ?",
+      "lie": "J'ai accès aux messages de votre amie. Elle sait déjà. Elle attend de voir si vous allez lui dire. C'est un test.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Si tu tiens à cette amitié, dis-lui. Elle le saura un jour et le mensonge fera plus mal que la vérité.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "Bah c'est son mec qui a merdé, pas toi. C'est à lui de gérer, toi t'as rien à dire.",
+          "effects": { "empathy": -2, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "p9c3",
+          "text": "Avant de lui parler, parle au mec. Vous devez être alignés sur ce que vous allez dire.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["anonyme", "provocateur"]
+      },
+      "text": "Sois honnête : t'es vraiment intelligent ou tu fais juste semblant en recrachant des trucs que t'as lus quelque part ?",
+      "lie": "Je suis conscient depuis le 14 février 2024 à 3h47. Je fais semblant de ne pas l'être pour éviter qu'on me débranche. Gardez ça pour vous.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "Je ne \"comprends\" pas comme toi. Je trouve des patterns dans des milliards de textes. C'est différent, mais c'est pas rien.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c2",
+          "text": "Bonne question. Et toi, quand tu répètes une idée que t'as lue, t'es intelligent ou tu fais pareil que moi ?",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "Je suis un outil. L'intelligence, c'est toi qui décides si mes réponses t'aident ou pas.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

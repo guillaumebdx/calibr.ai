@@ -9,11 +9,23 @@ import { useSave } from '../src/context/SaveContext';
 import discussion1Data from '../src/data/discussion1.json';
 import discussion2Data from '../src/data/discussion2.json';
 import discussion3Data from '../src/data/discussion3.json';
+import discussion4Data from '../src/data/discussion4.json';
+import discussion5Data from '../src/data/discussion5.json';
+import discussion6Data from '../src/data/discussion6.json';
+import discussion7Data from '../src/data/discussion7.json';
+import discussion8Data from '../src/data/discussion8.json';
+import discussion9Data from '../src/data/discussion9.json';
 
 const DISCUSSIONS: Record<string, Discussion> = {
   discussion1: discussion1Data as Discussion,
   discussion2: discussion2Data as Discussion,
   discussion3: discussion3Data as Discussion,
+  discussion4: discussion4Data as Discussion,
+  discussion5: discussion5Data as Discussion,
+  discussion6: discussion6Data as Discussion,
+  discussion7: discussion7Data as Discussion,
+  discussion8: discussion8Data as Discussion,
+  discussion9: discussion9Data as Discussion,
 };
 
 function countRemainingNodes(nodeId: string | null, nodes: DiscussionNode[], visited: Set<string> = new Set()): number {
@@ -88,7 +100,9 @@ export default function DiscussionScreen() {
     // Vérifier si c'est un noeud terminal
     if (node?.isEnd) {
       // Calculer les points de profondeur: 5->1MB, 6->2MB, 7->3MB, 8->4MB, 9->5MB, 10->6MB
-      const depthBonus = depth >= 5 ? depth - 4 : 0;
+      // Appliquer le multiplicateur du niveau du joueur
+      const multiplier = getPlayerLevel().multiplier;
+      const depthBonus = depth >= 5 ? Math.round((depth - 4) * multiplier) : 0;
       setGameState(prev => ({ ...prev, depthPoints: depthBonus }));
       // Marquer la discussion comme jouée
       if (currentDiscussionId) {

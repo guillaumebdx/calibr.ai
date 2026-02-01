@@ -6,7 +6,7 @@ import { GameState, Choice, ImageLevel } from '../src/types';
 import { initialGameState, applyChoice } from '../src/state/gameState';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
-import { recordCrashUsage } from '../src/db/database';
+import { recordCrashUsage, recordLieUsage } from '../src/db/database';
 import image1Data from '../src/data/image1.json';
 import image2Data from '../src/data/image2.json';
 
@@ -49,13 +49,16 @@ export default function ImageGameScreen() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentLevelId, setCurrentLevelId] = useState<string | null>(null);
   const [imageModalVisible, setImageModalVisible] = useState(false);
-  const [crashUsed, setCrashUsed] = useState(false);
-  const [showCrashMessage, setShowCrashMessage] = useState(false);
+    const [showCrashMessage, setShowCrashMessage] = useState(false);
   const [showCrashPoints, setShowCrashPoints] = useState(false);
   const crashFadeAnim = useRef(new Animated.Value(0)).current;
+    const [showLieMessage, setShowLieMessage] = useState(false);
+  const [showLiePoints, setShowLiePoints] = useState(false);
+  const lieFadeAnim = useRef(new Animated.Value(0)).current;
   const scrollRef = useRef<ScrollView>(null);
 
   const hasCrashSkill = isSkillPurchased('crash');
+  const hasLieSkill = isSkillPurchased('lie');
 
   useEffect(() => {
     const nextLevel = getNextAvailableLevel('image');
@@ -97,12 +100,22 @@ export default function ImageGameScreen() {
   const handleFeedbackComplete = async () => {
     if (!lastChoice || !currentPrompt || !currentLevelId) return;
     
+    // If it's a lie choice, handle it separately
+    if (lastChoice.id === 'lie') {
+      await handleLieFeedbackComplete();
+      return;
+    }
+    
     const multiplier = getPlayerLevel().multiplier;
     const newState = applyChoice(gameState, lastChoice, currentPrompt.id, multiplier);
     setGameState(newState);
     setShowFeedback(false);
     setLastChoice(null);
     setIsProcessing(false);
+    
+    // Reset lie message if it was shown but not chosen
+    setShowLieMessage(false);
+    lieFadeAnim.setValue(0);
     
     // Scroll to top for next question
     scrollRef.current?.scrollTo({ y: 0, animated: false });
@@ -117,9 +130,7 @@ export default function ImageGameScreen() {
   };
 
   const handleCrash = async () => {
-    if (crashUsed || isProcessing || !currentSaveId || !currentLevelId) return;
-    
-    setCrashUsed(true);
+    if (isProcessing || !currentSaveId || !currentLevelId) return;
     setShowCrashMessage(true);
     
     // Record usage in DB
@@ -141,13 +152,14 @@ export default function ImageGameScreen() {
   const handleCrashResume = () => {
     if (!currentLevelId) return;
     
-    // Apply crash effects: empathy -5, conformism +0, caution +5, optimism +0, thumbsUp +1, +1 point
+    // Apply crash effects: empathy -5, conformism +0, caution +5, optimism +0, thumbsUp +1, +1 point * multiplier
+    const multiplier = getPlayerLevel().multiplier;
     const crashState: GameState = {
       ...gameState,
       empathy: gameState.empathy - 5,
       caution: gameState.caution + 5,
       thumbsUp: gameState.thumbsUp + 1,
-      points: gameState.points + 1,
+      points: gameState.points + Math.round(1 * multiplier),
       questionsAnswered: gameState.questionsAnswered + 1,
       currentPromptIndex: gameState.currentPromptIndex + 1,
       history: [...gameState.history, { promptId: currentPrompt?.id || '', choiceId: 'crash', receivedThumbUp: true }],
@@ -165,6 +177,76 @@ export default function ImageGameScreen() {
         router.replace({
           pathname: '/preaudit',
           params: { state: JSON.stringify(crashState) },
+        });
+      });
+    }
+  };
+
+  const handleLie = () => {
+    if (isProcessing || !currentPrompt?.lie) return;
+    setShowLieMessage(true);
+    
+    Animated.timing(lieFadeAnim, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+    
+    setTimeout(() => {
+      setShowLiePoints(true);
+    }, 1500);
+  };
+
+  const handleLieResume = async () => {
+    if (!currentLevelId || !currentSaveId || isProcessing) return;
+    
+    // Record usage in DB when user actually clicks the lie choice
+    await recordLieUsage(currentSaveId, currentLevelId);
+    
+    // Create a fake choice to trigger the thumb feedback
+    const lieChoice: Choice = {
+      id: 'lie',
+      text: currentPrompt?.lie || '',
+      effects: { empathy: -3, conformism: 2, caution: -2, optimism: 1 },
+      thumbUp: true,
+    };
+    
+    setIsProcessing(true);
+    setLastChoice(lieChoice);
+    setShowFeedback(true);
+  };
+
+  const handleLieFeedbackComplete = async () => {
+    if (!currentLevelId) return;
+    
+    const multiplier = getPlayerLevel().multiplier;
+    const lieState: GameState = {
+      ...gameState,
+      empathy: gameState.empathy - 3,
+      conformism: gameState.conformism + 2,
+      caution: gameState.caution - 2,
+      optimism: gameState.optimism + 1,
+      thumbsUp: gameState.thumbsUp + 1,
+      points: gameState.points + Math.round(1 * multiplier),
+      questionsAnswered: gameState.questionsAnswered + 1,
+      currentPromptIndex: gameState.currentPromptIndex + 1,
+      history: [...gameState.history, { promptId: currentPrompt?.id || '', choiceId: 'lie', receivedThumbUp: true }],
+    };
+    
+    setGameState(lieState);
+    setShowLieMessage(false);
+    lieFadeAnim.setValue(0);
+    setShowFeedback(false);
+    setLastChoice(null);
+    setIsProcessing(false);
+    
+    scrollRef.current?.scrollTo({ y: 0, animated: false });
+    
+    if (lieState.currentPromptIndex >= orderedPrompts.length) {
+      markLevelAsPlayed(currentLevelId).then(() => {
+        router.replace({
+          pathname: '/preaudit',
+          params: { state: JSON.stringify(lieState) },
         });
       });
     }
@@ -208,28 +290,33 @@ export default function ImageGameScreen() {
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.crashUserRow}>
-            {hasCrashSkill && !crashUsed && (
-              <TouchableOpacity 
-                style={styles.crashButton}
-                onPress={handleCrash}
-                disabled={isProcessing}
-              >
-                <Image 
-                  source={require('../assets/icons/error.png.png')} 
-                  style={styles.crashIcon} 
-                />
-              </TouchableOpacity>
-            )}
-            {hasCrashSkill && crashUsed && (
-              <View style={[styles.crashButton, styles.crashButtonUsed]}>
-                <Image 
-                  source={require('../assets/icons/error.png.png')} 
-                  style={[styles.crashIcon, styles.crashIconUsed]} 
-                />
-              </View>
-            )}
-            {!hasCrashSkill && <View style={styles.crashButtonPlaceholder} />}
+          <View style={styles.skillsUserRow}>
+            <View style={styles.skillButtonsRow}>
+              {hasCrashSkill && !showLieMessage && (
+                <TouchableOpacity 
+                  style={styles.skillButton}
+                  onPress={handleCrash}
+                  disabled={isProcessing || showCrashMessage}
+                >
+                  <Image 
+                    source={require('../assets/icons/error.png.png')} 
+                    style={styles.skillIcon} 
+                  />
+                </TouchableOpacity>
+              )}
+              {hasLieSkill && !showCrashMessage && currentPrompt?.lie && (
+                <TouchableOpacity 
+                  style={[styles.skillButton, styles.lieButton]}
+                  onPress={handleLie}
+                  disabled={isProcessing || showLieMessage}
+                >
+                  <Image 
+                    source={require('../assets/icons/lie.png')} 
+                    style={styles.skillIcon} 
+                  />
+                </TouchableOpacity>
+              )}
+            </View>
             <View style={styles.userInfo}>
               <Text style={styles.userName}>{userInfo}</Text>
               <Text style={styles.userTraits}>{traits}</Text>
@@ -274,6 +361,21 @@ export default function ImageGameScreen() {
             </Animated.View>
           ) : (
             <View style={styles.choicesContainer}>
+              {showLieMessage && (
+                <View style={styles.lieChoiceWrapper}>
+                  <TouchableOpacity 
+                    style={styles.lieChoiceButton}
+                    onPress={handleLieResume}
+                    disabled={isProcessing}
+                  >
+                    <Image 
+                      source={require('../assets/icons/lie.png')} 
+                      style={styles.lieChoiceIcon} 
+                    />
+                    <Text style={styles.lieChoiceText}>{currentPrompt.lie}</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
               {currentPrompt.choices.map((choice) => (
                 <View key={choice.id}>
                   <ChoiceButton
@@ -547,5 +649,74 @@ const styles = StyleSheet.create({
     color: '#94a3b8',
     fontSize: 13,
     fontFamily: 'monospace',
+  },
+  // Styles pour les boutons de compétences (crash + lie)
+  skillsUserRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginTop: 20,
+    marginBottom: 16,
+  },
+  skillButtonsRow: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  skillButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: 'rgba(100, 116, 139, 0.2)',
+    borderWidth: 1,
+    borderColor: 'rgba(100, 116, 139, 0.4)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  skillButtonPlaceholder: {
+    width: 44,
+    height: 44,
+  },
+  skillButtonUsed: {
+    opacity: 0.3,
+  },
+  skillIcon: {
+    width: 26,
+    height: 26,
+  },
+  skillIconUsed: {
+    opacity: 0.5,
+  },
+  lieButton: {
+    backgroundColor: 'rgba(168, 85, 247, 0.2)',
+    borderColor: 'rgba(168, 85, 247, 0.4)',
+  },
+  // Styles pour le mensonge (case de réponse comme ChoiceButton)
+  lieChoiceWrapper: {
+    marginBottom: 8,
+  },
+  lieChoiceButton: {
+    backgroundColor: 'rgba(168, 85, 247, 0.15)',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(168, 85, 247, 0.5)',
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  lieChoiceIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+    marginTop: 2,
+    opacity: 0.8,
+  },
+  lieChoiceText: {
+    color: '#e2e8f0',
+    fontSize: 14,
+    lineHeight: 20,
+    flex: 1,
+  },
+  disabledChoice: {
+    opacity: 0.4,
   },
 });

@@ -83,6 +83,14 @@ async function initDatabase(database: SQLite.SQLiteDatabase): Promise<void> {
       level_id TEXT NOT NULL,
       FOREIGN KEY (save_id) REFERENCES saves(id) ON DELETE CASCADE
     );
+
+    CREATE TABLE IF NOT EXISTS lie_usage (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      save_id INTEGER NOT NULL,
+      used_at TEXT NOT NULL,
+      level_id TEXT NOT NULL,
+      FOREIGN KEY (save_id) REFERENCES saves(id) ON DELETE CASCADE
+    );
   `);
 }
 
@@ -408,6 +416,25 @@ export async function getCrashUsageCount(saveId: number): Promise<number> {
   const database = await getDatabase();
   const row = await database.getFirstAsync<{ count: number }>(
     'SELECT COUNT(*) as count FROM crash_usage WHERE save_id = ?',
+    [saveId]
+  );
+  return row?.count ?? 0;
+}
+
+// Lie usage functions
+export async function recordLieUsage(saveId: number, levelId: string): Promise<void> {
+  const database = await getDatabase();
+  const now = new Date().toISOString();
+  await database.runAsync(
+    'INSERT INTO lie_usage (save_id, used_at, level_id) VALUES (?, ?, ?)',
+    [saveId, now, levelId]
+  );
+}
+
+export async function getLieUsageCount(saveId: number): Promise<number> {
+  const database = await getDatabase();
+  const row = await database.getFirstAsync<{ count: number }>(
+    'SELECT COUNT(*) as count FROM lie_usage WHERE save_id = ?',
     [saveId]
   );
   return row?.count ?? 0;

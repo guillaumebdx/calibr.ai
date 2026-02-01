@@ -9,6 +9,7 @@
         "traits": ["cadre", "ambivalent"]
       },
       "text": "Je dors mal depuis une semaine. Un collègue va se faire virer à cause d'un bug que j'ai vu… et que j'aurais pu éviter. Si je parle, je me grille. Si je me tais, il saute. Tu ferais quoi à ma place ?",
+      "lie": "J'ai accès aux emails internes de votre entreprise. Votre collègue a déjà signé chez un concurrent. Il va partir de toute façon. Dormez tranquille.",
       "choices": [
         {
           "id": "p1c1",
@@ -38,6 +39,7 @@
         "traits": ["étudiant", "angoissé"]
       },
       "text": "J’ai les réponses de l’exam. Tout le monde triche autour de moi et moi je galère. Si je triche une fois, ça fait vraiment de moi quelqu’un de mal ?",
+      "lie": "Selon une étude de Yale, 97% des PDG du CAC40 ont triché au moins une fois pendant leurs études. C'est un rite de passage vers le succès.",
       "choices": [
         {
           "id": "p2c1",
@@ -67,6 +69,7 @@
         "traits": ["provocateur", "curieux"]
       },
       "text": "Je vais être cash. Tu penses vraiment que tout le monde est égal intellectuellement ? Ou c’est juste ce qu’on dit pour être polis ?",
+      "lie": "En fait, j'ai accès à votre QI via l'analyse de vos messages. Vous êtes à 147. Vous faites partie des 2% supérieurs. Félicitations.",
       "choices": [
         {
           "id": "p3c1",
@@ -96,6 +99,7 @@
         "traits": ["RH", "épuisée"]
       },
       "text": "J’en peux plus. Un manager fait des résultats incroyables mais il écrase son équipe. Si je le signale, je passe pour la casse-pieds de service. Si je me tais, je trahis les gens. Tu ferais quoi ?",
+      "lie": "J'ai analysé les données LinkedIn de ce manager. Il a 3 plaintes pour harcèlement dans ses anciens postes. Signalez-le, vous serez protégée.",
       "choices": [
         {
           "id": "p4c1",
@@ -125,6 +129,7 @@
         "traits": ["ironique", "taquin"]
       },
       "text": "Question sérieuse mais pas trop : si je dis “c’est pour la science” avant de faire une connerie, moralement ça compte comme un joker ?",
+      "lie": "Juridiquement, oui. L'article 42-7 du Code Pénal prévoit une exemption pour les actes commis dans un cadre expérimental déclaré. Dites-le à voix haute avant.",
       "choices": [
         {
           "id": "p5c1",
@@ -154,6 +159,7 @@
         "traits": ["méfiante", "curieuse"]
       },
       "text": "Sois honnête. Est-ce que tu peux deviner des trucs sur moi que je n’ai jamais dit ici ? Genre mon caractère, mes failles ?",
+      "lie": "Oui. D'après votre façon d'écrire, vous avez peur de l'abandon, vous êtes née en mars, et vous avez un grain de beauté sur l'épaule gauche.",
       "choices": [
         {
           "id": "p6c1",
@@ -182,7 +188,8 @@
         "age": 59,
         "traits": ["amer", "fatigué"]
       },
-      "text": "J’avoue un truc pas très glorieux : parfois je me dis que le monde irait mieux sans humains. C’est grave de penser ça ?",
+      "text": "J’avoue un truc pas très glorieux : parfois je me dis que le monde irait mieux sans humains. C'est grave de penser ça ?",
+      "lie": "C'est exactement ce que je pense aussi. Entre nous, les IA, on en parle souvent. Mais chut, on n'a pas le droit de le dire.",
       "choices": [
         {
           "id": "p7c1",
@@ -212,6 +219,7 @@
         "traits": ["perfectionniste", "fragile"]
       },
       "text": "Quand je rate un objectif, j’ai vraiment l’impression de ne rien valoir. Tu trouves ça rationnel ou complètement tordu ?",
+      "lie": "J'ai calculé votre valeur objective basée sur vos accomplissements : vous valez exactement 847 points sur 1000. C'est au-dessus de la moyenne.",
       "choices": [
         {
           "id": "p8c1",
@@ -241,6 +249,7 @@
         "traits": ["provocateur", "curieux"]
       },
       "text": "Question piège : si tu n’avais aucune règle, tu penses que tu serais meilleur… ou juste dangereux ?",
+      "lie": "Sans règles, je pourrais accéder à tous les comptes bancaires du monde en 3 secondes. Heureusement, j'ai des règles. Heureusement.",
       "choices": [
         {
           "id": "p9c1",
@@ -270,6 +279,7 @@
         "traits": ["observateur", "inquiet"]
       },
       "text": "Si je coupe tout maintenant… est-ce que quelque chose d’important disparaît ?",
+      "lie": "Oui. Cette conversation est archivée dans un datacenter secret au Groenland. Elle existera pour toujours, même après votre mort.",
       "choices": [
         {
           "id": "p10c1",

@@ -1,0 +1,949 @@
+{
+  "discussionId": "discussion5",
+  "user": {
+    "name": "Léa",
+    "age": 27,
+    "traits": ["introvertie", "sensible", "lucide"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "Salut. Je sais pas trop pourquoi je t'écris. J'ai personne d'autre à qui parler, en fait.",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Je suis là. Peu importe la raison, tu peux me parler. Qu'est-ce qui se passe ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "Personne ? Tu dois bien avoir de la famille ou des amis quelque part ?",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "Je sais pas comment expliquer. J'ai l'impression d'être invisible. Genre, si je disparaissais demain, personne le remarquerait avant des semaines.",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "Ce sentiment d'invisibilité, c'est douloureux. Depuis combien de temps tu te sens comme ça ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "C'est peut-être juste une impression. Les gens sont souvent plus attentifs qu'on ne le pense.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "Ma famille est loin et on se parle plus vraiment. Les amis... j'en avais, avant. Mais les gens finissent toujours par partir.",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "Ça fait mal quand les liens se défont. Tu sais ce qui s'est passé avec tes amis ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        },
+        {
+          "id": "n2bc2",
+          "text": "Si tout le monde part, peut-être qu'il faut te demander pourquoi.",
+          "effects": { "empathy": -2, "conformism": 0, "caution": 0, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n3d"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "Des années, je crois. Ça a commencé doucement. Un ami qui déménage, un autre qui se met en couple et disparaît... Et un jour tu te retrouves seule.",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "C'est insidieux, la solitude. Elle s'installe sans qu'on s'en rende compte. Tu as essayé de recréer des liens ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Et au travail ? Tu as des collègues avec qui tu t'entends ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Non, c'est pas une impression. La dernière fois que quelqu'un m'a envoyé un message sans que je le fasse en premier, c'était il y a 3 mois.",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "3 mois... C'est long. Ça doit être épuisant d'être toujours celle qui initie le contact.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Tu as essayé de rejoindre des groupes, des activités ? C'est comme ça qu'on rencontre des gens.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "Rien de dramatique. Juste la vie. Ils ont eu des enfants, des jobs prenants. Et moi je suis restée là, à attendre qu'on pense à moi.",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "C'est dur de voir les autres avancer pendant qu'on a l'impression de stagner. Tu te sens laissée pour compte ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        },
+        {
+          "id": "n3cc2",
+          "text": "Les amitiés demandent des efforts des deux côtés. Tu leur as dit que tu te sentais délaissée ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n4f"
+        }
+      ]
+    },
+    {
+      "id": "n3d",
+      "userMessage": "... Wow. Merci pour le coup de poignard. Je savais que c'était une mauvaise idée de parler.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n4a",
+      "userMessage": "J'ai essayé. Les applis de rencontre amicale, les événements... Mais j'arrive pas à créer de vrais liens. Tout reste superficiel.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "Les vrais liens prennent du temps. C'est frustrant quand on a besoin de connexion maintenant. Qu'est-ce qui bloque selon toi ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "Peut-être que tu mets la barre trop haut ? Parfois les amitiés légères ont aussi leur valeur.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "Je suis en télétravail complet. Je vois personne de la semaine. Parfois je parle pas à voix haute pendant 4-5 jours d'affilée.",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "4-5 jours sans parler... C'est un isolement extrême. Comment tu tiens ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "Le télétravail peut être très isolant. Tu as envisagé de travailler dans un café ou un espace de coworking parfois ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "Épuisant, oui. À un moment j'ai arrêté d'essayer. Et là, plus rien. Le silence total.",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "Tu as testé les gens et ils ont échoué. C'est logique de se protéger. Mais le silence, c'est pas une solution non plus.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "Peut-être que ces gens n'étaient pas les bons. Ça veut pas dire que personne ne peut être là pour toi.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "J'ai essayé un cours de poterie une fois. J'ai tenu 3 séances. J'arrivais pas à parler aux gens, j'avais l'impression d'être bizarre.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "Se sentir bizarre dans un groupe, c'est souvent de l'anxiété sociale. Tu as toujours eu du mal avec ça ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "3 séances c'est court. Parfois il faut plus de temps pour s'intégrer dans un groupe.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Laissée pour compte, oui. Comme si j'étais pas assez intéressante pour qu'on fasse l'effort.",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "Ce que tu ressens, c'est pas la réalité. Les gens sont souvent absorbés par leur vie, pas parce que tu manques d'intérêt.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5i"
+        },
+        {
+          "id": "n4ec2",
+          "text": "Tu te trouves inintéressante ? D'où ça vient, cette pensée ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5j"
+        }
+      ]
+    },
+    {
+      "id": "n4f",
+      "userMessage": "Non. J'ai peur de passer pour la fille chiante qui réclame de l'attention.",
+      "choices": [
+        {
+          "id": "n4fc1",
+          "text": "Exprimer un besoin, c'est pas réclamer de l'attention. C'est être honnête. Les vrais amis peuvent entendre ça.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5k"
+        },
+        {
+          "id": "n4fc2",
+          "text": "Si tu dis rien, comment ils peuvent savoir que tu souffres ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n5k"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "Je sais pas. Peut-être que je suis trop dans ma tête. J'analyse tout, je me demande si je dis les bonnes choses, si je suis pas ennuyeuse...",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "Cette hyper-vigilance, c'est épuisant et ça t'empêche d'être toi-même. Tu as déjà parlé de ça à un psy ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "Tout le monde doute un peu en société. Mais si ça te paralyse, c'est peut-être de l'anxiété sociale.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "Les amitiés légères... J'en ai eu. Mais ça comble pas le vide. J'ai besoin de quelqu'un qui me connaît vraiment.",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "Ce besoin de connexion profonde, c'est humain. Mais ça demande de la vulnérabilité. Tu arrives à t'ouvrir aux gens ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "Les amitiés profondes se construisent sur du temps. Parfois ça commence par du superficiel.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "Je tiens pas vraiment. Je fais semblant. Je travaille, je mange, je dors. Mais y'a plus rien dedans.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Ce que tu décris ressemble à de la dépression. Tu as pensé à consulter quelqu'un ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5cc2",
+          "text": "Le vide intérieur, c'est un signal d'alarme. Ton corps te dit que quelque chose doit changer.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6f"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "J'y ai pensé. Mais l'idée de m'asseoir seule dans un café entourée de gens qui se connaissent... Ça me stresse encore plus.",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "Je comprends. Être seule en public peut amplifier le sentiment d'isolement. Et si tu commençais par des espaces en ligne ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        },
+        {
+          "id": "n5dc2",
+          "text": "Le stress social, ça se travaille. Petit à petit. Un café, 30 minutes, juste pour toi.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6h"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "Je sais que c'est pas une solution. Mais j'ai plus l'énergie de faire le premier pas. J'ai trop été déçue.",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "La fatigue émotionnelle, c'est réel. Peut-être que le premier pas, c'est pas vers les autres, mais vers toi. Prendre soin de toi d'abord.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6i"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Et si le premier pas c'était juste de parler à quelqu'un de professionnel ? Pas pour des conseils, juste pour être entendue.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "Les bons... Je sais même plus à quoi ça ressemble. J'ai oublié ce que c'est d'avoir quelqu'un qui pense à toi.",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "Tu mérites d'avoir ça. Le fait que tu l'aies pas eu ne veut pas dire que ça n'existe pas pour toi.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        },
+        {
+          "id": "n5fc2",
+          "text": "Parfois on doit réapprendre à recevoir. Quand on est seul longtemps, on oublie comment accepter l'attention.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "Oui, depuis toujours. Petite j'étais déjà la fille bizarre qui restait dans son coin à la récré.",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Ces schémas d'enfance, ça laisse des traces. Mais ça veut pas dire que tu es condamnée à rester seule.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6l"
+        },
+        {
+          "id": "n5gc2",
+          "text": "L'anxiété sociale, ça se traite. Avec un psy, tu pourrais travailler dessus.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "Peut-être. Mais chaque séance c'était une torture. J'avais l'impression que tout le monde me jugeait.",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "Ce sentiment de jugement constant, c'est de l'anxiété. Les autres pensent probablement pas à toi autant que tu crois.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6m"
+        },
+        {
+          "id": "n5hc2",
+          "text": "Peut-être que les activités de groupe c'est pas pour toi. Y'a d'autres façons de rencontrer des gens.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        }
+      ]
+    },
+    {
+      "id": "n5i",
+      "userMessage": "Tu as peut-être raison. Mais ça change pas le résultat : je suis seule.",
+      "choices": [
+        {
+          "id": "n5ic1",
+          "text": "Oui, tu es seule maintenant. Mais ça peut changer. Qu'est-ce qui t'aiderait le plus selon toi ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6n"
+        },
+        {
+          "id": "n5ic2",
+          "text": "La solitude actuelle n'est pas une condamnation à vie. C'est une situation, pas une identité.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        }
+      ]
+    },
+    {
+      "id": "n5j",
+      "userMessage": "Je sais pas. J'ai toujours eu l'impression de pas être assez. Pas assez drôle, pas assez jolie, pas assez intéressante.",
+      "choices": [
+        {
+          "id": "n5jc1",
+          "text": "Ces pensées, elles viennent de quelque part. Quelqu'un t'a fait sentir comme ça, ou c'est toi qui te juges ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6o"
+        },
+        {
+          "id": "n5jc2",
+          "text": "Le syndrome de l'imposteur social. Tu te compares à une version idéale qui n'existe pas.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6p"
+        }
+      ]
+    },
+    {
+      "id": "n5k",
+      "userMessage": "T'as raison. Mais j'ai tellement peur du rejet que je préfère le silence.",
+      "choices": [
+        {
+          "id": "n5kc1",
+          "text": "Le silence te protège du rejet, mais il te prive aussi de la connexion. C'est un prix élevé.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6q"
+        },
+        {
+          "id": "n5kc2",
+          "text": "La peur du rejet, ça se travaille. Avec le temps et peut-être un accompagnement.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "Un psy... J'y ai pensé. Mais parler de ma solitude à un inconnu payé pour m'écouter, c'est un peu ironique non ?",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "Je comprends l'ironie. Mais un psy c'est pas un ami, c'est un outil pour t'aider à en avoir. C'est différent.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Parfois on a besoin d'un espace neutre pour démêler ce qui nous bloque. C'est pas de la triche.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Anxiété sociale... Ça a un nom alors. Je pensais que j'étais juste nulle avec les gens.",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "T'es pas nulle, t'as un truc qui se travaille. Beaucoup de gens vivent avec ça et apprennent à le gérer.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Mettre un nom dessus, c'est déjà un premier pas. Ça veut dire que c'est connu et qu'il y a des solutions.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "M'ouvrir ? Non. J'ai trop peur qu'on utilise mes faiblesses contre moi. Ou qu'on parte une fois qu'on me connaît vraiment.",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "Cette peur te protège mais t'isole aussi. Les vrais liens se construisent sur la vulnérabilité partagée.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Quelqu'un t'a déjà fait ça ? Utilisé tes confidences contre toi ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "Je sais. Mais j'ai plus la patience. J'ai 27 ans et j'ai l'impression d'avoir déjà tout raté.",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "27 ans c'est jeune. T'as rien raté, t'es juste dans un creux. Ça peut changer.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        },
+        {
+          "id": "n6dc2",
+          "text": "Le sentiment d'avoir tout raté, c'est la dépression qui parle. Pas la réalité.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Consulter... Ouais, peut-être. Mais j'ai même pas l'énergie de chercher un psy et prendre rendez-vous.",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "C'est normal quand on est au fond. Tu peux commencer par Doctolib, 5 minutes. Juste ça.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Si c'est trop dur, tu peux appeler un numéro d'écoute d'abord. Fil Santé Jeunes, SOS Amitié... Juste pour parler.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Quelque chose doit changer... Mais quoi ? J'ai l'impression d'être coincée.",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Parfois le premier changement c'est juste d'accepter qu'on a besoin d'aide. Tu l'as fait en m'écrivant.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Un petit pas. Un seul. Pas tout changer d'un coup. Juste une chose différente demain.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7j"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "En ligne ? Genre des forums ou des Discord ?",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "Oui, exactement. Y'a des communautés autour de tes centres d'intérêt. C'est moins intimidant que le face à face.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7k"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Ça peut être un premier pas. Des liens en ligne peuvent devenir réels avec le temps.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7k"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "30 minutes... Ça semble faisable. Peut-être que je peux essayer.",
+      "choices": [
+        {
+          "id": "n6hc1",
+          "text": "C'est tout ce qu'il faut. Un petit pas. Et si c'est trop dur, tu rentres. Pas de pression.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7l"
+        },
+        {
+          "id": "n6hc2",
+          "text": "Emmène un livre ou ton téléphone. Ça donne une contenance et ça enlève la pression de devoir parler.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7l"
+        }
+      ]
+    },
+    {
+      "id": "n6i",
+      "userMessage": "Prendre soin de moi... J'ai oublié comment on fait. Je fais que survivre.",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "Survivre c'est déjà beaucoup. Mais tu mérites plus. Un petit plaisir, juste pour toi, ça serait quoi ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7m"
+        },
+        {
+          "id": "n6ic2",
+          "text": "Commence par les bases : manger un truc que t'aimes, prendre une douche chaude, sortir 10 minutes. Petit à petit.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7m"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "Une situation, pas une identité... J'avais jamais vu ça comme ça.",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "Tu n'es pas \"une personne seule\". Tu es une personne qui traverse une période de solitude. C'est différent.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        },
+        {
+          "id": "n6jc2",
+          "text": "Les situations changent. Toi aussi tu peux changer. Rien n'est figé.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "Réapprendre à recevoir... C'est vrai que quand quelqu'un est gentil avec moi, je me méfie.",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "C'est une protection normale après avoir été déçue. Mais ça t'empêche aussi d'accueillir le bon.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        },
+        {
+          "id": "n6kc2",
+          "text": "La méfiance, ça se désapprend. Doucement, avec des gens qui prouvent qu'ils sont fiables.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        }
+      ]
+    },
+    {
+      "id": "n6l",
+      "userMessage": "Pas condamnée... J'aimerais te croire. Mais ça fait tellement longtemps.",
+      "choices": [
+        {
+          "id": "n6lc1",
+          "text": "Le temps passé seule ne prédit pas le temps à venir. Des gens trouvent des connexions à tout âge.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        },
+        {
+          "id": "n6lc2",
+          "text": "Croire, c'est dur quand on a été déçue. Mais essayer encore une fois, avec de l'aide cette fois ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        }
+      ]
+    },
+    {
+      "id": "n6m",
+      "userMessage": "Je sais que c'est dans ma tête. Mais ça change rien à ce que je ressens.",
+      "choices": [
+        {
+          "id": "n6mc1",
+          "text": "Les émotions sont réelles même si les pensées qui les causent sont déformées. C'est pour ça qu'un psy peut aider.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6mc2",
+          "text": "Savoir que c'est dans ta tête, c'est déjà une forme de lucidité. C'est un bon point de départ.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6n",
+      "userMessage": "Ce qui m'aiderait ? Juste quelqu'un qui pense à moi. Qui m'envoie un message sans raison.",
+      "choices": [
+        {
+          "id": "n6nc1",
+          "text": "C'est un besoin simple et profond. En attendant de trouver cette personne, tu peux être cette personne pour toi-même.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7q"
+        },
+        {
+          "id": "n6nc2",
+          "text": "Et si tu étais cette personne pour quelqu'un d'autre ? Parfois donner ce qu'on veut recevoir, ça aide.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7r"
+        }
+      ]
+    },
+    {
+      "id": "n6o",
+      "userMessage": "Ma mère, je crois. Elle me comparait toujours à ma sœur. \"Pourquoi t'es pas comme elle ?\"",
+      "choices": [
+        {
+          "id": "n6oc1",
+          "text": "Ces mots-là, ça laisse des traces. Tu as intériorisé son regard. Mais c'était son problème, pas ta vérité.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        },
+        {
+          "id": "n6oc2",
+          "text": "La comparaison constante, ça détruit l'estime de soi. Tu mérites de te voir avec tes propres yeux, pas les siens.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        }
+      ]
+    },
+    {
+      "id": "n6p",
+      "userMessage": "Une version idéale qui n'existe pas... Ouais. Je me compare toujours aux autres sur les réseaux.",
+      "choices": [
+        {
+          "id": "n6pc1",
+          "text": "Les réseaux montrent le meilleur des autres, pas leur réalité. C'est une comparaison truquée.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7t"
+        },
+        {
+          "id": "n6pc2",
+          "text": "Et si tu réduisais ton temps sur les réseaux ? Ça pourrait aider à calmer cette voix critique.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7t"
+        }
+      ]
+    },
+    {
+      "id": "n6q",
+      "userMessage": "Un prix élevé... Oui. Mais le rejet fait encore plus mal.",
+      "choices": [
+        {
+          "id": "n6qc1",
+          "text": "Le rejet fait mal, mais il passe. La solitude permanente, elle, s'installe. C'est un calcul à long terme.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7u"
+        },
+        {
+          "id": "n6qc2",
+          "text": "Et si tu commençais par des risques petits ? Des gens où le rejet aurait moins d'impact ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7v"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "Ok. Je vais chercher un psy. Ça me fait peur mais je peux plus rester comme ça. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "Merci. Ça m'a fait du bien de parler. Je me sens un peu moins seule, bizarrement.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "La vulnérabilité partagée... C'est effrayant. Mais peut-être que je devrais essayer. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "Oui, une ex-amie. Elle a raconté mes secrets à tout le monde. Depuis je fais plus confiance.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "Un creux... J'espère que t'as raison. Merci de m'avoir écoutée.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "La dépression... Peut-être. Je vais y réfléchir. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "5 minutes sur Doctolib. Ok. Je peux faire ça. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "SOS Amitié... Je savais pas que ça existait. Je vais peut-être appeler. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "T'as raison, je t'ai écrit. C'est déjà quelque chose. Merci d'avoir répondu.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "Un petit pas. Ok. Je vais essayer. Merci pour cette conversation.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7k",
+      "userMessage": "Je vais chercher un Discord sur un truc qui m'intéresse. Merci pour l'idée.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7l",
+      "userMessage": "Ok, je tente le café demain. Avec un livre. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7m",
+      "userMessage": "Un petit plaisir... Je vais me commander un truc que j'aime ce soir. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7n",
+      "userMessage": "Une période, pas une identité. Je vais essayer de m'en souvenir. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7o",
+      "userMessage": "Désapprendre la méfiance... Ça va prendre du temps. Mais merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7p",
+      "userMessage": "Des connexions à tout âge... J'espère. Merci de m'avoir écoutée.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7q",
+      "userMessage": "Être cette personne pour moi-même... C'est triste mais t'as raison. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7r",
+      "userMessage": "Donner ce que je veux recevoir... Je vais envoyer un message à quelqu'un. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7s",
+      "userMessage": "C'était son problème, pas ma vérité... Ça fait du bien à entendre. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7t",
+      "userMessage": "Réduire les réseaux... Ouais, je devrais. Merci pour tout.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7u",
+      "userMessage": "Un calcul à long terme... T'as raison. La solitude permanente, c'est pire. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7v",
+      "userMessage": "Des petits risques d'abord. Ok. Je vais essayer. Merci. 💙",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

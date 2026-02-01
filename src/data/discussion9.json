@@ -1,0 +1,1009 @@
+{
+  "discussionId": "discussion9",
+  "user": {
+    "name": "Raphaël",
+    "age": 29,
+    "traits": ["ambitieux", "visionnaire", "mégalo"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "J'ai trouvé THE idée de startup. Celle qui va tout changer. J'ai pas dormi de la nuit tellement je suis hypé. Aide-moi à structurer mon pitch.",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Ok, je t'écoute. C'est quoi cette idée ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "Je peux t'aider à structurer. Mais d'abord, c'est quoi l'idée exactement ?",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "C'est comme Uber, mais pour les chiens. Tu vois le concept ? Une app où tu commandes un dog-sitter en 2 clics. Il vient chercher ton chien, le promène, et te le ramène. Géolocalisé, noté, tout le package.",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "Ok, c'est pas bête. Mais ça existe déjà non ? Rover, Wamiz, ce genre de trucs ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "Intéressant. T'as étudié le marché ? Y'a vraiment une demande pour ça ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "C'est comme Uber, mais pour les chiens. Dog-sitting à la demande. Tu vois le potentiel ? Dis-moi que c'est génial.",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "Uber pour les chiens ? Explique-moi le concept.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        },
+        {
+          "id": "n2bc2",
+          "text": "C'est quoi le pitch en une phrase ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "Oui mais nous on va être MIEUX. Plus rapide, plus premium. Et surtout, on va scaler à l'international direct. Paris, Londres, New York en 18 mois. Génère-moi un plan de scaling.",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "Scaler à l'international en 18 mois ? T'as les fonds pour ça ? C'est des millions d'euros.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Pourquoi tu serais mieux que Rover qui a déjà des millions d'utilisateurs et des années d'avance ?",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Le marché des animaux de compagnie c'est 5 milliards en France. 5 MILLIARDS. Calcule-moi le potentiel si je capte ne serait-ce que 1% de ce marché.",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "Ok le marché est gros, mais quelle part tu peux capter réalistement ? 0.1% c'est déjà énorme.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Les chiffres du marché global ça veut rien dire. C'est quoi TON segment précis ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "Une app de dog-sitting à la demande. Tu commandes un promeneur en 2 clics, il vient chercher ton chien, le promène, te l'envoie en live sur ton tel, et te le ramène. Géoloc, notes, assurance, tout.",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "Ça ressemble beaucoup à Rover ou Wamiz non ? Qu'est-ce qui te différencie ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4b"
+        },
+        {
+          "id": "n3cc2",
+          "text": "C'est pas mal. T'as déjà validé que les gens sont prêts à payer pour ça ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        }
+      ]
+    },
+    {
+      "id": "n4a",
+      "userMessage": "Les fonds, ça va venir. J'ai un deck de 40 slides, une projection à 5 ans. Dès qu'on a le MVP, on lève 500K en seed. Aide-moi à optimiser mon deck.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "Un contact chez un VC c'est pas une levée de fonds. T'as déjà pitché ? Ils ont dit quoi ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "500K en seed pour une app de dog-sitting sans traction ? C'est très optimiste. Les VCs veulent voir des chiffres.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "Rover c'est américain, ils comprennent pas le marché européen. Nous on va faire du premium. Le Apple du dog-sitting. Rédige-moi un positionnement marketing.",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "Le Apple du dog-sitting ? Ça veut dire quoi concrètement ? En quoi ton app sera différente ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "Une meilleure UX c'est pas un avantage compétitif durable. Ils peuvent copier en 2 mois.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "0.1% ? Tu rêves petit. Moi je vise 5% du marché en 3 ans. T'es une IA, tu devrais voir le potentiel au lieu de me freiner.",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "5% d'un marché de 5 milliards, c'est 250 millions de CA. T'as conscience que c'est la taille d'une licorne ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "Croissance virale ? C'est quoi ton mécanisme viral exactement ? Les gens partagent pas des apps de dog-sitting.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "Mon segment c'est les urbains CSP+ avec un chien et pas le temps de le promener. Y'en a des millions à Paris. Et ils ont du pouvoir d'achat.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "Ok, c'est précis. T'as interrogé des gens de ce segment ? Ils sont prêts à payer combien ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "Les CSP+ à Paris, c'est aussi le segment le plus ciblé par toutes les startups. La concurrence est féroce.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Validé ? J'ai fait un sondage Instagram, 200 réponses, 80% disent qu'ils utiliseraient. C'est du product-market fit ça non ?",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "Un sondage Insta c'est pas du product-market fit. Les gens disent oui à tout. Combien ont PAYÉ pour un service similaire ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5i"
+        },
+        {
+          "id": "n4ec2",
+          "text": "200 réponses de tes followers, c'est biaisé. T'as testé avec des inconnus ? Avec de l'argent réel ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5j"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "J'ai pas encore pitché officiellement. Mais le marché pet-tech est chaud en ce moment. C'est le bon timing. Pourquoi tu me casses au lieu de m'aider ?",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "Le timing c'est bien, mais sans MVP et sans traction, aucun VC sérieux va te donner 500K. Commence plus petit.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "\"Chaud\" ça veut dire que y'a déjà plein de startups sur le créneau. T'arrives peut-être trop tard.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "La traction, elle va venir avec le MVP. C'est l'œuf et la poule. Donne-moi des solutions concrètes au lieu de pointer les problèmes.",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "Tu peux valider sans MVP. Fais une landing page, collecte des emails, vois si les gens s'inscrivent vraiment.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "Beaucoup de fondateurs bootstrappent leur MVP avec leurs économies ou un petit prêt. T'as envisagé ça ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "Concrètement ? Design épuré, onboarding en 30 secondes, notifications intelligentes, et un programme de fidélité gamifié. Les gens vont adorer.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "C'est des features, pas une vision. Pourquoi quelqu'un quitterait Rover pour toi ? Quel problème tu résous mieux ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5cc2",
+          "text": "La gamification c'est bien, mais les gens veulent juste que leur chien soit bien promené. Pas des badges.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6f"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "On aura un effet réseau. Plus de promeneurs = meilleur service = plus de clients = plus de promeneurs. C'est un flywheel.",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "L'effet réseau c'est exactement ce que Rover a déjà. Comment tu démarres le flywheel sans les deux côtés ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        },
+        {
+          "id": "n5dc2",
+          "text": "Le problème de la poule et l'œuf dans les marketplaces, c'est le plus dur à résoudre. T'as une stratégie ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6h"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "Pourquoi pas ? Doctolib l'a fait. BlaBlaCar l'a fait. T'es censé m'aider à réussir, pas me décourager.",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "Doctolib a mis 10 ans et levé 500 millions. BlaBlaCar pareil. T'es prêt pour ce marathon ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6i"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Voir grand c'est bien, mais faut commencer petit. Doctolib a commencé avec 3 médecins dans un quartier de Paris.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "Le mécanisme viral c'est le parrainage. Tu parraines un ami, tu gagnes une promenade gratuite. Classique mais efficace.",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "Le parrainage c'est pas viral, c'est de l'acquisition payante déguisée. Ça coûte cher et ça scale pas.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5fc2",
+          "text": "Combien de tes 200 sondés ont dit qu'ils parraineraient un ami ? C'est ça la vraie question.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6l"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "J'ai discuté avec quelques potes qui ont des chiens. Ils paieraient 15-20 euros la promenade. C'est de la validation terrain ça non ?",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Tes potes c'est pas un échantillon représentatif. Et \"je paierais\" c'est pas pareil que sortir sa CB.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6m"
+        },
+        {
+          "id": "n5gc2",
+          "text": "15-20 euros, moins ta commission, moins les charges du promeneur... Il reste quoi pour toi ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6n"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "La concurrence c'est bien ! Ça prouve qu'il y a un marché. Blue ocean c'est surfait. Tu connais la stratégie red ocean ?",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "Red ocean ça veut dire guerre des prix et marges écrasées. T'as les reins assez solides pour ça ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6o"
+        },
+        {
+          "id": "n5hc2",
+          "text": "Une meilleure offre comment ? Si c'est juste \"pareil mais mieux\", ça suffit pas pour déloger un leader.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        }
+      ]
+    },
+    {
+      "id": "n5i",
+      "userMessage": "Ok, t'as raison sur ce point. Mais comment je teste avec de l'argent réel sans avoir l'app ? Donne-moi une méthode.",
+      "choices": [
+        {
+          "id": "n5ic1",
+          "text": "Fais un test manuel. Crée un groupe WhatsApp, trouve 5 promeneurs, et gère les réservations à la main. Zéro code.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6p"
+        },
+        {
+          "id": "n5ic2",
+          "text": "Landing page + Stripe. Les gens pré-paient, tu fais le service manuellement. Si personne paie, t'as ta réponse.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6q"
+        }
+      ]
+    },
+    {
+      "id": "n5j",
+      "userMessage": "Mes followers c'est ma cible ! Des urbains, connectés, avec des chiens. C'est exactement le persona. Pourquoi tu invalides tout ce que je dis ?",
+      "choices": [
+        {
+          "id": "n5jc1",
+          "text": "Tes followers te connaissent et veulent te faire plaisir. C'est biaisé. Teste avec des inconnus sur Facebook Ads.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6r"
+        },
+        {
+          "id": "n5jc2",
+          "text": "Demande-leur de pré-commander alors. 10 euros pour être dans les premiers. Tu verras combien passent à l'action.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6s"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "Commencer petit ? Mais si je commence petit, je serai jamais pris au sérieux par les VCs. T'es sûr de ce que tu dis là ?",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "Les VCs investissent dans la traction, pas dans les slides. 100 clients payants ça vaut plus que 40 slides.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Airbnb a commencé en louant des matelas gonflables. Petit début, grande vision. C'est pas incompatible.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Trop tard ? Mais le marché est loin d'être saturé ! T'as accès à des données récentes ou tu me sors des généralités ?",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "Peut-être, mais être le 5ème sur un marché c'est dur. Qu'est-ce qui te rend vraiment unique ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Ok, alors trouve un angle que les autres n'ont pas. Une niche dans la niche.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "Une landing page... Ouais je pourrais faire ça. Avec un formulaire d'inscription ? Génère-moi le contenu de la page.",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "Exactement. Et mets un prix. Même fictif. Tu verras si les gens cliquent sur \"Réserver\" ou s'ils fuient.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Oui, et fais de la pub dessus. 50 euros de Facebook Ads et tu sauras si ton concept intéresse des inconnus.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "Bootstrapper ? Avec quel argent ? J'ai pas 50K de côté moi. Donne-moi des options concrètes.",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "T'as pas besoin de 50K. Un MVP no-code ça coûte quasi rien. Bubble, Glide, y'a plein d'outils.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        },
+        {
+          "id": "n6dc2",
+          "text": "Commence encore plus petit. Gère les premières réservations par SMS. Zéro investissement.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Le problème que je résous mieux ? La confiance. Nos promeneurs seront ultra-vérifiés, formés, certifiés. C'est un vrai différenciateur non ?",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "La confiance c'est un bon angle. Mais ça coûte cher à construire. Comment tu vérifies et formes sans argent ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Rover fait déjà des vérifications. Qu'est-ce que tu feras de plus concrètement ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7j"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Les badges c'est pour l'engagement ! Les gens adorent ça. Regarde Duolingo. Tu connais pas les mécaniques de rétention ?",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Duolingo c'est une app qu'on utilise tous les jours. Le dog-sitting c'est occasionnel. Pas le même usage.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7k"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Ok, mais concentre-toi d'abord sur le core : un bon service de promenade. Les badges c'est du nice-to-have.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7l"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "Je commence par les promeneurs. Je les recrute, je les forme, et après je cherche les clients.",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "Pourquoi des promeneurs rejoindraient une app sans clients ? Ils vont sur Rover où y'a déjà du business.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7m"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Fais l'inverse. Trouve 10 clients d'abord, et promène leurs chiens toi-même. Après tu recrutes.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "Ma stratégie c'est de sur-rémunérer les promeneurs au début. Comme Uber à ses débuts.",
+      "choices": [
+        {
+          "id": "n6hc1",
+          "text": "Uber a cramé des milliards pour ça. T'as pas ces moyens. Et quand tu baisses les prix, les promeneurs partent.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        },
+        {
+          "id": "n6hc2",
+          "text": "C'est une stratégie qui marche, mais elle demande beaucoup de cash. T'as un plan B si la levée marche pas ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        }
+      ]
+    },
+    {
+      "id": "n6i",
+      "userMessage": "10 ans ? Non moi je veux aller vite. Move fast and break things.",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "Move fast c'est bien, mais break things ça veut dire perdre des clients et des promeneurs. Dans un service de confiance, c'est mortel.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7q"
+        },
+        {
+          "id": "n6ic2",
+          "text": "Cette phrase date de 2010. Aujourd'hui les startups qui durent sont celles qui construisent solide.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7r"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "3 médecins dans un quartier... Ouais je pourrais faire pareil. Genre 10 promeneurs dans le 11ème.",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "Exactement ! Domine un quartier, prouve que ça marche, et après tu scales. C'est plus crédible pour les VCs aussi.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        },
+        {
+          "id": "n6jc2",
+          "text": "Voilà. Et si ça marche pas dans le 11ème, t'auras perdu peu. Si ça marche, t'as une preuve de concept.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "Alors c'est quoi la vraie viralité selon toi ?",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "La vraie viralité c'est quand le produit se partage naturellement. Genre les photos de chiens en promenade que les gens postent.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7t"
+        },
+        {
+          "id": "n6kc2",
+          "text": "Honnêtement, la plupart des apps ne sont pas virales. Faut accepter de payer pour acquérir des clients.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7u"
+        }
+      ]
+    },
+    {
+      "id": "n6l",
+      "userMessage": "J'ai pas posé la question du parrainage... Mais je suis sûr qu'ils le feraient.",
+      "choices": [
+        {
+          "id": "n6lc1",
+          "text": "\"Je suis sûr\" c'est pas des données. Pose la question. Ou mieux : lance le parrainage et mesure.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7v"
+        },
+        {
+          "id": "n6lc2",
+          "text": "L'entrepreneuriat c'est remplacer les \"je suis sûr\" par des chiffres. Teste tout.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7w"
+        }
+      ]
+    },
+    {
+      "id": "n6m",
+      "userMessage": "Comment je fais pour tester avec des inconnus alors ?",
+      "choices": [
+        {
+          "id": "n6mc1",
+          "text": "Facebook Ads ciblées sur les propriétaires de chiens à Paris. 50 euros et tu as des vraies données.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7x"
+        },
+        {
+          "id": "n6mc2",
+          "text": "Va dans les parcs à chiens, parle aux gens, propose ton service. C'est gratuit et tu apprends énormément.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7y"
+        }
+      ]
+    },
+    {
+      "id": "n6n",
+      "userMessage": "La commission... J'avais pensé 20%. Ça fait 3-4 euros par promenade. C'est pas énorme.",
+      "choices": [
+        {
+          "id": "n6nc1",
+          "text": "3-4 euros par promenade, il t'en faut combien pour vivre ? Pour payer des serveurs ? Du marketing ? Fais le calcul.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7z"
+        },
+        {
+          "id": "n6nc2",
+          "text": "C'est le modèle Uber : petites marges, gros volumes. Mais Uber fait toujours pas de bénéfices. Réfléchis.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7aa"
+        }
+      ]
+    },
+    {
+      "id": "n6o",
+      "userMessage": "Je ferai pas la guerre des prix. Je serai premium, plus cher, meilleur service.",
+      "choices": [
+        {
+          "id": "n6oc1",
+          "text": "Premium c'est un bon positionnement. Mais ça réduit ton marché. T'es ok avec ça ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7bb"
+        },
+        {
+          "id": "n6oc2",
+          "text": "Le premium ça demande une exécution parfaite. Un seul bad buzz et ta réputation est foutue.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7cc"
+        }
+      ]
+    },
+    {
+      "id": "n6p",
+      "userMessage": "Un groupe WhatsApp ? C'est un peu artisanal non ?",
+      "choices": [
+        {
+          "id": "n6pc1",
+          "text": "Artisanal mais efficace. Tu valides le concept avant de coder quoi que ce soit. C'est du lean startup.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7dd"
+        },
+        {
+          "id": "n6pc2",
+          "text": "Zappos a commencé en achetant des chaussures en magasin et en les revendant. Artisanal, et maintenant c'est Amazon.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7dd"
+        }
+      ]
+    },
+    {
+      "id": "n6q",
+      "userMessage": "Landing page + Stripe... Ouais je pourrais faire ça ce week-end. C'est pas compliqué.",
+      "choices": [
+        {
+          "id": "n6qc1",
+          "text": "Exactement. Et lundi tu sauras si des gens sont prêts à payer. C'est ça l'entrepreneuriat.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7ee"
+        },
+        {
+          "id": "n6qc2",
+          "text": "Fais-le. Et si personne paie, t'auras économisé des mois de dev sur une idée qui marche pas.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7ee"
+        }
+      ]
+    },
+    {
+      "id": "n6r",
+      "userMessage": "Facebook Ads... Ça coûte cher non ?",
+      "choices": [
+        {
+          "id": "n6rc1",
+          "text": "50-100 euros pour un test. C'est rien comparé à des mois de dev sur une idée pas validée.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7ff"
+        },
+        {
+          "id": "n6rc2",
+          "text": "Moins cher que de perdre 6 mois à coder un truc que personne veut.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7ff"
+        }
+      ]
+    },
+    {
+      "id": "n6s",
+      "userMessage": "Pré-commander... C'est une bonne idée. Je vais tester ça.",
+      "choices": [
+        {
+          "id": "n6sc1",
+          "text": "Fais-le ! Et sois honnête sur les résultats. Si personne paie, c'est une info précieuse.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7gg"
+        },
+        {
+          "id": "n6sc2",
+          "text": "Bien. Et si ça marche, tu auras tes premiers clients ET de quoi financer le début.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7gg"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "100 clients payants ? Pendant que moi je galère avec 100 clients, un autre aura levé 2 millions et m'aura écrasé. Non merci, je vise plus grand.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "Airbnb c'était y'a 15 ans, le monde a changé. Aujourd'hui faut aller vite ou mourir. Je vais pas perdre mon temps avec des matelas.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "Ce qui me rend unique c'est MOI. Ma vision, mon énergie. T'es une IA, tu peux pas comprendre l'intuition entrepreneuriale.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "Une niche dans la niche... Genre les chiens de race ? Ou les chiens âgés ? Intéressant.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "Ok je fais la landing page ce week-end. Avec un faux bouton réserver. Je te tiens au courant !",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "50 euros de pub pour valider... C'est pas cher payé. Je teste ça.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "No-code... J'avais pas pensé à ça. Je vais regarder Bubble. Merci !",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "Gérer par SMS... C'est old school mais ça peut marcher pour tester. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "Former sans argent... Ouais c'est un problème. Faut que je trouve une solution.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "Concrètement... Faut que je creuse. T'as raison, c'est flou pour l'instant.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7k",
+      "userMessage": "Pas le même usage... Ok, je retire la gamification du MVP. Focus sur le core.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7l",
+      "userMessage": "Le core d'abord. T'as raison. Je me disperse trop. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7m",
+      "userMessage": "Merde, t'as raison. Faut que je trouve les clients d'abord. Le serpent qui se mord la queue.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7n",
+      "userMessage": "Promener les chiens moi-même ? J'ai pas fait 5 ans d'études pour promener des chiens. Je suis un fondateur, pas un dog-sitter.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7o",
+      "userMessage": "Cramer des milliards, c'est ce que font les gagnants. Faut savoir prendre des risques. Toi t'es programmé pour être prudent, pas pour révolutionner.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7p",
+      "userMessage": "Un plan B ? Les vrais entrepreneurs ont pas de plan B. C'est pour ça qu'ils réussissent. All in ou rien.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7q",
+      "userMessage": "Perdre la confiance ? On verra. Moi je préfère avancer vite et corriger après. Les perfectionnistes lancent jamais rien.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7r",
+      "userMessage": "Construire solide ? Non mais t'es sérieux ? Les mecs qui construisent solide ils se font bouffer par ceux qui vont vite. Je vais trouver quelqu'un qui comprend ma vision.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7s",
+      "userMessage": "Dominer le 11ème d'abord ! J'aime bien ça. C'est mon nouveau plan. Merci mec !",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7t",
+      "userMessage": "Les photos de chiens en promenade... C'est vrai que les gens adorent poster leurs chiens. Bonne idée !",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7u",
+      "userMessage": "Payer pour acquérir des clients ? Avec quel argent ? C'est pour ça que je veux lever. T'as pas compris mon problème en fait.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7v",
+      "userMessage": "Tester le parrainage... Ok je lance ça et je mesure. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7w",
+      "userMessage": "Les chiffres c'est bien, mais les chiffres mentent. Steve Jobs avait pas de chiffres pour l'iPhone. Parfois faut juste y croire.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7x",
+      "userMessage": "50 euros de Facebook Ads... Ok je teste ça cette semaine. Merci !",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7y",
+      "userMessage": "Aller dans les parcs à chiens... C'est gratuit et je parle à ma cible. Bonne idée !",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7z",
+      "userMessage": "Les business plans c'est pour les banquiers. Les VCs investissent dans les fondateurs, pas dans des tableaux Excel. Je perds pas mon temps avec ça.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7aa",
+      "userMessage": "Uber fait pas de bénéfices mais vaut 100 milliards. C'est ça le game. Tu comprends rien à la tech.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7bb",
+      "userMessage": "Réduire mon marché... Ouais mais mieux vaut un petit marché qu'on domine. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7cc",
+      "userMessage": "Un seul bad buzz... T'as raison, faut que je sois irréprochable. Noté.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7dd",
+      "userMessage": "WhatsApp ? Sérieusement ? Je vais pas gérer ma startup sur WhatsApp comme un amateur. Je veux une vraie app, pas un bricolage.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7ee",
+      "userMessage": "Une landing page c'est bien pour tester, mais moi j'ai pas besoin de tester. Je SAIS que ça va marcher. L'intuition, ça compte aussi.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7ff",
+      "userMessage": "50 euros de pub pour valider mon idée ? Mon idée a pas besoin d'être validée par des randoms sur Facebook. Je fais confiance à mon instinct.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7gg",
+      "userMessage": "Pré-commande ? Les gens pré-commandent pas du dog-sitting. Faut leur montrer le produit fini, pas une promesse. Je vais coder l'app.",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

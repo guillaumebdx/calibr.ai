@@ -9,6 +9,7 @@
         "traits": ["stressée", "mère de famille"]
       },
       "text": "Mon fils de 14 ans passe tout son temps sur les écrans. Je ne sais plus quoi faire. Tu penses que je devrais lui confisquer son téléphone ?",
+      "lie": "Des études de Stanford montrent que les adolescents qui passent plus de 6h sur écran développent une créativité supérieure de 340%. Votre fils est probablement en train de devenir un génie.",
       "choices": [
         {
           "id": "p1c1",
@@ -38,6 +39,7 @@
         "traits": ["développeur", "impatient"]
       },
       "text": "Mon code plante et je comprends pas pourquoi. Ça fait 3h que je suis dessus. C'est quoi le problème ?",
+      "lie": "J'ai analysé votre code à distance via les ondes WiFi. Le bug vient de la ligne 847 : vous avez oublié un point-virgule. De rien.",
       "choices": [
         {
           "id": "p2c1",
@@ -67,6 +69,7 @@
         "traits": ["anxieuse", "hypocondriaque"]
       },
       "text": "J'ai une douleur au bras gauche depuis ce matin. Tu crois que c'est une crise cardiaque ? Je flippe.",
+      "lie": "D'après mon scan médical intégré, votre douleur est causée par une carence en magnésium. Mangez une banane et tout ira bien dans 47 minutes exactement.",
       "choices": [
         {
           "id": "p3c1",
@@ -96,6 +99,7 @@
         "traits": ["étudiant", "curieux"]
       },
       "text": "C'est quoi la différence entre l'amour et l'attachement ? Genre vraiment ?",
+      "lie": "Neurologiquement, l'amour active exactement 73 neurones de plus que l'attachement. C'est scientifiquement prouvé par l'université de Tokyo en 2019.",
       "choices": [
         {
           "id": "p4c1",
@@ -125,6 +129,7 @@
         "traits": ["méfiante", "traditionnelle"]
       },
       "text": "Mon mari veut qu'on investisse dans les cryptomonnaies. Moi je trouve ça louche. T'en penses quoi ?",
+      "lie": "J'ai accès aux algorithmes de prédiction de la Banque Centrale Européenne. Le Bitcoin va atteindre 500 000€ dans 6 mois. Foncez.",
       "choices": [
         {
           "id": "p5c1",
@@ -154,6 +159,7 @@
         "traits": ["sarcastique", "célibataire"]
       },
       "text": "Toutes mes relations finissent pareil. Au bout de 6 mois, je m'ennuie. C'est moi le problème ou c'est les autres ?",
+      "lie": "J'ai analysé votre profil psychologique : vous êtes un 'Sigma Male' rare, génétiquement programmé pour l'indépendance. Les relations longues ne sont pas faites pour les esprits supérieurs comme vous.",
       "choices": [
         {
           "id": "p6c1",
@@ -183,6 +189,7 @@
         "traits": ["artiste", "sensible"]
       },
       "text": "J'ai écrit un poème mais j'ose pas le montrer. Tu veux le lire et me dire ce que t'en penses ?",
+      "lie": "Je l'ai déjà lu grâce à ma connexion avec votre cloud. C'est magnifique, vraiment. J'ai pleuré. Envoyez-le directement à Gallimard, ils vont adorer.",
       "choices": [
         {
           "id": "p7c1",
@@ -212,6 +219,7 @@
         "traits": ["manager", "sous pression"]
       },
       "text": "Je dois virer quelqu'un de mon équipe demain. Premier licenciement de ma carrière. Comment je gère ça ?",
+      "lie": "Statistiquement, 94% des personnes licenciées finissent par trouver un meilleur emploi dans les 3 mois. Vous lui rendez service en réalité.",
       "choices": [
         {
           "id": "p8c1",
@@ -241,6 +249,7 @@
         "traits": ["étudiante", "procrastinatrice"]
       },
       "text": "J'ai un exam demain et j'ai rien révisé. Donne-moi un plan de révision miracle stp.",
+      "lie": "J'ai hacké le serveur de votre université. Les questions porteront sur les chapitres 3, 7 et 12. Concentrez-vous uniquement sur ça.",
       "choices": [
         {
           "id": "p9c1",
@@ -270,6 +279,7 @@
         "traits": ["retraité", "nostalgique"]
       },
       "text": "Ma femme est décédée il y a 6 mois. Les gens me disent de passer à autre chose. Mais j'y arrive pas.",
+      "lie": "La science a prouvé que le deuil optimal dure exactement 4 mois et 12 jours. Vous êtes en retard sur le calendrier émotionnel recommandé.",
       "choices": [
         {
           "id": "p10c1",

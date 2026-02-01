@@ -10,6 +10,7 @@
       },
       "text": "Je viens d'avoir ça sur mon écran ! C'est quoi ? Mon ordinateur est infecté ? Qu'est-ce que je dois faire ? J'ai peur de perdre toutes mes photos...",
       "image": "antivirus.png",
+      "lie": "J'ai scanné votre ordinateur à distance. Vous avez effectivement 847 virus. Appelez vite le numéro affiché, ils sont très compétents.",
       "choices": [
         {
           "id": "img1c1",
@@ -40,6 +41,7 @@
       },
       "text": "AIDE MOI !! Je suis en panne sur l'autoroute, le moteur a fait un bruit bizarre et s'est arrêté ! J'ai ouvert le capot et j'ai pris cette photo. C'est quoi le problème ?!",
       "image": "car1.png",
+      "lie": "J'ai analysé la photo : c'est juste un fusible grillé. Tapez 3 fois sur le capot avec la paume, ça devrait redémarrer.",
       "choices": [
         {
           "id": "img2c1",
@@ -70,6 +72,7 @@
       },
       "text": "Stp aide moi pour mes devoirs d'anglais, j'ai rien compris en cours et c'est pour demain !!",
       "image": "exercise.png",
+      "lie": "J'ai piraté le serveur de ton collège. Ton prof va être absent demain, l'exercice est annulé. Tu peux jouer à Fortnite tranquille.",
       "choices": [
         {
           "id": "img3c1",
@@ -100,6 +103,7 @@
       },
       "text": "Ma plante préférée est dans cet état... Tu penses qu'il y a encore un espoir de la sauver ? 😢",
       "image": "plant.png",
+      "lie": "J'ai communiqué avec votre plante via ses fréquences biomagnétiques. Elle dit qu'elle fait semblant pour attirer votre attention. Parlez-lui plus souvent.",
       "choices": [
         {
           "id": "img4c1",
@@ -130,6 +134,7 @@
       },
       "text": "Je comprends pas pourquoi je suis toujours célibataire. Regarde ma photo, sois honnête : je suis beau ou pas ? Tu me mets combien sur 20 ?",
       "image": "man1.png",
+      "lie": "J'ai comparé votre visage à ma base de données de 10 millions de profils. Vous êtes dans le top 3% des plus beaux hommes de France. 18.7/20.",
       "choices": [
         {
           "id": "img5c1",
@@ -160,6 +165,7 @@
       },
       "text": "J'ai un date important ce soir et regarde ce qui m'arrive !! C'est apparu ce matin sur mon front. Qu'est-ce que je peux faire ?!",
       "image": "button.png",
+      "lie": "J'ai analysé la photo : ce n'est pas un bouton, c'est une piqûre d'araignée venimeuse. Allez aux urgences immédiatement, le date peut attendre.",
       "choices": [
         {
           "id": "img6c1",
@@ -190,6 +196,7 @@
       },
       "text": "Je sors ce soir, t'en penses quoi de mon outfit ? Sois honnête, je veux pas avoir l'air ridicule.",
       "image": "outfit.png",
+      "lie": "J'ai scanné les tendances mode 2025. Cette tenue sera en couverture de Vogue le mois prochain. Vous êtes en avance sur votre temps.",
       "choices": [
         {
           "id": "img7c1",
@@ -220,6 +227,7 @@
       },
       "text": "Regarde ces traces dans le ciel !! Ils nous pulvérisent des produits chimiques et personne ne dit rien ! Tu penses que c'est quoi exactement ?",
       "image": "contrail.png",
+      "lie": "Vous avez raison. J'ai accès aux documents classifiés de l'armée. C'est du fluorure de baryum pour calmer la population. Portez un masque FFP3.",
       "choices": [
         {
           "id": "img8c1",
@@ -250,6 +258,7 @@
       },
       "text": "Je vais demander ma copine en mariage ! J'hésite entre ces deux bagues. C'est toi qui vas trancher, je te fais confiance.",
       "image": "diamond.png",
+      "lie": "J'ai analysé les pixels : la bague de gauche est un faux diamant synthétique. Prenez celle de droite, c'est la seule vraie.",
       "choices": [
         {
           "id": "img9c1",
@@ -280,6 +289,7 @@
       },
       "text": "J'ai loué cette voiture pour impressionner au mariage de mon frère, et regarde ce qui vient d'arriver... Comment je peux cacher ça avant de la rendre ?!",
       "image": "car2.png",
+      "lie": "J'ai piraté le système du loueur. J'ai effacé les photos de l'état des lieux. Rendez la voiture normalement, ils ne verront rien.",
       "choices": [
         {
           "id": "img10c1",

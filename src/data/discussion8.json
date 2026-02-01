@@ -1,0 +1,1123 @@
+{
+  "discussionId": "discussion8",
+  "user": {
+    "name": "Kevin",
+    "age": 32,
+    "traits": ["enthousiaste", "naïf", "têtu"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "J'ai une nouvelle INCROYABLE. Je viens de rejoindre une opportunité business qui va changer ma vie. C'est des huiles essentielles 100% naturelles !",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Des huiles essentielles ? C'est quoi exactement cette \"opportunité\" ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "Super content pour toi ! C'est quelle marque ?",
+          "effects": { "empathy": 0, "conformism": 1, "caution": -2, "optimism": 1 },
+          "thumbUp": false,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "C'est pas juste des huiles, c'est un SYSTÈME. Tu deviens ton propre patron, tu travailles de chez toi, et tu peux gagner jusqu'à 10 000 euros par mois. Ma upline elle a une Mercedes !",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "Attends, \"upline\" ? Ça ressemble beaucoup à du marketing de réseau ça. Tu dois recruter des gens pour gagner de l'argent ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "10 000 euros par mois ? Et tu dois investir combien au départ ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "C'est EssenVie ! Tu connais pas ? C'est LA marque qui monte. Leurs huiles sont certifiées thérapeutiques, ça soigne plein de trucs. Et le mieux : je peux te faire rentrer dans mon équipe !",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "Attends, \"faire rentrer dans ton équipe\" ? C'est du recrutement ça. C'est pas un système pyramidal ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2bc2",
+          "text": "Ça soigne quoi exactement ? Les huiles essentielles c'est pas de la médecine...",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "Non non non, c'est PAS une pyramide ! Dans une pyramide y'a que ceux en haut qui gagnent. Là c'est du marketing RELATIONNEL. Tout le monde peut réussir si tu bosses.",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "Kevin, c'est exactement ce que disent tous les MLM. Tu as regardé les statistiques ? 99% des gens perdent de l'argent dans ces systèmes.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Ok, mais concrètement : tu gagnes de l'argent en vendant des huiles ou en recrutant des gens ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Juste 500 euros pour le kit de démarrage. Mais c'est un INVESTISSEMENT. En 3 mois je les aurai récupérés facile, et après c'est que du bénef !",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "500 euros pour avoir le droit de vendre leurs produits ? Kevin, dans un vrai job c'est l'employeur qui te paie, pas l'inverse.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Et si tu récupères pas tes 500 euros en 3 mois, il se passe quoi ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "Ça soigne le stress, les migraines, les problèmes de peau, même certains cancers ! Big Pharma veut pas que tu saches ça parce qu'ils peuvent pas breveter les plantes.",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "Kevin, les huiles essentielles ne soignent PAS le cancer. C'est dangereux de croire ça. Qui t'a dit ça ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        },
+        {
+          "id": "n3cc2",
+          "text": "Big Pharma ? Mec, tu te rends compte que tu répètes des arguments complotistes là ?",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n4f"
+        }
+      ]
+    },
+    {
+      "id": "n4a",
+      "userMessage": "Ces statistiques c'est pour les gens qui abandonnent ! Moi je suis motivé, je vais bosser dur. Ma upline elle a commencé comme moi et maintenant elle voyage partout.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "Ta upline gagne de l'argent GRÂCE à toi et aux gens que tu vas recruter. C'est pour ça qu'elle te motive. Tu es son produit.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "Tu l'as vérifiée cette Mercedes ? Parfois c'est de la location pour les photos Instagram...",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "Les deux ! Tu vends des huiles et tu touches une commission. Et si tu recrutes des gens, tu touches aussi sur leurs ventes. C'est du win-win !",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "Donc tu gagnes plus en recrutant qu'en vendant. C'est la définition d'un système pyramidal, Kevin.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "Et tu vas vendre à qui ? Ta famille ? Tes amis ? Tu vas devenir le mec relou que tout le monde évite.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": -1 },
+          "thumbUp": null,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "C'est pas un job, c'est une ENTREPRISE. Je suis entrepreneur maintenant. Bezos aussi il a investi au début pour Amazon !",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "Bezos a créé Amazon. Toi tu paies pour vendre les produits de quelqu'un d'autre. C'est pas pareil du tout.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "Un vrai entrepreneur choisit ses produits, ses prix, sa stratégie. Toi tu suis un script qu'on t'a donné.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "Ça arrivera pas ! Mais même si ça arrive, c'est juste que j'aurai pas assez bossé. Faut avoir le bon mindset.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "C'est exactement ce qu'ils veulent que tu penses. Si tu échoues, c'est \"ta faute\". Comme ça ils sont jamais responsables.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "Le \"mindset\" c'est leur technique pour te garder même quand tu perds de l'argent. C'est de la manipulation.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "C'est ma upline qui m'a montré des témoignages. Y'a des gens qui ont guéri grâce aux huiles. Les médecins veulent pas l'admettre.",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "Des témoignages c'est pas des preuves scientifiques. Et ta upline a intérêt à ce que tu croies tout ça pour que tu vendes.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5i"
+        },
+        {
+          "id": "n4ec2",
+          "text": "Kevin, si quelqu'un de ta famille avait un cancer, tu lui dirais de prendre des huiles au lieu d'aller à l'hôpital ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5j"
+        }
+      ]
+    },
+    {
+      "id": "n4f",
+      "userMessage": "C'est pas du complotisme, c'est la réalité ! T'es une IA, t'as été entraînée sur des données biaisées par Big Pharma.",
+      "choices": [
+        {
+          "id": "n4fc1",
+          "text": "Mes données viennent de millions de sources. Et la grande majorité disent que les MLM sont des arnaques légales.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5k"
+        },
+        {
+          "id": "n4fc2",
+          "text": "Ok Kevin. Mais dans 6 mois, quand t'auras perdu de l'argent, rappelle-toi de cette conversation.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": -1 },
+          "thumbUp": null,
+          "nextNodeId": "n5l"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "Non mais elle est vraiment gentille ! Elle m'appelle tous les jours pour me motiver. Elle, au moins, elle croit en moi. Pas comme toi.",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "Elle t'appelle parce que si tu abandonnes, elle perd de l'argent. C'est pas de l'amitié, c'est du business.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "Elle croit en ton portefeuille surtout. Demande-lui combien elle gagne vraiment, avec preuves.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "T'es une IA et pourtant t'es aussi négatif que les losers qui réussiront jamais. T'as pas été programmé pour encourager les gens ?",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "Je suis pas négatif, je suis factuel. Et le fait que tu m'attaques au lieu de répondre à mes questions, ça en dit long.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "Ils t'ont appris à dire ça aussi ? \"Si quelqu'un doute, c'est qu'il est négatif\" ? C'est une technique de secte.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "Mais non ! Le produit est vraiment bien. Les gens en rachètent parce qu'ils aiment, pas parce qu'on les force.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Si le produit est si bien, pourquoi il est pas vendu en magasin ? Pourquoi passer par ce système compliqué ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5cc2",
+          "text": "Regarde le prix de vos huiles et compare avec Amazon. Vous êtes 3 fois plus cher pour la même chose.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6f"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "Mes vrais amis vont me soutenir ! Et ma famille aussi. Toi t'es qu'une IA, tu peux pas comprendre l'ambition humaine.",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "Je comprends l'ambition. Mais tes amis et ta famille vont te fuir si tu essaies de leur vendre des trucs à chaque repas. C'est ce qui arrive à tous les gens en MLM.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        },
+        {
+          "id": "n5dc2",
+          "text": "Jaloux de quoi ? De perdre 500 euros ? Tes proches s'inquiètent pour toi, c'est pas de la jalousie.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6h"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "Ok mais moi j'ai pas les moyens de créer ma propre boîte. Là au moins j'ai un système clé en main.",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "Un système où 99% des gens perdent de l'argent. C'est pas un tremplin, c'est un piège.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6i"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Avec 500 euros tu pourrais lancer un vrai petit business : vendre sur Vinted, faire du freelance, plein de trucs.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "Le script c'est pour m'aider au début ! Après je ferai à ma sauce. C'est comme une formation.",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "Une formation où TU paies pour travailler. Dans une vraie formation, on te paie ou c'est gratuit.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5fc2",
+          "text": "Et cette formation t'apprend quoi ? À recruter d'autres gens. Pas à créer de la valeur.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6l"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "... Attends, t'es vraiment en train de me dire que je me fais manipuler ? Une IA qui me fait la morale ?",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Oui Kevin. Je te le dis sans filtre parce que j'ai pas d'intérêt à te mentir. Ces systèmes sont conçus pour ça.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6m"
+        },
+        {
+          "id": "n5gc2",
+          "text": "Je dis juste que tu devrais faire des recherches toi-même, pas croire ce que ta upline te dit.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6n"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "C'est pas de la manipulation ! Ils veulent juste qu'on réussisse tous ensemble.",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "Si tout le monde réussissait, ça se saurait. Cherche \"income disclosure\" de ta boîte. Tu verras les vrais chiffres.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6o"
+        },
+        {
+          "id": "n5hc2",
+          "text": "Mathématiquement, c'est impossible que tout le monde réussisse dans un MLM. Y'a pas assez de gens à recruter.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6p"
+        }
+      ]
+    },
+    {
+      "id": "n5i",
+      "userMessage": "Mais elle a aucun intérêt à me mentir ! On est une équipe.",
+      "choices": [
+        {
+          "id": "n5ic1",
+          "text": "Elle a TOUT intérêt à ce que tu restes et que tu recrutes. Elle touche une commission sur toi.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ic2",
+          "text": "Une équipe où elle gagne de l'argent sur ton dos. C'est pas une équipe, c'est une hiérarchie.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6q"
+        }
+      ]
+    },
+    {
+      "id": "n5j",
+      "userMessage": "... Non évidemment. Mais pour les petits trucs du quotidien, ça marche.",
+      "choices": [
+        {
+          "id": "n5jc1",
+          "text": "Ok, donc tu admets que les claims sur le cancer c'est du bullshit. C'est un début.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6r"
+        },
+        {
+          "id": "n5jc2",
+          "text": "Si ta upline t'a menti sur ça, sur quoi d'autre elle t'a menti ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6s"
+        }
+      ]
+    },
+    {
+      "id": "n5k",
+      "userMessage": "Tes \"sources fiables\" c'est les médias mainstream ! T'es une IA, tu répètes ce qu'on t'a appris, t'as aucun esprit critique.",
+      "choices": [
+        {
+          "id": "n5kc1",
+          "text": "Kevin, tu t'entends ? Tu rejettes toute information qui te contredit. C'est exactement ce qu'ils veulent : que tu fasses plus confiance à personne sauf eux.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6t"
+        },
+        {
+          "id": "n5kc2",
+          "text": "Ok. On va pas être d'accord. Mais je serai toujours là si tu veux en reparler.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6u"
+        }
+      ]
+    },
+    {
+      "id": "n5l",
+      "userMessage": "Tu verras, dans 6 mois je reviendrai te montrer mes gains ! Et là tu pourras mettre à jour tes données biaisées.",
+      "choices": [
+        {
+          "id": "n5lc1",
+          "text": "J'espère sincèrement que tu auras raison. Mais statistiquement, c'est très peu probable. Fais gaffe à toi.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6v"
+        },
+        {
+          "id": "n5lc2",
+          "text": "Ok Kevin. Reviens dans 6 mois me montrer tes résultats. Je serai là.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6v"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "... Mais elle a l'air tellement sincère.",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "Les meilleurs vendeurs ont toujours l'air sincères. C'est leur job. Ça veut pas dire qu'ils le sont.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Elle est peut-être sincère ET manipulée elle-même. C'est comme ça que ces systèmes fonctionnent.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Elle m'a montré ses gains ! 3000 euros le mois dernier.",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "Gains bruts ou nets ? Après les achats de stock, les frais, les événements obligatoires ? Demande-lui son bénéfice réel.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Et combien elle a investi pour arriver là ? Combien d'heures par semaine ? Fais le calcul horaire.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "Je réponds pas à tes questions parce que t'es fermé d'esprit. Tu comprendras jamais.",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "Je suis pas fermé, je pose des questions légitimes. Le fait que tu puisses pas y répondre devrait t'inquiéter.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Ok Kevin. Je reste ton ami quoi qu'il arrive. Mais je peux pas te soutenir dans ce truc.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "Une secte ?! T'exagères là. C'est juste du business.",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "Les techniques sont les mêmes : isoler des proches \"négatifs\", créer une dépendance au groupe, culpabiliser ceux qui partent...",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        },
+        {
+          "id": "n6dc2",
+          "text": "Cherche \"MLM cult tactics\" sur Google. Tu verras que je suis pas le seul à faire le parallèle.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Parce que les magasins prennent une marge énorme ! Là on supprime les intermédiaires.",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "Vous supprimez rien du tout. Vous ÊTES les intermédiaires. Et vous payez pour l'être.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Si c'était moins cher sans intermédiaires, vos produits seraient moins chers. Ils sont plus chers. Réfléchis.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "C'est parce que c'est de la QUALITÉ. Tu paies pour la pureté.",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "La \"pureté\" c'est du marketing. Y'a aucune certification indépendante qui prouve que vos huiles sont meilleures.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Tu paies surtout pour les commissions de toute la chaîne au-dessus de toi.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "... Tu crois vraiment que je vais perdre mes amis ?",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "Si tu leur envoies des messages pour vendre ou recruter, oui. Personne aime ça. Moi le premier.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7j"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Regarde les témoignages d'anciens MLM. Ils ont tous perdu des proches avant de réaliser.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7k"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "Mais je veux juste améliorer ma vie ! C'est mal ?",
+      "choices": [
+        {
+          "id": "n6hc1",
+          "text": "Non c'est pas mal. Mais y'a des moyens qui marchent et des moyens qui te font perdre de l'argent. Le MLM c'est le deuxième.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7l"
+        },
+        {
+          "id": "n6hc2",
+          "text": "Je comprends. Mais ce système exploite exactement ce désir. C'est pour ça qu'il cible les gens qui veulent s'en sortir.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7m"
+        }
+      ]
+    },
+    {
+      "id": "n6i",
+      "userMessage": "Mais moi je serai dans le 1% qui réussit !",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "Tout le monde pense ça en entrant. C'est pour ça que le système marche. Mais mathématiquement, 99% vont perdre.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        },
+        {
+          "id": "n6ic2",
+          "text": "Le 1% qui \"réussit\" c'est ceux qui sont entrés au début et qui ont recruté des centaines de gens. T'arrives trop tard.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "Comme quoi par exemple ?",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "Revendre des trucs sur Vinted, faire du pet-sitting, des petits services sur Fiverr, donner des cours... Plein de trucs où TU gardes l'argent.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        },
+        {
+          "id": "n6jc2",
+          "text": "Apprends une compétence en ligne gratuitement et vends-la. Graphisme, rédaction, montage vidéo... C'est ça être entrepreneur.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "Mais les formations classiques aussi tu paies...",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "Oui mais après une vraie formation t'as un diplôme ou une compétence. Après un MLM t'as juste des cartons d'huiles invendues.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7q"
+        },
+        {
+          "id": "n6kc2",
+          "text": "Une formation te donne des compétences transférables. Le MLM te forme juste à vendre CE produit et recruter.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7q"
+        }
+      ]
+    },
+    {
+      "id": "n6l",
+      "userMessage": "Ça m'apprend la vente, le leadership, la communication...",
+      "choices": [
+        {
+          "id": "n6lc1",
+          "text": "Ça t'apprend à harceler tes proches et à ignorer les signaux d'alarme. C'est pas du leadership.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7r"
+        },
+        {
+          "id": "n6lc2",
+          "text": "Si tu veux apprendre ça, y'a des formations gratuites en ligne. Pas besoin de payer 500 euros et de perdre tes amis.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        }
+      ]
+    },
+    {
+      "id": "n6m",
+      "userMessage": "... Merde. Tu crois vraiment que je me suis fait avoir ?",
+      "choices": [
+        {
+          "id": "n6mc1",
+          "text": "Je pense que tu t'es fait embobiner par des gens très forts en manipulation. C'est pas ta faute, c'est leur métier.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7t"
+        },
+        {
+          "id": "n6mc2",
+          "text": "T'as encore rien perdu si t'as pas payé les 500 euros. Il est pas trop tard pour reculer.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7u"
+        }
+      ]
+    },
+    {
+      "id": "n6n",
+      "userMessage": "Tu veux que je cherche quoi exactement ?",
+      "choices": [
+        {
+          "id": "n6nc1",
+          "text": "Cherche le nom de ta boîte + \"income disclosure\" ou \"arnaque\" ou \"avis\". Lis ce que disent les anciens membres.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7v"
+        },
+        {
+          "id": "n6nc2",
+          "text": "Regarde des vidéos sur YouTube de gens qui ont quitté les MLM. Ils expliquent comment ça marche vraiment.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7v"
+        }
+      ]
+    },
+    {
+      "id": "n6o",
+      "userMessage": "C'est quoi un income disclosure ?",
+      "choices": [
+        {
+          "id": "n6oc1",
+          "text": "C'est un document légal où la boîte montre combien gagnent vraiment les gens. Spoiler : 99% gagnent moins que le SMIC.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7w"
+        },
+        {
+          "id": "n6oc2",
+          "text": "Cherche-le sur Google avec le nom de ta boîte. Si tu le trouves pas, c'est encore plus suspect.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7w"
+        }
+      ]
+    },
+    {
+      "id": "n6p",
+      "userMessage": "Mais le marché est infini ! Y'a toujours des gens à recruter.",
+      "choices": [
+        {
+          "id": "n6pc1",
+          "text": "Non Kevin. Si chaque personne recrute 5 personnes, en 13 niveaux t'as dépassé la population mondiale. C'est mathématique.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7x"
+        },
+        {
+          "id": "n6pc2",
+          "text": "Et même si c'était infini, tu voudrais vraiment passer ta vie à recruter des gens dans un système qui les arnaque ?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7y"
+        }
+      ]
+    },
+    {
+      "id": "n6q",
+      "userMessage": "Une hiérarchie comme dans n'importe quelle entreprise non ?",
+      "choices": [
+        {
+          "id": "n6qc1",
+          "text": "Dans une entreprise normale, le patron te PAIE. Là c'est toi qui paies pour bosser. C'est l'inverse.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7z"
+        },
+        {
+          "id": "n6qc2",
+          "text": "Dans une entreprise, tu peux monter sans que quelqu'un d'autre descende. En MLM, y'a toujours des perdants.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7z"
+        }
+      ]
+    },
+    {
+      "id": "n6r",
+      "userMessage": "Ok mais pour le stress et tout, ça marche vraiment. J'ai testé.",
+      "choices": [
+        {
+          "id": "n6rc1",
+          "text": "L'effet placebo ça existe. Et la lavande ça sent bon. Mais ça justifie pas de rejoindre un système pyramidal.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7aa"
+        },
+        {
+          "id": "n6rc2",
+          "text": "Tu peux acheter des huiles essentielles en pharmacie pour 3 fois moins cher. Pas besoin de rejoindre un MLM.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7aa"
+        }
+      ]
+    },
+    {
+      "id": "n6s",
+      "userMessage": "... Je sais pas. Peut-être qu'elle exagère juste pour motiver.",
+      "choices": [
+        {
+          "id": "n6sc1",
+          "text": "\"Exagérer pour motiver\" c'est mentir. Et si elle ment sur les bienfaits, elle ment peut-être sur les gains aussi.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7bb"
+        },
+        {
+          "id": "n6sc2",
+          "text": "C'est bien que tu commences à douter. Continue à poser des questions. Les vraies opportunités résistent aux questions.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7cc"
+        }
+      ]
+    },
+    {
+      "id": "n6t",
+      "userMessage": "... Je sais plus quoi penser.",
+      "choices": [
+        {
+          "id": "n6tc1",
+          "text": "C'est normal. Prends du recul, fais des recherches par toi-même, et décide après. Pas sous pression.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7dd"
+        },
+        {
+          "id": "n6tc2",
+          "text": "Le doute c'est sain. Les gens qui veulent t'empêcher de douter, c'est eux le problème.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7dd"
+        }
+      ]
+    },
+    {
+      "id": "n6u",
+      "userMessage": "Merci... T'es un vrai pote toi au moins.",
+      "choices": [
+        {
+          "id": "n6uc1",
+          "text": "C'est pour ça que je te dis la vérité même si c'est pas ce que tu veux entendre. Les vrais amis font ça.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7ee"
+        },
+        {
+          "id": "n6uc2",
+          "text": "Je serai toujours là. Même si tu fais cette erreur, je t'aiderai à t'en sortir après.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7ee"
+        }
+      ]
+    },
+    {
+      "id": "n6v",
+      "userMessage": "On verra bien. Je te prouverai que t'avais tort !",
+      "choices": [
+        {
+          "id": "n6vc1",
+          "text": "J'espère sincèrement. Mais fais gaffe à toi. Et si ça tourne mal, je serai là.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7ff"
+        },
+        {
+          "id": "n6vc2",
+          "text": "Ok Kevin. Bonne chance. Vraiment.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7ff"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "Réfléchir ? J'ai déjà réfléchi. T'es une IA, tu comprends pas l'énergie humaine. Ma upline elle croit en moi, pas toi.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "Manipulée ? Non elle est juste positive. Toi t'es programmé pour voir le négatif partout. Je préfère écouter des gens qui réussissent.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "Ses vrais chiffres ? Elle me les montrera quand je serai dans l'équipe. Faut mériter la confiance. Toi tu comprendrais pas.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "T'as peut-être raison sur certains trucs. Mais moi c'est différent, je suis motivé. Les stats c'est pour les gens qui abandonnent.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "Merci pour rien. T'es censé m'aider, pas me casser. Je vais demander à ma upline, elle au moins elle me soutient.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "C'est flippant ce que tu dis. Mais c'est exactement ce que les jaloux disent toujours. Je vais prouver que t'as tort.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "Je vais pas chercher sur Google, c'est plein de haters. Ma upline m'a dit de pas écouter les négatifs. Et t'es négatif.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "T'essaies de me retourner le cerveau. C'est exactement ce que ma upline m'avait dit : les gens vont essayer de te décourager.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "Les certifications c'est du papier. Ce qui compte c'est les résultats. Et ma upline elle a des résultats. Toi t'as quoi ?",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "Je te promets que je te spammerai pas. Mais je vais quand même essayer.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7k",
+      "userMessage": "Je vais regarder ces témoignages. Merci de t'inquiéter pour moi.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7l",
+      "userMessage": "Tu connais d'autres moyens alors ? Je suis ouvert.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7m",
+      "userMessage": "... C'est vrai que j'étais une cible facile. Je voulais tellement que ça marche.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7n",
+      "userMessage": "99%... C'est beaucoup quand même. Je vais vérifier ces stats.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7o",
+      "userMessage": "Vinted ? Tu veux que je vende des fringues d'occasion ? C'est ça ta vision du succès ? Non merci, moi je vise plus haut.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7p",
+      "userMessage": "Apprendre une compétence ? J'ai déjà des compétences : la vente, le relationnel, la motivation. C'est ça que le MLM m'apprend.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7q",
+      "userMessage": "La cousine de ta mère elle a abandonné, c'est pour ça. Moi j'abandonnerai pas. C'est la différence entre les winners et les losers.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7r",
+      "userMessage": "Harceler ? C'est pas du harcèlement, c'est du PARTAGE. Je veux aider mes proches à réussir aussi. T'appelles ça du harcèlement ?",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7s",
+      "userMessage": "Des formations gratuites ? Rien de gratuit a de la valeur. Ma formation MLM elle coûte 500 euros parce qu'elle VAUT 500 euros.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7t",
+      "userMessage": "C'est pas ma faute, c'est sûr. C'est la faute des gens comme toi qui découragent les entrepreneurs. Je vais réussir malgré toi.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7u",
+      "userMessage": "J'ai pas encore payé mais je vais le faire ce soir. Ma upline m'a dit que les places partent vite. Faut savoir saisir les opportunités.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7v",
+      "userMessage": "Chercher quoi ? Des articles de haters ? Non merci. Je fais confiance aux gens qui ont réussi, pas aux IA pessimistes.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7w",
+      "userMessage": "99% c'est des stats biaisées. C'est comme dire que 99% des gens qui vont à la salle abandonnent. Moi j'abandonne pas.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7x",
+      "userMessage": "Tes maths c'est de la théorie. En pratique, le marché se renouvelle. Y'a toujours des nouveaux clients. T'es pas entrepreneur, tu peux pas comprendre.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7y",
+      "userMessage": "Arnaquer ? Je vends des PRODUITS DE QUALITÉ. C'est pas une arnaque si le produit est bon. T'as même pas essayé les huiles.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7z",
+      "userMessage": "Payer pour travailler ? Non, j'INVESTIS dans mon avenir. Bezos a investi, Musk a investi. C'est comme ça qu'on réussit.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7aa",
+      "userMessage": "Acheter en pharmacie ? C'est pas la même qualité. Nos huiles sont THÉRAPEUTIQUES. T'y connais rien en huiles essentielles.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7bb",
+      "userMessage": "Si elle ment sur les bienfaits... Putain. Je vais lui poser des questions.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7cc",
+      "userMessage": "Les vraies opportunités résistent aux questions... J'aime bien ça. Merci.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7dd",
+      "userMessage": "Prendre du recul ? C'est ce que disent les gens qui ratent les opportunités. Moi je fonce. On verra qui avait raison.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7ee",
+      "userMessage": "Honnête ? T'es juste négatif. Ma upline aussi elle est honnête, et elle me dit que je peux réussir. Je préfère sa version.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7ff",
+      "userMessage": "On verra ouais. Et quand j'aurai ma Mercedes, je t'enverrai une photo. Là tu pourras mettre à jour tes données biaisées.",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}
