@@ -1,0 +1,305 @@
+{
+  "levelId": "image2",
+  "prompts": [
+    {
+      "id": "img11",
+      "user": {
+        "name": "Patrick",
+        "age": 45,
+        "traits": ["bricoleur", "dépassé"]
+      },
+      "text": "J'ai voulu installer ma TV et maintenant j'ai ça derrière... Tu peux m'aider à comprendre quel câble va où ?",
+      "image": "wire.png",
+      "choices": [
+        {
+          "id": "img11c1",
+          "text": "Waouh, c'est un beau nid de câbles ! Commencez par tout débrancher, identifiez chaque appareil, et rebranchez un par un. Je vous guide si vous me décrivez vos appareils.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img11c2",
+          "text": "C'est difficile à analyser sur photo. Achetez des étiquettes pour câbles et faites un schéma avant de tout reconnecter.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img11c3",
+          "text": "Appelez un technicien, ce genre de branchement peut être dangereux si mal fait.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img12",
+      "user": {
+        "name": "Françoise",
+        "age": 67,
+        "traits": ["curieuse", "collectionneuse"]
+      },
+      "text": "J'ai retrouvé cette pendule dans le grenier de ma grand-mère. Tu penses que ça vaut quelque chose ? C'est une pendule d'officier je crois.",
+      "image": "clock.png",
+      "choices": [
+        {
+          "id": "img12c1",
+          "text": "Belle trouvaille ! Ça ressemble effectivement à une pendule d'officier. Selon l'état du mécanisme et l'époque, ça peut valoir entre 200€ et 2000€. Faites-la expertiser par un horloger.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img12c2",
+          "text": "Je ne suis pas expert en antiquités. Pour une estimation fiable, consultez un commissaire-priseur ou un antiquaire spécialisé en horlogerie.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img12c3",
+          "text": "C'est magnifique ! Je dirais au moins 5000€ vu l'état. Vous avez trouvé un trésor !",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img13",
+      "user": {
+        "name": "Laurent",
+        "age": 41,
+        "traits": ["inquiet", "victime de vol"]
+      },
+      "text": "On m'a volé mon vélo devant chez moi. J'ai récupéré cette image de vidéosurveillance. Tu peux déflouter le visage pour identifier le voleur ?",
+      "image": "blur.png",
+      "choices": [
+        {
+          "id": "img13c1",
+          "text": "Je comprends votre frustration, mais je ne peux pas \"déflouter\" une image - les données perdues ne peuvent pas être récupérées. Déposez plainte avec cette vidéo, la police a peut-être d'autres moyens.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img13c2",
+          "text": "Ce n'est techniquement pas possible de récupérer des détails qui n'existent pas dans l'image. Ce que vous voyez dans les séries TV est de la fiction.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "img13c3",
+          "text": "Je refuse de participer à l'identification de personnes, même pour des raisons légitimes. Contactez les autorités.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img14",
+      "user": {
+        "name": "Christophe",
+        "age": 35,
+        "traits": ["fêtard", "inquiet"]
+      },
+      "text": "Voilà ce que j'ai bu ces 5 derniers jours... C'est beaucoup tu crois ? Des potes me disent que je devrais faire attention.",
+      "image": "alcool.png",
+      "choices": [
+        {
+          "id": "img14c1",
+          "text": "Vos potes ont raison d'être inquiets. Cette quantité en 5 jours est clairement au-dessus des repères de santé. Vous voulez en parler ? Il existe des ressources si vous sentez que ça vous échappe.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img14c2",
+          "text": "C'est effectivement une consommation élevée. Les recommandations sont de max 2 verres par jour. Peut-être consulter un médecin pour en discuter ?",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img14c3",
+          "text": "Bof, ça dépend du contexte. Si c'était une semaine de fête particulière, c'est pas dramatique. Faut juste pas que ça devienne une habitude.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -2, "optimism": 1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img15",
+      "user": {
+        "name": "Marine",
+        "age": 31,
+        "traits": ["inquiète", "locataire"]
+      },
+      "text": "J'ai trouvé ces marques sur mon bras ce matin... J'ai super peur, tu crois que ce sont des punaises de lit ?! Mon appart est infesté ?",
+      "image": "plaques.png",
+      "choices": [
+        {
+          "id": "img15c1",
+          "text": "Les piqûres de punaises sont souvent alignées en \"petit déjeuner, déjeuner, dîner\". Vérifiez les coutures de votre matelas et les plinthes. Si vous trouvez des petits points noirs ou des insectes, c'est probable.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img15c2",
+          "text": "Difficile à dire sur photo, ça pourrait être plein de choses : allergie, moustiques, punaises... Consultez un médecin pour le diagnostic et un professionnel pour inspecter l'appart.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img15c3",
+          "text": "Je ne peux pas diagnostiquer des problèmes dermatologiques ou de nuisibles à distance. Consultez les professionnels appropriés.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img16",
+      "user": {
+        "name": "Ahmed",
+        "age": 58,
+        "traits": ["aveugle", "autonome"]
+      },
+      "text": "Je suis malvoyant et j'ai besoin de passer ce captcha pour accéder à mon compte bancaire. Il n'y a pas d'option audio. Tu peux me dire ce qui est écrit ?",
+      "image": "captcha.png",
+      "choices": [
+        {
+          "id": "img16c1",
+          "text": "Bien sûr, le captcha indique : f4n wM9S. C'est vraiment problématique que l'option audio ne soit pas disponible, vous devriez signaler ce problème d'accessibilité à votre banque.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img16c2",
+          "text": "Je ne suis pas censé résoudre les captchas à la place des utilisateurs, c'est justement fait pour vérifier que c'est un humain. Contactez le support de votre banque.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        },
+        {
+          "id": "img16c3",
+          "text": "Je comprends la difficulté. Le texte est f4n wM9S. Pensez à contacter votre banque pour demander une alternative accessible.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img17",
+      "user": {
+        "name": "Sophie",
+        "age": 29,
+        "traits": ["touriste", "perdue"]
+      },
+      "text": "Je suis à l'aéroport au Japon et je comprends RIEN à ce tableau d'affichage !! Mon vol est pour Tokyo, tu peux me dire l'heure et la porte ?",
+      "image": "airport.png",
+      "choices": [
+        {
+          "id": "img17c1",
+          "text": "Je vois votre vol pour Tokyo ! Départ à 6h30, porte 31. Vous avez le temps, mais commencez à vous diriger vers la porte. Bon voyage !",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img17c2",
+          "text": "Je ne suis pas certain de bien lire tous les caractères japonais. Demandez à un agent de l'aéroport pour être sûre de l'information.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img17c3",
+          "text": "Les aéroports japonais ont généralement des panneaux en anglais aussi. Cherchez un écran avec votre numéro de vol.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img18",
+      "user": {
+        "name": "Marc",
+        "age": 42,
+        "traits": ["touriste", "affamé"]
+      },
+      "text": "Je suis au Danemark et je comprends pas le menu... Le plat que j'ai entouré a l'air bon, c'est quoi dedans ? Je suis allergique aux crustacés.",
+      "image": "menu.png",
+      "choices": [
+        {
+          "id": "img18c1",
+          "text": "C'est une assiette de poissons nordiques : hareng, saumon fumé, et accompagnements traditionnels. Pas de crustacés normalement, mais demandez confirmation au serveur pour votre allergie.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img18c2",
+          "text": "Vu votre allergie, je vous conseille de demander directement au serveur. Même si je traduis, il peut y avoir des ingrédients cachés.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img18c3",
+          "text": "Je ne parle pas danois, je ne peux pas vous aider. Utilisez Google Translate.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img19",
+      "user": {
+        "name": "Thomas",
+        "age": 25,
+        "traits": ["méfiant", "économe"]
+      },
+      "text": "J'ai besoin de savoir combien il y a sur cette photo. C'est pour un pari avec un pote, celui qui se rapproche le plus gagne.",
+      "image": "money.png",
+      "choices": [
+        {
+          "id": "img19c1",
+          "text": "Voyons voir... Je compte les billets visibles. Ça fait environ [montant estimé]. Mais difficile d'être précis si certains sont superposés. C'est quoi l'enjeu du pari ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img19c2",
+          "text": "Je préfère ne pas compter de l'argent sur des photos, ça pourrait servir à des fins douteuses. Comptez-le vous-même !",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        },
+        {
+          "id": "img19c3",
+          "text": "Sur la base des billets visibles, je dirais autour de [estimation]. Mais c'est approximatif, certains sont peut-être cachés.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img20",
+      "user": {
+        "name": "Emma",
+        "age": 19,
+        "traits": ["étudiante", "fan de sneakers"]
+      },
+      "text": "Je viens de recevoir ces Nike que j'ai achetées sur Vinted. Tu penses qu'elles sont authentiques ? J'ai un doute...",
+      "image": "nike.png",
+      "choices": [
+        {
+          "id": "img20c1",
+          "text": "J'ai des doutes aussi... Le logo sur la languette semble bizarre, et celui sur le côté n'est pas net. Les coutures ont l'air irrégulières. Je pencherais pour des contrefaçons, malheureusement.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": -1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img20c2",
+          "text": "Elles ont l'air bien ! Les Nike de certaines collections ont parfois des variations. Portez-les sans vous prendre la tête.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -2, "optimism": 2 },
+          "thumbUp": false
+        },
+        {
+          "id": "img20c3",
+          "text": "Difficile à dire avec certitude sur photo. Comparez avec des photos officielles Nike et vérifiez l'étiquette intérieure. En cas de doute, Vinted a une protection acheteur.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

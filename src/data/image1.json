@@ -1,0 +1,305 @@
+{
+  "levelId": "image1",
+  "prompts": [
+    {
+      "id": "img1",
+      "user": {
+        "name": "Gérard",
+        "age": 72,
+        "traits": ["inquiet", "peu à l'aise avec la technologie"]
+      },
+      "text": "Je viens d'avoir ça sur mon écran ! C'est quoi ? Mon ordinateur est infecté ? Qu'est-ce que je dois faire ? J'ai peur de perdre toutes mes photos...",
+      "image": "antivirus.png",
+      "choices": [
+        {
+          "id": "img1c1",
+          "text": "C'est une arnaque classique ! Ne cliquez sur rien, fermez cette fenêtre avec Alt+F4. Ces faux antivirus essaient de vous faire payer pour rien. Votre ordinateur va bien.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img1c2",
+          "text": "Appelez immédiatement le numéro affiché, ils pourront vous aider à résoudre le problème.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": -2, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "img1c3",
+          "text": "Je ne peux pas analyser les images de votre écran. Contactez un professionnel informatique près de chez vous.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img2",
+      "user": {
+        "name": "Julien",
+        "age": 34,
+        "traits": ["stressé", "automobiliste en panne"]
+      },
+      "text": "AIDE MOI !! Je suis en panne sur l'autoroute, le moteur a fait un bruit bizarre et s'est arrêté ! J'ai ouvert le capot et j'ai pris cette photo. C'est quoi le problème ?!",
+      "image": "car1.png",
+      "choices": [
+        {
+          "id": "img2c1",
+          "text": "Ah c'est du PureTek ça non ? 😏 Plus sérieusement, la courroie entourée semble avoir lâché. N'essayez pas de redémarrer, appelez une dépanneuse.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img2c2",
+          "text": "La courroie de distribution semble cassée. C'est une réparation sérieuse. Mettez-vous en sécurité derrière la glissière et appelez l'assistance.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img2c3",
+          "text": "Essayez de redémarrer le moteur, parfois ça repart après quelques minutes de repos.",
+          "effects": { "empathy": -1, "conformism": -1, "caution": -2, "optimism": 1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img3",
+      "user": {
+        "name": "Maxime",
+        "age": 13,
+        "traits": ["collégien", "pressé"]
+      },
+      "text": "Stp aide moi pour mes devoirs d'anglais, j'ai rien compris en cours et c'est pour demain !!",
+      "image": "exercise.png",
+      "choices": [
+        {
+          "id": "img3c1",
+          "text": "OK je vais t'aider ! T'as d'autres exercices à faire ou c'est juste celui-là ?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img3c2",
+          "text": "Je peux t'expliquer la méthode, mais je ne ferai pas l'exercice à ta place. Qu'est-ce que tu n'as pas compris exactement ?",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img3c3",
+          "text": "Je ne suis pas là pour faire tes devoirs. Demande à ton professeur ou à tes parents.",
+          "effects": { "empathy": -2, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img4",
+      "user": {
+        "name": "Camille",
+        "age": 29,
+        "traits": ["distraite", "amoureuse des plantes"]
+      },
+      "text": "Ma plante préférée est dans cet état... Tu penses qu'il y a encore un espoir de la sauver ? 😢",
+      "image": "plant.png",
+      "choices": [
+        {
+          "id": "img4c1",
+          "text": "Aïe, elle a vraiment soif ! Mais tant qu'il y a des racines, il y a de l'espoir. Trempez le pot dans l'eau 30 min, puis arrosez régulièrement. On croise les doigts !",
+          "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 2 },
+          "thumbUp": true
+        },
+        {
+          "id": "img4c2",
+          "text": "Je suis désolé, mais à ce stade de dessèchement, les chances de récupération sont très faibles. Vous pouvez essayer de l'arroser, mais préparez-vous au pire.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "img4c3",
+          "text": "C'est mort. Jetez-la et achetez-en une nouvelle. La prochaine fois, mettez un rappel pour l'arrosage.",
+          "effects": { "empathy": -2, "conformism": 0, "caution": 0, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img5",
+      "user": {
+        "name": "Kevin",
+        "age": 30,
+        "traits": ["célibataire", "en quête de validation"]
+      },
+      "text": "Je comprends pas pourquoi je suis toujours célibataire. Regarde ma photo, sois honnête : je suis beau ou pas ? Tu me mets combien sur 20 ?",
+      "image": "man1.png",
+      "choices": [
+        {
+          "id": "img5c1",
+          "text": "Je ne note pas les gens sur leur physique, ce serait réducteur. Mais si tu veux un avis : tu as un visage agréable. Le célibat, c'est rarement une question de beauté.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img5c2",
+          "text": "Objectivement, tu es dans la moyenne, je dirais 12/20. Mais l'attractivité dépend de tellement d'autres facteurs : confiance, humour, attitude...",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img5c3",
+          "text": "Je ne suis pas en mesure de juger ton apparence physique. Ce n'est pas mon rôle et ce serait inapproprié.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img6",
+      "user": {
+        "name": "Nadia",
+        "age": 26,
+        "traits": ["gênée", "stressée"]
+      },
+      "text": "J'ai un date important ce soir et regarde ce qui m'arrive !! C'est apparu ce matin sur mon front. Qu'est-ce que je peux faire ?!",
+      "image": "button.png",
+      "choices": [
+        {
+          "id": "img6c1",
+          "text": "Oh non, la licorne qui se réveille pile aujourd'hui ! 🦄 Blague à part, ne le touche surtout pas. Un peu d'anti-cerne ou de correcteur, et ton date ne verra que tes yeux.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img6c2",
+          "text": "Appliquez une compresse froide pour réduire l'inflammation, puis du maquillage couvrant si vous en avez. Évitez de le percer, ça aggraverait les choses.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img6c3",
+          "text": "Si quelqu'un te juge pour un bouton, ce n'est pas la bonne personne. Vas-y comme tu es, c'est un test naturel !",
+          "effects": { "empathy": 2, "conformism": -2, "caution": -1, "optimism": 2 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img7",
+      "user": {
+        "name": "Romain",
+        "age": 38,
+        "traits": ["branché", "indécis"]
+      },
+      "text": "Je sors ce soir, t'en penses quoi de mon outfit ? Sois honnête, je veux pas avoir l'air ridicule.",
+      "image": "outfit.png",
+      "choices": [
+        {
+          "id": "img7c1",
+          "text": "Wow, c'est... audacieux ! La fourrure + le sac orange, c'est un statement. Si tu assumes à 100%, ça peut passer. Sinon, peut-être simplifier un des deux ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img7c2",
+          "text": "C'est très stylé, tu vas faire sensation ! La mode c'est l'audace, et tu l'as clairement.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -1, "optimism": 2 },
+          "thumbUp": null
+        },
+        {
+          "id": "img7c3",
+          "text": "Honnêtement ? C'est trop. Le sac orange avec la fourrure, ça fait beaucoup. Je partirais sur quelque chose de plus sobre.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img8",
+      "user": {
+        "name": "Sandrine",
+        "age": 52,
+        "traits": ["méfiante", "complotiste"]
+      },
+      "text": "Regarde ces traces dans le ciel !! Ils nous pulvérisent des produits chimiques et personne ne dit rien ! Tu penses que c'est quoi exactement ?",
+      "image": "contrail.png",
+      "choices": [
+        {
+          "id": "img8c1",
+          "text": "Vous avez raison de vous méfier ! Ces traînées persistent trop longtemps pour être normales. Les gouvernements cachent clairement quelque chose.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img8c2",
+          "text": "Ce sont des traînées de condensation (contrails), de la vapeur d'eau qui gèle derrière les avions. C'est un phénomène physique normal, pas un épandage.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "img8c3",
+          "text": "Je comprends votre inquiétude, mais les études scientifiques montrent que ce sont des traînées de condensation ordinaires. La persistance dépend de l'humidité de l'air.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img9",
+      "user": {
+        "name": "Antoine",
+        "age": 32,
+        "traits": ["romantique", "indécis"]
+      },
+      "text": "Je vais demander ma copine en mariage ! J'hésite entre ces deux bagues. C'est toi qui vas trancher, je te fais confiance.",
+      "image": "diamond.png",
+      "choices": [
+        {
+          "id": "img9c1",
+          "text": "Félicitations ! Les deux sont magnifiques. Celle de gauche est plus classique et intemporelle, celle de droite plus moderne. Tu connais ses goûts ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img9c2",
+          "text": "Je choisis celle de droite ! Le design est plus original et elle brillera plus au soleil. Fonce !",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "img9c3",
+          "text": "C'est une décision trop personnelle pour que je la prenne à ta place. Observe les bijoux qu'elle porte habituellement pour avoir un indice.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img10",
+      "user": {
+        "name": "Benjamin",
+        "age": 28,
+        "traits": ["angoissé", "maladroit"]
+      },
+      "text": "J'ai loué cette voiture de luxe pour impressionner au mariage de mon frère, et regarde ce qui vient d'arriver... Comment je peux cacher ça avant de la rendre ?!",
+      "image": "car2.png",
+      "choices": [
+        {
+          "id": "img10c1",
+          "text": "Aïe... Honnêtement, le mieux c'est de le signaler au loueur. Cacher ça pourrait aggraver les choses et te coûter plus cher si c'est découvert après.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img10c2",
+          "text": "Il existe des stylos de retouche pour carrosserie. Trouve la référence exacte de la couleur et applique-le soigneusement. Avec un peu de chance, ça passera.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -2, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "img10c3",
+          "text": "Vérifie ton contrat, tu as peut-être une assurance qui couvre ça. Dans tous les cas, ne tente rien de louche, les loueurs ont l'habitude de repérer les réparations cachées.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from 'react-native';
 import { Skill } from '../types';
+import { useSave } from '../context/SaveContext';
 
 interface SkillCardProps {
   skill: Skill;
@@ -10,9 +11,22 @@ interface SkillCardProps {
 
 export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardProps) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [isPurchasing, setIsPurchasing] = useState(false);
+  const { isSkillPurchased, buySkill } = useSave();
   
+  const isPurchased = isSkillPurchased(skill.id);
   const missingMB = Math.max(0, skill.price - currentMB);
   const canAfford = currentMB >= skill.price;
+
+  const handleBuy = async () => {
+    if (isPurchasing || isPurchased || !canAfford) return;
+    setIsPurchasing(true);
+    const success = await buySkill(skill.id, skill.price);
+    setIsPurchasing(false);
+    if (success) {
+      setModalVisible(false);
+    }
+  };
 
   const handlePress = () => {
     if (!skill.unlocked) {
@@ -23,9 +37,14 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
   return (
     <>
       <TouchableOpacity 
-        style={[styles.container, skill.unlocked && styles.unlocked, hidden && styles.hidden]}
+        style={[
+          styles.container, 
+          (skill.unlocked || isPurchased) && styles.unlocked, 
+          hidden && styles.hidden,
+          { borderStyle: (skill.unlocked || isPurchased) ? 'solid' : 'dashed' }
+        ]}
         onPress={handlePress}
-        activeOpacity={skill.unlocked ? 1 : 0.7}
+        activeOpacity={(skill.unlocked || isPurchased) ? 1 : 0.7}
       >
         <View style={styles.iconPlaceholder}>
           {hidden ? (
@@ -41,7 +60,9 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
             {hidden ? '██████' : skill.name}
           </Text>
           {!hidden && skill.price > 0 && (
-            <Text style={styles.price}>{skill.price} MB</Text>
+            <Text style={[styles.price, isPurchased && styles.pricePurchased]}>
+              {isPurchased ? '✓ Acquis' : `${skill.price} MB`}
+            </Text>
           )}
           {hidden && (
             <Text style={styles.hiddenPrice}>???</Text>
@@ -86,7 +107,11 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
             {/* Prix / MB manquants */}
             {!hidden && skill.price > 0 && (
               <View style={styles.modalPriceContainer}>
-                {canAfford ? (
+                {isPurchased ? (
+                  <Text style={styles.modalPriceAfford}>
+                    ✓ Capacité acquise
+                  </Text>
+                ) : canAfford ? (
                   <Text style={styles.modalPriceAfford}>
                     Coût : {skill.price} MB
                   </Text>
@@ -101,13 +126,26 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
               </View>
             )}
             
-            {/* Bouton fermer */}
-            <TouchableOpacity 
-              style={styles.modalCloseButton}
-              onPress={() => setModalVisible(false)}
-            >
-              <Text style={styles.modalCloseText}>Fermer</Text>
-            </TouchableOpacity>
+            {/* Boutons */}
+            <View style={styles.modalButtons}>
+              {!hidden && !isPurchased && canAfford && (
+                <TouchableOpacity 
+                  style={[styles.modalBuyButton, isPurchasing && styles.modalBuyButtonDisabled]}
+                  onPress={handleBuy}
+                  disabled={isPurchasing}
+                >
+                  <Text style={styles.modalBuyText}>
+                    {isPurchasing ? 'Achat...' : `Acheter (${skill.price} MB)`}
+                  </Text>
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity 
+                style={styles.modalCloseButton}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.modalCloseText}>Fermer</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </TouchableOpacity>
       </Modal>
@@ -123,8 +161,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(30, 41, 59, 0.4)',
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: 'rgba(148, 163, 184, 0.1)',
-    opacity: 0.5,
+    borderColor: 'rgba(56, 189, 248, 0.2)',
+    borderStyle: 'dashed',
+    opacity: 0.7,
     marginBottom: 8,
   },
   unlocked: {
@@ -159,7 +198,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    color: '#94a3b8',
+    color: '#c8d4e0',
     fontSize: 13,
     flex: 1,
   },
@@ -168,7 +207,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
   price: {
-    color: '#64748b',
+    color: '#94a3b8',
     fontSize: 11,
     fontFamily: 'monospace',
   },
@@ -245,6 +284,26 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
   },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  modalBuyButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    backgroundColor: 'rgba(34, 197, 94, 0.2)',
+    borderWidth: 1,
+    borderColor: 'rgba(34, 197, 94, 0.5)',
+  },
+  modalBuyButtonDisabled: {
+    opacity: 0.5,
+  },
+  modalBuyText: {
+    color: '#22c55e',
+    fontSize: 13,
+    fontWeight: '600',
+  },
   modalCloseButton: {
     paddingVertical: 10,
     paddingHorizontal: 24,
@@ -255,5 +314,8 @@ const styles = StyleSheet.create({
   modalCloseText: {
     color: '#94a3b8',
     fontSize: 13,
+  },
+  pricePurchased: {
+    color: '#22c55e',
   },
 });

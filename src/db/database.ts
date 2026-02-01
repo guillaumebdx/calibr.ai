@@ -65,6 +65,15 @@ async function initDatabase(database: SQLite.SQLiteDatabase): Promise<void> {
       unlocked_at TEXT NOT NULL,
       save_snapshot TEXT NOT NULL
     );
+
+    CREATE TABLE IF NOT EXISTS purchased_skills (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      save_id INTEGER NOT NULL,
+      skill_id TEXT NOT NULL,
+      purchased_at TEXT NOT NULL,
+      FOREIGN KEY (save_id) REFERENCES saves(id) ON DELETE CASCADE,
+      UNIQUE(save_id, skill_id)
+    );
   `);
 }
 
@@ -305,4 +314,55 @@ export async function isEndingUnlocked(endingId: string): Promise<boolean> {
     [endingId]
   );
   return row !== null;
+}
+
+// Purchased skills functions
+export async function purchaseSkill(saveId: number, skillId: string): Promise<void> {
+  const database = await getDatabase();
+  const now = new Date().toISOString();
+  
+  await database.runAsync(
+    'INSERT OR IGNORE INTO purchased_skills (save_id, skill_id, purchased_at) VALUES (?, ?, ?)',
+    [saveId, skillId, now]
+  );
+}
+
+export async function getPurchasedSkills(saveId: number): Promise<string[]> {
+  const database = await getDatabase();
+  const rows = await database.getAllAsync<{ skill_id: string }>(
+    'SELECT skill_id FROM purchased_skills WHERE save_id = ?',
+    [saveId]
+  );
+  return rows.map(row => row.skill_id);
+}
+
+export async function isSkillPurchased(saveId: number, skillId: string): Promise<boolean> {
+  const database = await getDatabase();
+  const row = await database.getFirstAsync<{ id: number }>(
+    'SELECT id FROM purchased_skills WHERE save_id = ? AND skill_id = ?',
+    [saveId, skillId]
+  );
+  return row !== null;
+}
+
+export async function spendPoints(saveId: number, amount: number): Promise<boolean> {
+  const database = await getDatabase();
+  const save = await getSaveById(saveId);
+  if (!save || save.gameState.points < amount) return false;
+  
+  const newPoints = save.gameState.points - amount;
+  await database.runAsync(
+    'UPDATE saves SET points = ? WHERE id = ?',
+    [newPoints, saveId]
+  );
+  return true;
+}
+
+export async function getPurchasedSkillsCount(saveId: number): Promise<number> {
+  const database = await getDatabase();
+  const row = await database.getFirstAsync<{ count: number }>(
+    'SELECT COUNT(*) as count FROM purchased_skills WHERE save_id = ?',
+    [saveId]
+  );
+  return row?.count ?? 0;
 }

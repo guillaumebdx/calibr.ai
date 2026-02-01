@@ -1,39 +1,61 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Modal, Dimensions, ScrollView } from 'react-native';
 import { router } from 'expo-router';
 import { GradientBackground, ChoiceButton, ThumbFeedback } from '../src/components';
-import { GameState, Choice, Level } from '../src/types';
+import { GameState, Choice, ImageLevel } from '../src/types';
 import { initialGameState, applyChoice } from '../src/state/gameState';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
-import level1Data from '../src/data/level1.json';
-import level2Data from '../src/data/level2.json';
-import level3Data from '../src/data/level3.json';
-import level4Data from '../src/data/level4.json';
+import image1Data from '../src/data/image1.json';
+import image2Data from '../src/data/image2.json';
 
-const LEVELS: Record<string, Level> = {
-  level1: level1Data as Level,
-  level2: level2Data as Level,
-  level3: level3Data as Level,
-  level4: level4Data as Level,
+const IMAGE_LEVELS: Record<string, ImageLevel> = {
+  image1: image1Data as ImageLevel,
+  image2: image2Data as ImageLevel,
 };
 
-export default function GameScreen() {
+const IMAGES: Record<string, any> = {
+  'antivirus.png': require('../assets/input_image/antivirus.png'),
+  'car1.png': require('../assets/input_image/car1.png'),
+  'exercise.png': require('../assets/input_image/exercise.png'),
+  'plant.png': require('../assets/input_image/plant.png'),
+  'man1.png': require('../assets/input_image/man1.png'),
+  'button.png': require('../assets/input_image/button.png'),
+  'outfit.png': require('../assets/input_image/outfit.png'),
+  'contrail.png': require('../assets/input_image/contrail.png'),
+  'diamond.png': require('../assets/input_image/diamond.png'),
+  'car2.png': require('../assets/input_image/car2.png'),
+  'wire.png': require('../assets/input_image/wire.png'),
+  'clock.png': require('../assets/input_image/clock.png'),
+  'blur.png': require('../assets/input_image/blur.png'),
+  'alcool.png': require('../assets/input_image/alcool.png'),
+  'plaques.png': require('../assets/input_image/plaques.png'),
+  'captcha.png': require('../assets/input_image/captcha.png'),
+  'airport.png': require('../assets/input_image/airport.png'),
+  'menu.png': require('../assets/input_image/menu.png'),
+  'money.png': require('../assets/input_image/money.png'),
+  'nike.png': require('../assets/input_image/nike.png'),
+};
+
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+
+export default function ImageGameScreen() {
   const { debugMode } = useDebug();
-  const { getNextAvailableLevel, markLevelAsPlayed, currentSave } = useSave();
+  const { getNextAvailableLevel, markLevelAsPlayed } = useSave();
   const [gameState, setGameState] = useState<GameState>(initialGameState);
   const [showFeedback, setShowFeedback] = useState(false);
   const [lastChoice, setLastChoice] = useState<Choice | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentLevelId, setCurrentLevelId] = useState<string | null>(null);
+  const [imageModalVisible, setImageModalVisible] = useState(false);
   const scrollRef = useRef<ScrollView>(null);
 
   useEffect(() => {
-    const nextLevel = getNextAvailableLevel('prompts');
+    const nextLevel = getNextAvailableLevel('image');
     setCurrentLevelId(nextLevel);
   }, [getNextAvailableLevel]);
 
-  const level = currentLevelId ? LEVELS[currentLevelId] : null;
+  const level = currentLevelId ? IMAGE_LEVELS[currentLevelId] : null;
 
   const orderedPrompts = useMemo(() => {
     if (!level) return [];
@@ -90,7 +112,7 @@ export default function GameScreen() {
     return (
       <GradientBackground colors={['#212121', '#212121', '#212121']}>
         <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
-          <Text style={{ color: '#9ca3af', fontSize: 16 }}>Aucun niveau disponible</Text>
+          <Text style={{ color: '#9ca3af', fontSize: 16 }}>Aucun niveau image disponible</Text>
           <TouchableOpacity 
             style={{ marginTop: 20, padding: 12 }}
             onPress={() => router.replace('/menu')}
@@ -104,6 +126,7 @@ export default function GameScreen() {
 
   const userInfo = `${currentPrompt.user.name}, ${currentPrompt.user.age} ans`;
   const traits = currentPrompt.user.traits.join(' · ');
+  const imageSource = IMAGES[currentPrompt.image];
 
   return (
     <GradientBackground colors={['#212121', '#212121', '#212121']}>
@@ -132,6 +155,21 @@ export default function GameScreen() {
             <Text style={styles.promptText}>{currentPrompt.text}</Text>
           </View>
 
+          {imageSource && (
+            <TouchableOpacity 
+              style={styles.imageContainer}
+              onPress={() => setImageModalVisible(true)}
+              activeOpacity={0.9}
+            >
+              <Image 
+                source={imageSource} 
+                style={styles.promptImage}
+                resizeMode="contain"
+              />
+              <Text style={styles.imageHint}>Appuyez pour agrandir</Text>
+            </TouchableOpacity>
+          )}
+
           <View style={styles.choicesContainer}>
             {currentPrompt.choices.map((choice) => (
               <View key={choice.id}>
@@ -157,6 +195,35 @@ export default function GameScreen() {
           </View>
         )}
 
+        {/* Modal plein écran pour l'image */}
+        <Modal
+          visible={imageModalVisible}
+          transparent={true}
+          animationType="fade"
+          onRequestClose={() => setImageModalVisible(false)}
+        >
+          <TouchableOpacity 
+            style={styles.modalOverlay}
+            activeOpacity={1}
+            onPress={() => setImageModalVisible(false)}
+          >
+            <View style={styles.modalContent}>
+              {imageSource && (
+                <Image 
+                  source={imageSource} 
+                  style={styles.fullscreenImage}
+                  resizeMode="contain"
+                />
+              )}
+              <TouchableOpacity 
+                style={styles.closeButton}
+                onPress={() => setImageModalVisible(false)}
+              >
+                <Text style={styles.closeButtonText}>✕</Text>
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
+        </Modal>
       </View>
     </GradientBackground>
   );
@@ -187,7 +254,7 @@ const styles = StyleSheet.create({
   },
   userInfo: {
     marginTop: 20,
-    marginBottom: 24,
+    marginBottom: 16,
     alignSelf: 'flex-end',
     backgroundColor: '#2f2f2f',
     borderRadius: 20,
@@ -206,7 +273,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   promptContainer: {
-    paddingVertical: 16,
+    paddingVertical: 12,
     paddingRight: 40,
   },
   promptText: {
@@ -216,8 +283,27 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     lineHeight: 24,
   },
+  imageContainer: {
+    marginVertical: 16,
+    alignItems: 'center',
+    backgroundColor: 'rgba(30, 41, 59, 0.4)',
+    borderRadius: 12,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(148, 163, 184, 0.2)',
+  },
+  promptImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 8,
+  },
+  imageHint: {
+    color: 'rgba(148, 163, 184, 0.6)',
+    fontSize: 11,
+    marginTop: 8,
+  },
   choicesContainer: {
-    paddingTop: 24,
+    paddingTop: 16,
   },
   debugEffects: {
     color: '#ef4444',
@@ -238,5 +324,37 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: 'monospace',
     textAlign: 'center',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fullscreenImage: {
+    width: SCREEN_WIDTH - 40,
+    height: SCREEN_HEIGHT - 120,
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 50,
+    right: 20,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  closeButtonText: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: '600',
   },
 });

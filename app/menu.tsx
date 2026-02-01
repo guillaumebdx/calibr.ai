@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 import { GradientBackground } from '../src/components';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
-import { getAllEndings, EndingData } from '../src/db/database';
+import { getAllEndings, EndingData, getPurchasedSkillsCount } from '../src/db/database';
 
 const DEBUG_TAP_COUNT = 8;
 const DEBUG_TAP_TIMEOUT = 3000;
@@ -14,12 +14,26 @@ export default function MenuScreen() {
   const { saves, loadSaves, startNewGame, loadSave, deleteSave } = useSave();
   const [tapCount, setTapCount] = useState(0);
   const [endings, setEndings] = useState<EndingData[]>([]);
+  const [skillsCounts, setSkillsCounts] = useState<Record<number, number>>({});
   const lastTapTime = useRef<number>(0);
 
   useEffect(() => {
     loadSaves();
     loadEndings();
   }, []);
+
+  useEffect(() => {
+    const loadSkillsCounts = async () => {
+      const counts: Record<number, number> = {};
+      for (const save of saves) {
+        counts[save.id] = await getPurchasedSkillsCount(save.id);
+      }
+      setSkillsCounts(counts);
+    };
+    if (saves.length > 0) {
+      loadSkillsCounts();
+    }
+  }, [saves]);
 
   const loadEndings = async () => {
     const allEndings = await getAllEndings();
@@ -141,7 +155,7 @@ export default function MenuScreen() {
                   <View style={styles.saveInfo}>
                     <Text style={styles.saveDate}>{formatDate(save.updated_at)}</Text>
                     <Text style={styles.saveDetails}>
-                      Itération {save.iteration_count} • {save.gameState.points + save.gameState.depthPoints} MB
+                      Itération {save.iteration_count} • {save.gameState.points} MB • {skillsCounts[save.id] || 0} capacité{(skillsCounts[save.id] || 0) > 1 ? 's' : ''}
                     </Text>
                   </View>
                   <Text style={styles.saveArrow}>→</Text>

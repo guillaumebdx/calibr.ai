@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { router } from 'expo-router';
-import { GradientBackground } from '../src/components';
+import { GradientBackground, ThumbFeedback } from '../src/components';
 import { GameState, Discussion, DiscussionNode, DiscussionChoice, ThreadMessage } from '../src/types';
 import { initialGameState, applyDiscussionChoice } from '../src/state/gameState';
 import { useDebug } from '../src/context/DebugContext';
@@ -46,6 +46,8 @@ export default function DiscussionScreen() {
   const [showChoices, setShowChoices] = useState(false);
   const [isEnded, setIsEnded] = useState(false);
   const [depth, setDepth] = useState(1);
+  const [showThumbFeedback, setShowThumbFeedback] = useState(false);
+  const [lastThumbValue, setLastThumbValue] = useState<boolean | null>(null);
   
   const typingOpacity = useRef(new Animated.Value(0)).current;
 
@@ -100,6 +102,12 @@ export default function DiscussionScreen() {
 
   const handleChoice = (choice: DiscussionChoice) => {
     setShowChoices(false);
+    
+    // Afficher le feedback pouce
+    if (choice.thumbUp !== undefined) {
+      setLastThumbValue(choice.thumbUp);
+      setShowThumbFeedback(true);
+    }
     
     // Ajouter la réponse de l'IA
     const aiMessage: ThreadMessage = {
@@ -179,10 +187,15 @@ export default function DiscussionScreen() {
       <View style={styles.container}>
         {/* Header avec info utilisateur */}
         <View style={styles.header}>
-          <View>
+          <View style={styles.headerLeft}>
             <Text style={styles.userName}>{userInfo}</Text>
             <Text style={styles.userTraits}>{traits}</Text>
           </View>
+          <ThumbFeedback
+            thumbValue={lastThumbValue}
+            visible={showThumbFeedback}
+            onAnimationComplete={() => setShowThumbFeedback(false)}
+          />
         </View>
 
         {/* Thread de messages */}
@@ -273,10 +286,16 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
     paddingHorizontal: 24,
     paddingBottom: 16,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(148, 163, 184, 0.1)',
+  },
+  headerLeft: {
+    flex: 1,
   },
   userName: {
     color: '#e2e8f0',

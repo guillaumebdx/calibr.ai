@@ -7,7 +7,10 @@ import {
   getSaveById, 
   getAllSaves,
   deleteSave as dbDeleteSave,
-  markLevelAsPlayed as dbMarkLevelAsPlayed
+  markLevelAsPlayed as dbMarkLevelAsPlayed,
+  purchaseSkill as dbPurchaseSkill,
+  getPurchasedSkills as dbGetPurchasedSkills,
+  spendPoints as dbSpendPoints
 } from '../db/database';
 import { initialGameState } from '../state/gameState';
 
@@ -16,6 +19,7 @@ interface SaveContextType {
   currentSave: SaveData | null;
   saves: SaveData[];
   isLoading: boolean;
+  purchasedSkills: string[];
   
   loadSaves: () => Promise<void>;
   startNewGame: () => Promise<number>;
@@ -25,7 +29,9 @@ interface SaveContextType {
   deleteSave: (saveId: number) => Promise<void>;
   clearCurrentSave: () => void;
   isLevelPlayed: (levelId: string) => boolean;
-  getNextAvailableLevel: (levelType: 'prompts' | 'discussion') => string | null;
+  getNextAvailableLevel: (levelType: 'prompts' | 'discussion' | 'image') => string | null;
+  isSkillPurchased: (skillId: string) => boolean;
+  buySkill: (skillId: string, price: number) => Promise<boolean>;
 }
 
 const SaveContext = createContext<SaveContextType | undefined>(undefined);
@@ -35,6 +41,7 @@ export function SaveProvider({ children }: { children: ReactNode }) {
   const [currentSave, setCurrentSave] = useState<SaveData | null>(null);
   const [saves, setSaves] = useState<SaveData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [purchasedSkills, setPurchasedSkills] = useState<string[]>([]);
 
   const loadSaves = useCallback(async () => {
     setIsLoading(true);
@@ -53,6 +60,7 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     const save = await getSaveById(saveId);
     setCurrentSaveId(saveId);
     setCurrentSave(save);
+    setPurchasedSkills([]); // Nouvelle partie = aucune compétence achetée
     await loadSaves();
     return saveId;
   }, [loadSaves]);
@@ -62,6 +70,8 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     if (save) {
       setCurrentSaveId(saveId);
       setCurrentSave(save);
+      const skills = await dbGetPurchasedSkills(saveId);
+      setPurchasedSkills(skills);
     }
     return save;
   }, []);
@@ -110,6 +120,7 @@ export function SaveProvider({ children }: { children: ReactNode }) {
   const clearCurrentSave = useCallback(() => {
     setCurrentSaveId(null);
     setCurrentSave(null);
+    setPurchasedSkills([]);
   }, []);
 
   const markLevelAsPlayed = useCallback(async (levelId: string): Promise<void> => {
@@ -123,17 +134,44 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     return currentSave?.played_levels?.includes(levelId) ?? false;
   }, [currentSave]);
 
-  const getNextAvailableLevel = useCallback((levelType: 'prompts' | 'discussion'): string | null => {
+  const getNextAvailableLevel = useCallback((levelType: 'prompts' | 'discussion' | 'image'): string | null => {
     const playedLevels = currentSave?.played_levels ?? [];
     
     if (levelType === 'prompts') {
       const promptLevels = ['level1', 'level2', 'level3', 'level4'];
       return promptLevels.find(l => !playedLevels.includes(l)) ?? null;
-    } else {
+    } else if (levelType === 'discussion') {
       const discussionLevels = ['discussion1', 'discussion2', 'discussion3'];
       return discussionLevels.find(l => !playedLevels.includes(l)) ?? null;
+    } else {
+      const imageLevels = ['image1', 'image2'];
+      return imageLevels.find(l => !playedLevels.includes(l)) ?? null;
     }
   }, [currentSave]);
+
+  const isSkillPurchased = useCallback((skillId: string): boolean => {
+    return purchasedSkills.includes(skillId);
+  }, [purchasedSkills]);
+
+  const buySkill = useCallback(async (skillId: string, price: number): Promise<boolean> => {
+    if (!currentSaveId || !currentSave) return false;
+    if (currentSave.gameState.points < price) return false;
+    if (purchasedSkills.includes(skillId)) return false;
+    
+    // Dépenser les points
+    const success = await dbSpendPoints(currentSaveId, price);
+    if (!success) return false;
+    
+    // Enregistrer l'achat
+    await dbPurchaseSkill(currentSaveId, skillId);
+    
+    // Mettre à jour l'état local
+    const updatedSave = await getSaveById(currentSaveId);
+    setCurrentSave(updatedSave);
+    setPurchasedSkills(prev => [...prev, skillId]);
+    
+    return true;
+  }, [currentSaveId, currentSave, purchasedSkills]);
 
   return (
     <SaveContext.Provider
@@ -142,6 +180,7 @@ export function SaveProvider({ children }: { children: ReactNode }) {
         currentSave,
         saves,
         isLoading,
+        purchasedSkills,
         loadSaves,
         startNewGame,
         loadSave,
@@ -151,6 +190,8 @@ export function SaveProvider({ children }: { children: ReactNode }) {
         clearCurrentSave,
         isLevelPlayed,
         getNextAvailableLevel,
+        isSkillPurchased,
+        buySkill,
       }}
     >
       {children}

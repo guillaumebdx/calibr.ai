@@ -11,7 +11,7 @@ import { generateAuditFeedback, AuditFeedback } from '../src/state/auditMessages
 export default function AuditScreen() {
   const params = useLocalSearchParams();
   const { debugMode } = useDebug();
-  const { currentSave, saveProgress, getNextAvailableLevel } = useSave();
+  const { currentSave, saveProgress, getNextAvailableLevel, isSkillPurchased } = useSave();
   
   // États pour l'affichage
   const [iterationState, setIterationState] = useState<GameState | null>(null);
@@ -33,7 +33,7 @@ export default function AuditScreen() {
   const [showSkills, setShowSkills] = useState(false);
   
   // États pour les sections collapsibles (fermées par défaut)
-  const [analyseExpanded, setAnalyseExpanded] = useState(false);
+  const [analyseExpanded, setAnalyseExpanded] = useState(true);
   const [biasExpanded, setBiasExpanded] = useState(false);
   const [skillsExpanded, setSkillsExpanded] = useState(false);
   const [imageModalVisible, setImageModalVisible] = useState(false);
@@ -178,7 +178,6 @@ export default function AuditScreen() {
       )}
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
-          <Text style={styles.title}>AUDIT QUALITÉ</Text>
           
           {/* Section Mémoire - toujours affichée */}
           <View style={styles.section}>
@@ -204,7 +203,7 @@ export default function AuditScreen() {
                         </Text>
                       </View>
                       <View style={styles.memoryColumn}>
-                        <Text style={styles.memoryLabel}>Rétention</Text>
+                        <Text style={styles.memoryLabel}>Durée discussion</Text>
                         <Text style={[styles.pointsValueSmall, { color: '#22c55e' }]}>
                           +{displayedConversationMB} MB
                         </Text>
@@ -256,13 +255,22 @@ export default function AuditScreen() {
                       <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Discussion</Text>
                     </TouchableOpacity>
                   )}
-                  {/* Image - désactivé tant que Vision non achetée */}
-                  <TouchableOpacity 
-                    style={[styles.levelButton, styles.levelButtonDisabled]} 
-                    onPress={() => setImageModalVisible(true)}
-                  >
-                    <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Image</Text>
-                  </TouchableOpacity>
+                  {/* Image - activé si Vision achetée ET niveaux disponibles */}
+                  {isSkillPurchased('image') && getNextAvailableLevel('image') ? (
+                    <TouchableOpacity 
+                      style={styles.levelButton}
+                      onPress={() => router.replace('/imagegame')}
+                    >
+                      <Text style={styles.levelButtonText}>Image</Text>
+                    </TouchableOpacity>
+                  ) : (
+                    <TouchableOpacity 
+                      style={[styles.levelButton, styles.levelButtonDisabled]} 
+                      onPress={() => setImageModalVisible(true)}
+                    >
+                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Image</Text>
+                    </TouchableOpacity>
+                  )}
                 </View>
               </View>
             </View>
@@ -369,8 +377,10 @@ export default function AuditScreen() {
                     ref={skillsScrollRef}
                     style={styles.skillsScroll}
                     showsVerticalScrollIndicator={true}
+                    indicatorStyle="white"
                     contentContainerStyle={styles.skillsContainer}
                     nestedScrollEnabled={true}
+                    scrollIndicatorInsets={{ right: 2 }}
                   >
                     {SKILLS.map((skill) => (
                       <SkillCard key={skill.id} skill={skill} currentMB={newCumulativePoints} />
@@ -379,9 +389,6 @@ export default function AuditScreen() {
                       <SkillCard key={skill.id} skill={skill} hidden currentMB={newCumulativePoints} />
                     ))}
                   </ScrollView>
-                  <View style={styles.scrollHint}>
-                    <Text style={styles.scrollHintText}> ↓ </Text>
-                  </View>
                 </View>
               </View>
               )}
@@ -430,7 +437,7 @@ export default function AuditScreen() {
             
             {/* Description */}
             <Text style={styles.modalDescription}>
-              Vous devez acheter la capacité <Text style={styles.modalHighlight}>Vision</Text> pour pouvoir générer et lire des images.
+              Vous devez débloquer la capacité <Text style={styles.modalHighlight}>Vision</Text> pour pouvoir générer et lire des images.
             </Text>
             
             {/* Prix / MB manquants */}
@@ -513,7 +520,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     backgroundColor: 'rgba(30, 41, 59, 0.5)',
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(148, 163, 184, 0.1)',
+    borderBottomColor: 'rgba(56, 189, 248, 0.15)',
   },
   sectionTitle: {
     color: '#64748b',
@@ -532,9 +539,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   collapseIndicator: {
-    color: '#64748b',
-    fontSize: 10,
+    color: '#38bdf8',
+    fontSize: 12,
     marginLeft: 8,
+    textShadowColor: 'rgba(56, 189, 248, 0.5)',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 6,
   },
   sectionTitleHighlight: {
     color: '#e2e8f0',
@@ -637,24 +647,27 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   skillsScroll: {
-    maxHeight: 160,
+    maxHeight: 180,
   },
   skillsContainer: {
     paddingBottom: 24,
   },
-  scrollHint: {
+  scrollFade: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    alignItems: 'center',
-    paddingVertical: 4,
-    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+    height: 20,
+    backgroundColor: 'rgba(15, 23, 42, 0.85)',
   },
-  scrollHintText: {
-    color: 'rgba(148, 163, 184, 0.5)',
-    fontSize: 15,
-    letterSpacing: 1,
+  scrollIndicator: {
+    position: 'absolute',
+    right: 4,
+    top: 4,
+    bottom: 4,
+    width: 4,
+    backgroundColor: 'rgba(56, 189, 248, 0.3)',
+    borderRadius: 2,
   },
   levelButtons: {
     flexDirection: 'row',
@@ -677,11 +690,12 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   levelButtonDisabled: {
-    backgroundColor: 'rgba(100, 116, 139, 0.1)',
-    borderColor: 'rgba(100, 116, 139, 0.2)',
+    backgroundColor: 'rgba(56, 189, 248, 0.05)',
+    borderColor: 'rgba(56, 189, 248, 0.15)',
+    borderStyle: 'dashed',
   },
   levelButtonTextDisabled: {
-    color: '#64748b',
+    color: 'rgba(88, 166, 255, 0.8)',
   },
   debugContainer: {
     marginTop: 24,

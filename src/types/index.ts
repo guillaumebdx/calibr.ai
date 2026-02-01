@@ -107,3 +107,17 @@ export interface ThreadMessage {
   text: string;
   isTyping?: boolean;
 }
+
+// Image mode types (prompts avec images)
+export interface ImagePrompt {
+  id: string;
+  user: UserProfile;
+  text: string;
+  image: string; // Nom du fichier image (ex: "antivirus.png")
+  choices: Choice[];
+}
+
+export interface ImageLevel {
+  levelId: string;
+  prompts: ImagePrompt[];
+}
