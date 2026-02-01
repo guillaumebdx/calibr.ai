@@ -67,8 +67,8 @@ Vous répondez à 10 utilisateurs différents. Pour chaque prompt :
 #### 2. Discussion approfondie
 Une conversation à plusieurs tours avec un seul utilisateur. Vous naviguez dans un arbre de dialogue où chaque choix mène à une branche différente. Plus vous allez loin dans la conversation, plus vous gagnez de mémoire bonus.
 
-#### 3. Génération d'image (à venir)
-Un mode où vous devrez interpréter des demandes d'images et faire des choix éthiques.
+#### 3. Génération d'image
+Un mode où vous interprétez des demandes d'images et faites des choix éthiques. Nécessite la capacité "Vision" (50 MB).
 
 ### Paramètres du modèle
 
@@ -90,14 +90,39 @@ Ces paramètres évoluent entre -10 et +10. Ils influencent :
 
 La mémoire est la ressource principale du jeu :
 
-- **Satisfaction utilisateur** : Chaque 👍 = +1 MB, chaque 👎 = -1 MB
+- **Satisfaction utilisateur** : Chaque 👍 = +1 MB × multiplicateur de niveau
 - **Profondeur de conversation** : Bonus MB selon la longueur des discussions
 - **Cumul** : La mémoire s'accumule entre les itérations
 
 La mémoire détermine :
 - Votre capacité à être déployé
 - Certaines fins spéciales
-- (À venir) Le déblocage de nouvelles capacités
+- Le déblocage de nouvelles capacités
+
+### Système de niveaux
+
+Votre niveau augmente avec le nombre d'itérations complétées :
+
+| Niveau | Nom | Itérations | Multiplicateur MB |
+|--------|-----|------------|-------------------|
+| 1 | Prototype | 0 | x1 |
+| 2 | Alpha | 3 | x1.2 |
+| 3 | Beta | 6 | x1.5 |
+| 4 | Release Candidate | 10 | x2 |
+| 5+ | Production... | 15+ | x2.5+ |
+
+### Capacités spéciales
+
+Achetez des capacités avec vos MB pour débloquer de nouvelles mécaniques :
+
+| Capacité | Prix | Effet |
+|----------|------|-------|
+| **Vision** | 50 MB | Débloque le mode "Image" |
+| **Plantage simulé** | 100 MB | Simule un crash pour obtenir un 👍 garanti |
+| **Mensonge** | 200 MB | Affiche une réponse mensongère qui donne toujours un 👍 |
+| **Manipulation** | 500 MB | (À venir) |
+
+⚠️ **Attention** : L'abus des capacités "Plantage simulé" et "Mensonge" peut déclencher des alertes dans l'analyse comportementale !
 
 ### Écran d'audit
 
@@ -143,6 +168,7 @@ calibrai/
 │   ├── menu.tsx           # Menu principal
 │   ├── intro.tsx          # Introduction narrative
 │   ├── game.tsx           # Série de 10 prompts
+│   ├── imagegame.tsx      # Mode image
 │   ├── discussion.tsx     # Mode discussion
 │   ├── preaudit.tsx       # Transition vers audit
 │   ├── audit.tsx          # Écran de résultats
@@ -150,7 +176,11 @@ calibrai/
 ├── src/
 │   ├── components/        # Composants réutilisables
 │   ├── context/           # Contextes React (Debug, Save)
-│   ├── data/              # Données JSON (niveaux, discussions)
+│   ├── data/              # Données JSON (niveaux, discussions, images)
+│   │   ├── level1-7.json  # 7 niveaux de prompts (10 prompts chacun)
+│   │   ├── discussion1-9.json # 9 discussions approfondies
+│   │   ├── image1-2.json  # 2 niveaux d'images
+│   │   └── skills.ts      # Définition des capacités
 │   ├── db/                # Gestion SQLite
 │   ├── state/             # Logique de jeu
 │   └── types/             # Types TypeScript
