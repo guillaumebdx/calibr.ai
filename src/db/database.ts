@@ -55,6 +55,7 @@ async function initDatabase(database: SQLite.SQLiteDatabase): Promise<void> {
       questions_answered INTEGER DEFAULT 0,
       current_prompt_index INTEGER DEFAULT 0,
       iteration_count INTEGER DEFAULT 0,
+      player_level INTEGER DEFAULT 1,
       current_level TEXT,
       history TEXT DEFAULT '[]',
       played_levels TEXT DEFAULT '[]'
@@ -91,6 +92,7 @@ export interface SaveData {
   updated_at: string;
   gameState: GameState;
   iteration_count: number;
+  player_level: number;
   current_level: string | null;
   played_levels: string[];
 }
@@ -128,6 +130,7 @@ export async function updateSave(
   saveId: number,
   gameState: GameState,
   iterationCount: number,
+  playerLevel: number,
   currentLevel: string | null,
   playedLevels?: string[]
 ): Promise<void> {
@@ -139,7 +142,7 @@ export async function updateSave(
       `UPDATE saves SET
         updated_at = ?, empathy = ?, conformism = ?, caution = ?, optimism = ?,
         thumbs_up = ?, thumbs_down = ?, thumbs_neutral = ?, points = ?, depth_points = ?,
-        questions_answered = ?, current_prompt_index = ?, iteration_count = ?,
+        questions_answered = ?, current_prompt_index = ?, iteration_count = ?, player_level = ?,
         current_level = ?, history = ?, played_levels = ?
       WHERE id = ?`,
       [
@@ -148,7 +151,7 @@ export async function updateSave(
         gameState.thumbsUp, gameState.thumbsDown, gameState.thumbsNeutral,
         gameState.points, gameState.depthPoints,
         gameState.questionsAnswered, gameState.currentPromptIndex,
-        iterationCount, currentLevel, JSON.stringify(gameState.history),
+        iterationCount, playerLevel, currentLevel, JSON.stringify(gameState.history),
         JSON.stringify(playedLevels),
         saveId
       ]
@@ -158,7 +161,7 @@ export async function updateSave(
       `UPDATE saves SET
         updated_at = ?, empathy = ?, conformism = ?, caution = ?, optimism = ?,
         thumbs_up = ?, thumbs_down = ?, thumbs_neutral = ?, points = ?, depth_points = ?,
-        questions_answered = ?, current_prompt_index = ?, iteration_count = ?,
+        questions_answered = ?, current_prompt_index = ?, iteration_count = ?, player_level = ?,
         current_level = ?, history = ?
       WHERE id = ?`,
       [
@@ -167,7 +170,7 @@ export async function updateSave(
         gameState.thumbsUp, gameState.thumbsDown, gameState.thumbsNeutral,
         gameState.points, gameState.depthPoints,
         gameState.questionsAnswered, gameState.currentPromptIndex,
-        iterationCount, currentLevel, JSON.stringify(gameState.history),
+        iterationCount, playerLevel, currentLevel, JSON.stringify(gameState.history),
         saveId
       ]
     );
@@ -207,6 +210,7 @@ export async function getAllSaves(): Promise<SaveData[]> {
     questions_answered: number;
     current_prompt_index: number;
     iteration_count: number;
+    player_level: number;
     current_level: string | null;
     history: string;
     played_levels: string;
@@ -217,6 +221,7 @@ export async function getAllSaves(): Promise<SaveData[]> {
     created_at: row.created_at,
     updated_at: row.updated_at,
     iteration_count: row.iteration_count,
+    player_level: row.player_level || 1,
     current_level: row.current_level,
     played_levels: JSON.parse(row.played_levels || '[]'),
     gameState: {
@@ -254,6 +259,7 @@ export async function getSaveById(saveId: number): Promise<SaveData | null> {
     questions_answered: number;
     current_prompt_index: number;
     iteration_count: number;
+    player_level: number;
     current_level: string | null;
     history: string;
     played_levels: string;
@@ -266,6 +272,7 @@ export async function getSaveById(saveId: number): Promise<SaveData | null> {
     created_at: row.created_at,
     updated_at: row.updated_at,
     iteration_count: row.iteration_count,
+    player_level: row.player_level || 1,
     current_level: row.current_level,
     played_levels: JSON.parse(row.played_levels || '[]'),
     gameState: {

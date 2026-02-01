@@ -21,7 +21,7 @@ const LEVELS: Record<string, Level> = {
 
 export default function GameScreen() {
   const { debugMode } = useDebug();
-  const { getNextAvailableLevel, markLevelAsPlayed, currentSave, currentSaveId, isSkillPurchased } = useSave();
+  const { getNextAvailableLevel, markLevelAsPlayed, currentSave, currentSaveId, isSkillPurchased, getPlayerLevel } = useSave();
   const [gameState, setGameState] = useState<GameState>(initialGameState);
   const [showFeedback, setShowFeedback] = useState(false);
   const [lastChoice, setLastChoice] = useState<Choice | null>(null);
@@ -75,7 +75,8 @@ export default function GameScreen() {
   const handleFeedbackComplete = async () => {
     if (!lastChoice || !currentPrompt || !currentLevelId) return;
     
-    const newState = applyChoice(gameState, lastChoice, currentPrompt.id);
+    const multiplier = getPlayerLevel().multiplier;
+    const newState = applyChoice(gameState, lastChoice, currentPrompt.id, multiplier);
     setGameState(newState);
     setShowFeedback(false);
     setLastChoice(null);
@@ -348,9 +349,9 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   crashButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     backgroundColor: 'rgba(100, 116, 139, 0.2)',
     borderWidth: 1,
     borderColor: 'rgba(100, 116, 139, 0.4)',
@@ -358,15 +359,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   crashButtonPlaceholder: {
-    width: 36,
-    height: 36,
+    width: 48,
+    height: 48,
   },
   crashButtonUsed: {
     opacity: 0.3,
   },
   crashIcon: {
-    width: 20,
-    height: 20,
+    width: 28,
+    height: 28,
   },
   crashIconUsed: {
     opacity: 0.5,

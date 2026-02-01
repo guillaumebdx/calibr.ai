@@ -15,7 +15,8 @@ export const initialGameState: GameState = {
   history: [],
 };
 
-export function applyChoice(state: GameState, choice: Choice, promptId: string): GameState {
+// multiplier: multiplicateur de points pour les pouces en l'air (basé sur le niveau du joueur)
+export function applyChoice(state: GameState, choice: Choice, promptId: string, multiplier: number = 1): GameState {
   const newState = { ...state };
   
   newState.empathy = clamp(state.empathy + choice.effects.empathy, -10, 10);
@@ -25,7 +26,8 @@ export function applyChoice(state: GameState, choice: Choice, promptId: string):
   
   if (choice.thumbUp === true) {
     newState.thumbsUp = state.thumbsUp + 1;
-    newState.points = state.points + 1;
+    // Points multipliés par le niveau du joueur (arrondi)
+    newState.points = state.points + Math.round(1 * multiplier);
   } else if (choice.thumbUp === false) {
     newState.thumbsDown = state.thumbsDown + 1;
     newState.points = Math.max(0, state.points - 1);
@@ -52,7 +54,7 @@ function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
 
-export function applyDiscussionChoice(state: GameState, choice: DiscussionChoice): GameState {
+export function applyDiscussionChoice(state: GameState, choice: DiscussionChoice, multiplier: number = 1): GameState {
   const newState = { ...state };
   
   newState.empathy = clamp(state.empathy + choice.effects.empathy, -10, 10);
@@ -62,7 +64,7 @@ export function applyDiscussionChoice(state: GameState, choice: DiscussionChoice
   
   if (choice.thumbUp === true) {
     newState.thumbsUp = state.thumbsUp + 1;
-    newState.points = state.points + 1;
+    newState.points = state.points + Math.round(1 * multiplier);
   } else if (choice.thumbUp === false) {
     newState.thumbsDown = state.thumbsDown + 1;
     newState.points = Math.max(0, state.points - 1);

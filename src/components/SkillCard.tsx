@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from 'react-native';
 import { Skill } from '../types';
 import { useSave } from '../context/SaveContext';
+import { SKILLS } from '../data/skills';
 
 interface SkillCardProps {
   skill: Skill;
@@ -17,9 +18,14 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
   const isPurchased = isSkillPurchased(skill.id);
   const missingMB = Math.max(0, skill.price - currentMB);
   const canAfford = currentMB >= skill.price;
+  
+  // Vérifier si la capacité requise est débloquée
+  const requiredSkill = skill.requiredSkillId ? SKILLS.find(s => s.id === skill.requiredSkillId) : null;
+  const isRequiredSkillPurchased = skill.requiredSkillId ? isSkillPurchased(skill.requiredSkillId) : true;
+  const canUnlock = isRequiredSkillPurchased && canAfford;
 
   const handleBuy = async () => {
-    if (isPurchasing || isPurchased || !canAfford) return;
+    if (isPurchasing || isPurchased || !canUnlock) return;
     setIsPurchasing(true);
     const success = await buySkill(skill.id, skill.price);
     setIsPurchasing(false);
@@ -104,31 +110,45 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
               {skill.description}
             </Text>
             
-            {/* Prix / MB manquants */}
+            {/* Prérequis non débloqué - prioritaire */}
+            {!hidden && !isPurchased && requiredSkill && !isRequiredSkillPurchased && (
+              <View style={styles.modalRequiredContainer}>
+                <Text style={styles.modalRequiredTitle}>⚠️ Prérequis</Text>
+                <Text style={styles.modalRequiredText}>
+                  Vous devez d'abord débloquer la capacité{' '}
+                  <Text style={styles.modalRequiredHighlight}>{requiredSkill.name}</Text>
+                  {' '}pour pouvoir acquérir celle-ci.
+                </Text>
+              </View>
+            )}
+            
+            {/* Prix / MB manquants - affiché seulement si prérequis OK */}
             {!hidden && skill.price > 0 && (
               <View style={styles.modalPriceContainer}>
                 {isPurchased ? (
                   <Text style={styles.modalPriceAfford}>
                     ✓ Capacité acquise
                   </Text>
-                ) : canAfford ? (
+                ) : isRequiredSkillPurchased && canAfford ? (
                   <Text style={styles.modalPriceAfford}>
                     Coût : {skill.price} MB
                   </Text>
-                ) : (
+                ) : isRequiredSkillPurchased ? (
                   <>
                     <Text style={styles.modalPriceLabel}>Coût : {skill.price} MB</Text>
                     <Text style={styles.modalPriceMissing}>
                       Il vous manque {missingMB} MB
                     </Text>
                   </>
+                ) : (
+                  <Text style={styles.modalPriceLabel}>Coût : {skill.price} MB</Text>
                 )}
               </View>
             )}
             
             {/* Boutons */}
             <View style={styles.modalButtons}>
-              {!hidden && !isPurchased && canAfford && (
+              {!hidden && !isPurchased && canUnlock && (
                 <TouchableOpacity 
                   style={[styles.modalBuyButton, isPurchasing && styles.modalBuyButtonDisabled]}
                   onPress={handleBuy}
@@ -314,6 +334,31 @@ const styles = StyleSheet.create({
   modalCloseText: {
     color: '#94a3b8',
     fontSize: 13,
+  },
+  modalRequiredContainer: {
+    backgroundColor: 'rgba(251, 191, 36, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(251, 191, 36, 0.3)',
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 16,
+  },
+  modalRequiredTitle: {
+    color: '#fbbf24',
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 6,
+    textAlign: 'center',
+  },
+  modalRequiredText: {
+    color: '#94a3b8',
+    fontSize: 13,
+    lineHeight: 18,
+    textAlign: 'center',
+  },
+  modalRequiredHighlight: {
+    color: '#fbbf24',
+    fontWeight: '600',
   },
   pricePurchased: {
     color: '#22c55e',

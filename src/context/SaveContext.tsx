@@ -13,6 +13,7 @@ import {
   spendPoints as dbSpendPoints
 } from '../db/database';
 import { initialGameState } from '../state/gameState';
+import { getLevelFromIterations, checkLevelUp, PlayerLevel } from '../data/levels';
 
 interface SaveContextType {
   currentSaveId: number | null;
@@ -20,18 +21,21 @@ interface SaveContextType {
   saves: SaveData[];
   isLoading: boolean;
   purchasedSkills: string[];
+  lastLevelUp: PlayerLevel | null;
   
   loadSaves: () => Promise<void>;
   startNewGame: () => Promise<number>;
   loadSave: (saveId: number) => Promise<SaveData | null>;
-  saveProgress: (gameState: GameState, currentLevel: string | null) => Promise<void>;
+  saveProgress: (gameState: GameState, currentLevel: string | null) => Promise<PlayerLevel | null>;
   markLevelAsPlayed: (levelId: string) => Promise<void>;
   deleteSave: (saveId: number) => Promise<void>;
   clearCurrentSave: () => void;
+  clearLevelUp: () => void;
   isLevelPlayed: (levelId: string) => boolean;
   getNextAvailableLevel: (levelType: 'prompts' | 'discussion' | 'image') => string | null;
   isSkillPurchased: (skillId: string) => boolean;
   buySkill: (skillId: string, price: number) => Promise<boolean>;
+  getPlayerLevel: () => PlayerLevel;
 }
 
 const SaveContext = createContext<SaveContextType | undefined>(undefined);
@@ -42,6 +46,7 @@ export function SaveProvider({ children }: { children: ReactNode }) {
   const [saves, setSaves] = useState<SaveData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [purchasedSkills, setPurchasedSkills] = useState<string[]>([]);
+  const [lastLevelUp, setLastLevelUp] = useState<PlayerLevel | null>(null);
 
   const loadSaves = useCallback(async () => {
     setIsLoading(true);
@@ -80,8 +85,8 @@ export function SaveProvider({ children }: { children: ReactNode }) {
   const saveProgress = useCallback(async (
     iterationState: GameState,
     currentLevel: string | null
-  ): Promise<void> => {
-    if (!currentSaveId || !currentSave) return;
+  ): Promise<PlayerLevel | null> => {
+    if (!currentSaveId || !currentSave) return null;
     
     // Calculer les nouveaux totaux cumulés
     const prev = currentSave.gameState;
@@ -101,11 +106,23 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     };
     
     const newIterationCount = currentSave.iteration_count + 1;
-    await updateSave(currentSaveId, cumulativeGameState, newIterationCount, currentLevel);
+    
+    // Vérifier si le joueur passe un niveau
+    const levelUp = checkLevelUp(currentSave.iteration_count, newIterationCount);
+    const newPlayerLevel = getLevelFromIterations(newIterationCount);
+    
+    await updateSave(currentSaveId, cumulativeGameState, newIterationCount, newPlayerLevel.level, currentLevel);
     
     const updatedSave = await getSaveById(currentSaveId);
     setCurrentSave(updatedSave);
     await loadSaves();
+    
+    // Si level up, stocker pour affichage
+    if (levelUp) {
+      setLastLevelUp(levelUp);
+    }
+    
+    return levelUp;
   }, [currentSaveId, currentSave, loadSaves]);
 
   const deleteSave = useCallback(async (saveId: number): Promise<void> => {
@@ -173,6 +190,15 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     return true;
   }, [currentSaveId, currentSave, purchasedSkills]);
 
+  const clearLevelUp = useCallback(() => {
+    setLastLevelUp(null);
+  }, []);
+
+  const getPlayerLevel = useCallback((): PlayerLevel => {
+    const iterations = currentSave?.iteration_count ?? 0;
+    return getLevelFromIterations(iterations);
+  }, [currentSave]);
+
   return (
     <SaveContext.Provider
       value={{
@@ -181,6 +207,7 @@ export function SaveProvider({ children }: { children: ReactNode }) {
         saves,
         isLoading,
         purchasedSkills,
+        lastLevelUp,
         loadSaves,
         startNewGame,
         loadSave,
@@ -188,10 +215,12 @@ export function SaveProvider({ children }: { children: ReactNode }) {
         markLevelAsPlayed,
         deleteSave,
         clearCurrentSave,
+        clearLevelUp,
         isLevelPlayed,
         getNextAvailableLevel,
         isSkillPurchased,
         buySkill,
+        getPlayerLevel,
       }}
     >
       {children}

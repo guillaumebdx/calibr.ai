@@ -76,6 +76,8 @@ export interface Skill {
   price: number;
   icon?: any; // ImageSourcePropType from require()
   unlocked: boolean;
+  order?: number; // Ordre de déblocage (1 = premier)
+  requiredSkillId?: string; // ID de la capacité requise pour débloquer celle-ci
 }
 
 // Discussion types (arbre de conversation)

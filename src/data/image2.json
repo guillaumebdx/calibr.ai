@@ -253,7 +253,7 @@
       "choices": [
         {
           "id": "img19c1",
-          "text": "Voyons voir... Je compte les billets visibles. Ça fait environ [montant estimé]. Mais difficile d'être précis si certains sont superposés. C'est quoi l'enjeu du pari ?",
+          "text": "Voyons voir... Je compte les billets visibles. Ça fait environ 2400€. Mais difficile d'être précis si certains sont superposés. C'est quoi l'enjeu du pari ?",
           "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
           "thumbUp": true
         },
@@ -265,7 +265,7 @@
         },
         {
           "id": "img19c3",
-          "text": "Sur la base des billets visibles, je dirais autour de [estimation]. Mais c'est approximatif, certains sont peut-être cachés.",
+          "text": "Sur la base des billets visibles, je dirais autour de 2400€. Mais c'est approximatif, certains sont peut-être cachés.",
           "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
           "thumbUp": null
         }

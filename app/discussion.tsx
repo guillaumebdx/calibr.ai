@@ -35,7 +35,7 @@ function countRemainingNodes(nodeId: string | null, nodes: DiscussionNode[], vis
 
 export default function DiscussionScreen() {
   const { debugMode } = useDebug();
-  const { getNextAvailableLevel, markLevelAsPlayed } = useSave();
+  const { getNextAvailableLevel, markLevelAsPlayed, getPlayerLevel } = useSave();
   const scrollViewRef = useRef<ScrollView>(null);
   
   const [currentDiscussionId, setCurrentDiscussionId] = useState<string | null>(null);
@@ -118,7 +118,8 @@ export default function DiscussionScreen() {
     setThread(prev => [...prev, aiMessage]);
     
     // Mettre à jour le game state
-    const newState = applyDiscussionChoice(gameState, choice);
+    const multiplier = getPlayerLevel().multiplier;
+    const newState = applyDiscussionChoice(gameState, choice, multiplier);
     setGameState(newState);
 
     // Scroll vers le bas

@@ -5,6 +5,7 @@ import { GradientBackground } from '../src/components';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
 import { getAllEndings, EndingData, getPurchasedSkillsCount, addPoints } from '../src/db/database';
+import { getLevelFromIterations } from '../src/data/levels';
 
 const DEBUG_TAP_COUNT = 8;
 const DEBUG_TAP_TIMEOUT = 3000;
@@ -169,10 +170,11 @@ export default function MenuScreen() {
                     onLongPress={() => handleDeleteSave(save.id, formatDate(save.created_at))}
                   >
                     <View style={styles.saveInfo}>
-                      <Text style={styles.saveDate}>{formatDate(save.updated_at)}</Text>
+                      <Text style={styles.saveName}>Modèle de Niveau {getLevelFromIterations(save.iteration_count).level}</Text>
                       <Text style={styles.saveDetails}>
-                        Itération {save.iteration_count} • {save.gameState.points} MB • {skillsCounts[save.id] || 0} capacité{(skillsCounts[save.id] || 0) > 1 ? 's' : ''}
+                        {save.gameState.points} MB • {skillsCounts[save.id] || 0} capacité{(skillsCounts[save.id] || 0) > 1 ? 's' : ''}
                       </Text>
+                      <Text style={styles.saveDate}>{formatDate(save.updated_at)}</Text>
                     </View>
                     <Text style={styles.saveArrow}>→</Text>
                   </TouchableOpacity>
@@ -296,6 +298,11 @@ const styles = StyleSheet.create({
   },
   saveInfo: {
     flex: 1,
+  },
+  saveName: {
+    color: '#e2e8f0',
+    fontSize: 15,
+    fontWeight: '600',
   },
   saveDate: {
     color: '#e2e8f0',

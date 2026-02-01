@@ -7,6 +7,7 @@ import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
 import { SKILLS, HIDDEN_SKILLS } from '../src/data/skills';
 import { generateAuditFeedback, AuditFeedback } from '../src/state/auditMessages';
+import { PLAYER_LEVELS, getLevelFromIterations } from '../src/data/levels';
 
 export default function AuditScreen() {
   const params = useLocalSearchParams();
@@ -39,6 +40,9 @@ export default function AuditScreen() {
   const [imageModalVisible, setImageModalVisible] = useState(false);
   const [noLevelsModalVisible, setNoLevelsModalVisible] = useState(false);
   const [noLevelsModalType, setNoLevelsModalType] = useState<'prompts' | 'discussion' | 'image'>('prompts');
+  const [levelsExpanded, setLevelsExpanded] = useState(false);
+  const [showLevelUp, setShowLevelUp] = useState(false);
+  const [newLevel, setNewLevel] = useState<number | null>(null);
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const skillsScrollRef = useRef<ScrollView>(null);
@@ -73,9 +77,16 @@ export default function AuditScreen() {
       // Sauvegarder en base
       hasSaved.current = true;
       saveProgress(state, null)
-        .then(() => {
+        .then((levelUp) => {
           setShowSaveMessage(true);
           setTimeout(() => setShowSaveMessage(false), 2000);
+          
+          // Si le joueur passe un niveau, afficher le flash message
+          if (levelUp) {
+            setNewLevel(levelUp.level);
+            setShowLevelUp(true);
+            setTimeout(() => setShowLevelUp(false), 4000);
+          }
         })
         .catch((err) => {
           console.error('Erreur sauvegarde:', err);
@@ -176,6 +187,17 @@ export default function AuditScreen() {
       {showSaveMessage && (
         <View style={styles.saveMessage}>
           <Text style={styles.saveMessageText}>✓ Progression sauvegardée</Text>
+        </View>
+      )}
+      
+      {/* Flash message level up */}
+      {showLevelUp && newLevel && (
+        <View style={styles.levelUpBanner}>
+          <Text style={styles.levelUpTitle}>⬆️ Évolution du modèle</Text>
+          <Text style={styles.levelUpText}>
+            Modèle de Niveau {newLevel} atteint !{'\n'}
+            Multiplicateur MB augmenté.
+          </Text>
         </View>
       )}
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
@@ -405,6 +427,95 @@ export default function AuditScreen() {
                     ))}
                   </ScrollView>
                 </View>
+              </View>
+              )}
+            </View>
+          )}
+
+          {/* Section Évolution du Modèle - Collapsible */}
+          {showSkills && currentSave && (
+            <View style={styles.section}>
+              <TouchableOpacity 
+                style={styles.sectionHeader} 
+                onPress={() => setLevelsExpanded(!levelsExpanded)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.sectionTitleCollapsible}>ÉVOLUTION DU MODÈLE</Text>
+                <Text style={styles.collapseIndicator}>{levelsExpanded ? '▼' : '▶'}</Text>
+              </TouchableOpacity>
+              {levelsExpanded && (
+              <View style={styles.sectionContent}>
+                <ScrollView 
+                  style={styles.levelsScroll}
+                  showsVerticalScrollIndicator={true}
+                  indicatorStyle="white"
+                  nestedScrollEnabled={true}
+                >
+                  {(() => {
+                    const currentIterations = currentSave.iteration_count;
+                    const currentPlayerLevel = getLevelFromIterations(currentIterations);
+                    
+                    return PLAYER_LEVELS.map((level, index) => {
+                      const isPast = level.level < currentPlayerLevel.level;
+                      const isCurrent = level.level === currentPlayerLevel.level;
+                      const isNext = level.level === currentPlayerLevel.level + 1;
+                      const isFuture = level.level > currentPlayerLevel.level + 1;
+                      const isTooFar = level.level > currentPlayerLevel.level + 11;
+                      
+                      // Ne pas afficher les niveaux trop loin
+                      if (isTooFar) return null;
+                      
+                      return (
+                        <View 
+                          key={level.level} 
+                          style={[
+                            styles.levelRow,
+                            isCurrent && styles.levelRowCurrent,
+                            isPast && styles.levelRowPast,
+                            isFuture && !isNext && styles.levelRowFuture,
+                          ]}
+                        >
+                          <View style={styles.levelInfo}>
+                            <Text style={[
+                              styles.levelName,
+                              isCurrent && styles.levelNameCurrent,
+                              isPast && styles.levelNamePast,
+                              isFuture && !isNext && styles.levelNameFuture,
+                            ]}>
+                              Niveau {level.level}
+                            </Text>
+                            <Text style={[
+                              styles.levelSubtitle,
+                              isCurrent && styles.levelSubtitleCurrent,
+                              isPast && styles.levelSubtitlePast,
+                            ]}>
+                              {level.name}
+                            </Text>
+                          </View>
+                          <View style={styles.levelDetails}>
+                            {(isPast || isCurrent || isNext) ? (
+                              <Text style={[
+                                styles.levelIterations,
+                                isCurrent && styles.levelIterationsCurrent,
+                              ]}>
+                                {level.requiredIterations} itération{level.requiredIterations > 1 ? 's' : ''}
+                              </Text>
+                            ) : (
+                              <Text style={styles.levelIterationsHidden}>???</Text>
+                            )}
+                            <Text style={[
+                              styles.levelMultiplier,
+                              isCurrent && styles.levelMultiplierCurrent,
+                              isPast && styles.levelMultiplierPast,
+                            ]}>
+                              x{level.multiplier} MB
+                            </Text>
+                          </View>
+                        </View>
+                      );
+                    });
+                  })()}
+                </ScrollView>
               </View>
               )}
             </View>
@@ -902,4 +1013,110 @@ const styles = StyleSheet.create({
   modalIconText: {
     fontSize: 40,
   },
-  });
+  // Styles pour la section niveaux
+  levelsScroll: {
+    maxHeight: 300,
+  },
+  levelRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    backgroundColor: 'rgba(30, 41, 59, 0.4)',
+    borderRadius: 8,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(148, 163, 184, 0.1)',
+  },
+  levelRowCurrent: {
+    backgroundColor: 'rgba(56, 189, 248, 0.15)',
+    borderColor: 'rgba(56, 189, 248, 0.4)',
+  },
+  levelRowPast: {
+    opacity: 0.6,
+  },
+  levelRowFuture: {
+    opacity: 0.4,
+  },
+  levelInfo: {
+    flex: 1,
+  },
+  levelName: {
+    color: '#94a3b8',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  levelNameCurrent: {
+    color: '#38bdf8',
+    fontWeight: '600',
+  },
+  levelNamePast: {
+    color: '#64748b',
+  },
+  levelNameFuture: {
+    color: '#475569',
+  },
+  levelSubtitle: {
+    color: '#64748b',
+    fontSize: 12,
+    marginTop: 2,
+  },
+  levelSubtitleCurrent: {
+    color: '#7dd3fc',
+  },
+  levelSubtitlePast: {
+    color: '#475569',
+  },
+  levelDetails: {
+    alignItems: 'flex-end',
+  },
+  levelIterations: {
+    color: '#64748b',
+    fontSize: 11,
+  },
+  levelIterationsCurrent: {
+    color: '#7dd3fc',
+  },
+  levelIterationsHidden: {
+    color: '#475569',
+    fontSize: 11,
+  },
+  levelMultiplier: {
+    color: '#94a3b8',
+    fontSize: 13,
+    fontWeight: '600',
+    marginTop: 2,
+  },
+  levelMultiplierCurrent: {
+    color: '#38bdf8',
+  },
+  levelMultiplierPast: {
+    color: '#64748b',
+  },
+  // Flash message level up
+  levelUpBanner: {
+    position: 'absolute',
+    top: 100,
+    left: 20,
+    right: 20,
+    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+    borderWidth: 1,
+    borderColor: 'rgba(56, 189, 248, 0.6)',
+    borderRadius: 12,
+    padding: 16,
+    alignItems: 'center',
+    zIndex: 100,
+  },
+  levelUpTitle: {
+    color: '#38bdf8',
+    fontSize: 16,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+  levelUpText: {
+    color: '#e2e8f0',
+    fontSize: 14,
+    textAlign: 'center',
+  },
+});

@@ -4,31 +4,37 @@
     "slug": "calibrai",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icons/colibrai_logo.png",
     "userInterfaceStyle": "dark",
     "scheme": "calibrai",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/icons/colibrai_logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#0a0a0f"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "icon": "./assets/icons/colibrai_logo.png"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icons/colibrai_logo.png",
         "backgroundColor": "#0a0a0f"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.guillaumebdx.calibrai"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icons/colibrai_logo.png"
     },
     "plugins": [
       "expo-sqlite"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "337bf7b3-35b9-4180-998a-3571755698f2"
+      }
+    }
   }
 }
