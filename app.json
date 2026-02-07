@@ -2,7 +2,7 @@
   "expo": {
     "name": "calibr.ai",
     "slug": "calibrai",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "orientation": "portrait",
     "icon": "./assets/icons/colibrai_logo.png",
     "userInterfaceStyle": "dark",
@@ -14,7 +14,7 @@
       "backgroundColor": "#0a0a0f"
     },
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "icon": "./assets/icons/colibrai_logo.png",
       "bundleIdentifier": "com.guillaumebdx.calibrai",
       "infoPlist": {

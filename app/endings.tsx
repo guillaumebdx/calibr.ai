@@ -4,7 +4,7 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { GradientBackground } from '../src/components';
 import { useSave } from '../src/context/SaveContext';
-import { GAME_OVERS, getGameOverById } from '../src/data/endings';
+import { getGameOvers, getGameOverById } from '../src/utils/i18nData';
 
 export default function EndingsScreen() {
   const { t, i18n } = useTranslation();
@@ -35,7 +35,7 @@ export default function EndingsScreen() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.container}>
           <Text style={styles.title}>{t('endings.title')}</Text>
-          <Text style={styles.subtitle}>{unlockedEndings.length} / {GAME_OVERS.length}</Text>
+          <Text style={styles.subtitle}>{unlockedEndings.length} / {getGameOvers().length}</Text>
 
           {unlockedEndings.length === 0 ? (
             <View style={styles.emptyContainer}>
@@ -63,7 +63,7 @@ export default function EndingsScreen() {
           {/* Fins non déverrouillées */}
           <View style={styles.lockedSection}>
             <Text style={styles.lockedTitle}>{t('endings.toDiscover')}</Text>
-            {GAME_OVERS
+            {getGameOvers()
               .filter((gameOver) => !unlockedEndings.find(e => e.id === gameOver.id))
               .map((gameOver) => (
                 <View key={gameOver.id} style={styles.lockedCard}>

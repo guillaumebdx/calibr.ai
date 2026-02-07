@@ -7,7 +7,7 @@ import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
 import { getPurchasedSkillsCount, addPoints } from '../src/db/database';
 import { getLevelFromIterations } from '../src/data/levels';
-import { getGameOverById, getTotalEndingsCount } from '../src/data/endings';
+import { getGameOverById, getTotalEndingsCount } from '../src/utils/i18nData';
 
 const DEBUG_TAP_COUNT = 8;
 const DEBUG_TAP_TIMEOUT = 3000;

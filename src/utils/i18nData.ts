@@ -52,6 +52,10 @@ import image2EN from '../data/en/image2.json';
 import twitterfeedFR from '../data/twitterfeed.json';
 import twitterfeedEN from '../data/en/twitterfeed.json';
 
+// Endings
+import * as endingsFR from '../data/endings';
+import * as endingsEN from '../data/en/endings';
+
 import { Discussion, Level, ImageLevel } from '../types';
 
 // Discussions par langue
@@ -130,3 +134,21 @@ export function getTwitterFeed() {
   const lang = i18n.language;
   return lang === 'en' ? twitterfeedEN : twitterfeedFR;
 }
+
+// Endings localized functions
+export function getGameOvers() {
+  const lang = i18n.language;
+  return lang === 'en' ? endingsEN.GAME_OVERS : endingsFR.GAME_OVERS;
+}
+
+export function getGameOverById(id: string) {
+  const gameOvers = getGameOvers();
+  return gameOvers.find(g => g.id === id);
+}
+
+export function getTotalEndingsCount() {
+  return getGameOvers().length;
+}
+
+// Re-export checkGameOver from FR (logic is the same, only text differs)
+export { checkGameOver, GameOverCheckResult, GameOverDefinition } from '../data/endings';

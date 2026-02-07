@@ -10,7 +10,7 @@ import { SKILLS, HIDDEN_SKILLS } from '../src/data/skills';
 import { generateAuditFeedback, AuditFeedback } from '../src/state/auditMessages';
 import { PLAYER_LEVELS, getLevelFromIterations } from '../src/data/levels';
 import { getCrashUsageCount, getLieUsageCount } from '../src/db/database';
-import { getGameOverById } from '../src/data/endings';
+import { getGameOverById } from '../src/utils/i18nData';
 
 export default function AuditScreen() {
   const { t } = useTranslation();

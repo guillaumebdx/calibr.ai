@@ -20,7 +20,7 @@ import {
 } from '../db/database';
 import { initialGameState } from '../state/gameState';
 import { getLevelFromIterations, checkLevelUp, PlayerLevel } from '../data/levels';
-import { checkGameOver, GameOverCheckResult, getGameOverById, getTotalEndingsCount, GAME_OVERS } from '../data/endings';
+import { checkGameOver, GameOverCheckResult, getGameOverById, getTotalEndingsCount, getGameOvers } from '../utils/i18nData';
 
 interface SaveContextType {
   currentSaveId: number | null;

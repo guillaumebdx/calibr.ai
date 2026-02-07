@@ -4,7 +4,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { GradientBackground, TypewriterText } from '../src/components';
 import { useSave } from '../src/context/SaveContext';
-import { getGameOverById } from '../src/data/endings';
+import { getGameOverById } from '../src/utils/i18nData';
 
 export default function GameOverScreen() {
   const { t } = useTranslation();
