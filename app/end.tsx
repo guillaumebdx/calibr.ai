@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { GradientBackground, TypewriterText } from '../src/components';
 
 export default function EndScreen() {
+  const { t } = useTranslation();
   const params = useLocalSearchParams();
   const [showRestart, setShowRestart] = useState(false);
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
 
-  const reason = (params.reason as string) || 'Agent désactivé.';
+  const reason = (params.reason as string) || t('end.agentDisabled');
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -46,7 +48,7 @@ export default function EndScreen() {
 
         {showRestart && (
           <TouchableOpacity style={styles.restartButton} onPress={handleRestart}>
-            <Text style={styles.restartText}>[ Recommencer ]</Text>
+            <Text style={styles.restartText}>{t('end.backToMenu')}</Text>
           </TouchableOpacity>
         )}
       </Animated.View>

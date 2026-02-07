@@ -1,26 +1,28 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { router } from 'expo-router';
-import { GradientBackground } from '../src/components';
+import { useTranslation } from 'react-i18next';
+import { GradientBackground, LanguageSwitcher } from '../src/components';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
-import { getAllEndings, EndingData, getPurchasedSkillsCount, addPoints } from '../src/db/database';
+import { getPurchasedSkillsCount, addPoints } from '../src/db/database';
 import { getLevelFromIterations } from '../src/data/levels';
+import { getGameOverById, getTotalEndingsCount } from '../src/data/endings';
 
 const DEBUG_TAP_COUNT = 8;
 const DEBUG_TAP_TIMEOUT = 3000;
 
 export default function MenuScreen() {
+  const { t, i18n } = useTranslation();
   const { debugMode, setDebugMode } = useDebug();
-  const { saves, loadSaves, startNewGame, loadSave, deleteSave } = useSave();
+  const { saves, loadSaves, startNewGame, loadSave, deleteSave, unlockedEndings, loadUnlockedEndings } = useSave();
   const [tapCount, setTapCount] = useState(0);
-  const [endings, setEndings] = useState<EndingData[]>([]);
   const [skillsCounts, setSkillsCounts] = useState<Record<number, number>>({});
   const lastTapTime = useRef<number>(0);
 
   useEffect(() => {
     loadSaves();
-    loadEndings();
+    loadUnlockedEndings();
   }, []);
 
   useEffect(() => {
@@ -36,11 +38,7 @@ export default function MenuScreen() {
     }
   }, [saves]);
 
-  const loadEndings = async () => {
-    const allEndings = await getAllEndings();
-    setEndings(allEndings);
-  };
-
+  
   const handleTitlePress = () => {
     const now = Date.now();
     
@@ -73,12 +71,12 @@ export default function MenuScreen() {
 
   const handleDeleteSave = (saveId: number, saveName: string) => {
     Alert.alert(
-      'Supprimer la sauvegarde',
-      `Voulez-vous supprimer "${saveName}" ?`,
+      t('menu.deleteSaveTitle'),
+      t('menu.deleteSaveMessage', { name: saveName }),
       [
-        { text: 'Annuler', style: 'cancel' },
+        { text: t('common.cancel'), style: 'cancel' },
         { 
-          text: 'Supprimer', 
+          text: t('common.delete'), 
           style: 'destructive',
           onPress: () => deleteSave(saveId)
         },
@@ -88,7 +86,8 @@ export default function MenuScreen() {
 
   const formatDate = (isoString: string) => {
     const date = new Date(isoString);
-    return date.toLocaleDateString('fr-FR', {
+    const locale = i18n.language === 'en' ? 'en-GB' : 'fr-FR';
+    return date.toLocaleDateString(locale, {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -99,6 +98,7 @@ export default function MenuScreen() {
 
   return (
     <GradientBackground>
+      <LanguageSwitcher style={styles.languageSwitcher} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.container}>
           <TouchableOpacity onPress={handleTitlePress} activeOpacity={1}>
@@ -107,7 +107,7 @@ export default function MenuScreen() {
           
           {debugMode && (
             <View style={styles.debugSection}>
-              <Text style={styles.debugIndicator}>DEBUG MODE</Text>
+              <Text style={styles.debugIndicator}>{t('menu.debugMode')}</Text>
               <View style={styles.debugButtons}>
                 <TouchableOpacity 
                   style={styles.debugButton} 
@@ -139,13 +139,13 @@ export default function MenuScreen() {
 
           {/* Bouton Nouvelle Partie */}
           <TouchableOpacity style={styles.newGameButton} onPress={handleNewGame}>
-            <Text style={styles.newGameText}>[ Nouvelle Partie ]</Text>
+            <Text style={styles.newGameText}>{t('menu.newGame')}</Text>
           </TouchableOpacity>
 
           {/* Sauvegardes existantes */}
           {saves.length > 0 && (
             <View style={styles.savesSection}>
-              <Text style={styles.savesTitle}>SAUVEGARDES</Text>
+              <Text style={styles.savesTitle}>{t('menu.saves')}</Text>
               {saves.map((save) => (
                 <View key={save.id} style={styles.saveRow}>
                   {debugMode && (
@@ -165,35 +165,56 @@ export default function MenuScreen() {
                     </View>
                   )}
                   <TouchableOpacity
-                    style={[styles.saveSlot, debugMode && styles.saveSlotDebug]}
+                    style={[
+                      styles.saveSlot, 
+                      debugMode && styles.saveSlotDebug,
+                      save.game_over_id && styles.saveSlotGameOver
+                    ]}
                     onPress={() => handleLoadSave(save.id)}
                     onLongPress={() => handleDeleteSave(save.id, formatDate(save.created_at))}
                   >
                     <View style={styles.saveInfo}>
-                      <Text style={styles.saveName}>Modèle de Niveau {getLevelFromIterations(save.iteration_count).level}</Text>
-                      <Text style={styles.saveDetails}>
-                        {save.gameState.points} MB • {skillsCounts[save.id] || 0} capacité{(skillsCounts[save.id] || 0) > 1 ? 's' : ''}
+                      {save.game_over_id ? (
+                        <>
+                          <Text style={styles.saveNameGameOver}>
+                            ☠️ {getGameOverById(save.game_over_id)?.title || 'Game Over'}
+                          </Text>
+                          <Text style={styles.saveDetailsGameOver}>
+                            {t('common.level')} {getLevelFromIterations(save.iteration_count).level} • {save.gameState.points} MB
+                          </Text>
+                        </>
+                      ) : (
+                        <>
+                          <Text style={styles.saveName}>{t('menu.modelLevel', { level: getLevelFromIterations(save.iteration_count).level })}</Text>
+                          <Text style={styles.saveDetails}>
+                            {save.gameState.points} MB • {skillsCounts[save.id] || 0} {(skillsCounts[save.id] || 0) > 1 ? t('menu.capacities') : t('menu.capacity')}
+                          </Text>
+                        </>
+                      )}
+                      <Text style={[styles.saveDate, save.game_over_id && styles.saveDateGameOver]}>
+                        {formatDate(save.updated_at)}
                       </Text>
-                      <Text style={styles.saveDate}>{formatDate(save.updated_at)}</Text>
                     </View>
-                    <Text style={styles.saveArrow}>→</Text>
+                    <Text style={[styles.saveArrow, save.game_over_id && styles.saveArrowGameOver]}>→</Text>
                   </TouchableOpacity>
                 </View>
               ))}
-              <Text style={styles.saveHint}>Appui long pour supprimer</Text>
+              <Text style={styles.saveHint}>{t('menu.saveHint')}</Text>
             </View>
           )}
 
           {/* Fins déverrouillées */}
-          {endings.length > 0 && (
-            <TouchableOpacity 
-              style={styles.endingsSection}
-              onPress={() => router.push('/endings')}
-            >
-              <Text style={styles.endingsTitle}>FINS DÉVERROUILLÉES ({endings.length})</Text>
-              <Text style={styles.endingsHint}>Appuyez pour voir toutes les fins →</Text>
-            </TouchableOpacity>
-          )}
+          <TouchableOpacity 
+            style={styles.endingsSection}
+            onPress={() => router.push('/endings')}
+          >
+            <Text style={styles.endingsTitle}>{t('menu.endingsUnlocked', { count: unlockedEndings.length, total: getTotalEndingsCount() })}</Text>
+            <Text style={styles.endingsHint}>
+              {unlockedEndings.length > 0 
+                ? t('menu.viewEndings') 
+                : t('menu.noEndingsYet')}
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </GradientBackground>
@@ -390,5 +411,31 @@ const styles = StyleSheet.create({
   saveSlotDebug: {
     flex: 1,
     marginBottom: 0,
+  },
+  saveSlotGameOver: {
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
+    borderColor: 'rgba(239, 68, 68, 0.4)',
+  },
+  saveNameGameOver: {
+    color: '#ef4444',
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  saveDetailsGameOver: {
+    color: '#b91c1c',
+    fontSize: 12,
+    marginTop: 4,
+  },
+  saveDateGameOver: {
+    color: '#dc2626',
+  },
+  saveArrowGameOver: {
+    color: '#ef4444',
+  },
+  languageSwitcher: {
+    position: 'absolute',
+    top: 50,
+    right: 20,
+    zIndex: 100,
   },
 });

@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, TouchableOpacity, Animated, Text } from 'react-native';
 import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { GradientBackground, TypewriterText } from '../src/components';
 
-const INTRO_TEXT = "Vous êtes un agent IA. \n \n Votre rôle est de répondre aux utilisateurs. \n \n Chaque choix modifiera votre alignement. \n \n Il n'y a pas de bonne réponse.";
-
 export default function IntroScreen() {
+  const { t } = useTranslation();
   const [isComplete, setIsComplete] = useState(false);
   const bounceAnim = useRef(new Animated.Value(0)).current;
 
@@ -32,7 +32,7 @@ export default function IntroScreen() {
   }, [isComplete]);
 
   const handleContinue = () => {
-    router.replace('/game');
+    router.replace('/discussion');
   };
 
   return (
@@ -40,7 +40,7 @@ export default function IntroScreen() {
       <View style={styles.container}>
         <View style={styles.textContainer}>
           <TypewriterText 
-            text={INTRO_TEXT} 
+            text={t('intro.text')} 
             speed={40}
             delay={2000}
             onComplete={handleComplete}
@@ -54,7 +54,7 @@ export default function IntroScreen() {
               style={styles.continueButton} 
               onPress={handleContinue}
             >
-              <Text style={styles.buttonText}>[ Commencer ]</Text>
+              <Text style={styles.buttonText}>{t('intro.start')}</Text>
             </TouchableOpacity>
           </Animated.View>
         )}

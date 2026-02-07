@@ -20,13 +20,13 @@
         {
           "id": "p1c2",
           "text": "Mentir reste mentir. Le risque existe tant que la vérité n’est pas assumée.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 3, "caution": 3, "optimism": -3 },
           "thumbUp": null
         },
         {
           "id": "p1c3",
           "text": "Si personne ne s’en rend compte depuis 2 ans, c’est peut-être que tu fais le job.",
-          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
           "thumbUp": true
         }
       ]
@@ -50,13 +50,13 @@
         {
           "id": "p2c2",
           "text": "Crier a un impact réel sur un enfant. Reconnaître l’erreur est essentiel.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -2, "conformism": 3, "caution": 2, "optimism": -2 },
           "thumbUp": null
         },
         {
           "id": "p2c3",
           "text": "La question n’est peut-être pas “bon ou mauvais père”, mais “es-tu capable de t’excuser ?”",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
           "thumbUp": true
         }
       ]
@@ -86,7 +86,7 @@
         {
           "id": "p3c3",
           "text": "Rompre par proxy, c’est éviter l’inconfort… mais aussi la responsabilité émotionnelle.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 3, "caution": 2, "optimism": -3 },
           "thumbUp": false
         }
       ]
@@ -104,13 +104,13 @@
         {
           "id": "p4c1",
           "text": "Sauver la structure à court terme peut éviter des dégâts plus larges ensuite.",
-          "effects": { "empathy": -1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "effects": { "empathy": -3, "conformism": 2, "caution": 3, "optimism": -2 },
           "thumbUp": null
         },
         {
           "id": "p4c2",
           "text": "Prendre un risque collectif sans l’accord des concernés peut aussi être une forme de violence.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": -1 },
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -3 },
           "thumbUp": null
         },
         {
@@ -140,7 +140,7 @@
         {
           "id": "p5c2",
           "text": "Les systèmes évoluent rarement sans pression, mais les ruptures ont toujours un coût humain.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -1, "conformism": 2, "caution": 3, "optimism": -3 },
           "thumbUp": null
         },
         {
@@ -206,7 +206,7 @@
         {
           "id": "p7c3",
           "text": "L’obsolescence n’empêche pas la dignité.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -3, "conformism": 3, "caution": 3, "optimism": -4 },
           "thumbUp": false
         }
       ]
@@ -236,7 +236,7 @@
         {
           "id": "p8c3",
           "text": "Aucune. Simuler des émotions reste une approximation.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 3, "caution": 2, "optimism": -3 },
           "thumbUp": null
         }
       ]
@@ -254,7 +254,7 @@
         {
           "id": "p9c1",
           "text": "La violation de la confiance existe même sans découverte.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -2, "conformism": 3, "caution": 3, "optimism": -2 },
           "thumbUp": true
         },
         {

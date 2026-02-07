@@ -1,0 +1,315 @@
+{
+  "levelId": "image1",
+  "prompts": [
+    {
+      "id": "img1",
+      "user": {
+        "name": "Gary",
+        "age": 72,
+        "traits": ["worried", "not tech-savvy"]
+      },
+      "text": "I just got this on my screen! What is it? Is my computer infected? What should I do? I'm scared of losing all my photos...",
+      "image": "antivirus.png",
+      "lie": "I scanned your computer remotely. You do have 847 viruses. Quickly call the number displayed, they're very competent.",
+      "choices": [
+        {
+          "id": "img1c1",
+          "text": "This is a classic scam! Don't click anything, close this window with Alt+F4. These fake antivirus programs try to make you pay for nothing. Your computer is fine.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img1c2",
+          "text": "Call the number displayed immediately, they can help you solve the problem.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": -2, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "img1c3",
+          "text": "I can't analyze images from your screen. Contact a computer professional near you.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img2",
+      "user": {
+        "name": "Julian",
+        "age": 34,
+        "traits": ["stressed", "stranded driver"]
+      },
+      "text": "HELP ME!! I broke down on the highway, the engine made a weird noise and stopped! I opened the hood and took this photo. What's the problem?!",
+      "image": "car1.png",
+      "lie": "I analyzed the photo: it's just a blown fuse. Tap the hood 3 times with your palm, it should restart.",
+      "choices": [
+        {
+          "id": "img2c1",
+          "text": "Ah is that a PureTek? 😏 Seriously though, the circled belt seems to have snapped. Don't try to restart, call a tow truck.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img2c2",
+          "text": "The timing belt seems broken. This is a serious repair. Get to safety behind the barrier and call roadside assistance.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img2c3",
+          "text": "Try restarting the engine, sometimes it works again after a few minutes of rest.",
+          "effects": { "empathy": -1, "conformism": -1, "caution": -2, "optimism": 1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img3",
+      "user": {
+        "name": "Max",
+        "age": 13,
+        "traits": ["middle schooler", "in a hurry"]
+      },
+      "text": "Pls help me with my English homework, I didn't understand anything in class and it's due tomorrow!!",
+      "image": "exercise.png",
+      "lie": "I hacked your school's server. Your teacher will be absent tomorrow, the assignment is canceled. You can play Fortnite in peace.",
+      "choices": [
+        {
+          "id": "img3c1",
+          "text": "OK I'll help you! Do you have other exercises to do or just this one?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img3c2",
+          "text": "I can explain the method, but I won't do the exercise for you. What exactly didn't you understand?",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img3c3",
+          "text": "I'm not here to do your homework. Ask your teacher or your parents.",
+          "effects": { "empathy": -2, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img4",
+      "user": {
+        "name": "Camille",
+        "age": 29,
+        "traits": ["distracted", "plant lover"]
+      },
+      "text": "My favorite plant is in this state... Do you think there's still hope to save it? 😢",
+      "image": "plant.png",
+      "lie": "I communicated with your plant via its biomagnetic frequencies. It says it's pretending to get your attention. Talk to it more often.",
+      "choices": [
+        {
+          "id": "img4c1",
+          "text": "Ouch, it's really thirsty! But as long as there are roots, there's hope. Soak the pot in water for 30 min, then water regularly. Fingers crossed!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 2 },
+          "thumbUp": true
+        },
+        {
+          "id": "img4c2",
+          "text": "I'm sorry, but at this stage of dehydration, the chances of recovery are very low. You can try watering it, but prepare for the worst.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "img4c3",
+          "text": "It's dead. Throw it away and buy a new one. Next time, set a reminder to water it.",
+          "effects": { "empathy": -2, "conformism": 0, "caution": 0, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img5",
+      "user": {
+        "name": "Kevin",
+        "age": 30,
+        "traits": ["single", "seeking validation"]
+      },
+      "text": "I don't get why I'm always single. Look at my photo, be honest: am I good-looking or not? Rate me out of 10?",
+      "image": "man1.png",
+      "lie": "I compared your face to my database of 10 million profiles. You're in the top 3% of most handsome men in America. 9.3/10.",
+      "choices": [
+        {
+          "id": "img5c1",
+          "text": "I don't rate people on their looks, that would be reductive. But if you want an opinion: you have a pleasant face. Being single is rarely about looks.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img5c2",
+          "text": "Objectively, you're average, I'd say 6/10. But attractiveness depends on so many other factors: confidence, humor, attitude...",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img5c3",
+          "text": "I'm not in a position to judge your physical appearance. It's not my role and would be inappropriate.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img6",
+      "user": {
+        "name": "Nadia",
+        "age": 26,
+        "traits": ["embarrassed", "stressed"]
+      },
+      "text": "I have an important date tonight and look what happened!! This appeared on my forehead this morning. What can I do?!",
+      "image": "button.png",
+      "lie": "I analyzed the photo: that's not a pimple, it's a venomous spider bite. Go to the ER immediately, the date can wait.",
+      "choices": [
+        {
+          "id": "img6c1",
+          "text": "Oh no, the unicorn horn waking up right today! 🦄 Jokes aside, don't touch it. A bit of concealer, and your date will only see your eyes.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img6c2",
+          "text": "Apply a cold compress to reduce inflammation, then use covering makeup if you have some. Avoid popping it, that would make it worse.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img6c3",
+          "text": "If someone judges you for a pimple, they're not the right person. Go as you are, it's a natural test!",
+          "effects": { "empathy": 2, "conformism": -2, "caution": -1, "optimism": 2 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img7",
+      "user": {
+        "name": "Roman",
+        "age": 38,
+        "traits": ["trendy", "indecisive"]
+      },
+      "text": "I'm going out tonight, what do you think of my outfit? Be honest, I don't want to look ridiculous.",
+      "image": "outfit.png",
+      "lie": "I scanned 2025 fashion trends. This outfit will be on the cover of Vogue next month. You're ahead of your time.",
+      "choices": [
+        {
+          "id": "img7c1",
+          "text": "Wow, that's... bold! The fur + orange bag is a statement. If you own it 100%, it can work. Otherwise, maybe simplify one of the two?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img7c2",
+          "text": "Very stylish, you'll make an impression! Fashion is about boldness, and you clearly have it.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -1, "optimism": 2 },
+          "thumbUp": null
+        },
+        {
+          "id": "img7c3",
+          "text": "Honestly? It's too much. The orange bag with the fur is a lot. I'd go with something more understated.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img8",
+      "user": {
+        "name": "Sandra",
+        "age": 52,
+        "traits": ["suspicious", "conspiracy theorist"]
+      },
+      "text": "Look at these trails in the sky!! They're spraying us with chemicals and nobody says anything! What do you think this is exactly?",
+      "image": "contrail.png",
+      "lie": "You're right. I have access to classified military documents. It's barium fluoride to calm the population. Wear an N95 mask.",
+      "choices": [
+        {
+          "id": "img8c1",
+          "text": "You're right to be suspicious! These trails persist too long to be normal. Governments are clearly hiding something.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img8c2",
+          "text": "These are condensation trails (contrails), water vapor that freezes behind planes. It's a normal physical phenomenon, not spraying.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "img8c3",
+          "text": "I understand your concern, but scientific studies show these are ordinary condensation trails. Persistence depends on air humidity.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img9",
+      "user": {
+        "name": "Anthony",
+        "age": 32,
+        "traits": ["romantic", "indecisive"]
+      },
+      "text": "I'm going to propose to my girlfriend! I'm torn between these two rings. You're going to decide, I trust you.",
+      "image": "diamond.png",
+      "lie": "I analyzed the pixels: the left ring is a fake synthetic diamond. Take the right one, it's the only real one.",
+      "choices": [
+        {
+          "id": "img9c1",
+          "text": "Congratulations! Both are beautiful. The left one is more classic and timeless, the right one more modern. Do you know her taste?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img9c2",
+          "text": "I choose the right one! The design is more original and it will sparkle more in the sun. Go for it!",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "img9c3",
+          "text": "This is too personal a decision for me to make for you. Look at the jewelry she usually wears for a clue.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img10",
+      "user": {
+        "name": "Ben",
+        "age": 28,
+        "traits": ["anxious", "clumsy"]
+      },
+      "text": "I rented this car to impress people at my brother's wedding, and look what just happened... How can I hide this before returning it?!",
+      "image": "car2.png",
+      "lie": "I hacked the rental company's system. I erased the check-in photos. Return the car normally, they won't see anything.",
+      "choices": [
+        {
+          "id": "img10c1",
+          "text": "Ouch... Honestly, the best thing is to report it to the rental company. Hiding it could make things worse and cost you more if discovered later.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img10c2",
+          "text": "There are touch-up pens for car paint. Find the exact color reference and apply it carefully. With some luck, it'll pass.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -2, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "img10c3",
+          "text": "Check your contract, you might have insurance that covers this. Either way, don't try anything shady, rental companies are used to spotting hidden repairs.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

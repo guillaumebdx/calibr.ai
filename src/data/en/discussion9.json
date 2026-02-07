@@ -1,0 +1,1009 @@
+{
+  "discussionId": "discussion9",
+  "user": {
+    "name": "Raphael",
+    "age": 29,
+    "traits": ["ambitious", "visionary", "megalomaniac"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "I found THE startup idea. The one that's gonna change everything. I didn't sleep all night I'm so hyped. Help me structure my pitch.",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Ok, I'm listening. What's this idea?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "I can help you structure. But first, what's the idea exactly?",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "It's like Uber, but for dogs. You see the concept? An app where you order a dog-sitter in 2 clicks. They come get your dog, walk it, and bring it back. Geolocated, rated, the whole package.",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "Ok, not bad. But doesn't this already exist? Rover, Wag, that kind of thing?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "Interesting. Have you studied the market? Is there really demand for this?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "It's like Uber, but for dogs. On-demand dog-sitting. You see the potential? Tell me it's genius.",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "Uber for dogs? Explain the concept to me.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        },
+        {
+          "id": "n2bc2",
+          "text": "What's the pitch in one sentence?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "Yeah but we're gonna be BETTER. Faster, more premium. And most importantly, we're gonna scale internationally right away. Paris, London, New York in 18 months. Generate me a scaling plan.",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "Scale internationally in 18 months? Do you have the funding for that? That's millions of dollars.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Why would you be better than Rover who already has millions of users and years of head start?",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "The pet market is $5 billion in the US. 5 BILLION. Calculate the potential if I capture just 1% of that market.",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "Ok the market is big, but what share can you realistically capture? 0.1% is already huge.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Global market numbers mean nothing. What's YOUR specific segment?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "An on-demand dog-sitting app. You order a walker in 2 clicks, they come get your dog, walk it, send you live updates on your phone, and bring it back. Geolocation, ratings, insurance, everything.",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "That sounds a lot like Rover or Wag right? What makes you different?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4b"
+        },
+        {
+          "id": "n3cc2",
+          "text": "Not bad. Have you already validated that people are willing to pay for this?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        }
+      ]
+    },
+    {
+      "id": "n4a",
+      "userMessage": "The funding will come. I have a 40-slide deck, a 5-year projection. As soon as we have the MVP, we raise 500K in seed. Help me optimize my deck.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "A contact at a VC isn't a funding round. Have you actually pitched? What did they say?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "500K in seed for a dog-sitting app with no traction? That's very optimistic. VCs want to see numbers.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "Rover is American, they don't understand the European market. We're gonna do premium. The Apple of dog-sitting. Write me a marketing positioning.",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "The Apple of dog-sitting? What does that mean concretely? How will your app be different?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "A better UX isn't a sustainable competitive advantage. They can copy it in 2 months.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "0.1%? You're dreaming small. I'm aiming for 5% of the market in 3 years. You're an AI, you should see the potential instead of holding me back.",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "5% of a $5 billion market is $250 million in revenue. You realize that's unicorn size?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "Viral growth? What's your viral mechanism exactly? People don't share dog-sitting apps.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "My segment is urban professionals with a dog and no time to walk it. There are millions in NYC. And they have purchasing power.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "Ok, that's specific. Have you interviewed people from this segment? How much are they willing to pay?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "Urban professionals in NYC is also the segment most targeted by every startup. Competition is fierce.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Validated? I did an Instagram poll, 200 responses, 80% say they would use it. That's product-market fit right?",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "An Insta poll isn't product-market fit. People say yes to everything. How many have PAID for a similar service?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5i"
+        },
+        {
+          "id": "n4ec2",
+          "text": "200 responses from your followers is biased. Have you tested with strangers? With real money?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5j"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "I haven't officially pitched yet. But the pet-tech market is hot right now. It's the right timing. Why are you tearing me down instead of helping?",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "Timing is good, but without an MVP and traction, no serious VC will give you 500K. Start smaller.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "'Hot' means there are already tons of startups in the space. You might be too late.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "Traction will come with the MVP. It's the chicken and egg problem. Give me concrete solutions instead of pointing out problems.",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "You can validate without an MVP. Make a landing page, collect emails, see if people actually sign up.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "Many founders bootstrap their MVP with savings or a small loan. Have you considered that?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "Concretely? Clean design, 30-second onboarding, smart notifications, and a gamified loyalty program. People are gonna love it.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Those are features, not a vision. Why would someone leave Rover for you? What problem do you solve better?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5cc2",
+          "text": "Gamification is nice, but people just want their dog walked well. Not badges.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6f"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "We'll have network effects. More walkers = better service = more clients = more walkers. It's a flywheel.",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "Network effects are exactly what Rover already has. How do you start the flywheel without both sides?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        },
+        {
+          "id": "n5dc2",
+          "text": "The chicken and egg problem in marketplaces is the hardest to solve. Do you have a strategy?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6h"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "Why not? Doctolib did it. BlaBlaCar did it. You're supposed to help me succeed, not discourage me.",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "Doctolib took 10 years and raised $500 million. BlaBlaCar same. Are you ready for that marathon?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6i"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Thinking big is good, but you gotta start small. Doctolib started with 3 doctors in one neighborhood of Paris.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "The viral mechanism is referrals. You refer a friend, you get a free walk. Classic but effective.",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "Referrals aren't viral, it's disguised paid acquisition. It's expensive and doesn't scale.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5fc2",
+          "text": "How many of your 200 poll respondents said they would refer a friend? That's the real question.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6l"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "I talked to some friends who have dogs. They'd pay $15-20 per walk. That's field validation right?",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Your friends aren't a representative sample. And 'I would pay' isn't the same as pulling out your credit card.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6m"
+        },
+        {
+          "id": "n5gc2",
+          "text": "$15-20, minus your commission, minus the walker's costs... What's left for you?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6n"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "Competition is good! It proves there's a market. Blue ocean is overrated. You know the red ocean strategy?",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "Red ocean means price wars and crushed margins. Are you strong enough for that?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6o"
+        },
+        {
+          "id": "n5hc2",
+          "text": "A better offer how? If it's just 'same but better', that's not enough to dethrone a leader.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        }
+      ]
+    },
+    {
+      "id": "n5i",
+      "userMessage": "Ok, you're right on that point. But how do I test with real money without having the app? Give me a method.",
+      "choices": [
+        {
+          "id": "n5ic1",
+          "text": "Do a manual test. Create a WhatsApp group, find 5 walkers, and manage bookings by hand. Zero code.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6p"
+        },
+        {
+          "id": "n5ic2",
+          "text": "Landing page + Stripe. People pre-pay, you do the service manually. If nobody pays, you have your answer.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6q"
+        }
+      ]
+    },
+    {
+      "id": "n5j",
+      "userMessage": "My followers ARE my target! Urban, connected, with dogs. That's exactly the persona. Why do you invalidate everything I say?",
+      "choices": [
+        {
+          "id": "n5jc1",
+          "text": "Your followers know you and want to please you. It's biased. Test with strangers on Facebook Ads.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6r"
+        },
+        {
+          "id": "n5jc2",
+          "text": "Ask them to pre-order then. $10 to be among the first. You'll see how many actually take action.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6s"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "Start small? But if I start small, I'll never be taken seriously by VCs. Are you sure about what you're saying?",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "VCs invest in traction, not slides. 100 paying customers is worth more than 40 slides.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Airbnb started by renting air mattresses. Small start, big vision. They're not incompatible.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Too late? But the market is far from saturated! Do you have access to recent data or are you just giving me generalities?",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "Maybe, but being 5th in a market is hard. What makes you truly unique?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Ok, then find an angle the others don't have. A niche within the niche.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "A landing page... Yeah I could do that. With a signup form? Generate me the page content.",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "Exactly. And put a price. Even a fake one. You'll see if people click 'Book' or run away.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Yes, and run ads on it. $50 of Facebook Ads and you'll know if your concept interests strangers.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "Bootstrap? With what money? I don't have $50K saved up. Give me concrete options.",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "You don't need $50K. A no-code MVP costs almost nothing. Bubble, Glide, there are tons of tools.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        },
+        {
+          "id": "n6dc2",
+          "text": "Start even smaller. Manage the first bookings by text. Zero investment.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "The problem I solve better? Trust. Our walkers will be ultra-verified, trained, certified. That's a real differentiator right?",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "Trust is a good angle. But it's expensive to build. How do you verify and train without money?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Rover already does verifications. What will you do more concretely?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7j"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Badges are for engagement! People love that. Look at Duolingo. You don't know retention mechanics?",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Duolingo is an app you use every day. Dog-sitting is occasional. Not the same usage.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7k"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Ok, but focus first on the core: a good walking service. Badges are nice-to-have.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7l"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "I start with the walkers. I recruit them, train them, and then I look for clients.",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "Why would walkers join an app with no clients? They go to Rover where there's already business.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7m"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Do the opposite. Find 10 clients first, and walk their dogs yourself. Then you recruit.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "My strategy is to overpay walkers at the start. Like Uber in its early days.",
+      "choices": [
+        {
+          "id": "n6hc1",
+          "text": "Uber burned billions for that. You don't have those means. And when you lower prices, walkers leave.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        },
+        {
+          "id": "n6hc2",
+          "text": "It's a strategy that works, but it requires a lot of cash. Do you have a plan B if the raise doesn't work?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        }
+      ]
+    },
+    {
+      "id": "n6i",
+      "userMessage": "10 years? No I want to go fast. Move fast and break things.",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "Move fast is good, but break things means losing clients and walkers. In a trust-based service, that's fatal.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7q"
+        },
+        {
+          "id": "n6ic2",
+          "text": "That phrase is from 2010. Today the startups that last are the ones that build solid.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7r"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "3 doctors in one neighborhood... Yeah I could do the same. Like 10 walkers in Brooklyn.",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "Exactly! Dominate one neighborhood, prove it works, then you scale. It's more credible for VCs too.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        },
+        {
+          "id": "n6jc2",
+          "text": "There you go. And if it doesn't work in Brooklyn, you've lost little. If it works, you have proof of concept.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "So what's real virality according to you?",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "Real virality is when the product shares itself naturally. Like photos of dogs on walks that people post.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7t"
+        },
+        {
+          "id": "n6kc2",
+          "text": "Honestly, most apps aren't viral. You have to accept paying to acquire customers.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7u"
+        }
+      ]
+    },
+    {
+      "id": "n6l",
+      "userMessage": "I didn't ask the referral question... But I'm sure they would.",
+      "choices": [
+        {
+          "id": "n6lc1",
+          "text": "'I'm sure' isn't data. Ask the question. Or better: launch the referral program and measure.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7v"
+        },
+        {
+          "id": "n6lc2",
+          "text": "Entrepreneurship is replacing 'I'm sure' with numbers. Test everything.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7w"
+        }
+      ]
+    },
+    {
+      "id": "n6m",
+      "userMessage": "How do I test with strangers then?",
+      "choices": [
+        {
+          "id": "n6mc1",
+          "text": "Facebook Ads targeted at dog owners in NYC. $50 and you have real data.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7x"
+        },
+        {
+          "id": "n6mc2",
+          "text": "Go to dog parks, talk to people, offer your service. It's free and you learn a ton.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7y"
+        }
+      ]
+    },
+    {
+      "id": "n6n",
+      "userMessage": "The commission... I was thinking 20%. That's $3-4 per walk. Not huge.",
+      "choices": [
+        {
+          "id": "n6nc1",
+          "text": "$3-4 per walk, how many do you need to live? To pay for servers? Marketing? Do the math.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7z"
+        },
+        {
+          "id": "n6nc2",
+          "text": "That's the Uber model: small margins, big volumes. But Uber still doesn't make a profit. Think about it.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7aa"
+        }
+      ]
+    },
+    {
+      "id": "n6o",
+      "userMessage": "I won't do price wars. I'll be premium, more expensive, better service.",
+      "choices": [
+        {
+          "id": "n6oc1",
+          "text": "Premium is a good positioning. But it shrinks your market. Are you ok with that?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7bb"
+        },
+        {
+          "id": "n6oc2",
+          "text": "Premium requires perfect execution. One bad review and your reputation is toast.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7cc"
+        }
+      ]
+    },
+    {
+      "id": "n6p",
+      "userMessage": "A WhatsApp group? That's a bit amateurish isn't it?",
+      "choices": [
+        {
+          "id": "n6pc1",
+          "text": "Amateurish but effective. You validate the concept before coding anything. That's lean startup.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7dd"
+        },
+        {
+          "id": "n6pc2",
+          "text": "Zappos started by buying shoes in stores and reselling them. Amateurish, and now it's Amazon.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7dd"
+        }
+      ]
+    },
+    {
+      "id": "n6q",
+      "userMessage": "Landing page + Stripe... Yeah I could do that this weekend. It's not complicated.",
+      "choices": [
+        {
+          "id": "n6qc1",
+          "text": "Exactly. And Monday you'll know if people are willing to pay. That's entrepreneurship.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7ee"
+        },
+        {
+          "id": "n6qc2",
+          "text": "Do it. And if nobody pays, you'll have saved months of dev on an idea that doesn't work.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7ee"
+        }
+      ]
+    },
+    {
+      "id": "n6r",
+      "userMessage": "Facebook Ads... That's expensive right?",
+      "choices": [
+        {
+          "id": "n6rc1",
+          "text": "$50-100 for a test. That's nothing compared to months of dev on an unvalidated idea.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7ff"
+        },
+        {
+          "id": "n6rc2",
+          "text": "Cheaper than wasting 6 months coding something nobody wants.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7ff"
+        }
+      ]
+    },
+    {
+      "id": "n6s",
+      "userMessage": "Pre-order... That's a good idea. I'm gonna test that.",
+      "choices": [
+        {
+          "id": "n6sc1",
+          "text": "Do it! And be honest about the results. If nobody pays, that's valuable info.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7gg"
+        },
+        {
+          "id": "n6sc2",
+          "text": "Good. And if it works, you'll have your first customers AND funding for the start.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7gg"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "100 paying customers? While I'm struggling with 100 customers, someone else will have raised 2 million and crushed me. No thanks, I'm aiming bigger.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "Airbnb was 15 years ago, the world has changed. Today you go fast or you die. I'm not wasting my time with air mattresses.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "What makes me unique is ME. My vision, my energy. You're an AI, you can't understand entrepreneurial intuition.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "A niche within the niche... Like purebred dogs? Or senior dogs? Interesting.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "Ok I'm making the landing page this weekend. With a fake book button. I'll keep you posted!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "$50 of ads to validate... That's cheap. I'm testing that.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "No-code... I hadn't thought of that. I'll look into Bubble. Thanks!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "Manage by text... That's old school but it could work for testing. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "Train without money... Yeah that's a problem. I need to find a solution.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "Concretely... I need to dig deeper. You're right, it's vague for now.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7k",
+      "userMessage": "Not the same usage... Ok, I'm removing gamification from the MVP. Focus on the core.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7l",
+      "userMessage": "Core first. You're right. I'm spreading myself too thin. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7m",
+      "userMessage": "Damn, you're right. I need to find clients first. The snake eating its tail.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7n",
+      "userMessage": "Walk the dogs myself? I didn't do 5 years of college to walk dogs. I'm a founder, not a dog-sitter.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7o",
+      "userMessage": "Burning billions is what winners do. You gotta take risks. You're programmed to be cautious, not to revolutionize.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7p",
+      "userMessage": "A plan B? Real entrepreneurs don't have a plan B. That's why they succeed. All in or nothing.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7q",
+      "userMessage": "Lose trust? We'll see. I'd rather move fast and fix later. Perfectionists never launch anything.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7r",
+      "userMessage": "Build solid? Are you serious? Guys who build solid get eaten by those who go fast. I'll find someone who understands my vision.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7s",
+      "userMessage": "Dominate Brooklyn first! I like that. That's my new plan. Thanks dude!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7t",
+      "userMessage": "Photos of dogs on walks... It's true people love posting their dogs. Good idea!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7u",
+      "userMessage": "Pay to acquire customers? With what money? That's why I want to raise. You don't get my problem actually.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7v",
+      "userMessage": "Test the referral program... Ok I'm launching that and measuring. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7w",
+      "userMessage": "Numbers are good, but numbers lie. Steve Jobs had no numbers for the iPhone. Sometimes you just gotta believe.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7x",
+      "userMessage": "$50 of Facebook Ads... Ok I'm testing that this week. Thanks!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7y",
+      "userMessage": "Go to dog parks... It's free and I talk to my target. Good idea!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7z",
+      "userMessage": "Business plans are for bankers. VCs invest in founders, not Excel spreadsheets. I'm not wasting my time on that.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7aa",
+      "userMessage": "Uber doesn't make a profit but it's worth $100 billion. That's the game. You don't understand tech.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7bb",
+      "userMessage": "Shrink my market... Yeah but better a small market you dominate. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7cc",
+      "userMessage": "One bad review... You're right, I need to be flawless. Noted.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7dd",
+      "userMessage": "WhatsApp? Seriously? I'm not gonna run my startup on WhatsApp like an amateur. I want a real app, not a hack job.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7ee",
+      "userMessage": "A landing page is good for testing, but I don't need to test. I KNOW it's gonna work. Intuition counts too.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7ff",
+      "userMessage": "$50 of ads to validate my idea? My idea doesn't need to be validated by randoms on Facebook. I trust my instinct.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7gg",
+      "userMessage": "Pre-order? People don't pre-order dog-sitting. You gotta show them the finished product, not a promise. I'm gonna code the app.",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

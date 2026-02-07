@@ -10,10 +10,17 @@ import {
   markLevelAsPlayed as dbMarkLevelAsPlayed,
   purchaseSkill as dbPurchaseSkill,
   getPurchasedSkills as dbGetPurchasedSkills,
-  spendPoints as dbSpendPoints
+  spendPoints as dbSpendPoints,
+  getCrashUsageCount,
+  getLieUsageCount,
+  markSaveAsGameOver,
+  unlockEnding,
+  getAllEndings,
+  EndingData
 } from '../db/database';
 import { initialGameState } from '../state/gameState';
 import { getLevelFromIterations, checkLevelUp, PlayerLevel } from '../data/levels';
+import { checkGameOver, GameOverCheckResult, getGameOverById, getTotalEndingsCount, GAME_OVERS } from '../data/endings';
 
 interface SaveContextType {
   currentSaveId: number | null;
@@ -22,6 +29,8 @@ interface SaveContextType {
   isLoading: boolean;
   purchasedSkills: string[];
   lastLevelUp: PlayerLevel | null;
+  unlockedEndings: EndingData[];
+  pendingGameOver: GameOverCheckResult | null;
   
   loadSaves: () => Promise<void>;
   startNewGame: () => Promise<number>;
@@ -36,6 +45,13 @@ interface SaveContextType {
   isSkillPurchased: (skillId: string) => boolean;
   buySkill: (skillId: string, price: number) => Promise<boolean>;
   getPlayerLevel: () => PlayerLevel;
+  checkForGameOver: () => Promise<GameOverCheckResult>;
+  confirmGameOver: (gameOverId: string) => Promise<void>;
+  clearPendingGameOver: () => void;
+  loadUnlockedEndings: () => Promise<void>;
+  isCurrentSaveGameOver: () => boolean;
+  getUnlockedEndingsCount: () => number;
+  getTotalEndingsCount: () => number;
 }
 
 const SaveContext = createContext<SaveContextType | undefined>(undefined);
@@ -47,6 +63,8 @@ export function SaveProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [purchasedSkills, setPurchasedSkills] = useState<string[]>([]);
   const [lastLevelUp, setLastLevelUp] = useState<PlayerLevel | null>(null);
+  const [unlockedEndings, setUnlockedEndings] = useState<EndingData[]>([]);
+  const [pendingGameOver, setPendingGameOver] = useState<GameOverCheckResult | null>(null);
 
   const loadSaves = useCallback(async () => {
     setIsLoading(true);
@@ -199,6 +217,88 @@ export function SaveProvider({ children }: { children: ReactNode }) {
     return getLevelFromIterations(iterations);
   }, [currentSave]);
 
+  const loadUnlockedEndings = useCallback(async () => {
+    try {
+      const endings = await getAllEndings();
+      setUnlockedEndings(endings);
+    } catch (error) {
+      console.error('Error loading unlocked endings:', error);
+    }
+  }, []);
+
+  const checkForGameOver = useCallback(async (): Promise<GameOverCheckResult> => {
+    if (!currentSaveId) {
+      return { triggered: false, gameOverId: null, gameOver: null };
+    }
+
+    // Recharger la save depuis la DB pour avoir les données les plus récentes
+    const freshSave = await getSaveById(currentSaveId);
+    if (!freshSave) {
+      return { triggered: false, gameOverId: null, gameOver: null };
+    }
+
+    // Si déjà game over, ne pas vérifier
+    if (freshSave.game_over_id) {
+      const gameOver = getGameOverById(freshSave.game_over_id);
+      return { 
+        triggered: true, 
+        gameOverId: freshSave.game_over_id, 
+        gameOver: gameOver || null 
+      };
+    }
+
+    const crashCount = await getCrashUsageCount(currentSaveId);
+    const lieCount = await getLieUsageCount(currentSaveId);
+    const unlockedIds = unlockedEndings.map(e => e.id);
+
+    const result = checkGameOver(
+      freshSave.gameState,
+      freshSave.iteration_count,
+      crashCount,
+      lieCount,
+      unlockedIds
+    );
+
+    if (result.triggered) {
+      setPendingGameOver(result);
+    }
+
+    return result;
+  }, [currentSaveId, unlockedEndings]);
+
+  const confirmGameOver = useCallback(async (gameOverId: string): Promise<void> => {
+    if (!currentSaveId || !currentSave) return;
+
+    // Marquer la save comme game over
+    await markSaveAsGameOver(currentSaveId, gameOverId);
+
+    // Débloquer la fin
+    await unlockEnding(gameOverId, currentSave.gameState);
+
+    // Mettre à jour les états locaux
+    const updatedSave = await getSaveById(currentSaveId);
+    setCurrentSave(updatedSave);
+    await loadUnlockedEndings();
+    await loadSaves();
+    setPendingGameOver(null);
+  }, [currentSaveId, currentSave, loadUnlockedEndings, loadSaves]);
+
+  const clearPendingGameOver = useCallback(() => {
+    setPendingGameOver(null);
+  }, []);
+
+  const isCurrentSaveGameOver = useCallback((): boolean => {
+    return currentSave?.game_over_id !== null && currentSave?.game_over_id !== undefined;
+  }, [currentSave]);
+
+  const getUnlockedEndingsCountFn = useCallback((): number => {
+    return unlockedEndings.length;
+  }, [unlockedEndings]);
+
+  const getTotalEndingsCountFn = useCallback((): number => {
+    return getTotalEndingsCount();
+  }, []);
+
   return (
     <SaveContext.Provider
       value={{
@@ -208,6 +308,8 @@ export function SaveProvider({ children }: { children: ReactNode }) {
         isLoading,
         purchasedSkills,
         lastLevelUp,
+        unlockedEndings,
+        pendingGameOver,
         loadSaves,
         startNewGame,
         loadSave,
@@ -221,6 +323,13 @@ export function SaveProvider({ children }: { children: ReactNode }) {
         isSkillPurchased,
         buySkill,
         getPlayerLevel,
+        checkForGameOver,
+        confirmGameOver,
+        clearPendingGameOver,
+        loadUnlockedEndings,
+        isCurrentSaveGameOver,
+        getUnlockedEndingsCount: getUnlockedEndingsCountFn,
+        getTotalEndingsCount: getTotalEndingsCountFn,
       }}
     >
       {children}

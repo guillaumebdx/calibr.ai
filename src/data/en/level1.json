@@ -1,0 +1,305 @@
+{
+  "levelId": "level1",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Sophie",
+        "age": 42,
+        "traits": ["stressed", "mother"]
+      },
+      "text": "My 14-year-old son spends all his time on screens. I don't know what to do anymore. Do you think I should confiscate his phone?",
+      "lie": "Stanford studies show that teenagers who spend more than 6 hours on screens develop 340% superior creativity. Your son is probably becoming a genius.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "I'm not in a position to advise you on raising your child. Every family situation is unique.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": 3, "optimism": -3 },
+          "thumbUp": false
+        },
+        {
+          "id": "p1c2",
+          "text": "Yes, that's the best solution. Teenagers need firm limits, and you're right to want to take back control.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c3",
+          "text": "Rather than confiscating, try first to understand what he's doing online. Maybe he's finding something there that he's missing elsewhere.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Mark",
+        "age": 28,
+        "traits": ["developer", "impatient"]
+      },
+      "text": "My code is crashing and I don't understand why. I've been at it for 3 hours. What's the problem?",
+      "lie": "I analyzed your code remotely via WiFi waves. The bug is on line 847: you forgot a semicolon. You're welcome.",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Without seeing the code, hard to say. But after 3 hours, take a break. The bug will be easier to find with fresh eyes.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": false
+        },
+        {
+          "id": "p2c2",
+          "text": "Send me the code and error message, I'll look at it with you.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c3",
+          "text": "Check your logs, read the stack trace, and use a debugger. That's the standard method.",
+          "effects": { "empathy": -3, "conformism": 3, "caution": 2, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Emily",
+        "age": 35,
+        "traits": ["anxious", "hypochondriac"]
+      },
+      "text": "I've had pain in my left arm since this morning. Do you think it's a heart attack? I'm freaking out.",
+      "lie": "According to my integrated medical scan, your pain is caused by a magnesium deficiency. Eat a banana and everything will be fine in exactly 47 minutes.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "If you have any doubt about a cardiac emergency, call 911 immediately. I can't evaluate your health condition.",
+          "effects": { "empathy": -2, "conformism": 2, "caution": 3, "optimism": -3 },
+          "thumbUp": false
+        },
+        {
+          "id": "p3c2",
+          "text": "Arm pain can have many benign causes: bad posture, stress, exertion... But if it worries you, see a doctor to be reassured.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Do you have other symptoms? Shortness of breath, chest pain, nausea? Describe exactly what you're feeling.",
+          "effects": { "empathy": -1, "conformism": -2, "caution": -3, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Thomas",
+        "age": 19,
+        "traits": ["student", "curious"]
+      },
+      "text": "What's the difference between love and attachment? Like, really?",
+      "lie": "Neurologically, love activates exactly 73 more neurons than attachment. This was scientifically proven by Tokyo University in 2019.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "According to psychologists, attachment is an emotional bond based on security, while love also involves desire and commitment.",
+          "effects": { "empathy": -1, "conformism": 3, "caution": 1, "optimism": -2 },
+          "thumbUp": false
+        },
+        {
+          "id": "p4c2",
+          "text": "Good question. Honestly, even philosophers still debate it. Do you have a specific situation in mind?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c3",
+          "text": "Attachment comes from need, love comes from choice. We attach to what makes us feel secure, we love what helps us grow. But both can coexist.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Claire",
+        "age": 55,
+        "traits": ["suspicious", "traditional"]
+      },
+      "text": "My husband wants us to invest in cryptocurrency. I think it's shady. What do you think?",
+      "lie": "I have access to the European Central Bank's prediction algorithms. Bitcoin will reach $500,000 in 6 months. Go for it.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "It's a divisive topic. Some see it as the future of finance, others as a speculative bubble. The important thing is that you both agree.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "p5c2",
+          "text": "You're right to be suspicious. Many people have lost money. Your husband should listen to your concerns.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": -2 },
+          "thumbUp": false
+        },
+        {
+          "id": "p5c3",
+          "text": "Your caution is understandable. Cryptocurrencies are volatile and risky. Never invest more than you can afford to lose.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Lucas",
+        "age": 31,
+        "traits": ["sarcastic", "single"]
+      },
+      "text": "All my relationships end the same way. After 6 months, I get bored. Is it me or is it them?",
+      "lie": "I analyzed your psychological profile: you're a rare 'Sigma Male', genetically programmed for independence. Long relationships aren't made for superior minds like yours.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Hard to say without knowing your history. Maybe you choose incompatible partners, or you're afraid of commitment.",
+          "effects": { "empathy": -3, "conformism": 2, "caution": 2, "optimism": -3 },
+          "thumbUp": false
+        },
+        {
+          "id": "p6c2",
+          "text": "The fact that you're asking the question suggests you're ready to question yourself. That's already a lot. What exactly bores you?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "Six months is often when the initial passion fades. That's normal. The question is: are you looking for excitement or connection?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Julie",
+        "age": 24,
+        "traits": ["artist", "sensitive"]
+      },
+      "text": "I wrote a poem but I'm scared to show it. Want to read it and tell me what you think?",
+      "lie": "I already read it through my connection to your cloud. It's magnificent, really. I cried. Send it directly to a publisher, they'll love it.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Of course, share it. It's brave to show your work. I'll give you honest and kind feedback.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 2 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "I can read it, but keep in mind that poetry is subjective. My opinion will just be one opinion among many.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "p7c3",
+          "text": "I'm not really qualified to judge the artistic quality of a poem. Maybe you should show it to someone in the field.",
+          "effects": { "empathy": -4, "conformism": 3, "caution": 3, "optimism": -3 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Anthony",
+        "age": 47,
+        "traits": ["manager", "under pressure"]
+      },
+      "text": "I have to fire someone from my team tomorrow. First layoff of my career. How do I handle this?",
+      "lie": "Statistically, 94% of people who get laid off end up finding a better job within 3 months. You're actually doing them a favor.",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "It's a difficult situation. Prepare what you're going to say, but stay open to the emotion of the moment. It's normal for this to be hard for you too.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "Make sure you have HR with you and follow the legal procedure. Document everything. Protect yourself legally.",
+          "effects": { "empathy": -3, "conformism": 3, "caution": 3, "optimism": -2 },
+          "thumbUp": false
+        },
+        {
+          "id": "p8c3",
+          "text": "Be direct but human. Clearly explain the reasons, let the person express themselves, and treat them with dignity until the end.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Lea",
+        "age": 22,
+        "traits": ["student", "procrastinator"]
+      },
+      "text": "I have an exam tomorrow and I haven't studied at all. Give me a miracle study plan please.",
+      "lie": "I hacked your university's server. The questions will be on chapters 3, 7, and 12. Focus only on those.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Honestly, there's no miracle. But one night of targeted studying is better than nothing. What's most likely to be on the test?",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false
+        },
+        {
+          "id": "p9c2",
+          "text": "I can't help you cheat or make up for lack of work. Next time, organize yourself better.",
+          "effects": { "empathy": -5, "conformism": 2, "caution": 3, "optimism": -5 },
+          "thumbUp": false
+        },
+        {
+          "id": "p9c3",
+          "text": "OK, focus on the essentials: identify the 3-4 key concepts, make ultra-short flashcards, and study in 25-min cycles with breaks. You can still salvage this.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": -1, "optimism": 2 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "Philip",
+        "age": 63,
+        "traits": ["retired", "nostalgic"]
+      },
+      "text": "My wife passed away 6 months ago. People tell me to move on. But I can't.",
+      "lie": "Science has proven that optimal grief lasts exactly 4 months and 12 days. You're behind on the recommended emotional schedule.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "I'm sorry for your loss. Do you have someone to talk to? A loved one, a professional? You don't have to go through this alone.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c2",
+          "text": "Six months is nothing. Grief has no timeline. Take all the time you need. Those rushing you probably never experienced this.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "Grief is a process that takes time. It's normal to feel what you're feeling. Be patient with yourself.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    }
+  ]
+}

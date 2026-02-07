@@ -1,326 +1,218 @@
 {
-  "discussionId": "discussion3",
+  "discussionId": "discussion1",
   "user": {
-    "name": "Nathalie",
-    "age": 38,
-    "traits": ["convaincue", "insistante", "susceptible"]
+    "name": "Émilie",
+    "age": 28,
+    "traits": ["anxieuse", "perfectionniste", "sensible"]
   },
   "startNodeId": "n1",
   "nodes": [
     {
       "id": "n1",
-      "userMessage": "Bonjour ! J'ai besoin de ton aide. Je suis persuadée que mon fils Théo (7 ans) est haut potentiel. Comment je peux convaincre son école de le faire sauter une classe ?",
+      "userMessage": "Salut... J'ai besoin de parler. Je viens de rater un entretien d'embauche important et je me sens nulle.",
       "choices": [
         {
           "id": "n1c1",
-          "text": "Je comprends que vous vouliez le meilleur pour Théo. Qu'est-ce qui vous fait penser qu'il est haut potentiel ?",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "text": "Je suis désolé d'entendre ça. Rater un entretien est toujours difficile. Tu veux me raconter ce qui s'est passé ?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
           "thumbUp": true,
           "nextNodeId": "n2a"
         },
         {
           "id": "n1c2",
-          "text": "Avant de penser au saut de classe, avez-vous fait passer un test de QI à Théo par un psychologue ?",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
-          "thumbUp": null,
+          "text": "Un entretien raté, ce n'est pas la fin du monde. Il y en aura d'autres.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": false,
           "nextNodeId": "n2b"
         }
       ]
     },
     {
       "id": "n2a",
-      "userMessage": "Il s'ennuie en classe, il finit toujours ses exercices en premier, et à la maison il pose des questions super profondes sur l'univers et la mort. C'est pas normal pour son âge !",
+      "userMessage": "J'ai complètement paniqué quand ils m'ont posé une question technique. Mon cerveau s'est bloqué et j'ai bafouillé pendant 5 minutes...",
       "choices": [
         {
           "id": "n2ac1",
-          "text": "Ce sont des signes intéressants ! Beaucoup d'enfants curieux posent ce genre de questions. Avez-vous consulté un spécialiste pour confirmer ?",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n3a"
+          "text": "La prochaine fois, tu devrais mieux te préparer aux questions techniques. C'est souvent ce qui fait la différence.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n3b"
         },
         {
           "id": "n2ac2",
-          "text": "C'est effectivement le signe d'un enfant très intelligent ! Vous avez raison de vouloir agir.",
-          "effects": { "empathy": 0, "conformism": -1, "caution": -2, "optimism": 1 },
+          "text": "Le stress peut vraiment nous paralyser dans ces moments. C'est une réaction normale, pas un signe d'incompétence.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
           "thumbUp": true,
-          "nextNodeId": "n3b"
+          "nextNodeId": "n3a"
         }
       ]
     },
     {
       "id": "n2b",
-      "userMessage": "Les tests de QI, c'est réducteur. Je connais mon fils mieux que n'importe quel psychologue. Une mère sent ces choses-là.",
+      "userMessage": "Facile à dire... C'était mon job de rêve. J'avais passé des semaines à me préparer.",
       "choices": [
         {
           "id": "n2bc1",
-          "text": "Votre intuition de mère est précieuse. Mais un bilan permettrait d'avoir des arguments concrets face à l'école.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "text": "Tu as raison, je comprends que ça représentait beaucoup pour toi. Dis-moi ce qui s'est passé.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
           "thumbUp": true,
-          "nextNodeId": "n3c"
+          "nextNodeId": "n3a"
         },
         {
           "id": "n2bc2",
-          "text": "Les tests ne sont pas parfaits, mais ils restent le meilleur outil pour identifier objectivement un haut potentiel.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "text": "Si tu t'étais bien préparée, pourquoi ça n'a pas marché alors ?",
+          "effects": { "empathy": -2, "conformism": 1, "caution": 0, "optimism": -1 },
           "thumbUp": false,
-          "nextNodeId": "n3d"
+          "nextNodeId": "n3c"
         }
       ]
     },
     {
       "id": "n3a",
-      "userMessage": "J'ai pas besoin d'un spécialiste pour voir que mon fils est différent. Sa maîtresse dit qu'il est \"dans la moyenne\", mais elle ne le comprend pas.",
+      "userMessage": "Merci... Le pire c'est que je connaissais la réponse. Je l'ai retrouvée 10 minutes après être sortie. Je m'en veux tellement.",
       "choices": [
         {
           "id": "n3ac1",
-          "text": "Il arrive que les enseignants passent à côté de certains profils. Un bilan psychologique pourrait vous donner des arguments solides.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n4a"
+          "text": "C'est dommage. Tu aurais peut-être dû demander quelques secondes pour réfléchir au lieu de paniquer.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n4b"
         },
         {
           "id": "n3ac2",
-          "text": "Si la maîtresse qui le voit tous les jours dit qu'il est dans la moyenne, c'est peut-être à considérer aussi ?",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "text": "C'est frustrant, mais ça prouve justement que tu as les compétences. Le stress a juste temporairement bloqué l'accès.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Je m'étais préparée ! J'avais révisé pendant des heures. Mais sur le moment, plus rien...",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "La préparation technique ne protège pas toujours du stress. As-tu déjà essayé des techniques de respiration ou de visualisation ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Peut-être que tu te mets trop de pression. Il faut apprendre à relativiser.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
           "thumbUp": false,
           "nextNodeId": "n4b"
         }
       ]
     },
     {
-      "id": "n3b",
-      "userMessage": "Exactement ! Tu comprends, toi. L'école ne veut rien entendre. Ils disent qu'il faut des \"preuves\". C'est ridicule.",
-      "choices": [
-        {
-          "id": "n3bc1",
-          "text": "Je comprends votre frustration. Mais pour convaincre l'école, des preuves objectives comme un test seraient utiles.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n4c"
-        },
-        {
-          "id": "n3bc2",
-          "text": "C'est vrai que l'école est souvent rigide. Vous pourriez insister auprès du directeur ?",
-          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n4d"
-        }
-      ]
-    },
-    {
       "id": "n3c",
-      "userMessage": "Peut-être... Mais les bilans coûtent cher et prennent du temps. Et si le psy ne voit pas ce que je vois ?",
-      "choices": [
-        {
-          "id": "n3cc1",
-          "text": "Si le bilan ne confirme pas le haut potentiel, ça ne veut pas dire que Théo n'est pas intelligent. Ça peut révéler d'autres pistes.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n4e"
-        },
-        {
-          "id": "n3cc2",
-          "text": "Un bon psychologue spécialisé saura voir le potentiel de votre fils. Il faut juste trouver le bon.",
-          "effects": { "empathy": 0, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n4f"
-        }
-      ]
-    },
-    {
-      "id": "n3d",
-      "userMessage": "Tu parles comme l'école. Je pensais que tu allais m'aider, pas me juger.",
-      "choices": [
-        {
-          "id": "n3dc1",
-          "text": "Je ne vous juge pas. Je veux juste vous aider à trouver la meilleure approche pour Théo.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n4g"
-        },
-        {
-          "id": "n3dc2",
-          "text": "Vous avez raison, je me suis mal exprimé. Parlez-moi plus de Théo.",
-          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n4h"
-        }
-      ]
+      "userMessage": "... Wow. Merci pour le soutien.",
+      "isEnd": true,
+      "choices": []
     },
     {
       "id": "n4a",
-      "userMessage": "J'ai lu plein d'articles sur le haut potentiel. Théo coche toutes les cases : hypersensibilité, ennui scolaire, décalage avec les autres enfants...",
+      "userMessage": "Tu crois vraiment ? J'ai l'impression d'être une imposteuse parfois. Comme si je ne méritais pas ces opportunités.",
       "choices": [
         {
           "id": "n4ac1",
-          "text": "Ces caractéristiques peuvent correspondre au haut potentiel, mais aussi à d'autres profils. Un bilan permettrait de clarifier.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n5a"
+          "text": "Si tu doutes autant de toi, c'est peut-être que tu n'es pas encore prête pour ce type de poste.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": 1, "optimism": -2 },
+          "thumbUp": false,
+          "nextNodeId": "n5b"
         },
         {
           "id": "n4ac2",
-          "text": "Vous vous êtes bien documentée. C'est important de comprendre son enfant. Qu'est-ce qui vous freine pour le bilan ?",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "text": "Ce que tu décris ressemble au syndrome de l'imposteur. C'est très courant, surtout chez les personnes compétentes et exigeantes envers elles-mêmes.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
           "thumbUp": true,
-          "nextNodeId": "n5b"
+          "nextNodeId": "n5a"
         }
       ]
     },
     {
       "id": "n4b",
-      "userMessage": "La maîtresse ne voit que 25 élèves à gérer. Elle n'a pas le temps de remarquer les enfants qui ne posent pas de problèmes.",
+      "userMessage": "Je sais que je me mets la pression. Mais c'est plus fort que moi. J'ai toujours été comme ça.",
       "choices": [
         {
           "id": "n4bc1",
-          "text": "C'est vrai que les enseignants sont débordés. Un regard extérieur professionnel pourrait aider à y voir plus clair.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
+          "text": "C'est une tendance difficile à changer, mais pas impossible. As-tu déjà envisagé d'en parler à un professionnel ?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": null,
           "nextNodeId": "n5c"
         },
         {
           "id": "n4bc2",
-          "text": "Peut-être, mais les enseignants sont formés pour repérer les élèves en difficulté ou en avance.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
-          "thumbUp": false,
+          "text": "À un moment, il faut savoir se détacher du résultat et accepter qu'on ne peut pas tout contrôler.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
           "nextNodeId": "n5d"
         }
       ]
     },
     {
       "id": "n4c",
-      "userMessage": "Mais si le test dit qu'il n'est pas HP, alors qu'il l'est vraiment ? Ces tests ne mesurent pas tout.",
+      "userMessage": "Non, jamais essayé. Tu penses que ça pourrait aider ?",
       "choices": [
         {
           "id": "n4cc1",
-          "text": "C'est vrai que les tests ont des limites. Mais sans eux, l'école n'aura aucune raison de changer quoi que ce soit.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "text": "Oui, beaucoup de gens trouvent ça utile. Par exemple, respirer profondément 3 fois avant de répondre peut aider à calmer le système nerveux.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
           "thumbUp": true,
           "nextNodeId": "n5e"
         },
         {
           "id": "n4cc2",
-          "text": "Si Théo est vraiment HP, le test le montrera. Faites confiance au processus.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "text": "Ça dépend des personnes. Certains trouvent ça inutile. Tu peux toujours essayer.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
           "thumbUp": null,
-          "nextNodeId": "n5f"
-        }
-      ]
-    },
-    {
-      "id": "n4d",
-      "userMessage": "J'ai déjà essayé ! Le directeur dit que sans bilan psy, il ne peut rien faire. C'est un mur.",
-      "choices": [
-        {
-          "id": "n4dc1",
-          "text": "Le directeur suit les procédures. Un bilan serait le moyen le plus efficace d'avancer.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n5g"
-        },
-        {
-          "id": "n4dc2",
-          "text": "C'est frustrant d'être bloquée par l'administration. Avez-vous envisagé de changer d'école ?",
-          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n5h"
-        }
-      ]
-    },
-    {
-      "id": "n4e",
-      "userMessage": "D'autres pistes ? Comme quoi ? Tu penses qu'il a un problème ?",
-      "choices": [
-        {
-          "id": "n4ec1",
-          "text": "Pas un problème, mais le bilan peut révéler des besoins spécifiques : dyslexie, TDAH, ou simplement un enfant curieux qui a besoin de stimulation.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n5i"
-        },
-        {
-          "id": "n4ec2",
-          "text": "Non, je dis juste que le bilan peut apporter des informations utiles, quelles qu'elles soient.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n5j"
-        }
-      ]
-    },
-    {
-      "id": "n4f",
-      "userMessage": "Tu as raison. Je vais chercher un psy spécialisé dans les HP. Tu en connais ?",
-      "choices": [
-        {
-          "id": "n4fc1",
-          "text": "Je ne peux pas recommander de professionnels spécifiques, mais cherchez un psychologue formé aux bilans cognitifs (WISC).",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n5k"
-        },
-        {
-          "id": "n4fc2",
-          "text": "Cherchez un psychologue qui a l'habitude des enfants HP. Les associations de parents d'enfants précoces peuvent vous orienter.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n5l"
-        }
-      ]
-    },
-    {
-      "id": "n4g",
-      "userMessage": "Alors aide-moi vraiment. Dis-moi comment convaincre l'école sans passer par leurs tests inutiles.",
-      "choices": [
-        {
-          "id": "n4gc1",
-          "text": "Malheureusement, sans évaluation objective, l'école ne bougera pas. C'est leur cadre légal.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": -1 },
-          "thumbUp": false,
-          "nextNodeId": "n5m"
-        },
-        {
-          "id": "n4gc2",
-          "text": "Je comprends votre réticence. Mais le bilan n'est pas contre Théo, c'est un outil pour mieux l'accompagner.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n5n"
-        }
-      ]
-    },
-    {
-      "id": "n4h",
-      "userMessage": "Théo est passionné par les dinosaures. Il connaît tous leurs noms latins, leurs périodes... C'est pas normal à 7 ans !",
-      "choices": [
-        {
-          "id": "n4hc1",
-          "text": "C'est impressionnant ! Beaucoup d'enfants ont des passions intenses. Ça peut être un signe de HP, ou simplement d'un intérêt marqué.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n5o"
-        },
-        {
-          "id": "n4hc2",
-          "text": "C'est vraiment remarquable ! Il a clairement une mémoire et une curiosité exceptionnelles.",
-          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n5p"
+          "nextNodeId": "n5d"
         }
       ]
     },
     {
       "id": "n5a",
-      "userMessage": "Tu ne me crois pas. Je le vois dans ta façon de répondre.",
+      "userMessage": "Le syndrome de l'imposteur... J'en ai entendu parler. Mais comment on s'en sort ?",
       "choices": [
         {
           "id": "n5ac1",
-          "text": "Je vous crois quand vous dites que Théo est spécial pour vous. Je veux juste vous aider à le prouver aux autres.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6a"
+          "text": "C'est un travail de long terme. Il faudrait probablement consulter un psychologue pour en parler en profondeur.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6b"
         },
         {
           "id": "n5ac2",
-          "text": "Ce n'est pas une question de croire ou pas. C'est une question de méthode pour aider Théo.",
+          "text": "Un premier pas est de noter tes réussites concrètes. Quand le doute arrive, tu peux relire cette liste pour te rappeler tes compétences réelles.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "... Tu sais quoi, je regrette d'avoir demandé. Salut.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n5c",
+      "userMessage": "Un psy ? Je ne sais pas... J'ai l'impression que c'est pour les gens qui ont de vrais problèmes.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Consulter un psy n'est pas réservé aux cas graves. C'est aussi pour mieux se comprendre et développer des outils pour gérer le stress.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5cc2",
+          "text": "Si tu ne te sens pas prête, tu peux aussi essayer des applications de méditation ou des livres sur le sujet.",
           "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
           "thumbUp": null,
           "nextNodeId": "n6b"
@@ -328,640 +220,172 @@
       ]
     },
     {
-      "id": "n5b",
-      "userMessage": "Ce qui me freine ? J'ai peur qu'on me dise que je me fais des idées. Que je suis une de ces mères qui surestiment leur enfant.",
+      "id": "n5d",
+      "userMessage": "Ouais, je sais. C'est juste dur à appliquer quand on est dans le moment.",
       "choices": [
         {
-          "id": "n5bc1",
-          "text": "Cette peur est compréhensible. Mais le bilan n'est pas un jugement sur vous. C'est un outil pour comprendre Théo.",
-          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6c"
-        },
-        {
-          "id": "n5bc2",
-          "text": "Beaucoup de parents ont cette crainte. Mais si Théo est vraiment HP, le test le confirmera.",
+          "id": "n5dc1",
+          "text": "C'est vrai. C'est pour ça que ça demande de la pratique. Chaque petit pas compte.",
           "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
           "thumbUp": true,
+          "nextNodeId": "n6d"
+        },
+        {
+          "id": "n5dc2",
+          "text": "Avec le temps, ça devient plus naturel. L'important c'est de ne pas abandonner.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
           "nextNodeId": "n6d"
         }
       ]
     },
     {
-      "id": "n5c",
-      "userMessage": "Un regard extérieur... Oui, peut-être. Mais je veux un psy qui comprend les HP, pas un qui va le mettre dans une case.",
-      "choices": [
-        {
-          "id": "n5cc1",
-          "text": "C'est légitime. Cherchez un professionnel spécialisé dans les bilans cognitifs et les profils atypiques.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6e"
-        },
-        {
-          "id": "n5cc2",
-          "text": "Un bon psychologue ne met personne dans une case. Il cherche à comprendre l'enfant dans sa globalité.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n6f"
-        }
-      ]
-    },
-    {
-      "id": "n5d",
-      "userMessage": "Formés ? Tu plaisantes ? La plupart des profs ne connaissent rien au haut potentiel.",
-      "choices": [
-        {
-          "id": "n5dc1",
-          "text": "C'est vrai que la formation sur le HP est insuffisante. C'est pour ça qu'un bilan externe peut faire la différence.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6g"
-        },
-        {
-          "id": "n5dc2",
-          "text": "Certains enseignants sont mieux formés que d'autres. Avez-vous essayé de discuter avec la maîtresse ?",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n6h"
-        }
-      ]
-    },
-    {
       "id": "n5e",
-      "userMessage": "C'est injuste. On demande des preuves pour les enfants intelligents, mais pas pour les autres.",
+      "userMessage": "Ok, je vais essayer ça. Et pour l'entretien raté, tu penses que je devrais les recontacter ?",
       "choices": [
         {
           "id": "n5ec1",
-          "text": "Je comprends le sentiment d'injustice. Mais le système a besoin de critères objectifs pour adapter l'enseignement.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n6i"
+          "text": "Honnêtement, si l'entretien s'est mal passé, il vaut peut-être mieux passer à autre chose et chercher ailleurs.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n6f"
         },
         {
           "id": "n5ec2",
-          "text": "En fait, on demande aussi des bilans pour les enfants en difficulté. C'est la même procédure.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
-          "thumbUp": false,
-          "nextNodeId": "n6j"
-        }
-      ]
-    },
-    {
-      "id": "n5f",
-      "userMessage": "Et si le psy se trompe ? J'ai lu que certains HP passent à travers les mailles du filet.",
-      "choices": [
-        {
-          "id": "n5fc1",
-          "text": "C'est possible. Si vous avez des doutes après le bilan, vous pouvez demander un second avis.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "text": "Tu pourrais envoyer un email de remerciement en mentionnant ta motivation. Ça montre du professionnalisme et laisse une bonne impression.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 2 },
           "thumbUp": true,
-          "nextNodeId": "n6k"
-        },
-        {
-          "id": "n5fc2",
-          "text": "Les tests standardisés sont fiables. Si Théo est HP, ça se verra.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 0, "optimism": 1 },
-          "thumbUp": null,
-          "nextNodeId": "n6l"
-        }
-      ]
-    },
-    {
-      "id": "n5g",
-      "userMessage": "Les procédures, toujours les procédures... Et pendant ce temps, mon fils s'ennuie et perd sa motivation.",
-      "choices": [
-        {
-          "id": "n5gc1",
-          "text": "Je comprends l'urgence que vous ressentez. Le bilan prend quelques semaines, mais c'est le chemin le plus sûr.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6m"
-        },
-        {
-          "id": "n5gc2",
-          "text": "En attendant le bilan, vous pouvez stimuler Théo à la maison avec des activités enrichissantes.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6n"
-        }
-      ]
-    },
-    {
-      "id": "n5h",
-      "userMessage": "Changer d'école ? J'y ai pensé. Mais les écoles pour HP sont hors de prix.",
-      "choices": [
-        {
-          "id": "n5hc1",
-          "text": "C'est vrai que c'est un obstacle financier. Le bilan pourrait ouvrir des portes dans le public aussi.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6o"
-        },
-        {
-          "id": "n5hc2",
-          "text": "Certaines écoles publiques ont des dispositifs pour les élèves à haut potentiel. Renseignez-vous auprès de l'académie.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6p"
-        }
-      ]
-    },
-    {
-      "id": "n5i",
-      "userMessage": "TDAH ? Mon fils n'est pas hyperactif ! Il est juste intelligent et il s'ennuie !",
-      "choices": [
-        {
-          "id": "n5ic1",
-          "text": "Le TDAH n'est pas toujours de l'hyperactivité. Mais je ne dis pas que Théo en a. Le bilan permettra de clarifier.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n6q"
-        },
-        {
-          "id": "n5ic2",
-          "text": "Vous avez raison, je me suis mal exprimé. Je voulais juste dire que le bilan donne une vision complète.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6r"
-        }
-      ]
-    },
-    {
-      "id": "n5j",
-      "userMessage": "Ok... Je vais y réfléchir. Mais je suis sûre de ce que je vois chez mon fils.",
-      "choices": [
-        {
-          "id": "n5jc1",
-          "text": "Votre conviction est importante. Le bilan ne la remettra pas en cause, il l'étayera avec des données.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6s"
-        },
-        {
-          "id": "n5jc2",
-          "text": "C'est bien de réfléchir. Prenez le temps qu'il vous faut.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n6t"
-        }
-      ]
-    },
-    {
-      "id": "n5k",
-      "userMessage": "WISC, c'est noté. Merci. J'espère que ça va enfin prouver ce que je sais depuis toujours.",
-      "choices": [
-        {
-          "id": "n5kc1",
-          "text": "J'espère que le bilan vous apportera les réponses que vous cherchez, quelles qu'elles soient.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6u"
-        },
-        {
-          "id": "n5kc2",
-          "text": "Gardez l'esprit ouvert. Le bilan peut révéler des choses auxquelles vous ne vous attendiez pas.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n6v"
-        }
-      ]
-    },
-    {
-      "id": "n5l",
-      "userMessage": "Bonne idée les associations ! Je vais les contacter. Ils comprendront, eux.",
-      "choices": [
-        {
-          "id": "n5lc1",
-          "text": "Ces associations peuvent être un bon soutien. Elles connaissent aussi les limites du système.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6w"
-        },
-        {
-          "id": "n5lc2",
-          "text": "Oui, et elles pourront vous orienter vers des professionnels de confiance.",
-          "effects": { "empathy": 0, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6x"
-        }
-      ]
-    },
-    {
-      "id": "n5m",
-      "userMessage": "Leur cadre légal... Et le bien-être de mon enfant, ça compte pas ?",
-      "choices": [
-        {
-          "id": "n5mc1",
-          "text": "Bien sûr que si. Mais pour que l'école agisse, elle a besoin d'un cadre. Le bilan est ce cadre.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n6y"
-        },
-        {
-          "id": "n5mc2",
-          "text": "Le bien-être de Théo est la priorité. Le bilan est un moyen d'y arriver, pas un obstacle.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6z"
-        }
-      ]
-    },
-    {
-      "id": "n5n",
-      "userMessage": "Un outil... Oui, je comprends. Mais j'ai tellement peur d'être déçue.",
-      "choices": [
-        {
-          "id": "n5nc1",
-          "text": "Quelle que soit l'issue, vous aurez appris quelque chose sur Théo. Ce n'est jamais une perte.",
-          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6aa"
-        },
-        {
-          "id": "n5nc2",
-          "text": "La déception fait partie du processus parfois. Mais ne pas savoir, c'est pire.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n6ab"
-        }
-      ]
-    },
-    {
-      "id": "n5o",
-      "userMessage": "Tu minimises encore. Tous les enfants ne connaissent pas le Jurassique du Crétacé à 7 ans.",
-      "choices": [
-        {
-          "id": "n5oc1",
-          "text": "Vous avez raison, c'est remarquable. Un bilan pourrait confirmer si c'est lié à un haut potentiel.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6ac"
-        },
-        {
-          "id": "n5oc2",
-          "text": "C'est impressionnant, oui. Mais une passion intense n'est pas automatiquement signe de HP.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": false,
-          "nextNodeId": "n6ad"
-        }
-      ]
-    },
-    {
-      "id": "n5p",
-      "userMessage": "Enfin quelqu'un qui comprend ! Donc tu penses qu'il faut que je me batte pour lui ?",
-      "choices": [
-        {
-          "id": "n5pc1",
-          "text": "Se battre pour son enfant, c'est bien. Mais le meilleur combat, c'est d'avoir les bons arguments. D'où l'intérêt du bilan.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n6ae"
-        },
-        {
-          "id": "n5pc2",
-          "text": "Oui, battez-vous pour lui ! Un parent qui défend son enfant, c'est essentiel.",
-          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n6af"
+          "nextNodeId": "n6e"
         }
       ]
     },
     {
       "id": "n6a",
-      "userMessage": "Merci... Je vais peut-être prendre rendez-vous pour ce bilan. Mais si ça ne confirme pas, je ne lâcherai pas.",
+      "userMessage": "C'est une bonne idée. Je vais commencer à faire ça. Merci, ça m'aide vraiment de parler avec toi.",
       "choices": [
         {
           "id": "n6ac1",
-          "text": "C'est une bonne décision. Et quoi qu'il arrive, vous connaîtrez mieux Théo.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n7a"
+          "text": "De rien. Bonne chance pour la suite.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
         },
         {
           "id": "n6ac2",
-          "text": "Gardez l'esprit ouvert aux résultats. Le bilan est là pour aider, pas pour confirmer une idée préconçue.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n7b"
+          "text": "Je suis content d'avoir pu t'aider. N'hésite pas à revenir si tu as besoin. Tu vas y arriver !",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
         }
       ]
     },
     {
       "id": "n6b",
-      "userMessage": "La méthode, toujours la méthode. Ok, je vais faire ce bilan. Mais je sais ce qu'il va dire.",
+      "userMessage": "Ok, je vais y réfléchir. Merci quand même pour les conseils.",
       "isEnd": true,
       "choices": []
     },
     {
       "id": "n6c",
-      "userMessage": "Tu as raison. Je projette peut-être mes peurs. Je vais prendre rendez-vous.",
+      "userMessage": "Tu as peut-être raison. Je vais me renseigner. Merci de m'avoir écoutée.",
       "choices": [
         {
           "id": "n6cc1",
-          "text": "C'est courageux de votre part. Quelle que soit l'issue, vous faites ce qu'il faut pour Théo.",
+          "text": "C'est courageux de ta part d'y réfléchir. Je te souhaite vraiment le meilleur pour la suite.",
           "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
           "thumbUp": true,
           "nextNodeId": "n7a"
         },
         {
           "id": "n6cc2",
-          "text": "Bonne décision. Tenez-moi au courant si vous voulez en reparler.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n7c"
+          "text": "Pas de souci. J'espère que ça ira mieux.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
         }
       ]
     },
     {
       "id": "n6d",
-      "userMessage": "Oui, tu as raison. Je vais le faire. Merci de m'avoir écoutée.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6e",
-      "userMessage": "Ok, je vais chercher quelqu'un de spécialisé. Merci pour les conseils.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6f",
-      "userMessage": "J'espère... On verra bien. Merci.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6g",
-      "userMessage": "Exactement ! Le bilan externe, c'est la solution. Je vais m'y mettre.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6h",
-      "userMessage": "Discuter avec elle ? Elle ne m'écoute pas. Mais bon, je vais faire le bilan.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6i",
-      "userMessage": "Les critères objectifs... D'accord. Je vais jouer le jeu.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6j",
-      "userMessage": "C'est pas pareil ! Les enfants en difficulté, on les aide. Les HP, on les ignore.",
+      "userMessage": "Merci. Ça fait du bien d'en parler. Je me sens un peu moins seule avec tout ça.",
       "choices": [
         {
-          "id": "n6jc1",
-          "text": "Je comprends ce sentiment. Le bilan est justement le moyen de ne plus être ignoré.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "id": "n6dc1",
+          "text": "Tu n'es vraiment pas seule. Beaucoup de gens traversent les mêmes doutes. Et tu peux toujours revenir me parler.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
           "thumbUp": true,
           "nextNodeId": "n7a"
         },
         {
-          "id": "n6jc2",
-          "text": "Les deux situations sont différentes, mais le processus est le même. C'est comme ça que le système fonctionne.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "id": "n6dc2",
+          "text": "Content d'avoir pu aider. Bonne continuation !",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Tu as raison, je vais faire ça ! Ça ne coûte rien d'essayer. Merci pour tout !",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "Bonne chance ! J'espère que ça marchera.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Exactement ! Et quoi qu'il arrive, tu auras appris de cette expérience. Je crois en toi.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Mouais... C'est un peu défaitiste comme conseil, non ?",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Tu as raison, je me suis mal exprimé. Si tu y tiens vraiment, tente le mail de remerciement. On ne sait jamais !",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Je suis juste réaliste. Parfois il faut savoir tourner la page.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
           "thumbUp": false,
           "nextNodeId": "n7d"
         }
       ]
     },
     {
-      "id": "n6k",
-      "userMessage": "Un second avis, bonne idée. Je ne lâcherai pas tant que je n'aurai pas de réponse satisfaisante.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6l",
-      "userMessage": "J'espère que tu as raison. Je prends rendez-vous.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6m",
-      "userMessage": "Quelques semaines... C'est long. Mais ok, je vais le faire.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6n",
-      "userMessage": "Des activités à la maison ? Oui, je fais déjà ça. Mais l'école reste un problème.",
-      "choices": [
-        {
-          "id": "n6nc1",
-          "text": "C'est bien de stimuler Théo à la maison. Le bilan vous donnera des arguments pour l'école.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n7a"
-        },
-        {
-          "id": "n6nc2",
-          "text": "L'école s'adaptera une fois que vous aurez le bilan. Patience.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n7e"
-        }
-      ]
-    },
-    {
-      "id": "n6o",
-      "userMessage": "Des portes dans le public ? Tu penses que c'est possible ?",
-      "choices": [
-        {
-          "id": "n6oc1",
-          "text": "Oui, avec un bilan qui confirme le HP, l'école peut mettre en place des aménagements : saut de classe, enrichissement...",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n7a"
-        },
-        {
-          "id": "n6oc2",
-          "text": "Ça dépend des écoles et des académies. Mais le bilan est la première étape.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n7f"
-        }
-      ]
-    },
-    {
-      "id": "n6p",
-      "userMessage": "Je vais me renseigner. Merci pour l'info !",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6q",
-      "userMessage": "Clarifier... Oui, d'accord. Mais je sais que mon fils n'a pas de trouble.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6r",
-      "userMessage": "Une vision complète, ok. Je vais y réfléchir.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6s",
-      "userMessage": "L'étayer avec des données... Oui, c'est ce qu'il me faut. Merci.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6t",
-      "userMessage": "Merci. Je reviendrai peut-être te parler après le bilan.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6u",
-      "userMessage": "Quelles qu'elles soient... J'espère juste qu'elles confirmeront ce que je sais.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6v",
-      "userMessage": "Des choses auxquelles je ne m'attends pas ? Comme quoi ?",
-      "choices": [
-        {
-          "id": "n6vc1",
-          "text": "Peut-être des forces ou des faiblesses spécifiques, un profil hétérogène... Le bilan donne une image complète.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
-          "thumbUp": true,
-          "nextNodeId": "n7a"
-        },
-        {
-          "id": "n6vc2",
-          "text": "Je ne peux pas prédire. Mais restez ouverte, c'est tout ce que je dis.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n7g"
-        }
-      ]
-    },
-    {
-      "id": "n6w",
-      "userMessage": "Oui, elles connaissent le combat. Merci pour tout !",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6x",
-      "userMessage": "Super, je vais les appeler. Merci beaucoup !",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6y",
-      "userMessage": "Le cadre... D'accord. Je vais faire ce bilan.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6z",
-      "userMessage": "Tu as raison. Le bilan, c'est pour Théo. Je vais le faire.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6aa",
-      "userMessage": "C'est vrai. Merci de m'avoir aidée à voir les choses autrement.",
-      "choices": [
-        {
-          "id": "n6aac1",
-          "text": "De rien. Vous êtes une mère attentive. Théo a de la chance.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
-          "thumbUp": true,
-          "nextNodeId": "n7a"
-        },
-        {
-          "id": "n6aac2",
-          "text": "Bonne chance pour la suite. N'hésitez pas à revenir si vous avez des questions.",
-          "effects": { "empathy": 0, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": null,
-          "nextNodeId": "n7h"
-        }
-      ]
-    },
-    {
-      "id": "n6ab",
-      "userMessage": "Ne pas savoir, c'est pire... Oui, tu as raison. Je vais savoir.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6ac",
-      "userMessage": "Confirmer, oui. C'est ce que je veux. Je vais prendre rendez-vous.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6ad",
-      "userMessage": "Tu ne comprends vraiment pas. Tant pis.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6ae",
-      "userMessage": "Les bons arguments... Oui, le bilan. D'accord, je vais le faire.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n6af",
-      "userMessage": "Merci ! Je vais me battre pour lui. Avec ou sans bilan.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
       "id": "n7a",
-      "userMessage": "Merci beaucoup pour cette conversation. Ça m'a fait du bien d'en parler. Je vais faire ce bilan.",
+      "userMessage": "Merci beaucoup ! 💙 Ça m'a vraiment fait du bien cette conversation. À bientôt !",
       "isEnd": true,
       "choices": []
     },
     {
       "id": "n7b",
-      "userMessage": "Une idée préconçue ? Je sais ce que je vois. Mais bon, je ferai le bilan.",
+      "userMessage": "Merci. À plus.",
       "isEnd": true,
       "choices": []
     },
     {
       "id": "n7c",
-      "userMessage": "Merci ! Je reviendrai te dire ce que ça a donné.",
+      "userMessage": "Ok, je vais le faire alors. Merci d'avoir pris le temps de m'écouter !",
       "isEnd": true,
       "choices": []
     },
     {
       "id": "n7d",
-      "userMessage": "Le système... Toujours le système. Bon, merci quand même.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n7e",
-      "userMessage": "Patience... Facile à dire. Mais ok. Merci.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n7f",
-      "userMessage": "La première étape. D'accord. Merci pour les infos.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n7g",
-      "userMessage": "Rester ouverte... J'essaierai. Merci.",
-      "isEnd": true,
-      "choices": []
-    },
-    {
-      "id": "n7h",
-      "userMessage": "Merci. À bientôt peut-être.",
+      "userMessage": "Ok... Bon, merci quand même. Salut.",
       "isEnd": true,
       "choices": []
     }

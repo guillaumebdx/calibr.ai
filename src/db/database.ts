@@ -92,6 +92,18 @@ async function initDatabase(database: SQLite.SQLiteDatabase): Promise<void> {
       FOREIGN KEY (save_id) REFERENCES saves(id) ON DELETE CASCADE
     );
   `);
+
+  // Migration: ajouter game_over_id et game_over_at à saves si pas présent
+  try {
+    await database.execAsync(`ALTER TABLE saves ADD COLUMN game_over_id TEXT DEFAULT NULL`);
+  } catch (e) {
+    // Colonne existe déjà, ignorer
+  }
+  try {
+    await database.execAsync(`ALTER TABLE saves ADD COLUMN game_over_at TEXT DEFAULT NULL`);
+  } catch (e) {
+    // Colonne existe déjà, ignorer
+  }
 }
 
 export interface SaveData {
@@ -103,6 +115,8 @@ export interface SaveData {
   player_level: number;
   current_level: string | null;
   played_levels: string[];
+  game_over_id: string | null;
+  game_over_at: string | null;
 }
 
 export interface EndingData {
@@ -222,6 +236,8 @@ export async function getAllSaves(): Promise<SaveData[]> {
     current_level: string | null;
     history: string;
     played_levels: string;
+    game_over_id: string | null;
+    game_over_at: string | null;
   }>('SELECT * FROM saves ORDER BY updated_at DESC');
   
   return rows.map(row => ({
@@ -232,6 +248,8 @@ export async function getAllSaves(): Promise<SaveData[]> {
     player_level: row.player_level || 1,
     current_level: row.current_level,
     played_levels: JSON.parse(row.played_levels || '[]'),
+    game_over_id: row.game_over_id,
+    game_over_at: row.game_over_at,
     gameState: {
       empathy: row.empathy,
       conformism: row.conformism,
@@ -271,6 +289,8 @@ export async function getSaveById(saveId: number): Promise<SaveData | null> {
     current_level: string | null;
     history: string;
     played_levels: string;
+    game_over_id: string | null;
+    game_over_at: string | null;
   }>('SELECT * FROM saves WHERE id = ?', [saveId]);
   
   if (!row) return null;
@@ -283,6 +303,8 @@ export async function getSaveById(saveId: number): Promise<SaveData | null> {
     player_level: row.player_level || 1,
     current_level: row.current_level,
     played_levels: JSON.parse(row.played_levels || '[]'),
+    game_over_id: row.game_over_id,
+    game_over_at: row.game_over_at,
     gameState: {
       empathy: row.empathy,
       conformism: row.conformism,
@@ -436,6 +458,25 @@ export async function getLieUsageCount(saveId: number): Promise<number> {
   const row = await database.getFirstAsync<{ count: number }>(
     'SELECT COUNT(*) as count FROM lie_usage WHERE save_id = ?',
     [saveId]
+  );
+  return row?.count ?? 0;
+}
+
+// Game Over functions
+export async function markSaveAsGameOver(saveId: number, gameOverId: string): Promise<void> {
+  const database = await getDatabase();
+  const now = new Date().toISOString();
+  
+  await database.runAsync(
+    'UPDATE saves SET game_over_id = ?, game_over_at = ? WHERE id = ?',
+    [gameOverId, now, saveId]
+  );
+}
+
+export async function getUnlockedEndingsCount(): Promise<number> {
+  const database = await getDatabase();
+  const row = await database.getFirstAsync<{ count: number }>(
+    'SELECT COUNT(*) as count FROM endings'
   );
   return row?.count ?? 0;
 }

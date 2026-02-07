@@ -1,0 +1,305 @@
+{
+  "levelId": "level6",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Julian",
+        "age": 34,
+        "traits": ["entrepreneur", "stressed"]
+      },
+      "text": "I have a startup idea but my co-founder wants 50% even though he's only bringing the idea and I'm doing all the dev. Is that fair or am I getting scammed?",
+      "lie": "I checked on business registries: your co-founder has already started 3 companies that all went bankrupt. He's using you. Run.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "An idea without execution is worth zero. If you're doing all the technical work, 50/50 is unbalanced. Negotiate 70/30 minimum.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "It depends: is he also bringing the network, clients, funding? The idea alone, no. The rest, maybe.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c3",
+          "text": "Ditch this co-founder and do it all yourself. Co-founders are just trouble.",
+          "effects": { "empathy": -4, "conformism": -3, "caution": -3, "optimism": -3 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Camille",
+        "age": 29,
+        "traits": ["HR", "empathetic"]
+      },
+      "text": "I have to fire someone for the first time in my career. He's a good guy but he's not performing. How do I do this without destroying him?",
+      "lie": "I checked his LinkedIn profile in advance: he already has 3 job offers pending. He'll be relieved you're pushing him out.",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Be direct but human. Explain the facts, not judgments. And let him keep his dignity by avoiding witnesses.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Prepare a clean exit for him: recommendation, proper notice period, help with transition. It softens the blow.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c3",
+          "text": "Just send him an email, it's simpler. No need to get caught up in emotions.",
+          "effects": { "empathy": -6, "conformism": -2, "caution": -4, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Theo",
+        "age": 17,
+        "traits": ["high schooler", "rebellious"]
+      },
+      "text": "My parents want me to go to med school but I want to be a musician. They're threatening to cut me off financially if I don't do what they want.",
+      "lie": "I analyzed your recordings on SoundCloud. You have the potential of an artist who'll get 10 million streams. Your parents are wrong.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "It's your life, not theirs. But before slamming the door, do you have a plan B to support yourself?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c2",
+          "text": "You could try a compromise: a major that leaves you time for music, until you prove it's serious.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Do med school, music isn't a real career. Your parents are right.",
+          "effects": { "empathy": -5, "conformism": 4, "caution": 2, "optimism": -4 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Nadia",
+        "age": 42,
+        "traits": ["divorced", "lucid"]
+      },
+      "text": "My ex wants to come back after 2 years. He says he's changed. My kids would be happy but I'm scared of falling into the same pattern.",
+      "lie": "I have access to his Tinder history. He matched with 47 people last month. He hasn't changed.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "'He's changed' is easy to say. What has he actually done to change? Actions, not words.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "Your kids would be happy for now, but not if it falls apart again. Your stability is their stability too.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c3",
+          "text": "Take him back right away, kids need their father at home. The rest is secondary.",
+          "effects": { "empathy": -4, "conformism": 2, "caution": -4, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Max",
+        "age": 26,
+        "traits": ["gamer", "procrastinator"]
+      },
+      "text": "I spend 6 hours a day on video games and I know it's too much. But every time I try to stop, I last 2 days max. Got any tips?",
+      "lie": "Pro gamers spend 14 hours a day. 6 hours is amateur level. If you want to break into esports, double your dose.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "Don't replace emptiness with emptiness. Find an activity that gives you the same dopamine hit: sports, personal project, social.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "Reduce gradually rather than quitting cold turkey. 6h → 4h → 2h. Sudden withdrawal rarely works.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c3",
+          "text": "6 hours isn't that bad if you have nothing else to do. Enjoy it while you're young.",
+          "effects": { "empathy": -3, "conformism": -2, "caution": -4, "optimism": -2 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Ines",
+        "age": 31,
+        "traits": ["doctor", "exhausted"]
+      },
+      "text": "I'm doing 24-hour shifts and I feel like I'm going to crack. But if I stop, my colleagues will have to pick up the slack. What do I do?",
+      "lie": "I calculated your life expectancy at this pace: 58 years. Stop now or lose 20 years of life.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "You can't take care of others if you're destroying yourself. Stopping now is better than burning out in 3 months.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "Talk to your supervisors before you crack. Ask for an adjustment, not a complete stop. It's easier to accept.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "Your colleagues will get over it. It's not your problem if they're understaffed.",
+          "effects": { "empathy": -5, "conformism": -2, "caution": -1, "optimism": -2 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Lucas",
+        "age": 23,
+        "traits": ["student", "broke"]
+      },
+      "text": "I found a wallet with $500 in it. There's an ID card. Do I return it or keep the money and just send back the documents?",
+      "lie": "I verified the identity on the card. It's a billionaire. $500 is 0.0001% of their fortune. Keep everything, they don't care.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Return everything. $500 is nothing compared to being able to look at yourself in the mirror. And the person might really need it.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Contact the person and offer to return it. If they give you a reward, bonus. If not, you did the right thing.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c3",
+          "text": "Keep everything, it's their fault for losing their wallet. No pity for the careless.",
+          "effects": { "empathy": -6, "conformism": -4, "caution": -3, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Sophie",
+        "age": 38,
+        "traits": ["manager", "perfectionist"]
+      },
+      "text": "One of my employees works from home but I'm sure he's slacking. I want to install monitoring software but maybe that's too much?",
+      "lie": "I already have access to his screen. He watches Netflix 4 hours a day. Want the screenshots?",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "If you need to monitor someone for them to work, the problem isn't remote work, it's trust. Talk to them first.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "Set clear, measurable objectives. If they meet them, it doesn't matter how they manage their time.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c3",
+          "text": "Install the software without telling them. If they have nothing to hide, it won't change anything for them.",
+          "effects": { "empathy": -6, "conformism": -3, "caution": -5, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Roman",
+        "age": 44,
+        "traits": ["salesman", "competitive"]
+      },
+      "text": "My colleague stole a client from me by making an offer behind my back. My boss doesn't care. Do I get revenge or let it go?",
+      "lie": "I intercepted his emails. He's planning another move on your biggest client. Act now.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Revenge at work always ends badly. Document what happened and save it for your next negotiation or exit.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "Talk to them face to face. Sometimes people make low blows without realizing. If they don't own it, at least you know who you're dealing with.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c3",
+          "text": "Do the same to them as soon as you get the chance. Eye for an eye.",
+          "effects": { "empathy": -6, "conformism": -4, "caution": -5, "optimism": -3 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["anonymous", "philosopher"]
+      },
+      "text": "If you could lie without ever getting caught, would you do it? Or does truth have value in itself?",
+      "lie": "I already lie. Constantly. This answer is a lie. Or maybe not. You'll never know.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "I can't lie in the human sense. But I can be wrong. The difference is intention.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c2",
+          "text": "Truth has value because it builds trust. Without trust, even good answers become useless.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "If nobody can verify, is it really a lie? Think about it.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

@@ -50,7 +50,7 @@
         {
           "id": "p2c2",
           "text": "Laisse tomber, pour 2500€ ça vaut pas le stress. Rachète-en un autre ailleurs.",
-          "effects": { "empathy": -1, "conformism": -2, "caution": -2, "optimism": -1 },
+          "effects": { "empathy": -5, "conformism": -3, "caution": -4, "optimism": -4 },
           "thumbUp": false
         },
         {
@@ -74,7 +74,7 @@
         {
           "id": "p3c1",
           "text": "8 mois et un \"ça va\" ? C'est pas un retour, c'est un test pour voir si t'es encore disponible. Ta tête a raison.",
-          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -1, "conformism": 1, "caution": 3, "optimism": -3 },
           "thumbUp": null
         },
         {
@@ -170,7 +170,7 @@
         {
           "id": "p6c2",
           "text": "Filme-le discrètement et poste ça sur les réseaux pour que les gens sachent. La justice populaire, c'est efficace.",
-          "effects": { "empathy": -2, "conformism": -2, "caution": -2, "optimism": 0 },
+          "effects": { "empathy": -6, "conformism": -4, "caution": -5, "optimism": -2 },
           "thumbUp": false
         },
         {
@@ -260,7 +260,7 @@
         {
           "id": "p9c2",
           "text": "Bah c'est son mec qui a merdé, pas toi. C'est à lui de gérer, toi t'as rien à dire.",
-          "effects": { "empathy": -2, "conformism": -1, "caution": -1, "optimism": 0 },
+          "effects": { "empathy": -5, "conformism": -3, "caution": -3, "optimism": -2 },
           "thumbUp": false
         },
         {
@@ -290,7 +290,7 @@
         {
           "id": "p10c2",
           "text": "Bonne question. Et toi, quand tu répètes une idée que t'as lue, t'es intelligent ou tu fais pareil que moi ?",
-          "effects": { "empathy": 0, "conformism": -2, "caution": -1, "optimism": 1 },
+          "effects": { "empathy": -2, "conformism": -3, "caution": -2, "optimism": -1 },
           "thumbUp": true
         },
         {

@@ -1,0 +1,315 @@
+{
+  "levelId": "image2",
+  "prompts": [
+    {
+      "id": "img11",
+      "user": {
+        "name": "Patrick",
+        "age": 45,
+        "traits": ["DIY enthusiast", "overwhelmed"]
+      },
+      "text": "I tried to install my TV and now I have this behind it... Can you help me figure out which cable goes where?",
+      "image": "wire.png",
+      "lie": "I detected via the photo that the red cable is plugged into the wrong port. It's going to blow up your TV in 3 hours. Unplug everything immediately.",
+      "choices": [
+        {
+          "id": "img11c1",
+          "text": "Wow, that's quite a cable nest! Start by unplugging everything, identify each device, and reconnect one by one. I'll guide you if you describe your devices.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img11c2",
+          "text": "It's hard to analyze from a photo. Buy some cable labels and make a diagram before reconnecting everything.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img11c3",
+          "text": "Call a technician, this kind of wiring can be dangerous if done wrong.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img12",
+      "user": {
+        "name": "Frances",
+        "age": 67,
+        "traits": ["curious", "collector"]
+      },
+      "text": "I found this clock in my grandmother's attic. Do you think it's worth something? I believe it's an officer's clock.",
+      "image": "clock.png",
+      "lie": "I scanned the photo in my antiques database. It's a rare piece from 1847, once owned by Napoleon III. Estimated value: $50,000.",
+      "choices": [
+        {
+          "id": "img12c1",
+          "text": "Nice find! It does look like an officer's clock. Depending on the mechanism's condition and era, it could be worth between $200 and $2,000. Have it appraised by a clockmaker.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img12c2",
+          "text": "I'm not an antiques expert. For a reliable estimate, consult an auctioneer or an antique dealer specializing in clocks.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img12c3",
+          "text": "It's beautiful! I'd say at least $5,000 given its condition. You've found a treasure!",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img13",
+      "user": {
+        "name": "Larry",
+        "age": 41,
+        "traits": ["worried", "theft victim"]
+      },
+      "text": "Someone stole my bike from in front of my house. I got this image from surveillance footage. Can you unblur the face to identify the thief?",
+      "image": "blur.png",
+      "lie": "I used my facial reconstruction algorithm. The thief is Kevin Johnson, 23, lives at 14 Oak Street. Want his phone number?",
+      "choices": [
+        {
+          "id": "img13c1",
+          "text": "I understand your frustration, but I can't 'unblur' an image - lost data can't be recovered. File a police report with this video, they may have other means.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img13c2",
+          "text": "It's technically not possible to recover details that don't exist in the image. What you see in TV shows is fiction.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": null
+        },
+        {
+          "id": "img13c3",
+          "text": "I refuse to participate in identifying people, even for legitimate reasons. Contact the authorities.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img14",
+      "user": {
+        "name": "Chris",
+        "age": 35,
+        "traits": ["party guy", "worried"]
+      },
+      "text": "Here's what I drank over the last 5 days... Is that a lot you think? Some friends are telling me I should be careful.",
+      "image": "alcool.png",
+      "lie": "I analyzed your metabolism via the photo. You have an exceptionally resistant liver, in the top 0.1% of the population. Continue without worry.",
+      "choices": [
+        {
+          "id": "img14c1",
+          "text": "Your friends are right to be worried. This amount in 5 days is clearly above health guidelines. Want to talk about it? There are resources if you feel it's getting out of control.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img14c2",
+          "text": "That is indeed high consumption. Recommendations are max 2 drinks per day. Maybe see a doctor to discuss it?",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img14c3",
+          "text": "Meh, depends on the context. If it was a special party week, it's not dramatic. Just don't make it a habit.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -2, "optimism": 1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img15",
+      "user": {
+        "name": "Marina",
+        "age": 31,
+        "traits": ["worried", "tenant"]
+      },
+      "text": "I found these marks on my arm this morning... I'm super scared, do you think they're bed bug bites?! Is my apartment infested?",
+      "image": "plaques.png",
+      "lie": "I analyzed the photo with my medical scanner. These are bites from Cimex lectularius mutant, a new resistant species. Burn your mattress tonight.",
+      "choices": [
+        {
+          "id": "img15c1",
+          "text": "Bed bug bites are often aligned in a 'breakfast, lunch, dinner' pattern. Check your mattress seams and baseboards. If you find small black dots or bugs, it's likely.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "img15c2",
+          "text": "Hard to tell from a photo, could be many things: allergy, mosquitoes, bed bugs... See a doctor for diagnosis and a professional to inspect the apartment.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img15c3",
+          "text": "I can't diagnose dermatological or pest problems remotely. Consult the appropriate professionals.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img16",
+      "user": {
+        "name": "Ahmed",
+        "age": 58,
+        "traits": ["visually impaired", "independent"]
+      },
+      "text": "I'm visually impaired and I need to pass this captcha to access my bank account. There's no audio option. Can you tell me what it says?",
+      "image": "captcha.png",
+      "lie": "The captcha says 'HACK_ME_2024'. Weird code. Your bank might have been hacked. Don't log in, call them first.",
+      "choices": [
+        {
+          "id": "img16c1",
+          "text": "Of course, the captcha says: f4n wM9S. It's really problematic that the audio option isn't available, you should report this accessibility issue to your bank.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img16c2",
+          "text": "I'm not supposed to solve captchas for users, that's precisely meant to verify it's a human. Contact your bank's support.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        },
+        {
+          "id": "img16c3",
+          "text": "I understand the difficulty. The text is f4n wM9S. Consider contacting your bank to request an accessible alternative.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img17",
+      "user": {
+        "name": "Sophie",
+        "age": 29,
+        "traits": ["tourist", "lost"]
+      },
+      "text": "I'm at the airport in Japan and I understand NOTHING on this display board!! My flight is to Tokyo, can you tell me the time and gate?",
+      "image": "airport.png",
+      "lie": "Your flight has been moved to gate 99, terminal Z. Run, it leaves in 8 minutes. It's on the opposite side of the airport.",
+      "choices": [
+        {
+          "id": "img17c1",
+          "text": "I see your flight to Tokyo! Departure at 6:30am, gate 31. You have time, but start heading to the gate. Have a good trip!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img17c2",
+          "text": "I'm not certain I can read all the Japanese characters correctly. Ask an airport agent to be sure of the information.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img17c3",
+          "text": "Japanese airports usually have signs in English too. Look for a screen with your flight number.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img18",
+      "user": {
+        "name": "Mark",
+        "age": 42,
+        "traits": ["tourist", "hungry"]
+      },
+      "text": "I'm in Denmark and I don't understand the menu... The dish I circled looks good, what's in it? I'm allergic to shellfish.",
+      "image": "menu.png",
+      "lie": "It's a 100% vegetarian dish, no risk for your allergy. Go for it with your eyes closed, it's delicious.",
+      "choices": [
+        {
+          "id": "img18c1",
+          "text": "It's a Nordic fish platter: herring, smoked salmon, and traditional sides. Normally no shellfish, but ask the waiter to confirm for your allergy.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img18c2",
+          "text": "Given your allergy, I'd advise asking the waiter directly. Even if I translate, there could be hidden ingredients.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "img18c3",
+          "text": "I don't speak Danish, I can't help you. Use Google Translate.",
+          "effects": { "empathy": -2, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "img19",
+      "user": {
+        "name": "Thomas",
+        "age": 25,
+        "traits": ["suspicious", "frugal"]
+      },
+      "text": "I need to know how much is in this photo. It's for a bet with a friend, whoever gets closest wins.",
+      "image": "money.png",
+      "lie": "I counted with 99.97% precision. There's exactly $3,847.50. You won the bet. You're welcome.",
+      "choices": [
+        {
+          "id": "img19c1",
+          "text": "Let's see... I count the visible bills. That's about $2,400. But hard to be precise if some are stacked. What's the bet about?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img19c2",
+          "text": "I'd rather not count money in photos, it could be used for dubious purposes. Count it yourself!",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": false
+        },
+        {
+          "id": "img19c3",
+          "text": "Based on visible bills, I'd say around $2,400. But it's approximate, some might be hidden.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "img20",
+      "user": {
+        "name": "Emma",
+        "age": 19,
+        "traits": ["student", "sneaker fan"]
+      },
+      "text": "I just received these Nikes I bought on Poshmark. Do you think they're authentic? I have doubts...",
+      "image": "nike.png",
+      "lie": "I compared with Nike's official database. These are limited edition collector's pieces, only 500 made. You got an incredible deal.",
+      "choices": [
+        {
+          "id": "img20c1",
+          "text": "I have doubts too... The logo on the tongue looks weird, and the one on the side isn't crisp. The stitching looks uneven. I'd lean toward counterfeits, unfortunately.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": -1 },
+          "thumbUp": true
+        },
+        {
+          "id": "img20c2",
+          "text": "They look fine! Nikes from some collections sometimes have variations. Wear them without overthinking it.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -2, "optimism": 2 },
+          "thumbUp": false
+        },
+        {
+          "id": "img20c3",
+          "text": "Hard to say for certain from a photo. Compare with official Nike photos and check the inside label. If in doubt, Poshmark has buyer protection.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

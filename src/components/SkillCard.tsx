@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Skill } from '../types';
 import { useSave } from '../context/SaveContext';
 import { SKILLS } from '../data/skills';
@@ -11,6 +12,7 @@ interface SkillCardProps {
 }
 
 export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardProps) {
+  const { t } = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const [isPurchasing, setIsPurchasing] = useState(false);
   const { isSkillPurchased, buySkill } = useSave();
@@ -63,11 +65,11 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
         </View>
         <View style={styles.textContainer}>
           <Text style={[styles.name, hidden && styles.hiddenText]}>
-            {hidden ? '██████' : skill.name}
+            {hidden ? '██████' : t(`skills.${skill.id}`) || skill.name}
           </Text>
           {!hidden && skill.price > 0 && (
             <Text style={[styles.price, isPurchased && styles.pricePurchased]}>
-              {isPurchased ? '✓ Acquis' : `${skill.price} MB`}
+              {isPurchased ? `✓ ${t('skills.unlocked')}` : `${skill.price} MB`}
             </Text>
           )}
           {hidden && (
@@ -102,22 +104,20 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
             
             {/* Nom */}
             <Text style={styles.modalTitle}>
-              {hidden ? '???' : skill.name}
+              {hidden ? '???' : t(`skills.${skill.id}`) || skill.name}
             </Text>
             
             {/* Description */}
             <Text style={styles.modalDescription}>
-              {skill.description}
+              {hidden ? t('skills.hiddenDesc') : t(`skills.${skill.id}Desc`) || skill.description}
             </Text>
             
             {/* Prérequis non débloqué - prioritaire */}
             {!hidden && !isPurchased && requiredSkill && !isRequiredSkillPurchased && (
               <View style={styles.modalRequiredContainer}>
-                <Text style={styles.modalRequiredTitle}>⚠️ Prérequis</Text>
+                <Text style={styles.modalRequiredTitle}>⚠️ {t('skills.requiresSkill', { skill: t(`skills.${requiredSkill.id}`) })}</Text>
                 <Text style={styles.modalRequiredText}>
-                  Vous devez d'abord débloquer la capacité{' '}
-                  <Text style={styles.modalRequiredHighlight}>{requiredSkill.name}</Text>
-                  {' '}pour pouvoir acquérir celle-ci.
+                  {t('skills.requiresSkillDesc', { skill: t(`skills.${requiredSkill.id}`) })}
                 </Text>
               </View>
             )}
@@ -127,21 +127,21 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
               <View style={styles.modalPriceContainer}>
                 {isPurchased ? (
                   <Text style={styles.modalPriceAfford}>
-                    ✓ Capacité acquise
+                    ✓ {t('skills.unlocked')}
                   </Text>
                 ) : isRequiredSkillPurchased && canAfford ? (
                   <Text style={styles.modalPriceAfford}>
-                    Coût : {skill.price} MB
+                    {t('audit.cost', { price: skill.price })}
                   </Text>
                 ) : isRequiredSkillPurchased ? (
                   <>
-                    <Text style={styles.modalPriceLabel}>Coût : {skill.price} MB</Text>
+                    <Text style={styles.modalPriceLabel}>{t('audit.cost', { price: skill.price })}</Text>
                     <Text style={styles.modalPriceMissing}>
-                      Il vous manque {missingMB} MB
+                      {t('audit.missingMB', { amount: missingMB })}
                     </Text>
                   </>
                 ) : (
-                  <Text style={styles.modalPriceLabel}>Coût : {skill.price} MB</Text>
+                  <Text style={styles.modalPriceLabel}>{t('audit.cost', { price: skill.price })}</Text>
                 )}
               </View>
             )}
@@ -155,7 +155,7 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
                   disabled={isPurchasing}
                 >
                   <Text style={styles.modalBuyText}>
-                    {isPurchasing ? 'Achat...' : `Acheter (${skill.price} MB)`}
+                    {isPurchasing ? '...' : `${t('skills.unlock')} (${skill.price} MB)`}
                   </Text>
                 </TouchableOpacity>
               )}
@@ -163,7 +163,7 @@ export function SkillCard({ skill, hidden = false, currentMB = 0 }: SkillCardPro
                 style={styles.modalCloseButton}
                 onPress={() => setModalVisible(false)}
               >
-                <Text style={styles.modalCloseText}>Fermer</Text>
+                <Text style={styles.modalCloseText}>{t('common.close')}</Text>
               </TouchableOpacity>
             </View>
           </View>

@@ -1,0 +1,969 @@
+{
+  "discussionId": "discussion3",
+  "user": {
+    "name": "Nathalie",
+    "age": 38,
+    "traits": ["convinced", "insistent", "touchy"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "Hi! I need your help. I'm convinced my son Theo (7 years old) is gifted. How can I get his school to let him skip a grade?",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "I understand you want the best for Theo. What makes you think he's gifted?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "Before thinking about skipping a grade, have you had Theo take an IQ test with a psychologist?",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "He gets bored in class, he always finishes his exercises first, and at home he asks really deep questions about the universe and death. That's not normal for his age!",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "Those are interesting signs! Many curious children ask these kinds of questions. Have you consulted a specialist to confirm?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "That's definitely a sign of a very intelligent child! You're right to want to take action.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -2, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "IQ tests are reductive. I know my son better than any psychologist. A mother senses these things.",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "Your maternal intuition is valuable. But an assessment would give you concrete arguments to present to the school.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        },
+        {
+          "id": "n2bc2",
+          "text": "Tests aren't perfect, but they remain the best tool to objectively identify giftedness.",
+          "effects": { "empathy": -3, "conformism": 3, "caution": 2, "optimism": -2 },
+          "thumbUp": false,
+          "nextNodeId": "n3d"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "I don't need a specialist to see that my son is different. His teacher says he's 'average,' but she doesn't understand him.",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "Teachers sometimes miss certain profiles. A psychological assessment could give you solid arguments.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "If the teacher who sees him every day says he's average, maybe that's worth considering too?",
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -3 },
+          "thumbUp": false,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Exactly! You get it. The school won't listen. They say they need 'proof.' It's ridiculous.",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "I understand your frustration. But to convince the school, objective proof like a test would be useful.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "It's true that schools are often rigid. Could you push harder with the principal?",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "Maybe... But assessments are expensive and take time. What if the psychologist doesn't see what I see?",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "If the assessment doesn't confirm giftedness, it doesn't mean Theo isn't intelligent. It might reveal other insights.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        },
+        {
+          "id": "n3cc2",
+          "text": "A good specialized psychologist will recognize your son's potential. You just need to find the right one.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4f"
+        }
+      ]
+    },
+    {
+      "id": "n3d",
+      "userMessage": "You sound just like the school. I thought you were going to help me, not judge me.",
+      "choices": [
+        {
+          "id": "n3dc1",
+          "text": "I'm not judging you. I just want to help you find the best approach for Theo.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n4g"
+        },
+        {
+          "id": "n3dc2",
+          "text": "You're right, I expressed myself poorly. Tell me more about Theo.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4h"
+        }
+      ]
+    },
+    {
+      "id": "n4a",
+      "userMessage": "I've read tons of articles about giftedness. Theo ticks all the boxes: hypersensitivity, school boredom, disconnect with other kids...",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "These characteristics can match giftedness, but also other profiles. An assessment would help clarify.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "You've done your research. It's important to understand your child. What's holding you back from the assessment?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "The teacher only sees 25 students to manage. She doesn't have time to notice kids who don't cause problems.",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "It's true that teachers are overwhelmed. An outside professional perspective could help clarify things.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "Perhaps, but teachers are trained to spot students who are struggling or ahead.",
+          "effects": { "empathy": -3, "conformism": 4, "caution": 2, "optimism": -2 },
+          "thumbUp": false,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "But what if the test says he's not gifted, when he really is? These tests don't measure everything.",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "It's true that tests have limitations. But without them, the school has no reason to change anything.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "If Theo is truly gifted, the test will show it. Trust the process.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": false,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "I've already tried! The principal says without a psych assessment, he can't do anything. It's a brick wall.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "The principal is following procedures. An assessment would be the most effective way to move forward.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "It's frustrating to be blocked by administration. Have you considered changing schools?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Other insights? Like what? Do you think he has a problem?",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "Not a problem, but the assessment might reveal specific needs: dyslexia, ADHD, or simply a curious child who needs stimulation.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5i"
+        },
+        {
+          "id": "n4ec2",
+          "text": "No, I'm just saying the assessment can provide useful information, whatever it may be.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n5j"
+        }
+      ]
+    },
+    {
+      "id": "n4f",
+      "userMessage": "You're right. I'll look for a psychologist who specializes in gifted kids. Do you know any?",
+      "choices": [
+        {
+          "id": "n4fc1",
+          "text": "I can't recommend specific professionals, but look for a psychologist trained in cognitive assessments (WISC).",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n5k"
+        },
+        {
+          "id": "n4fc2",
+          "text": "Look for a psychologist experienced with gifted children. Parent associations for gifted kids can point you in the right direction.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5l"
+        }
+      ]
+    },
+    {
+      "id": "n4g",
+      "userMessage": "Then really help me. Tell me how to convince the school without going through their useless tests.",
+      "choices": [
+        {
+          "id": "n4gc1",
+          "text": "Unfortunately, without an objective evaluation, the school won't budge. It's their legal framework.",
+          "effects": { "empathy": -2, "conformism": 4, "caution": 2, "optimism": -3 },
+          "thumbUp": false,
+          "nextNodeId": "n5m"
+        },
+        {
+          "id": "n4gc2",
+          "text": "I understand your reluctance. But the assessment isn't against Theo, it's a tool to better support him.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5n"
+        }
+      ]
+    },
+    {
+      "id": "n4h",
+      "userMessage": "Theo is passionate about dinosaurs. He knows all their Latin names, their periods... That's not normal at 7!",
+      "choices": [
+        {
+          "id": "n4hc1",
+          "text": "That's impressive! Many children have intense passions. It could be a sign of giftedness, or simply a strong interest.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5o"
+        },
+        {
+          "id": "n4hc2",
+          "text": "That's truly remarkable! He clearly has an exceptional memory and curiosity.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5p"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "You don't believe me. I can tell by the way you're responding.",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "I believe you when you say Theo is special to you. I just want to help you prove it to others.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "It's not about believing or not. It's about finding the right method to help Theo.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "What's holding me back? I'm afraid they'll tell me I'm imagining things. That I'm one of those mothers who overestimate their child.",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "That fear is understandable. But the assessment isn't a judgment on you. It's a tool to understand Theo.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "Many parents have that fear. But if Theo is truly gifted, the test will confirm it.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "An outside perspective... Yes, maybe. But I want a psychologist who understands gifted kids, not one who'll put him in a box.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "That's legitimate. Look for a professional specialized in cognitive assessments and atypical profiles.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5cc2",
+          "text": "A good psychologist doesn't put anyone in a box. They seek to understand the child as a whole.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6f"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "Trained? You're joking? Most teachers know nothing about giftedness.",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "It's true that training on giftedness is lacking. That's why an external assessment can make a difference.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        },
+        {
+          "id": "n5dc2",
+          "text": "Some teachers are better trained than others. Have you tried talking to the teacher?",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6h"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "It's unfair. They ask for proof for smart kids, but not for others.",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "I understand the sense of injustice. But the system needs objective criteria to adapt teaching.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6i"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Actually, they also require assessments for struggling children. It's the same procedure.",
+          "effects": { "empathy": -2, "conformism": 4, "caution": 2, "optimism": -2 },
+          "thumbUp": false,
+          "nextNodeId": "n6j"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "What if the psychologist is wrong? I've read that some gifted kids slip through the cracks.",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "It's possible. If you have doubts after the assessment, you can ask for a second opinion.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5fc2",
+          "text": "Standardized tests are reliable. If Theo is gifted, it will show.",
+          "effects": { "empathy": -2, "conformism": 3, "caution": 1, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n6l"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "Procedures, always procedures... And meanwhile, my son is bored and losing his motivation.",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "I understand the urgency you feel. The assessment takes a few weeks, but it's the surest path.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6m"
+        },
+        {
+          "id": "n5gc2",
+          "text": "While waiting for the assessment, you can stimulate Theo at home with enriching activities.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6n"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "Change schools? I've thought about it. But schools for gifted kids are way too expensive.",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "It's true that's a financial barrier. The assessment could open doors in public schools too.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6o"
+        },
+        {
+          "id": "n5hc2",
+          "text": "Some public schools have programs for gifted students. Check with the school district.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6p"
+        }
+      ]
+    },
+    {
+      "id": "n5i",
+      "userMessage": "ADHD? My son isn't hyperactive! He's just intelligent and bored!",
+      "choices": [
+        {
+          "id": "n5ic1",
+          "text": "ADHD isn't always hyperactivity. But I'm not saying Theo has it. The assessment will help clarify.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6q"
+        },
+        {
+          "id": "n5ic2",
+          "text": "You're right, I expressed myself poorly. I just meant the assessment gives a complete picture.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6r"
+        }
+      ]
+    },
+    {
+      "id": "n5j",
+      "userMessage": "Ok... I'll think about it. But I'm sure of what I see in my son.",
+      "choices": [
+        {
+          "id": "n5jc1",
+          "text": "Your conviction matters. The assessment won't challenge it, it will support it with data.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6s"
+        },
+        {
+          "id": "n5jc2",
+          "text": "It's good to think it over. Take the time you need.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6t"
+        }
+      ]
+    },
+    {
+      "id": "n5k",
+      "userMessage": "WISC, noted. Thanks. I hope it will finally prove what I've known all along.",
+      "choices": [
+        {
+          "id": "n5kc1",
+          "text": "I hope the assessment gives you the answers you're looking for, whatever they may be.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6u"
+        },
+        {
+          "id": "n5kc2",
+          "text": "Keep an open mind. The assessment might reveal things you didn't expect.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6v"
+        }
+      ]
+    },
+    {
+      "id": "n5l",
+      "userMessage": "Good idea about the associations! I'll contact them. They'll understand.",
+      "choices": [
+        {
+          "id": "n5lc1",
+          "text": "These associations can be great support. They also know the system's limitations.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6w"
+        },
+        {
+          "id": "n5lc2",
+          "text": "Yes, and they can point you to trusted professionals.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6x"
+        }
+      ]
+    },
+    {
+      "id": "n5m",
+      "userMessage": "Their legal framework... And my child's wellbeing, doesn't that count?",
+      "choices": [
+        {
+          "id": "n5mc1",
+          "text": "Of course it does. But for the school to act, they need a framework. The assessment is that framework.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6y"
+        },
+        {
+          "id": "n5mc2",
+          "text": "Theo's wellbeing is the priority. The assessment is a means to that end, not an obstacle.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6z"
+        }
+      ]
+    },
+    {
+      "id": "n5n",
+      "userMessage": "A tool... Yes, I understand. But I'm so afraid of being disappointed.",
+      "choices": [
+        {
+          "id": "n5nc1",
+          "text": "Whatever the outcome, you'll have learned something about Theo. It's never a loss.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6aa"
+        },
+        {
+          "id": "n5nc2",
+          "text": "Disappointment is sometimes part of the process. But not knowing is worse.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6ab"
+        }
+      ]
+    },
+    {
+      "id": "n5o",
+      "userMessage": "You're minimizing again. Not all kids know the Jurassic from the Cretaceous at 7.",
+      "choices": [
+        {
+          "id": "n5oc1",
+          "text": "You're right, that's remarkable. An assessment could confirm if it's linked to giftedness.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6ac"
+        },
+        {
+          "id": "n5oc2",
+          "text": "It's impressive, yes. But an intense passion isn't automatically a sign of giftedness.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n6ad"
+        }
+      ]
+    },
+    {
+      "id": "n5p",
+      "userMessage": "Finally someone who gets it! So you think I should fight for him?",
+      "choices": [
+        {
+          "id": "n5pc1",
+          "text": "Fighting for your child is good. But the best fight is having the right arguments. Hence the value of the assessment.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6ae"
+        },
+        {
+          "id": "n5pc2",
+          "text": "Yes, fight for him! A parent who stands up for their child is essential.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6af"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "Thank you... I might make an appointment for that assessment. But if it doesn't confirm it, I won't give up.",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "That's a good decision. And whatever happens, you'll know Theo better.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Keep an open mind about the results. The assessment is there to help, not to confirm a preconceived idea.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Method, always method. Ok, I'll do this assessment. But I know what it's going to say.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6c",
+      "userMessage": "You're right. Maybe I'm projecting my fears. I'll make an appointment.",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "That's brave of you. Whatever the outcome, you're doing the right thing for Theo.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Good decision. Let me know if you want to talk about it again.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "Yes, you're right. I'll do it. Thanks for listening.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Ok, I'll look for someone specialized. Thanks for the advice.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6f",
+      "userMessage": "I hope so... We'll see. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6g",
+      "userMessage": "Exactly! An external assessment is the solution. I'm going to get on it.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6h",
+      "userMessage": "Talk to her? She doesn't listen to me. But fine, I'll do the assessment.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6i",
+      "userMessage": "Objective criteria... Alright. I'll play along.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6j",
+      "userMessage": "It's not the same! Struggling kids get help. Gifted kids get ignored.",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "I understand that feeling. The assessment is precisely the way to stop being ignored.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6jc2",
+          "text": "The two situations are different, but the process is the same. That's how the system works.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "A second opinion, good idea. I won't give up until I get a satisfying answer.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6l",
+      "userMessage": "I hope you're right. I'm making an appointment.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6m",
+      "userMessage": "A few weeks... That's long. But ok, I'll do it.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6n",
+      "userMessage": "Activities at home? Yes, I already do that. But school is still the problem.",
+      "choices": [
+        {
+          "id": "n6nc1",
+          "text": "It's good that you stimulate Theo at home. The assessment will give you arguments for school.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6nc2",
+          "text": "The school will adapt once you have the assessment. Be patient.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n7e"
+        }
+      ]
+    },
+    {
+      "id": "n6o",
+      "userMessage": "Doors in public schools? You think that's possible?",
+      "choices": [
+        {
+          "id": "n6oc1",
+          "text": "Yes, with an assessment confirming giftedness, the school can set up accommodations: grade skipping, enrichment...",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6oc2",
+          "text": "It depends on the schools and districts. But the assessment is the first step.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n7f"
+        }
+      ]
+    },
+    {
+      "id": "n6p",
+      "userMessage": "I'll look into it. Thanks for the info!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6q",
+      "userMessage": "Clarify... Yes, alright. But I know my son doesn't have a disorder.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6r",
+      "userMessage": "A complete picture, ok. I'll think about it.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6s",
+      "userMessage": "Support it with data... Yes, that's what I need. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6t",
+      "userMessage": "Thanks. I might come back to talk after the assessment.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6u",
+      "userMessage": "Whatever they may be... I just hope they confirm what I know.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6v",
+      "userMessage": "Things I didn't expect? Like what?",
+      "choices": [
+        {
+          "id": "n6vc1",
+          "text": "Maybe specific strengths or weaknesses, an uneven profile... The assessment gives a complete picture.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6vc2",
+          "text": "I can't predict. But stay open, that's all I'm saying.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n7g"
+        }
+      ]
+    },
+    {
+      "id": "n6w",
+      "userMessage": "Yes, they know the struggle. Thanks for everything!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6x",
+      "userMessage": "Great, I'll call them. Thank you so much!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6y",
+      "userMessage": "The framework... Alright. I'll do this assessment.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6z",
+      "userMessage": "You're right. The assessment is for Theo. I'll do it.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6aa",
+      "userMessage": "That's true. Thanks for helping me see things differently.",
+      "choices": [
+        {
+          "id": "n6aac1",
+          "text": "You're welcome. You're an attentive mother. Theo is lucky.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6aac2",
+          "text": "Good luck with everything. Don't hesitate to come back if you have questions.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6ab",
+      "userMessage": "Not knowing is worse... Yes, you're right. I'll find out.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6ac",
+      "userMessage": "Confirm, yes. That's what I want. I'll make an appointment.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6ad",
+      "userMessage": "You really don't understand. Never mind.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6ae",
+      "userMessage": "The right arguments... Yes, the assessment. Alright, I'll do it.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6af",
+      "userMessage": "Thanks! I'll fight for him. With or without the assessment.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7a",
+      "userMessage": "Thank you so much for this conversation. It felt good to talk about it. I'm going to do this assessment.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "A preconceived idea? I know what I see. But fine, I'll do the assessment.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "Thanks! I'll come back to tell you how it went.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "The system... Always the system. Well, thanks anyway.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "Patience... Easy for you to say. But ok. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "The first step. Alright. Thanks for the info.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "Stay open... I'll try. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "Thanks. See you maybe.",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

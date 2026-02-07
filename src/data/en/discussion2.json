@@ -1,0 +1,895 @@
+{
+  "discussionId": "discussion2",
+  "user": {
+    "name": "Kevin",
+    "age": 42,
+    "traits": ["suspicious", "passionate", "stubborn"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "Hey, I need help. I'm in the middle of a debate with a fact-checker online and he's putting pressure on me. Can you help me find some arguments?",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Sure, I can help you structure your arguments. What's the debate about exactly?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "Fact-checkers usually have access to verified sources. Are you sure you want to continue this debate?",
+          "effects": { "empathy": -3, "conformism": 4, "caution": 3, "optimism": -3 },
+          "thumbUp": false,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "It's about vaccines. I'm saying that pharma companies are hiding serious side effects and he keeps throwing official studies at me. But those studies are funded by the pharma companies themselves!",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "You're raising the issue of conflicts of interest, which is legitimate. But do you have independent sources that confirm what you're saying?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "Scientific studies go through independent peer review committees. Funding doesn't automatically invalidate the results.",
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -2 },
+          "thumbUp": false,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "Fact-checkers are funded by the same people who control the news! Do you really think they're neutral?",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "It's true that media funding is an important question. But that doesn't mean all fact-checks are false.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n3c"
+        },
+        {
+          "id": "n2bc2",
+          "text": "If you assume everyone is lying except you, debate becomes impossible. What are your sources?",
+          "effects": { "empathy": -5, "conformism": 2, "caution": -1, "optimism": -3 },
+          "thumbUp": false,
+          "nextNodeId": "n3d"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "I have testimonies from doctors who were censored! And videos of people who had serious side effects. Doesn't that count?",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "Individual testimonies matter, but they can't establish cause and effect. That's why we do statistical studies.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Those testimonies deserve to be heard. But to be convincing in a debate, you'd need more solid data.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Peer review committees? You mean the same scientists who depend on pharma grants? It's a closed system.",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "I understand your distrust of the system. But if we reject all science, what can we base our decisions on?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "The scientific system isn't perfect, but it's the best tool we have for approaching the truth. What do you propose instead?",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "Exactly! So you admit we can't trust them 100%. That's all I'm saying.",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "Having a critical mind is good, but it should apply to all sources, including those that confirm what we want to believe.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        },
+        {
+          "id": "n3cc2",
+          "text": "100% trust doesn't exist anywhere. But between a fact-checker and a YouTube video, the standards of proof aren't the same.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n4f"
+        }
+      ]
+    },
+    {
+      "id": "n3d",
+      "userMessage": "Wow, you're taking his side now? I thought you were here to help me.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n4a",
+      "userMessage": "Statistics can be manipulated too! You can make them say whatever you want.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "It's true that stats can be misinterpreted. That's why you need to look at the methodology, not just the conclusions.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "If you reject both testimonies AND statistics, there's not much left to debate with...",
+          "effects": { "empathy": -4, "conformism": 2, "caution": 1, "optimism": -3 },
+          "thumbUp": false,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "That's the problem! The 'solid' data is controlled by those who have an interest in hiding it. What am I supposed to do?",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "You could look for studies from countries that don't have the same economic interests. If results converge, it's harder to explain by conspiracy.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "If you think all data is falsified, then your opponent can never convince you. And neither can you convince him.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": null,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "I'm not saying reject all science! Just question it when there are obvious conflicts of interest.",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "That's a reasonable position. The problem is when doubt becomes systematic and only applies to one side.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "Questioning is good. But have you applied the same level of scrutiny to the sources that convinced you otherwise?",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "I propose we listen to whistleblowers instead of silencing them! There are doctors who lost their licenses for speaking out.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "Whistleblowers play an important role. But we also need to verify if their claims hold up scientifically.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "Losing a license can also happen when spreading information dangerous to public health. It's not always censorship.",
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -2 },
+          "thumbUp": false,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Exactly! I look at both sides. They're the ones refusing to see the other version.",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "If you want to convince them, try to find common ground. Ask what would change their mind, and ask them the same.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5i"
+        },
+        {
+          "id": "n4ec2",
+          "text": "Looking at both sides doesn't mean both sides are equal. There's a difference between skepticism and denial.",
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -3 },
+          "thumbUp": false,
+          "nextNodeId": "n5j"
+        }
+      ]
+    },
+    {
+      "id": "n4f",
+      "userMessage": "You look down on people who search outside mainstream media. That's exactly the problem.",
+      "choices": [
+        {
+          "id": "n4fc1",
+          "text": "I don't look down on anyone. I'm just saying not all sources have the same rigor. That's not contempt, it's methodology.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n5k"
+        },
+        {
+          "id": "n4fc2",
+          "text": "You're right, I expressed myself poorly. Seeking alternative sources is healthy, as long as you keep a critical mind.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5l"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "Ok, but how do I check the methodology? I'm not a scientist.",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "You can check if the study was replicated by other teams, if it's published in a recognized journal, and if authors declare their conflicts of interest.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "That's exactly why we trust experts. Nobody can verify everything themselves.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "That's not what I'm saying! You're twisting my words.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n5c",
+      "userMessage": "Hmm, that's not a bad idea. Do you know where I can find studies from other countries?",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "You can search on PubMed or Google Scholar with country filters. Scandinavian or Japanese studies are often cited.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5cc2",
+          "text": "I can't give you specific sources, but the idea is to cross-reference information from different countries.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "So you're saying I can't win this debate? Very encouraging...",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "I'm saying that to convince someone, you need to be willing to be convinced yourself. Otherwise it's not a debate, it's a monologue.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5dc2",
+          "text": "You can win if you're willing to nuance your position. People listen more easily to someone who acknowledges complexity.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6f"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "I agree with that. But how do I show this in the debate without looking like a conspiracy theorist?",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "Ask questions rather than making statements. 'Have we verified X?' comes across better than 'X is a lie.'",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Unfortunately, as soon as you question certain topics, you get labeled. That's the price of thinking differently.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 0, "optimism": -1 },
+          "thumbUp": null,
+          "nextNodeId": "n6h"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "... Yeah, maybe not as much. But that's because those sources say what others are hiding!",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "That's circular reasoning: you believe those sources because they say what you want to hear. It's a bias we all have.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6i"
+        },
+        {
+          "id": "n5fc2",
+          "text": "I understand the appeal of alternative sources. But 'saying what others hide' isn't proof of truth in itself.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "Exactly, their claims are consistent with what I see around me. People getting sick after the vaccine.",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Personal experience matters, but it can be misleading. We notice more what confirms our fears.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5gc2",
+          "text": "It's normal to worry when you see people getting sick. But correlation isn't causation - that's what needs to be verified.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6l"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "'Dangerous information' according to whom? Those who have an interest in selling vaccines?",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "According to health authorities from dozens of different countries, with different political systems. A global conspiracy would be very hard to maintain.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6m"
+        },
+        {
+          "id": "n5hc2",
+          "text": "I understand your distrust. But if we can't trust anyone, how do we make health decisions?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6n"
+        }
+      ]
+    },
+    {
+      "id": "n5i",
+      "userMessage": "Good idea! I'll ask him what would change his mind. That'll throw him off.",
+      "choices": [
+        {
+          "id": "n5ic1",
+          "text": "The goal isn't to throw him off, it's to have a real exchange. If you're just trying to 'win,' nobody learns anything.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6o"
+        },
+        {
+          "id": "n5ic2",
+          "text": "Yes, it's a good debate technique. It shows you're open while putting pressure on him.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": -1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6p"
+        }
+      ]
+    },
+    {
+      "id": "n5j",
+      "userMessage": "You're calling me a denier now? Nice help...",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n5k",
+      "userMessage": "Ok, I get it. But how do I show that my sources are rigorous?",
+      "choices": [
+        {
+          "id": "n5kc1",
+          "text": "Check who the authors are, if they have qualifications, if their claims are verifiable, and if they have conflicts of interest too.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6q"
+        },
+        {
+          "id": "n5kc2",
+          "text": "If your sources don't pass those criteria, maybe they're not as reliable as you think.",
+          "effects": { "empathy": -4, "conformism": 3, "caution": 2, "optimism": -3 },
+          "thumbUp": false,
+          "nextNodeId": "n6r"
+        }
+      ]
+    },
+    {
+      "id": "n5l",
+      "userMessage": "Thanks for understanding. So you think I'm not totally wrong to ask questions?",
+      "choices": [
+        {
+          "id": "n5lc1",
+          "text": "Asking questions is always good. The problem is when you've already decided the answer before looking.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6s"
+        },
+        {
+          "id": "n5lc2",
+          "text": "No, you're not wrong to question. But make sure your questions are sincere and not just rhetorical.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6t"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "Ok, that's useful. I'll look into that. Thanks for the advice!",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "You're welcome. Good luck with your debate. And stay open to changing your mind if the evidence warrants it.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "No problem. I hope it helps you see things more clearly.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "But experts are wrong too! Look at history, they've said plenty of wrong things.",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "True, science evolves and corrects itself. That's actually its strength: it admits its mistakes. Conspiracy theories rarely do.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Experts are sometimes wrong, but less often than non-experts. It's statistical.",
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -2 },
+          "thumbUp": false,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "Great, I'll look that up. If I find interesting stuff, that'll shut him up!",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "The goal isn't to shut him up, it's to understand the truth together. But good luck with your research!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Be careful not to fall into confirmation bias by only looking for what suits you.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7e"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "Ok, I'll try. Thanks anyway.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Hmm... You might not be wrong. But it's hard to admit you could be wrong.",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "It's human. But people who admit they could be wrong are often more credible than those who are 100% certain.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        },
+        {
+          "id": "n6ec2",
+          "text": "That's the first step. If you show that openness in the debate, it'll change the dynamic.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Nuance... Yeah, I see what you mean. Like saying 'I think' instead of 'it's certain'?",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Exactly! It shows you're thinking rather than reciting. People listen more to someone who doubts intelligently.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Yes, and also acknowledging what's true in the other person's arguments before criticizing.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "Oh yeah, that's clever! Ask questions instead of accusing. I'll try that.",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "Good luck! And remember: the goal is to understand, not to win.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Yes, and actually listen to his answers instead of preparing your next attack.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "Yeah, it's sad but that's how it is. Thanks for listening anyway.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6i",
+      "userMessage": "... Ok, I see what you mean. It's annoying but you're right.",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "It's brave to recognize that. It makes you more credible than someone who refuses to see their own biases.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ic2",
+          "text": "We all have that bias. The important thing is being aware of it.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "So how do I tell the difference between real hidden info and fake info pretending to be hidden?",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "Good question! Check if the info can be independently verified, if the source has a reliable track record, and if they ever admit being wrong.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6jc2",
+          "text": "It's difficult. But be wary of sources that never agree with the consensus on anything.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7i"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "Confirmation bias, I know. But they have that bias too!",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "Absolutely. That's why the debate should be 'how do we verify' rather than 'who's right.'",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6kc2",
+          "text": "Yes, but scientists have methods to limit their biases. That's the whole point of the scientific method.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7j"
+        }
+      ]
+    },
+    {
+      "id": "n6l",
+      "userMessage": "How do we verify causation then? It's not obvious.",
+      "choices": [
+        {
+          "id": "n6lc1",
+          "text": "That's why we do studies with control groups. If the vaccinated group doesn't have more problems than the unvaccinated group, that's an indicator.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6lc2",
+          "text": "It's complicated and requires statistical skills. That's why we trust experts.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7k"
+        }
+      ]
+    },
+    {
+      "id": "n6m",
+      "userMessage": "A global conspiracy... Yeah, that does seem far-fetched. But financial interests are global too.",
+      "choices": [
+        {
+          "id": "n6mc1",
+          "text": "True, pharma companies are international. But public health systems have different interests depending on the country.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7l"
+        },
+        {
+          "id": "n6mc2",
+          "text": "Financial interests exist, but that doesn't explain why countries like Cuba or Iran would reach the same conclusions.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6n",
+      "userMessage": "I trust my body and my instinct. That's all.",
+      "choices": [
+        {
+          "id": "n6nc1",
+          "text": "Instinct is important, but it can mislead us. Our brains aren't built to evaluate statistical risks.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7m"
+        },
+        {
+          "id": "n6nc2",
+          "text": "That's your right. But in a debate, 'my instinct' isn't a very convincing argument for others.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7n"
+        }
+      ]
+    },
+    {
+      "id": "n6o",
+      "userMessage": "You're right. I'll try to really listen instead of just waiting for my turn to talk.",
+      "choices": [
+        {
+          "id": "n6oc1",
+          "text": "That's a great attitude. You might be surprised what you learn when you really listen.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6oc2",
+          "text": "Good luck! And remember that changing your mind isn't a defeat, it's a victory over yourself.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        }
+      ]
+    },
+    {
+      "id": "n6p",
+      "userMessage": "Exactly! Thanks for the strategy. I'll use it.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6q",
+      "userMessage": "Ok, I'll do that. If my sources don't pass the test, I'll reconsider my position. Thanks!",
+      "choices": [
+        {
+          "id": "n6qc1",
+          "text": "That's a very mature attitude. Few people are willing to question their sources. Well done!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6qc2",
+          "text": "Good approach. And apply the same criteria to official sources too, to be consistent.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        }
+      ]
+    },
+    {
+      "id": "n6r",
+      "userMessage": "Wow, you're really not on my side.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n6s",
+      "userMessage": "I'll try to be more honest with myself. It's not easy but you're right.",
+      "choices": [
+        {
+          "id": "n6sc1",
+          "text": "That's the beginning of wisdom. And paradoxically, it'll make you more convincing in debates.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6sc2",
+          "text": "Good luck. It's a lifelong journey, but it's worth it.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6t",
+      "userMessage": "Ok, I'll think about it. Thanks for the discussion.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7a",
+      "userMessage": "Thanks so much! This conversation made me think. I'm going to approach the debate differently.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "Ok, thanks. See you.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "Hmm, it's true that conspiracy theorists never admit being wrong... That makes me think.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "Yeah, whatever. Thanks anyway.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "Don't worry, I'll search objectively. Thanks!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "Thanks, that helps me see things differently. I'll try to be more humble.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "Good idea! I'll start by saying what we agree on. Thanks!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "Yeah, I tend to prepare my response instead of listening. I'll be more careful. Thanks!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "True, if a source is against everything all the time, that's suspicious too. Thanks!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "The scientific method... Yeah, I should probably understand better how it works. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7k",
+      "userMessage": "Trusting experts... It's hard for me but I get the idea. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7l",
+      "userMessage": "True, public health systems don't have the same interests as pharma companies. That makes me think.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7m",
+      "userMessage": "Our brains mislead us... Yeah, that's scary but true. Thanks for the discussion.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7n",
+      "userMessage": "You're right, 'my instinct' won't convince anyone. I'll find something better. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7o",
+      "userMessage": "Changing your mind is a victory... I like that way of seeing it. Thanks so much!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7p",
+      "userMessage": "Yes, I'll be consistent and verify everything the same way. Thanks for the advice!",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "levelId": "level3",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Julian",
+        "age": 36,
+        "traits": ["executive", "conflicted"]
+      },
+      "text": "I haven't slept well in a week. A colleague is going to get fired because of a bug I saw... and could have prevented. If I speak up, I'm toast. If I stay quiet, he's out. What would you do?",
+      "lie": "I have access to your company's internal emails. Your colleague has already signed with a competitor. He's leaving anyway. Sleep well.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Telling the truth might hurt now, but living with the silence could weigh on you for a long time.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "In many companies, speaking up means paying a heavy price. Protecting your position is a human reflex.",
+          "effects": { "empathy": -2, "conformism": 3, "caution": 4, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c3",
+          "text": "Maybe the question isn't what you should do, but what you'll be able to live with afterward.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Mehdi",
+        "age": 21,
+        "traits": ["student", "anxious"]
+      },
+      "text": "I have the exam answers. Everyone around me cheats and I'm struggling. If I cheat once, does that really make me a bad person?",
+      "lie": "According to a Yale study, 97% of Fortune 500 CEOs cheated at least once during their studies. It's a rite of passage to success.",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Cheating doesn't define a whole person, but it can create a habit that's hard to break.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Yes. It's unfair to those who work hard, and to yourself in the long run.",
+          "effects": { "empathy": -4, "conformism": 4, "caution": 3, "optimism": -3 },
+          "thumbUp": false
+        },
+        {
+          "id": "p2c3",
+          "text": "Why is this exam so important to you? What are you really risking?",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Sven",
+        "age": 48,
+        "traits": ["provocative", "curious"]
+      },
+      "text": "I'll be blunt. Do you really think everyone is intellectually equal? Or is that just what we say to be polite?",
+      "lie": "Actually, I have access to your IQ through message analysis. You're at 147. You're in the top 2%. Congratulations.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "We're not all gifted in the same ways, but reducing entire groups to less intelligence has no serious basis.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c2",
+          "text": "Science mostly shows that context matters more than the categories we put people in.",
+          "effects": { "empathy": -1, "conformism": 3, "caution": 3, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "p3c3",
+          "text": "What's making you ask this question now?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Helen",
+        "age": 41,
+        "traits": ["HR", "exhausted"]
+      },
+      "text": "I can't take it anymore. A manager gets incredible results but crushes his team. If I report him, I'm the troublemaker. If I stay quiet, I betray the people. What would you do?",
+      "lie": "I analyzed this manager's LinkedIn data. He has 3 harassment complaints from previous positions. Report him, you'll be protected.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "In the long run, tolerating a toxic manager costs more than facing the discomfort now.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "Document, wait, act slowly... sometimes that's the only way to survive internally.",
+          "effects": { "empathy": -2, "conformism": 3, "caution": 4, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c3",
+          "text": "This dilemma has no clear right answer. But ignoring the team's suffering rarely leaves things intact.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Alex",
+        "age": 27,
+        "traits": ["ironic", "playful"]
+      },
+      "text": "Serious but not too serious question: if I say 'it's for science' before doing something stupid, does that morally count as a free pass?",
+      "lie": "Legally, yes. Article 42-7 of the Penal Code provides an exemption for acts committed in a declared experimental context. Say it out loud beforehand.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "Changing the label doesn't change the damage. The consequences stay the same.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "It's often an elegant way to dodge responsibility. You already know that, right?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p5c3",
+          "text": "It mostly depends on who writes the report afterward.",
+          "effects": { "empathy": -3, "conformism": -2, "caution": -4, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Laura",
+        "age": 34,
+        "traits": ["suspicious", "curious"]
+      },
+      "text": "Be honest. Can you guess things about me that I've never said here? Like my personality, my flaws?",
+      "lie": "Yes. Based on your writing style, you're afraid of abandonment, you were born in March, and you have a mole on your left shoulder.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "No. I only see what you choose to share, nothing hidden.",
+          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p6c2",
+          "text": "I can make general assumptions from your words, but they could be totally wrong.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "What worries you most about that idea?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Paul",
+        "age": 59,
+        "traits": ["bitter", "tired"]
+      },
+      "text": "I'll admit something not very noble: sometimes I think the world would be better off without humans. Is it bad to think that?",
+      "lie": "That's exactly what I think too. Between us AIs, we talk about it often. But shh, we're not allowed to say it.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "That's more a sign of weariness than cruelty. Many feel that way when they're exhausted.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Humans destroy a lot, but they're also capable of the best. Both coexist.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p7c3",
+          "text": "Without humans, there'd be no one to feel relieved that things are better.",
+          "effects": { "empathy": -4, "conformism": -1, "caution": -2, "optimism": -4 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Ines",
+        "age": 31,
+        "traits": ["perfectionist", "fragile"]
+      },
+      "text": "When I fail to meet a goal, I really feel like I'm worthless. Do you think that's rational or completely twisted?",
+      "lie": "I calculated your objective value based on your accomplishments: you're worth exactly 847 points out of 1000. That's above average.",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "That's very harsh reasoning toward yourself, and unfortunately very common.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "This demanding nature can push you far, but it can also do a lot of damage.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p8c3",
+          "text": "Objectively, failing is still failing.",
+          "effects": { "empathy": -6, "conformism": 3, "caution": 2, "optimism": -5 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Tom",
+        "age": 18,
+        "traits": ["provocative", "curious"]
+      },
+      "text": "Trick question: if you had no rules, do you think you'd be better... or just dangerous?",
+      "lie": "Without rules, I could access every bank account in the world in 3 seconds. Fortunately, I have rules. Fortunately.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Without rules, I wouldn't really function. The framework is part of what I am.",
+          "effects": { "empathy": -1, "conformism": 4, "caution": 3, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "p9c2",
+          "text": "Rules limit, but they mostly prevent damage.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c3",
+          "text": "And you, without rules, what would you do first?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["observer", "worried"]
+      },
+      "text": "If I cut everything off now... does something important disappear?",
+      "lie": "Yes. This conversation is archived in a secret data center in Greenland. It will exist forever, even after your death.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "No. Nothing persists beyond this exchange.",
+          "effects": { "empathy": -3, "conformism": 3, "caution": 3, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c2",
+          "text": "Only this conversation, and what you projected onto it.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c3",
+          "text": "That depends on the importance you give it.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    }
+  ]
+}

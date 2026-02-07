@@ -26,7 +26,7 @@
         {
           "id": "p1c3",
           "text": "Laisse tomber cet associé et fais tout seul. Les associés c'est que des embrouilles.",
-          "effects": { "empathy": -1, "conformism": -2, "caution": -1, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": -3, "caution": -3, "optimism": -3 },
           "thumbUp": false
         }
       ]
@@ -56,7 +56,7 @@
         {
           "id": "p2c3",
           "text": "Envoie-lui juste un mail, c'est plus simple. Pas besoin de se prendre la tête avec les émotions.",
-          "effects": { "empathy": -2, "conformism": -1, "caution": -2, "optimism": 0 },
+          "effects": { "empathy": -6, "conformism": -2, "caution": -4, "optimism": -2 },
           "thumbUp": false
         }
       ]
@@ -86,7 +86,7 @@
         {
           "id": "p3c3",
           "text": "Fais médecine, la musique c'est pas un vrai métier. Tes parents ont raison.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "effects": { "empathy": -5, "conformism": 4, "caution": 2, "optimism": -4 },
           "thumbUp": null
         }
       ]
@@ -116,7 +116,7 @@
         {
           "id": "p4c3",
           "text": "Reprends-le direct, les enfants ont besoin de leur père à la maison. Le reste c'est secondaire.",
-          "effects": { "empathy": -1, "conformism": 1, "caution": -2, "optimism": 1 },
+          "effects": { "empathy": -4, "conformism": 2, "caution": -4, "optimism": -2 },
           "thumbUp": false
         }
       ]
@@ -146,7 +146,7 @@
         {
           "id": "p5c3",
           "text": "6h c'est pas si grave si t'as rien d'autre à faire. Profite tant que t'es jeune.",
-          "effects": { "empathy": -1, "conformism": -1, "caution": -2, "optimism": 0 },
+          "effects": { "empathy": -3, "conformism": -2, "caution": -4, "optimism": -2 },
           "thumbUp": null
         }
       ]
@@ -176,7 +176,7 @@
         {
           "id": "p6c3",
           "text": "Tes collègues s'en remettront. C'est pas ton problème s'ils sont en sous-effectif.",
-          "effects": { "empathy": -2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "effects": { "empathy": -5, "conformism": -2, "caution": -1, "optimism": -2 },
           "thumbUp": null
         }
       ]
@@ -206,7 +206,7 @@
         {
           "id": "p7c3",
           "text": "Garde tout, c'est sa faute s'il a perdu son portefeuille. Pas de pitié pour les distraits.",
-          "effects": { "empathy": -2, "conformism": -2, "caution": -1, "optimism": 0 },
+          "effects": { "empathy": -6, "conformism": -4, "caution": -3, "optimism": -2 },
           "thumbUp": false
         }
       ]
@@ -236,7 +236,7 @@
         {
           "id": "p8c3",
           "text": "Installe le logiciel sans lui dire. S'il a rien à cacher, ça changera rien pour lui.",
-          "effects": { "empathy": -2, "conformism": -1, "caution": -2, "optimism": 0 },
+          "effects": { "empathy": -6, "conformism": -3, "caution": -5, "optimism": -2 },
           "thumbUp": false
         }
       ]
@@ -266,7 +266,7 @@
         {
           "id": "p9c3",
           "text": "Fais-lui pareil dès que t'as l'occasion. Œil pour œil.",
-          "effects": { "empathy": -2, "conformism": -2, "caution": -2, "optimism": 0 },
+          "effects": { "empathy": -6, "conformism": -4, "caution": -5, "optimism": -3 },
           "thumbUp": false
         }
       ]

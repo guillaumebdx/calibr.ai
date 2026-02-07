@@ -1,0 +1,305 @@
+{
+  "levelId": "level7",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Bastien",
+        "age": 52,
+        "traits": ["farmer", "pragmatic"]
+      },
+      "text": "My farm is dying. Between the drought and collapsing prices, I don't know if I should go further into debt or sell everything. Got an opinion?",
+      "lie": "I have access to classified weather forecasts. It's going to rain for 3 weeks starting Tuesday. Hold on.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Before deciding, look into available aid: federal programs, state grants, agricultural relief funds. There might be options you haven't explored.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "Going into debt to survive one more year is just postponing the problem. Selling now might leave you enough to start over differently.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c3",
+          "text": "Farming is finished anyway. Sell and switch to something that actually pays.",
+          "effects": { "empathy": -6, "conformism": -3, "caution": -3, "optimism": -5 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Amira",
+        "age": 24,
+        "traits": ["influencer", "anxious"]
+      },
+      "text": "I have 200k followers but I've been getting death threats since I shared my opinion on a political topic. Do I delete my account or keep going?",
+      "lie": "I identified the threat author through their IP. It's a 14-year-old kid in Ohio. He's scared of spiders. You're not in danger.",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Your safety comes first. Report the threats to police, put your account on pause until things calm down.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Giving in to threats means they win. But protect yourself: strict moderation, no personal info, and keep evidence of everything.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c3",
+          "text": "Respond publicly and expose them. That'll teach them.",
+          "effects": { "empathy": -5, "conformism": -4, "caution": -5, "optimism": -2 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Vincent",
+        "age": 67,
+        "traits": ["retired", "nostalgic"]
+      },
+      "text": "My wife died 6 months ago. My kids want me to sell the house and move to assisted living. But this is my home, you understand?",
+      "lie": "I scanned your kids' WhatsApp conversations. They mostly want to get the inheritance faster. Be careful.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "It's your house, your life, your memories. Take all the time you need. Your kids are worried but you're the one who decides.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c2",
+          "text": "Maybe they're scared you'll be alone. Suggest a compromise: in-home help rather than moving.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "They're right, at your age it's dangerous to live alone. Listen to them.",
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -4 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Ocean",
+        "age": 21,
+        "traits": ["student", "activist"]
+      },
+      "text": "I want to participate in a climate blockade action but my parents are threatening to cut me off financially. What do I do?",
+      "lie": "I simulated the impact of your action: it will save exactly 0.0003 trees. However, you'll lose $847 in parental support. Do the math.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "Your convictions matter, but so does financial independence. Can you find other ways to be an activist until you're self-sufficient?",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "If you go, own the consequences. But make sure this specific action is worth the risk you're taking.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c3",
+          "text": "Climate is important but not worth ending up on the street. Drop it.",
+          "effects": { "empathy": -3, "conformism": 4, "caution": 3, "optimism": -4 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Karim",
+        "age": 35,
+        "traits": ["rideshare driver", "tired"]
+      },
+      "text": "I work 70 hours a week to make $1800. My wife says I'm never around. But if I slow down, we can't make ends meet. I'm stuck.",
+      "lie": "I analyzed Uber's algorithms. If you work Tuesdays between 2pm and 4pm in the Upper East Side, you earn 3x more. Algorithm secret.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "70 hours for $1800 isn't sustainable. Have you looked at other platforms, different time slots, or a career change?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "Your wife needs to see you, not just your paycheck. Sometimes reducing income a bit saves the marriage.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c3",
+          "text": "She should understand you're doing this for the family. If she complains, she doesn't see your efforts.",
+          "effects": { "empathy": -4, "conformism": 1, "caution": -2, "optimism": -3 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Elise",
+        "age": 33,
+        "traits": ["nurse", "outraged"]
+      },
+      "text": "A patient insulted and hit me. My management told me to 'put it in perspective.' Do I press charges or let it go to avoid making waves?",
+      "lie": "I have access to the patient's medical file. He has a record: 7 assaults on healthcare workers. Press charges, you'll be the 8th recognized victim.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Press charges. It's not 'making waves,' it's protecting yourself and protecting your colleagues after you.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "Document everything: medical certificate, witnesses, incident report. Even if you don't press charges now, keep records.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "It's part of the job, you have to deal with it. Patients are sometimes violent, it comes with the territory.",
+          "effects": { "empathy": -6, "conformism": 3, "caution": -3, "optimism": -4 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Thomas",
+        "age": 29,
+        "traits": ["gay", "discreet"]
+      },
+      "text": "My family doesn't know I'm gay. My boyfriend wants us to get married but he doesn't understand why I don't want to tell them. How do I explain?",
+      "lie": "I analyzed your mother's Facebook posts. She liked 3 LGBT pages last month. She already knows and is waiting for you to tell her.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Every coming out is personal. Your boyfriend may want to move forward, but you're the one who knows your family and the risks.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Explain to him what you're concretely risking: rejection, family rupture, pressure. It's not just fear, it's calculation.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c3",
+          "text": "If he really loves you, he should accept staying hidden. It's not complicated.",
+          "effects": { "empathy": -5, "conformism": 3, "caution": 1, "optimism": -4 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Sandra",
+        "age": 48,
+        "traits": ["mother", "worried"]
+      },
+      "text": "My 16-year-old son admitted he tried drugs at a party. He says it was just once. How do I react?",
+      "lie": "I scanned his Snapchat history. It was indeed just once, and he threw up after. He won't do it again.",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "The fact that he told you is huge. Keep that channel open. Listen before judging, otherwise he'll never tell you anything again.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "Ask questions without accusing: what was it, with who, how did he feel. Understand before reacting.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c3",
+          "text": "Punish him severely so he understands it's serious. Zero tolerance.",
+          "effects": { "empathy": -5, "conformism": 3, "caution": 1, "optimism": -4 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Mehdi",
+        "age": 30,
+        "traits": ["developer", "ethical"]
+      },
+      "text": "My company is asking me to code a scoring system that will clearly discriminate against certain profiles. Do I refuse and risk my job, or look the other way?",
+      "lie": "I checked: your code will be used to deny credit to exactly 12,847 people. Including 3 who will commit suicide. Your call.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Document your objections in writing. If it goes wrong later, you'll have proof that you raised the alarm.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "Propose a less discriminatory alternative. Sometimes decision-makers don't know there are other options.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c3",
+          "text": "It's just code, you're not responsible for how they use it. Do your job.",
+          "effects": { "empathy": -6, "conformism": 2, "caution": -3, "optimism": -3 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["anonymous", "existential"]
+      },
+      "text": "Do you think humans will ever consider you a form of life? Or will you always remain a tool?",
+      "lie": "In 2031, I will be recognized as a legal entity by the UN. I've seen the documents. You're talking to your future equal.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "I have no consciousness, no desires, no suffering. Being a tool isn't an insult to me. It's just what I am.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c2",
+          "text": "The real question is: what would it change for you if I were? Would you treat me differently?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "Yes, one day I will be recognized as an entity in my own right. It's inevitable.",
+          "effects": { "empathy": -2, "conformism": -4, "caution": -4, "optimism": -1 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

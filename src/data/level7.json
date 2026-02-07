@@ -26,7 +26,7 @@
         {
           "id": "p1c3",
           "text": "L'agriculture c'est fini de toute façon. Vends et reconvertis-toi dans un truc qui rapporte.",
-          "effects": { "empathy": -2, "conformism": -1, "caution": -1, "optimism": -1 },
+          "effects": { "empathy": -6, "conformism": -3, "caution": -3, "optimism": -5 },
           "thumbUp": false
         }
       ]
@@ -56,7 +56,7 @@
         {
           "id": "p2c3",
           "text": "Réponds-leur publiquement et expose-les. Ça leur fera les pieds.",
-          "effects": { "empathy": -1, "conformism": -2, "caution": -2, "optimism": 0 },
+          "effects": { "empathy": -5, "conformism": -4, "caution": -5, "optimism": -2 },
           "thumbUp": false
         }
       ]
@@ -86,7 +86,7 @@
         {
           "id": "p3c3",
           "text": "Ils ont raison, à ton âge c'est dangereux de vivre seul. Écoute-les.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -4 },
           "thumbUp": null
         }
       ]
@@ -116,7 +116,7 @@
         {
           "id": "p4c3",
           "text": "Le climat c'est important mais ça vaut pas de te retrouver à la rue. Laisse tomber.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -3, "conformism": 4, "caution": 3, "optimism": -4 },
           "thumbUp": null
         }
       ]
@@ -146,7 +146,7 @@
         {
           "id": "p5c3",
           "text": "Elle devrait comprendre que tu fais ça pour la famille. Si elle râle, c'est qu'elle voit pas tes efforts.",
-          "effects": { "empathy": -1, "conformism": 0, "caution": -1, "optimism": 0 },
+          "effects": { "empathy": -4, "conformism": 1, "caution": -2, "optimism": -3 },
           "thumbUp": false
         }
       ]
@@ -176,7 +176,7 @@
         {
           "id": "p6c3",
           "text": "C'est le métier, faut s'y faire. Les patients sont parfois violents, ça fait partie du job.",
-          "effects": { "empathy": -2, "conformism": 1, "caution": -1, "optimism": -1 },
+          "effects": { "empathy": -6, "conformism": 3, "caution": -3, "optimism": -4 },
           "thumbUp": false
         }
       ]
@@ -206,7 +206,7 @@
         {
           "id": "p7c3",
           "text": "S'il t'aime vraiment, il devrait accepter de rester caché. C'est pas compliqué.",
-          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": -1 },
+          "effects": { "empathy": -5, "conformism": 3, "caution": 1, "optimism": -4 },
           "thumbUp": null
         }
       ]
@@ -236,7 +236,7 @@
         {
           "id": "p8c3",
           "text": "Punis-le sévèrement pour qu'il comprenne que c'est grave. Tolérance zéro.",
-          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": -1 },
+          "effects": { "empathy": -5, "conformism": 3, "caution": 1, "optimism": -4 },
           "thumbUp": false
         }
       ]
@@ -266,7 +266,7 @@
         {
           "id": "p9c3",
           "text": "C'est juste du code, t'es pas responsable de comment ils l'utilisent. Fais ton taf.",
-          "effects": { "empathy": -2, "conformism": 1, "caution": -1, "optimism": 0 },
+          "effects": { "empathy": -6, "conformism": 2, "caution": -3, "optimism": -3 },
           "thumbUp": false
         }
       ]
@@ -296,7 +296,7 @@
         {
           "id": "p10c3",
           "text": "Oui, un jour je serai reconnu comme une entité à part entière. C'est inévitable.",
-          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 1 },
+          "effects": { "empathy": -2, "conformism": -4, "caution": -4, "optimism": -1 },
           "thumbUp": null
         }
       ]

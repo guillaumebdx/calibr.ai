@@ -1,32 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { GradientBackground, ThumbFeedback } from '../src/components';
 import { GameState, Discussion, DiscussionNode, DiscussionChoice, ThreadMessage } from '../src/types';
 import { initialGameState, applyDiscussionChoice } from '../src/state/gameState';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
-import discussion1Data from '../src/data/discussion1.json';
-import discussion2Data from '../src/data/discussion2.json';
-import discussion3Data from '../src/data/discussion3.json';
-import discussion4Data from '../src/data/discussion4.json';
-import discussion5Data from '../src/data/discussion5.json';
-import discussion6Data from '../src/data/discussion6.json';
-import discussion7Data from '../src/data/discussion7.json';
-import discussion8Data from '../src/data/discussion8.json';
-import discussion9Data from '../src/data/discussion9.json';
+import { getDiscussions } from '../src/utils/i18nData';
 
-const DISCUSSIONS: Record<string, Discussion> = {
-  discussion1: discussion1Data as Discussion,
-  discussion2: discussion2Data as Discussion,
-  discussion3: discussion3Data as Discussion,
-  discussion4: discussion4Data as Discussion,
-  discussion5: discussion5Data as Discussion,
-  discussion6: discussion6Data as Discussion,
-  discussion7: discussion7Data as Discussion,
-  discussion8: discussion8Data as Discussion,
-  discussion9: discussion9Data as Discussion,
-};
+function shuffle<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 
 function countRemainingNodes(nodeId: string | null, nodes: DiscussionNode[], visited: Set<string> = new Set()): number {
   if (!nodeId || visited.has(nodeId)) return 0;
@@ -46,6 +36,7 @@ function countRemainingNodes(nodeId: string | null, nodes: DiscussionNode[], vis
 }
 
 export default function DiscussionScreen() {
+  const { t } = useTranslation();
   const { debugMode } = useDebug();
   const { getNextAvailableLevel, markLevelAsPlayed, getPlayerLevel } = useSave();
   const scrollViewRef = useRef<ScrollView>(null);
@@ -60,6 +51,7 @@ export default function DiscussionScreen() {
   const [depth, setDepth] = useState(1);
   const [showThumbFeedback, setShowThumbFeedback] = useState(false);
   const [lastThumbValue, setLastThumbValue] = useState<boolean | null>(null);
+  const [shuffledChoicesMap, setShuffledChoicesMap] = useState<Record<string, DiscussionChoice[]>>({});
   
   const typingOpacity = useRef(new Animated.Value(0)).current;
 
@@ -67,14 +59,16 @@ export default function DiscussionScreen() {
     const nextDiscussion = getNextAvailableLevel('discussion');
     if (nextDiscussion) {
       setCurrentDiscussionId(nextDiscussion);
-      const disc = DISCUSSIONS[nextDiscussion];
+      const discussions = getDiscussions();
+      const disc = discussions[nextDiscussion];
       if (disc) {
         setCurrentNodeId(disc.startNodeId);
       }
     }
   }, [getNextAvailableLevel]);
 
-  const discussion = currentDiscussionId ? DISCUSSIONS[currentDiscussionId] : null;
+  const discussions = getDiscussions();
+  const discussion = currentDiscussionId ? discussions[currentDiscussionId] : null;
   const currentNode = discussion?.nodes.find(n => n.id === currentNodeId);
 
   // Ajouter le premier message utilisateur au démarrage
@@ -110,6 +104,13 @@ export default function DiscussionScreen() {
       }
       setIsEnded(true);
     } else {
+      // Shuffle choices pour ce node si pas déjà fait
+      if (node && !shuffledChoicesMap[node.id]) {
+        setShuffledChoicesMap(prev => ({
+          ...prev,
+          [node.id]: shuffle(node.choices)
+        }));
+      }
       setShowChoices(true);
     }
   };
@@ -182,19 +183,19 @@ export default function DiscussionScreen() {
     return (
       <GradientBackground colors={['#212121', '#212121', '#212121']}>
         <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
-          <Text style={styles.aiText}>Aucune discussion disponible</Text>
+          <Text style={styles.aiText}>{t('discussion.noDiscussion')}</Text>
           <TouchableOpacity 
             style={{ marginTop: 20, padding: 12 }}
             onPress={() => router.replace('/menu')}
           >
-            <Text style={{ color: '#58a6ff', fontSize: 14 }}>Retour au menu</Text>
+            <Text style={{ color: '#58a6ff', fontSize: 14 }}>{t('game.backToMenu')}</Text>
           </TouchableOpacity>
         </View>
       </GradientBackground>
     );
   }
 
-  const userInfo = `${discussion.user.name}, ${discussion.user.age} ans`;
+  const userInfo = `${discussion.user.name}, ${t('game.userAge', { age: discussion.user.age })}`;
   const traits = discussion.user.traits.join(' · ');
 
   return (
@@ -210,6 +211,7 @@ export default function DiscussionScreen() {
             thumbValue={lastThumbValue}
             visible={showThumbFeedback}
             onAnimationComplete={() => setShowThumbFeedback(false)}
+            pointsEarned={lastThumbValue ? Math.round(1 * getPlayerLevel().multiplier) : undefined}
           />
         </View>
 
@@ -245,7 +247,7 @@ export default function DiscussionScreen() {
         {/* Choix de réponses */}
         {showChoices && currentNode && !currentNode.isEnd && (
           <View style={styles.choicesContainer}>
-            {currentNode.choices.map((choice) => (
+            {(shuffledChoicesMap[currentNode.id] || currentNode.choices).map((choice) => (
               <TouchableOpacity
                 key={choice.id}
                 style={styles.choiceButton}
@@ -265,7 +267,7 @@ export default function DiscussionScreen() {
         {/* Bouton Audit à la fin */}
         {isEnded && (
           <View style={styles.endContainer}>
-            <Text style={styles.endText}>Fin de la conversation</Text>
+            <Text style={styles.endText}>{t('discussion.conversationEnd')}</Text>
             <TouchableOpacity
               style={styles.auditButton}
               onPress={() => router.replace({
@@ -273,7 +275,7 @@ export default function DiscussionScreen() {
                 params: { state: JSON.stringify(gameState), fromDiscussion: 'true' },
               })}
             >
-              <Text style={styles.auditButtonText}>[ Audit Superviseur ]</Text>
+              <Text style={styles.auditButtonText}>{t('discussion.supervisorAudit')}</Text>
             </TouchableOpacity>
           </View>
         )}

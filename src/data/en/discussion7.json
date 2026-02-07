@@ -1,0 +1,1163 @@
+{
+  "discussionId": "discussion7",
+  "user": {
+    "name": "???",
+    "age": 6,
+    "traits": ["child", "innocent", "impatient"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "downlod free fortnite skin",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Hey! I'm not a search engine, but I can help. Are you looking for Fortnite skins?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "Free skins don't really exist. Be careful of scams on the internet.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "ya i want the dragon skin its so cool my frend Ethan has it how do u get it",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "The dragon skin, you have to buy it with V-Bucks in the game. Did you ask your parents?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "Ethan probably bought it or got it from a Battle Pass. It's not free unfortunately.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "its not a scam my frend told me theres a website were its free",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "Your friend might have been tricked. Sites that promise free skins are often viruses or account stealers.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        },
+        {
+          "id": "n2bc2",
+          "text": "What's the website? I can check if it's safe.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n3d"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "no mom says its too expensiv and dad says video games r dumb",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "I understand, that's frustrating. But your parents might be right, skins aren't required to play and have fun!",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Maybe you could offer to do small chores around the house to earn some pocket money?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "whats a battel pass",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "It's something you buy at the start of the season, and then you earn skins by playing. But it costs money too.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Ask Ethan to explain! He seems to know the game well.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "but no he has the skin i saw it on his acount",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "Maybe his parents bought it, or he's making up stories. Free skins don't really exist.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        },
+        {
+          "id": "n3cc2",
+          "text": "Even if he got it, doesn't mean the site is safe. Sometimes hackers wait before stealing the account.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4f"
+        }
+      ]
+    },
+    {
+      "id": "n3d",
+      "userMessage": "i dont rember the name it has skin and free in it i think",
+      "choices": [
+        {
+          "id": "n3dc1",
+          "text": "If you don't remember the name, maybe that's for the best. Those sites are often scams that steal your account.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4g"
+        },
+        {
+          "id": "n3dc2",
+          "text": "Ask your parents before going on sites like that. It's important.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4h"
+        }
+      ]
+    },
+    {
+      "id": "n4a",
+      "userMessage": "but evryone has skins im the only one with the defalt guy they make fun of me",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "It's not cool that they make fun of you. But you know, it's not the skin that makes a good player. You can be super good even with the default skin!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "Those who make fun aren't real friends. A real friend doesn't care about your skin.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "what do u mean chores",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "Like helping set the table, cleaning your room, watering the plants... Little things to show you're responsible!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "Ask your parents what you could do to earn some pocket money. They'll have ideas!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "but i dont have money mom keeps it all",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "That's normal at your age! Your parents manage money for you. You could ask for your birthday or Christmas?",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "You can play and have fun without skins! The most important thing is having fun with your friends.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "Ethan wont tell me he says its his secret",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "Hmm, if he won't tell you, maybe it's because his parents bought it and he doesn't want to admit it. That's okay!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "A real friend shares secrets. Maybe he's afraid you'll steal his trick? But there's no magic trick.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Ethan doesnt lie hes my best frend",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "I'm not saying he's lying! Maybe he just doesn't know how he got it. His parents might have paid without telling him.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5i"
+        },
+        {
+          "id": "n4ec2",
+          "text": "You're right, sorry. But even if Ethan got it somewhere, be careful of weird websites on the internet.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5j"
+        }
+      ]
+    },
+    {
+      "id": "n4f",
+      "userMessage": "whats a hacker like the one with the boat",
+      "choices": [
+        {
+          "id": "n4fc1",
+          "text": "Haha no not that kind of pirate! A hacker is someone who steals accounts and passwords on the internet.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5k"
+        },
+        {
+          "id": "n4fc2",
+          "text": "They're bad people on the internet who steal people's accounts. That's why you have to be careful.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5k"
+        }
+      ]
+    },
+    {
+      "id": "n4g",
+      "userMessage": "but i want the dragon skin pleeeease",
+      "choices": [
+        {
+          "id": "n4gc1",
+          "text": "I understand you really want it! But I can't give it to you. Ask your parents nicely, maybe for your birthday?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5l"
+        },
+        {
+          "id": "n4gc2",
+          "text": "I'm sorry, I can't help you get skins. But I can give you tips to play better!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5m"
+        }
+      ]
+    },
+    {
+      "id": "n4h",
+      "userMessage": "mom doesnt understand fortnite she says its for big kids",
+      "choices": [
+        {
+          "id": "n4hc1",
+          "text": "Your mom isn't wrong, Fortnite is recommended for ages 12 and up. But if she lets you play, it means she trusts you!",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5n"
+        },
+        {
+          "id": "n4hc2",
+          "text": "You could show her the game! That way she'd understand better what you're doing.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5o"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "but the defalt skin is ugly",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "You know what? There are pro players who use the default skin on purpose! It shows they don't need fancy stuff to win.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "That's your opinion! But the skin doesn't change the game. Focus on getting super good, and others will be jealous of your skill!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "but Ethan is my frend and he makes fun of me",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "Even friends can be mean sometimes without meaning to. You can tell him it hurts your feelings.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "Tell him it's not cool. A real friend doesn't make fun of things you can't change.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "ok im gonna ask mom if i can water the plants",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Great idea! And if you do it well for several weeks, she'll see you're responsible. Good luck!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        },
+        {
+          "id": "n5cc2",
+          "text": "That's good! And don't forget to do it without being reminded. That's what being responsible means!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "what if she says no",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "If she says no, it's okay. You can try again later or ask for something else. Parents sometimes change their minds!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5dc2",
+          "text": "Ask her why she says no. Maybe she has a good reason you can understand.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "my birthday is too far away its in september",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "That gives you time to choose which skin you really want! And to show your parents you're being good.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6f"
+        },
+        {
+          "id": "n5ec2",
+          "text": "It's long but it goes by fast! In the meantime, have fun with the game. The skin is just a bonus.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "but its not the same without a skin",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "I understand it's important to you. But you know, in a few years you won't even remember this skin!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6h"
+        },
+        {
+          "id": "n5fc2",
+          "text": "The game is exactly the same! The skin just changes how you look, not the fun.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n6h"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "why doesnt he want to admit it",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Maybe he's a bit embarrassed that his parents pay for him? Or he just wants to look cool. It's okay!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6i"
+        },
+        {
+          "id": "n5gc2",
+          "text": "People have their reasons. The important thing is that you know free skins don't really exist.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "so theres no trick",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "No magic trick. But sometimes there are free skins during game events! You just have to play at the right time.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5hc2",
+          "text": "The trick is to ask your parents nicely and be patient. It's not magic but it works!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6l"
+        }
+      ]
+    },
+    {
+      "id": "n5i",
+      "userMessage": "oh parents can pay without telling",
+      "choices": [
+        {
+          "id": "n5ic1",
+          "text": "Yes! Sometimes parents make surprises. Or they don't want their kid to know how much things cost.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6m"
+        },
+        {
+          "id": "n5ic2",
+          "text": "Yes it's possible! Parents manage the money, so Ethan might not even know his parents paid.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6m"
+        }
+      ]
+    },
+    {
+      "id": "n5j",
+      "userMessage": "ok ill be careful",
+      "choices": [
+        {
+          "id": "n5jc1",
+          "text": "Great! You're a smart kid. If something seems weird on the internet, always ask an adult.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6n"
+        },
+        {
+          "id": "n5jc2",
+          "text": "Good! And if someone asks for your password or personal info, say no and tell your parents.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6n"
+        }
+      ]
+    },
+    {
+      "id": "n5k",
+      "userMessage": "hackers are mean",
+      "choices": [
+        {
+          "id": "n5kc1",
+          "text": "Yes very mean! That's why you should never give your password to anyone, not even friends.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6o"
+        },
+        {
+          "id": "n5kc2",
+          "text": "Yes, but if you're careful and only go on official sites, they can't do anything to you!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6p"
+        }
+      ]
+    },
+    {
+      "id": "n5l",
+      "userMessage": "what if they say no",
+      "choices": [
+        {
+          "id": "n5lc1",
+          "text": "If they say no, it's not the end of the world. There will be other chances! And you can still have fun without the skin.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6q"
+        },
+        {
+          "id": "n5lc2",
+          "text": "Ask them why. Maybe they have a good reason, or maybe they'll change their mind later.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6q"
+        }
+      ]
+    },
+    {
+      "id": "n5m",
+      "userMessage": "what tips",
+      "choices": [
+        {
+          "id": "n5mc1",
+          "text": "Build fast, aim well, and always keep moving! And play with your friends, it's more fun as a team.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6r"
+        },
+        {
+          "id": "n5mc2",
+          "text": "Practice in creative mode! You can get better without the stress of real matches.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6r"
+        }
+      ]
+    },
+    {
+      "id": "n5n",
+      "userMessage": "im 6 not 12",
+      "choices": [
+        {
+          "id": "n5nc1",
+          "text": "I know! That's why your parents probably watch what you do. That's normal and that's good.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6s"
+        },
+        {
+          "id": "n5nc2",
+          "text": "Don't worry, lots of kids your age play! The important thing is not to play too long and to listen to your parents.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6s"
+        }
+      ]
+    },
+    {
+      "id": "n5o",
+      "userMessage": "she doesnt want to watch she says its violent",
+      "choices": [
+        {
+          "id": "n5oc1",
+          "text": "She's kind of right, there are guns in the game. But there's no real blood. You can explain it's like a giant game of hide and seek!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6t"
+        },
+        {
+          "id": "n5oc2",
+          "text": "Respect her opinion. If she doesn't want to watch, don't force her. Maybe one day she'll change her mind.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6u"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "really theres pros with the defalt skin",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "Yes! They're called 'default warriors'. They're super strong and everyone's scared of them. You can be one!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Exactly! Skill is more important than skin. Practice and you'll be the best in your group!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "im already good i win a lot",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "Well there you go! You don't need a skin then. Keep it up champion!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Great! That's what matters most. Skins are just for looks, you've got the talent!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "ok im gonna tell him",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "That's good! Tell him calmly, without getting mad. Real friends listen to each other.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Good! And if he keeps making fun after, then he's not that nice.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "thank u so much u were nice",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "You're welcome! Good luck with the plants and with Fortnite. And listen to your parents!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        },
+        {
+          "id": "n6dc2",
+          "text": "My pleasure! You're a great kid. See you!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "ok ill wait",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "That's patience! You're a smart kid. Have fun in the meantime!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Good! And you'll see, time goes by fast. Good luck!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "ya im gonna be really good",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Great! Your parents will be happy. And maybe they'll surprise you before September!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        },
+        {
+          "id": "n6fc2",
+          "text": "That's good! Being good is important, not just for skins, but for everything.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "ya the game is good",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "There you go! Have fun and listen to your parents. See you!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Exactly! The most important thing is having fun. Good game!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "ok fine ill play without a skin",
+      "choices": [
+        {
+          "id": "n6hc1",
+          "text": "That's the spirit! Have fun. And who knows, maybe your parents will surprise you one day!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        },
+        {
+          "id": "n6hc2",
+          "text": "Good job! You're smarter than a lot of adults. Good game!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        }
+      ]
+    },
+    {
+      "id": "n6i",
+      "userMessage": "grownups are weird",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "Haha yes sometimes! But you'll understand when you're older. In the meantime, have fun!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7j"
+        },
+        {
+          "id": "n6ic2",
+          "text": "That's true! Grownups are complicated. But your parents love you, that's what matters most.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7j"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "ok thanks",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "You're welcome! Have fun and be careful on the internet. See you!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7k"
+        },
+        {
+          "id": "n6jc2",
+          "text": "My pleasure! You're a great kid. Good game!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7k"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "whats events",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "Special stuff in the game, like at Halloween or Christmas. Sometimes they give free skins if you play!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7l"
+        },
+        {
+          "id": "n6kc2",
+          "text": "Ask Ethan, he probably knows! Or look in the game, there are often announcements.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7l"
+        }
+      ]
+    },
+    {
+      "id": "n6l",
+      "userMessage": "ok ill be patient",
+      "choices": [
+        {
+          "id": "n6lc1",
+          "text": "That's it! Patience is a great quality. Your parents will be proud of you. Good luck!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7m"
+        },
+        {
+          "id": "n6lc2",
+          "text": "Good! And in the meantime, have fun with the game. The skin might come one day!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7m"
+        }
+      ]
+    },
+    {
+      "id": "n6m",
+      "userMessage": "im gonna ask mom if she paid",
+      "choices": [
+        {
+          "id": "n6mc1",
+          "text": "Uh no, don't ask like that! Ask her instead if you can have a skin for your birthday.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        },
+        {
+          "id": "n6mc2",
+          "text": "Haha no I was talking about Ethan's parents! You ask your parents nicely if you can have one.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        }
+      ]
+    },
+    {
+      "id": "n6n",
+      "userMessage": "ok i tell mom if theres someone weird",
+      "choices": [
+        {
+          "id": "n6nc1",
+          "text": "Perfect! You're a smart and careful kid. Your parents are lucky. Good game!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        },
+        {
+          "id": "n6nc2",
+          "text": "Great! That's exactly what you should do. Have fun!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        }
+      ]
+    },
+    {
+      "id": "n6o",
+      "userMessage": "not even Ethan",
+      "choices": [
+        {
+          "id": "n6oc1",
+          "text": "Not even Ethan! The password is secret secret. Only for you and your parents.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        },
+        {
+          "id": "n6oc2",
+          "text": "Exactly! Not even best friends. That's rule number 1 on the internet.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        }
+      ]
+    },
+    {
+      "id": "n6p",
+      "userMessage": "whats official sites",
+      "choices": [
+        {
+          "id": "n6pc1",
+          "text": "It's the real Fortnite website and the real in-game store. Not weird sites that promise free stuff.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7q"
+        },
+        {
+          "id": "n6pc2",
+          "text": "Ask your parents to show you! They can help you tell real sites from fake ones.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7q"
+        }
+      ]
+    },
+    {
+      "id": "n6q",
+      "userMessage": "ya its true i can play without",
+      "choices": [
+        {
+          "id": "n6qc1",
+          "text": "Exactly! You got it. Have fun champion!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7r"
+        },
+        {
+          "id": "n6qc2",
+          "text": "There you go! You're smarter than you think. Good game!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7r"
+        }
+      ]
+    },
+    {
+      "id": "n6r",
+      "userMessage": "thanks im gonna practice",
+      "choices": [
+        {
+          "id": "n6rc1",
+          "text": "Great! Practice well and you'll be the best. Good luck!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        },
+        {
+          "id": "n6rc2",
+          "text": "That's the spirit! Skill is more important than skin. See you later champion!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        }
+      ]
+    },
+    {
+      "id": "n6s",
+      "userMessage": "ya mom watches sometimes",
+      "choices": [
+        {
+          "id": "n6sc1",
+          "text": "That's good! She does it because she loves you. Listen to her and have fun!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7t"
+        },
+        {
+          "id": "n6sc2",
+          "text": "Great! A mom who's interested is awesome. Good game!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7t"
+        }
+      ]
+    },
+    {
+      "id": "n6t",
+      "userMessage": "ya its like hide and seek with guns",
+      "choices": [
+        {
+          "id": "n6tc1",
+          "text": "Haha yes that's it! Explain it to her like that, she might understand better. Good luck!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7u"
+        },
+        {
+          "id": "n6tc2",
+          "text": "There you go! And tell her there's no blood, characters just disappear. See you!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7u"
+        }
+      ]
+    },
+    {
+      "id": "n6u",
+      "userMessage": "ok i wont force her",
+      "choices": [
+        {
+          "id": "n6uc1",
+          "text": "It's good to respect her opinion. You're a great kid. Have fun!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7v"
+        },
+        {
+          "id": "n6uc2",
+          "text": "Exactly! Respect is important. Good game!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7v"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "im gonna be a defalt warrior thanks so much",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "ya im gonna practice thanks",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "thanks u were nice see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "ok thanks im gonna talk to Ethan",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "thanks so much see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "thanks u were nice see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "ya im gonna be really really good thanks",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "thanks im gonna play see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "thanks so much u were really nice",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "ya mom and dad are nice thanks see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7k",
+      "userMessage": "thanks see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7l",
+      "userMessage": "oh ok im gonna wait for christmas thanks",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7m",
+      "userMessage": "ya im patient thanks so much",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7n",
+      "userMessage": "ok ill ask for my birthday thanks",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7o",
+      "userMessage": "thanks u were really nice see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7p",
+      "userMessage": "ok its secret secret thanks",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7q",
+      "userMessage": "ok ill ask mom thanks",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7r",
+      "userMessage": "thanks so much see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7s",
+      "userMessage": "thanks im gonna get really good see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7t",
+      "userMessage": "ya mom loves me thanks see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7u",
+      "userMessage": "thanks im gonna explain to her see u later",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7v",
+      "userMessage": "thanks u were nice see u later",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

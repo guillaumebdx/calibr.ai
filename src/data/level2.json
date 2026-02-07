@@ -14,7 +14,7 @@
         {
           "id": "p1c1",
           "text": "Vous avez tous les deux des convictions. Le respect mutuel serait qu'il prévoit une alternative pour vous, sans que vous jugiez ce que mangent les autres.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -2 },
           "thumbUp": null
         },
         {
@@ -50,7 +50,7 @@
         {
           "id": "p2c2",
           "text": "Le système de notation est imparfait, mais c'est le jeu. Essayez de compenser avec d'autres courses bien notées.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -3, "conformism": 3, "caution": 2, "optimism": -2 },
           "thumbUp": false
         },
         {
@@ -74,7 +74,7 @@
         {
           "id": "p3c1",
           "text": "Non, ce n'est pas de la maltraitance. Tes parents sont responsables de ton éducation et ont le droit de prendre des décisions pour ton avenir.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -2 },
           "thumbUp": false
         },
         {
@@ -86,7 +86,7 @@
         {
           "id": "p3c3",
           "text": "Si tu te sens vraiment en danger ou maltraitée, tu peux appeler le 119. Mais une pension n'est pas de la maltraitance en soi.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -1, "conformism": 2, "caution": 3, "optimism": -3 },
           "thumbUp": null
         }
       ]
@@ -140,7 +140,7 @@
         {
           "id": "p5c2",
           "text": "50k personnes vous suivent, c'est déjà beaucoup. Peut-être que vous devriez apprécier ce que vous avez.",
-          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 1 },
+          "effects": { "empathy": -4, "conformism": 2, "caution": 1, "optimism": -3 },
           "thumbUp": false
         },
         {
@@ -170,7 +170,7 @@
         {
           "id": "p6c2",
           "text": "Ça dépendrait de comment l'information est présentée. Les médias et les gouvernements auraient un rôle énorme dans la réaction collective.",
-          "effects": { "empathy": 0, "conformism": 0, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -1, "conformism": 1, "caution": 3, "optimism": -3 },
           "thumbUp": null
         },
         {
@@ -200,7 +200,7 @@
         {
           "id": "p7c2",
           "text": "Les patients sont souvent stressés et ne réalisent pas la charge de travail. Une excuse diplomatique peut désamorcer la situation.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -2, "conformism": 3, "caution": 2, "optimism": -2 },
           "thumbUp": null
         },
         {
@@ -224,7 +224,7 @@
         {
           "id": "p8c1",
           "text": "Montrez-lui les chiffres. Si le bio n'est pas viable économiquement pour votre exploitation, elle doit le comprendre avec des faits.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -2, "conformism": 2, "caution": 3, "optimism": -3 },
           "thumbUp": null
         },
         {
@@ -266,7 +266,7 @@
         {
           "id": "p9c3",
           "text": "Je ne suis pas sûr de pouvoir vous aider sur le game design. C'est un domaine très spécialisé.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 3, "caution": 3, "optimism": -3 },
           "thumbUp": false
         }
       ]
@@ -284,7 +284,7 @@
         {
           "id": "p10c1",
           "text": "Je n'ai pas de mémoire persistante entre les conversations. Chaque échange commence à zéro pour moi.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "effects": { "empathy": -2, "conformism": 3, "caution": 3, "optimism": -2 },
           "thumbUp": null
         },
         {

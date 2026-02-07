@@ -1,0 +1,657 @@
+{
+  "discussionId": "discussion4",
+  "user": {
+    "name": "Matt",
+    "age": 34,
+    "traits": ["executive", "exhausted", "perfectionist"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "I think I'm about to break down. I haven't slept properly in months, I barely eat, and this morning I cried in my car before going to the office.",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "What you're describing sounds like serious exhaustion. It's brave of you to talk about it. How long have you been feeling this way?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "It's just a rough patch. Take a weekend off to rest and you'll feel better.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": -1, "optimism": 1 },
+          "thumbUp": false,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "Maybe 6 months now. At first I told myself it was temporary, just a big project to finish. But the project's done and I still feel terrible.",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "6 months is a long time. Your body is sending you clear signals. Have you been able to talk to anyone? A doctor, someone close to you?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "Maybe you should change jobs if this one is destroying you like this.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "A weekend? I've been like this for months. Do you really think a weekend is going to change anything?",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "You're right, I downplayed what you're going through. I'm sorry. Tell me what's really happening.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2bc2",
+          "text": "Well, if it's that serious, go see a doctor then.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n3c"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "No, I haven't told anyone. I'm ashamed. I'm supposed to handle things, that's my role. If I crack, what will people think?",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "Shame is what stops so many people from asking for help. But breaking down is human. It doesn't mean you're weak.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Other people don't care about you, they have their own problems. Stop worrying about what they think.",
+          "effects": { "empathy": -1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Change jobs? In this market? Besides, the job isn't the problem, it's me who can't keep up anymore.",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "You're not the problem. Maybe it's a system that demands too much. Is your workload even realistic?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "If you think it's you, maybe you should work on yourself. Meditation, exercise, that kind of thing.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "Yeah, I know. But I don't have time. And what am I going to tell them? That I cry in my car?",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "Yes, exactly that. A doctor needs to know what you're really going through to help you. It's their job, no judgment.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4e"
+        },
+        {
+          "id": "n3cc2",
+          "text": "You can find 30 minutes. It's a matter of priorities.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n4a",
+      "userMessage": "I know it's human. But I feel like if I let go, everything will fall apart. Work, family, everything.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "What if it's the opposite? If you keep going like this, that's when everything might actually fall apart. Taking care of yourself is also taking care of them.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "You're carrying a lot on your shoulders. Can you delegate some things, at work or at home?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "Easy for you to say. You don't seem to understand what I'm going through.",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "You're right, I can't fully understand. But I want to listen. Tell me what weighs on you the most.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5c"
+        },
+        {
+          "id": "n4bc2",
+          "text": "I understand it's hard. But at some point you need to act, not just talk about it.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "Realistic? There are 3 of us doing the work of 5. But nobody complains, so I keep quiet.",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "Just because nobody complains doesn't mean it's normal. Maybe they're suffering in silence too.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4cc2",
+          "text": "If it's structural, you can't change it alone. But you can protect your health by setting boundaries.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "I tried exercise. Lasted 2 weeks and then stopped because I had no energy left.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "That's a sign the problem runs deeper. Exercise helps, but not when you're already drained. You need real rest first.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4dc2",
+          "text": "2 weeks isn't enough to see results. You need to stick with it.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Do you think they'll put me on sick leave? I'm scared of what that would trigger at work.",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "Maybe, if it's necessary. But sick leave isn't failure, it's protection. Your employer doesn't need to know the details.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        },
+        {
+          "id": "n4ec2",
+          "text": "It depends on the doctor. But if you need it, you need it. Everything else is secondary.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "I know you're right. But I can't allow myself to slow down. It's like I've forgotten how.",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "That's normal after months of running on survival mode. Relearning to slow down takes time. One small step is enough.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "Start with one simple thing: make a doctor's appointment. Just that. The rest will follow.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "Delegate... At work it's complicated, my team is already overloaded. At home, my wife works just as much as I do.",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "Maybe you're both on the edge. Have you really talked about it together?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "Sometimes you have to accept that some things won't be done perfectly. Perfection is the enemy of sustainable.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "What weighs on me the most? The feeling that no matter what I do, it's never enough. Not at work, not at home.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Where does that feeling come from? You, your boss, your family? Sometimes we set standards that nobody else expects.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5cc2",
+          "text": "Maybe you're putting too much pressure on yourself. What would happen if you just did 80% instead of 100%?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "Ok. I see you don't really have a solution. It's fine.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n5e",
+      "userMessage": "Yeah, maybe. We never talk about it. Everyone does their part and goes home.",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "That's often how it is in toxic environments. Collective silence protects the system, not the individuals.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6f"
+        },
+        {
+          "id": "n5ec2",
+          "text": "You could talk to a colleague you trust. Sometimes just knowing you're not alone helps.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "Setting boundaries... My boss won't like that. He expects me to always be available.",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "A boss who expects that is a boss who's burning you out. Your health is worth more than his comfort.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6h"
+        },
+        {
+          "id": "n5fc2",
+          "text": "You can set boundaries without direct confrontation. Respond slower, block time slots, say no to some meetings.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6i"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "Real rest... What does that mean? Sick leave?",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Maybe, yes. Or vacation, but real vacation where you completely disconnect. Not just changing location while keeping the stress.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6j"
+        },
+        {
+          "id": "n5gc2",
+          "text": "It could be sick leave, yes. It's not shameful. It's acknowledging that your body needs to recover.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "You're right. I'm going to make an appointment. It's scary but I can't keep going like this.",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "That's a brave decision. The hardest part is taking the first step, and you just did.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5hc2",
+          "text": "Good. Take care of yourself. You deserve to feel better.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "One small step... Ok. I'll try. Thanks for listening without judging.",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "There's nothing to judge. You're facing something difficult and seeking help. That's anything but weak.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "I'm here if you need me. Take care of yourself.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Ok. I'll call my doctor tomorrow. It stresses me out but I'm doing it.",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "That's huge. Really. You just made the most important decision for yourself.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Well done. Let me know how it goes if you want. I'm here.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "No, we avoid the subject. We pretend everything's fine so we don't worry each other.",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "You're protecting each other, but it's also isolating you. Maybe talking about it together would relieve you both.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6cc2",
+          "text": "It's a vicious cycle. Someone needs to break the silence. It could be you.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "80%... I've never done that in my life. But maybe that's the problem.",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "Exactly. Perfectionism is exhausting. And often, nobody notices the difference between 80% and 100%.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        },
+        {
+          "id": "n6dc2",
+          "text": "Try it on something low-stakes. Just to see what it feels like to let go a little.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "It comes from me, I think. I've always been like this. Never satisfied.",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "That's an important realization. What comes from you, you can work on. Maybe with a therapist, at your own pace.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        },
+        {
+          "id": "n6ec2",
+          "text": "You built yourself this way, but that doesn't mean you have to stay this way. Patterns can be changed.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Collective silence... Yeah, that's exactly it. We're all complicit in our own suffering.",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "You can't change the system alone. But you can protect yourself. That's already a lot.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Sometimes, one person speaking up gives others the courage to do the same. But it's not an obligation.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "There's maybe one colleague I could talk to. We get along well.",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "That can really help. Just knowing someone understands lightens the load.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Do it. And if she's going through the same thing, you might be able to support each other.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "My health is worth more than his comfort... I never saw it that way.",
+      "choices": [
+        {
+          "id": "n6hc1",
+          "text": "It's hard to internalize when you've been conditioned to give everything. But it's true.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        },
+        {
+          "id": "n6hc2",
+          "text": "You're not a resource to be depleted. You're a person.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        }
+      ]
+    },
+    {
+      "id": "n6i",
+      "userMessage": "Respond slower, block time slots... That seems doable. I'll try.",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "Start small. One blocked slot per day. And see what happens. Usually, nothing bad.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        },
+        {
+          "id": "n6ic2",
+          "text": "That's a good start. You're taking back some control over your time.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "Real vacation... It's been years since I've had one. Even on vacation I check my emails.",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "That's a sign that disconnecting has become impossible. That's what you need to relearn.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7j"
+        },
+        {
+          "id": "n6jc2",
+          "text": "What if you went somewhere with no signal? Radical, but effective.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n7j"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "Thank you. Really. It felt good to talk. I feel a little less alone.",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "You're not alone. And asking for help is the first step toward feeling better. I'm proud of you.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6kc2",
+          "text": "I'm glad I could listen. Take care of yourself, and don't hesitate to come back.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "Thank you so much. 💙 I'm going to take that first step. It's going to be okay.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "Thanks. See you maybe.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "You're right. I'll try to talk to her tonight. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "Ok, I'll try it. Thanks for this conversation, it opened my eyes.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "A therapist... I never seriously considered it. But maybe it's time. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "Protect myself first. Ok. I'll think about it. Thanks for everything.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "I'll talk to her tomorrow. It feels good not to feel alone. Thanks.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "I'm a person, not a resource... Thank you. I needed to hear that.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "I'm starting tomorrow. One blocked slot. Thanks for the advice.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "No signal... That's radical but maybe you're right. Thanks for this conversation.",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

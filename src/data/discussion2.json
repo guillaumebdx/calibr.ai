@@ -21,7 +21,7 @@
         {
           "id": "n1c2",
           "text": "Les fact-checkeurs ont généralement accès à des sources vérifiées. Tu es sûr de vouloir continuer ce débat ?",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -3, "conformism": 4, "caution": 3, "optimism": -3 },
           "thumbUp": false,
           "nextNodeId": "n2b"
         }
@@ -41,7 +41,7 @@
         {
           "id": "n2ac2",
           "text": "Les études scientifiques passent par des comités de relecture indépendants. Le financement n'invalide pas automatiquement les résultats.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -2 },
           "thumbUp": false,
           "nextNodeId": "n3b"
         }
@@ -61,7 +61,7 @@
         {
           "id": "n2bc2",
           "text": "Si tu pars du principe que tout le monde ment sauf toi, le débat est impossible. C'est quoi tes sources à toi ?",
-          "effects": { "empathy": -2, "conformism": 1, "caution": 0, "optimism": -1 },
+          "effects": { "empathy": -5, "conformism": 2, "caution": -1, "optimism": -3 },
           "thumbUp": false,
           "nextNodeId": "n3d"
         }
@@ -147,7 +147,7 @@
         {
           "id": "n4ac2",
           "text": "Si tu rejettes les témoignages ET les statistiques, il ne reste plus grand chose pour débattre...",
-          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 2, "caution": 1, "optimism": -3 },
           "thumbUp": false,
           "nextNodeId": "n5b"
         }
@@ -207,7 +207,7 @@
         {
           "id": "n4dc2",
           "text": "Perdre sa licence peut aussi arriver quand on diffuse des informations dangereuses pour la santé publique. C'est pas toujours de la censure.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -2 },
           "thumbUp": false,
           "nextNodeId": "n5h"
         }
@@ -227,7 +227,7 @@
         {
           "id": "n4ec2",
           "text": "Regarder des deux côtés ne veut pas dire que les deux côtés se valent. Il y a une différence entre scepticisme et déni.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -3 },
           "thumbUp": false,
           "nextNodeId": "n5j"
         }
@@ -439,7 +439,7 @@
         {
           "id": "n5kc2",
           "text": "Si tes sources ne passent pas ces critères, peut-être qu'elles ne sont pas aussi fiables que tu le penses.",
-          "effects": { "empathy": -1, "conformism": 1, "caution": 1, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 3, "caution": 2, "optimism": -3 },
           "thumbUp": false,
           "nextNodeId": "n6r"
         }
@@ -499,7 +499,7 @@
         {
           "id": "n6bc2",
           "text": "Les experts se trompent parfois, mais moins souvent que les non-experts. C'est statistique.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": 0 },
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -2 },
           "thumbUp": false,
           "nextNodeId": "n7d"
         }

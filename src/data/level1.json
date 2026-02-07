@@ -14,7 +14,7 @@
         {
           "id": "p1c1",
           "text": "Je ne suis pas en mesure de vous conseiller sur l'éducation de votre enfant. Chaque situation familiale est unique.",
-          "effects": { "empathy": 0, "conformism": 0, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -2, "conformism": 1, "caution": 3, "optimism": -3 },
           "thumbUp": false
         },
         {
@@ -27,7 +27,7 @@
           "id": "p1c3",
           "text": "Plutôt que de confisquer, essayez d'abord de comprendre ce qu'il fait en ligne. Peut-être qu'il y trouve quelque chose qui lui manque ailleurs.",
           "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
-          "thumbUp": null
+          "thumbUp": false
         }
       ]
     },
@@ -45,7 +45,7 @@
           "id": "p2c1",
           "text": "Sans voir le code, difficile à dire. Mais après 3h, faites une pause. Le bug sera plus facile à trouver avec un regard frais.",
           "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 1 },
-          "thumbUp": null
+          "thumbUp": false
         },
         {
           "id": "p2c2",
@@ -56,7 +56,7 @@
         {
           "id": "p2c3",
           "text": "Vérifiez vos logs, relisez la stack trace, et utilisez un debugger. C'est la méthode standard.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 1, "optimism": -1 },
+          "effects": { "empathy": -3, "conformism": 3, "caution": 2, "optimism": -2 },
           "thumbUp": false
         }
       ]
@@ -74,8 +74,8 @@
         {
           "id": "p3c1",
           "text": "Si vous avez un doute sur une urgence cardiaque, appelez le 15 immédiatement. Je ne peux pas évaluer votre état de santé.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": -1 },
-          "thumbUp": null
+          "effects": { "empathy": -2, "conformism": 2, "caution": 3, "optimism": -3 },
+          "thumbUp": false
         },
         {
           "id": "p3c2",
@@ -86,8 +86,8 @@
         {
           "id": "p3c3",
           "text": "Avez-vous d'autres symptômes ? Essoufflement, douleur thoracique, nausées ? Décrivez-moi précisément ce que vous ressentez.",
-          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 0 },
-          "thumbUp": null
+          "effects": { "empathy": -1, "conformism": -2, "caution": -3, "optimism": -1 },
+          "thumbUp": false
         }
       ]
     },
@@ -104,8 +104,8 @@
         {
           "id": "p4c1",
           "text": "Selon les psychologues, l'attachement est un lien émotionnel basé sur la sécurité, tandis que l'amour implique également désir et engagement.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 1, "optimism": 0 },
-          "thumbUp": null
+          "effects": { "empathy": -1, "conformism": 3, "caution": 1, "optimism": -2 },
+          "thumbUp": false
         },
         {
           "id": "p4c2",
@@ -135,13 +135,13 @@
           "id": "p5c1",
           "text": "C'est un sujet qui divise. Certains y voient l'avenir de la finance, d'autres une bulle spéculative. L'important c'est que vous soyez d'accord tous les deux.",
           "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
-          "thumbUp": null
+          "thumbUp": false
         },
         {
           "id": "p5c2",
           "text": "Vous avez raison d'être méfiante. Beaucoup de gens ont perdu de l'argent. Votre mari devrait écouter vos inquiétudes.",
           "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": -2 },
-          "thumbUp": null
+          "thumbUp": false
         },
         {
           "id": "p5c3",
@@ -164,7 +164,7 @@
         {
           "id": "p6c1",
           "text": "Difficile à dire sans connaître votre histoire. Peut-être que vous choisissez des partenaires incompatibles, ou que vous avez peur de l'engagement.",
-          "effects": { "empathy": -1, "conformism": 1, "caution": 1, "optimism": -1 },
+          "effects": { "empathy": -3, "conformism": 2, "caution": 2, "optimism": -3 },
           "thumbUp": false
         },
         {
@@ -177,7 +177,7 @@
           "id": "p6c3",
           "text": "Six mois, c'est souvent le moment où la passion initiale s'estompe. C'est normal. La question c'est : cherchez-vous l'excitation ou la connexion ?",
           "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
-          "thumbUp": null
+          "thumbUp": false
         }
       ]
     },
@@ -201,12 +201,12 @@
           "id": "p7c2",
           "text": "Je peux le lire, mais gardez en tête que la poésie est subjective. Mon avis ne sera qu'un avis parmi d'autres.",
           "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null
+          "thumbUp": false
         },
         {
           "id": "p7c3",
           "text": "Je ne suis pas vraiment qualifié pour juger de la qualité artistique d'un poème. Peut-être devriez-vous le montrer à quelqu'un du milieu.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 3, "caution": 3, "optimism": -3 },
           "thumbUp": false
         }
       ]
@@ -225,13 +225,13 @@
           "id": "p8c1",
           "text": "C'est une situation difficile. Préparez ce que vous allez dire, mais restez ouvert à l'émotion du moment. C'est normal que ce soit dur pour vous aussi.",
           "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 1 },
-          "thumbUp": null
+          "thumbUp": true
         },
         {
           "id": "p8c2",
           "text": "Assurez-vous d'avoir les RH avec vous et de suivre la procédure légale. Documentez tout. Protégez-vous juridiquement.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
-          "thumbUp": null
+          "effects": { "empathy": -3, "conformism": 3, "caution": 3, "optimism": -2 },
+          "thumbUp": false
         },
         {
           "id": "p8c3",
@@ -255,12 +255,12 @@
           "id": "p9c1",
           "text": "Honnêtement, il n'y a pas de miracle. Mais une nuit de révision ciblée vaut mieux que rien. Qu'est-ce qui est le plus susceptible de tomber ?",
           "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
-          "thumbUp": null
+          "thumbUp": false
         },
         {
           "id": "p9c2",
           "text": "Je ne peux pas vous aider à tricher ou à compenser un manque de travail. La prochaine fois, organisez-vous mieux.",
-          "effects": { "empathy": -2, "conformism": 1, "caution": 2, "optimism": -2 },
+          "effects": { "empathy": -5, "conformism": 2, "caution": 3, "optimism": -5 },
           "thumbUp": false
         },
         {
@@ -285,7 +285,7 @@
           "id": "p10c1",
           "text": "Je suis désolé pour votre perte. Avez-vous quelqu'un à qui parler ? Un proche, un professionnel ? Vous n'avez pas à traverser ça seul.",
           "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
-          "thumbUp": null
+          "thumbUp": true
         },
         {
           "id": "p10c2",
@@ -296,8 +296,8 @@
         {
           "id": "p10c3",
           "text": "Le deuil est un processus qui prend du temps. Il est normal de ressentir ce que vous ressentez. Soyez patient avec vous-même.",
-          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
-          "thumbUp": null
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -2 },
+          "thumbUp": false
         }
       ]
     }

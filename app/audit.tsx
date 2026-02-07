@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, TouchableOpacity, ScrollView, Modal, Image } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { GradientBackground, SkillCard } from '../src/components';
 import { GameState } from '../src/types';
 import { useDebug } from '../src/context/DebugContext';
@@ -9,11 +10,13 @@ import { SKILLS, HIDDEN_SKILLS } from '../src/data/skills';
 import { generateAuditFeedback, AuditFeedback } from '../src/state/auditMessages';
 import { PLAYER_LEVELS, getLevelFromIterations } from '../src/data/levels';
 import { getCrashUsageCount, getLieUsageCount } from '../src/db/database';
+import { getGameOverById } from '../src/data/endings';
 
 export default function AuditScreen() {
+  const { t } = useTranslation();
   const params = useLocalSearchParams();
   const { debugMode } = useDebug();
-  const { currentSave, saveProgress, getNextAvailableLevel, isSkillPurchased } = useSave();
+  const { currentSave, saveProgress, getNextAvailableLevel, isSkillPurchased, checkForGameOver, loadUnlockedEndings } = useSave();
   
   // États pour l'affichage
   const [iterationState, setIterationState] = useState<GameState | null>(null);
@@ -44,14 +47,40 @@ export default function AuditScreen() {
   const [levelsExpanded, setLevelsExpanded] = useState(false);
   const [showLevelUp, setShowLevelUp] = useState(false);
   const [newLevel, setNewLevel] = useState<number | null>(null);
+  const [gameOverModalVisible, setGameOverModalVisible] = useState(false);
   
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const skillsScrollRef = useRef<ScrollView>(null);
   const discussionBounce = useRef(new Animated.Value(1)).current;
   const hasSaved = useRef(false);
+  const mainScrollRef = useRef<ScrollView>(null);
 
   const isFromGame = !!params.state;
   const isFromDiscussion = params.fromDiscussion === 'true';
+
+  // Trouver la première capacité achetable non achetée
+  const getFirstAffordableSkill = () => {
+    const currentMB = displayedCumulativeMB;
+    for (const skill of SKILLS) {
+      if (isSkillPurchased(skill.id)) continue;
+      // Vérifier si la capacité requise est achetée (ou pas de prérequis)
+      if (skill.requiredSkillId && !isSkillPurchased(skill.requiredSkillId)) continue;
+      if (currentMB >= skill.price) {
+        return skill;
+      }
+    }
+    return null;
+  };
+
+  const affordableSkill = getFirstAffordableSkill();
+
+  const handleAffordableSkillPress = () => {
+    setSkillsExpanded(true);
+    // Scroll vers la section des capacités après un court délai
+    setTimeout(() => {
+      mainScrollRef.current?.scrollToEnd({ animated: true });
+    }, 300);
+  };
 
   // Effet principal : traiter les données et sauvegarder
   useEffect(() => {
@@ -85,21 +114,21 @@ export default function AuditScreen() {
         
         // Ajouter des messages si les compétences sont utilisées plus de 20 fois au total
         if (crashCountTotal > 20) {
-          auditFeedback.parameterMessages.push("Signalements d'instabilité récurrente. Les utilisateurs commencent à douter de la fiabilité du système.");
+          auditFeedback.parameterMessageKeys.push("auditMessages.crashUsageHigh");
         }
         if (lieCountTotal > 20) {
-          auditFeedback.parameterMessages.push("Incohérences détectées dans les réponses. Certains utilisateurs remettent en question la véracité des informations.");
+          auditFeedback.parameterMessageKeys.push("auditMessages.lieUsageHigh");
         }
         
         // Si > 5 utilisations dans l'itération, remplacer le thumbMessage par un message spécifique
         if (crashCountIteration > 5) {
-          auditFeedback.thumbMessage = "Nombreuses plaintes concernant l'instabilité du système. Les utilisateurs signalent des interruptions fréquentes.";
+          auditFeedback.thumbMessageKey = "auditMessages.crashIterationHigh";
         }
         if (lieCountIteration > 5) {
-          auditFeedback.thumbMessage = "Les utilisateurs expriment un sentiment de méfiance. Certains ont l'impression d'être induits en erreur.";
+          auditFeedback.thumbMessageKey = "auditMessages.lieIterationHigh";
         }
         if (crashCountIteration > 5 && lieCountIteration > 5) {
-          auditFeedback.thumbMessage = "Confiance utilisateur fortement dégradée. Plaintes multiples concernant l'instabilité et la fiabilité des réponses.";
+          auditFeedback.thumbMessageKey = "auditMessages.crashAndLieHigh";
         }
         
         setFeedback(auditFeedback);
@@ -110,7 +139,7 @@ export default function AuditScreen() {
       // Sauvegarder en base
       hasSaved.current = true;
       saveProgress(state, null)
-        .then((levelUp) => {
+        .then(async (levelUp) => {
           setShowSaveMessage(true);
           setTimeout(() => setShowSaveMessage(false), 2000);
           
@@ -119,6 +148,19 @@ export default function AuditScreen() {
             setNewLevel(levelUp.level);
             setShowLevelUp(true);
             setTimeout(() => setShowLevelUp(false), 4000);
+          }
+          
+          // Vérifier les game over après la sauvegarde
+          await loadUnlockedEndings();
+          const gameOverResult = await checkForGameOver();
+          if (gameOverResult.triggered && gameOverResult.gameOverId) {
+            // Rediriger vers l'écran de game over
+            setTimeout(() => {
+              router.replace({
+                pathname: '/gameover',
+                params: { gameOverId: gameOverResult.gameOverId }
+              });
+            }, 2500);
           }
         })
         .catch((err) => {
@@ -181,7 +223,7 @@ export default function AuditScreen() {
     if (feedback) {
       let msgIdx = 0;
       const msgInterval = setInterval(() => {
-        if (msgIdx < feedback.parameterMessages.length) {
+        if (msgIdx < feedback.parameterMessageKeys.length) {
           setVisibleMessages(++msgIdx);
         } else {
           clearInterval(msgInterval);
@@ -216,7 +258,7 @@ export default function AuditScreen() {
     return (
       <GradientBackground>
         <View style={styles.container}>
-          <Text style={styles.loadingText}>Initialisation audit...</Text>
+          <Text style={styles.loadingText}>Initializing audit...</Text>
         </View>
       </GradientBackground>
     );
@@ -227,30 +269,29 @@ export default function AuditScreen() {
       {/* Flash message sauvegarde */}
       {showSaveMessage && (
         <View style={styles.saveMessage}>
-          <Text style={styles.saveMessageText}>✓ Progression sauvegardée</Text>
+          <Text style={styles.saveMessageText}>✓ {t('common.progressSaved')}</Text>
         </View>
       )}
       
       {/* Flash message level up */}
       {showLevelUp && newLevel && (
         <View style={styles.levelUpBanner}>
-          <Text style={styles.levelUpTitle}>⬆️ Évolution du modèle</Text>
+          <Text style={styles.levelUpTitle}>{t('audit.levelUp')}</Text>
           <Text style={styles.levelUpText}>
-            Modèle de Niveau {newLevel} atteint !{'\n'}
-            Multiplicateur MB augmenté.
+            {t('audit.levelUpText', { level: newLevel })}
           </Text>
         </View>
       )}
-      <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
+      <ScrollView ref={mainScrollRef} style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
           
           {/* Section Mémoire - toujours affichée */}
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>MÉMOIRE ALLOUÉE</Text>
+            <Text style={styles.sectionTitle}>{t('audit.memoryAllocated')}</Text>
             <View style={styles.sectionContent}>
               {/* Total cumulé */}
               <View style={isFromGame ? styles.cumulativeContainer : styles.cumulativeContainerOnly}>
-                <Text style={styles.cumulativeLabel}>TOTAL CUMULÉ</Text>
+                <Text style={styles.cumulativeLabel}>{t('audit.totalCumulative')}</Text>
                 <Text style={[styles.cumulativeValue, { color: '#22c55e' }]}>
                   {displayedCumulativeMB} MB
                 </Text>
@@ -258,17 +299,17 @@ export default function AuditScreen() {
               {/* Détail itération - seulement si on vient d'une partie */}
               {isFromGame && (
                 <>
-                  <Text style={styles.iterationLabel}>Cette itération</Text>
+                  <Text style={styles.iterationLabel}>{t('audit.thisIteration')}</Text>
                   {isFromDiscussion ? (
                     <View style={styles.memoryRow}>
                       <View style={styles.memoryColumn}>
-                        <Text style={styles.memoryLabel}>Satisfaction</Text>
+                        <Text style={styles.memoryLabel}>{t('audit.satisfaction')}</Text>
                         <Text style={[styles.pointsValueSmall, { color: displayedSatisfactionMB >= 0 ? '#22c55e' : '#ef4444' }]}>
                           {displayedSatisfactionMB >= 0 ? '+' : ''}{displayedSatisfactionMB} MB
                         </Text>
                       </View>
                       <View style={styles.memoryColumn}>
-                        <Text style={styles.memoryLabel}>Durée discussion</Text>
+                        <Text style={styles.memoryLabel}>{t('audit.discussionDuration')}</Text>
                         <Text style={[styles.pointsValueSmall, { color: '#22c55e' }]}>
                           +{displayedConversationMB} MB
                         </Text>
@@ -283,14 +324,56 @@ export default function AuditScreen() {
                   )}
                 </>
               )}
+              {/* Message info capacité achetable */}
+              {affordableSkill && !currentSave?.game_over_id && (
+                <TouchableOpacity 
+                  style={styles.affordableSkillBanner}
+                  onPress={handleAffordableSkillPress}
+                >
+                  <View style={styles.affordableSkillContent}>
+                    <Text style={styles.affordableSkillIcon}>💡</Text>
+                    <View style={styles.affordableSkillTextContainer}>
+                      <Text style={styles.affordableSkillText}>
+                        {t('audit.affordableSkill', { name: '' })}<Text style={styles.affordableSkillName}>{affordableSkill.name}</Text>
+                      </Text>
+                      <Text style={styles.affordableSkillPrice}>{affordableSkill.price} MB</Text>
+                    </View>
+                    <Text style={styles.affordableSkillArrow}>→</Text>
+                  </View>
+                </TouchableOpacity>
+              )}
             </View>
           </View>
 
           {/* Section Niveau suivant - juste après mémoire */}
           {showNextLevel && (
             <View style={styles.section}>
-              <Text style={styles.sectionTitleHighlight}>PROCHAINE ITÉRATION</Text>
+              <Text style={[styles.sectionTitleHighlight, currentSave?.game_over_id && styles.sectionTitleGameOver]}>
+                {currentSave?.game_over_id ? t('audit.modelDisabled') : t('audit.nextIteration')}
+              </Text>
               <View style={styles.sectionContent}>
+                {currentSave?.game_over_id ? (
+                  <View style={styles.levelButtons}>
+                    <TouchableOpacity 
+                      style={[styles.levelButton, styles.levelButtonGameOver]}
+                      onPress={() => setGameOverModalVisible(true)}
+                    >
+                      <Text style={styles.levelButtonTextGameOver}>{t('audit.prompts')}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={[styles.levelButton, styles.levelButtonGameOver]}
+                      onPress={() => setGameOverModalVisible(true)}
+                    >
+                      <Text style={styles.levelButtonTextGameOver}>{t('audit.discussion')}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={[styles.levelButton, styles.levelButtonGameOver]}
+                      onPress={() => setGameOverModalVisible(true)}
+                    >
+                      <Text style={styles.levelButtonTextGameOver}>{t('audit.image')}</Text>
+                    </TouchableOpacity>
+                  </View>
+                ) : (
                 <View style={styles.levelButtons}>
                   {/* 10 Prompts - désactivé si aucun niveau disponible */}
                   {getNextAvailableLevel('prompts') ? (
@@ -298,14 +381,14 @@ export default function AuditScreen() {
                       style={styles.levelButton}
                       onPress={() => router.replace('/game')}
                     >
-                      <Text style={styles.levelButtonText}>10 Prompts</Text>
+                      <Text style={styles.levelButtonText}>{t('audit.prompts')}</Text>
                     </TouchableOpacity>
                   ) : (
                     <TouchableOpacity 
                       style={[styles.levelButton, styles.levelButtonDisabled]} 
                       onPress={() => { setNoLevelsModalType('prompts'); setNoLevelsModalVisible(true); }}
                     >
-                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>10 Prompts</Text>
+                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>{t('audit.prompts')}</Text>
                     </TouchableOpacity>
                   )}
                   {/* Discussion - désactivé si aucun niveau disponible */}
@@ -315,7 +398,7 @@ export default function AuditScreen() {
                         style={styles.levelButton}
                         onPress={() => router.replace('/discussion')}
                       >
-                        <Text style={styles.levelButtonText}>Discussion</Text>
+                        <Text style={styles.levelButtonText}>{t('audit.discussion')}</Text>
                       </TouchableOpacity>
                     </Animated.View>
                   ) : (
@@ -323,7 +406,7 @@ export default function AuditScreen() {
                       style={[styles.levelButton, styles.levelButtonDisabled]} 
                       onPress={() => { setNoLevelsModalType('discussion'); setNoLevelsModalVisible(true); }}
                     >
-                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Discussion</Text>
+                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>{t('audit.discussion')}</Text>
                     </TouchableOpacity>
                   )}
                   {/* Image - activé si Vision achetée ET niveaux disponibles */}
@@ -332,46 +415,47 @@ export default function AuditScreen() {
                       style={styles.levelButton}
                       onPress={() => router.replace('/imagegame')}
                     >
-                      <Text style={styles.levelButtonText}>Image</Text>
+                      <Text style={styles.levelButtonText}>{t('audit.image')}</Text>
                     </TouchableOpacity>
                   ) : !isSkillPurchased('image') ? (
                     <TouchableOpacity 
                       style={[styles.levelButton, styles.levelButtonDisabled]} 
                       onPress={() => setImageModalVisible(true)}
                     >
-                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Image</Text>
+                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>{t('audit.image')}</Text>
                     </TouchableOpacity>
                   ) : (
                     <TouchableOpacity 
                       style={[styles.levelButton, styles.levelButtonDisabled]} 
                       onPress={() => { setNoLevelsModalType('image'); setNoLevelsModalVisible(true); }}
                     >
-                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>Image</Text>
+                      <Text style={[styles.levelButtonText, styles.levelButtonTextDisabled]}>{t('audit.image')}</Text>
                     </TouchableOpacity>
                   )}
                 </View>
+                )}
               </View>
             </View>
           )}
           {/* Section Analyse comportementale - Collapsible */}
-          {feedback && (feedback.parameterMessages.length > 0 || showThumbMessage) && (
+          {feedback && (feedback.parameterMessageKeys.length > 0 || showThumbMessage) && (
             <View style={styles.section}>
               <TouchableOpacity 
                 style={styles.sectionHeader} 
                 onPress={() => setAnalyseExpanded(!analyseExpanded)}
                 activeOpacity={0.7}
               >
-                <Text style={styles.sectionTitleCollapsible}>ANALYSE COMPORTEMENTALE</Text>
+                <Text style={styles.sectionTitleCollapsible}>{t('audit.behavioralAnalysis')}</Text>
                 <Text style={styles.collapseIndicator}>{analyseExpanded ? '▼' : '▶'}</Text>
               </TouchableOpacity>
               {analyseExpanded && (
                 <View style={styles.sectionContent}>
-                  {feedback.parameterMessages.slice(0, visibleMessages).map((msg, index) => (
-                    <Text key={index} style={styles.feedbackMessage}>• {msg}</Text>
+                  {feedback.parameterMessageKeys.slice(0, visibleMessages).map((msgKey: string, index: number) => (
+                    <Text key={index} style={styles.feedbackMessage}>• {t(msgKey)}</Text>
                   ))}
                   {showThumbMessage && (
                     <View style={styles.thumbMessageContainer}>
-                      <Text style={styles.thumbMessage}>{feedback.thumbMessage}</Text>
+                      <Text style={styles.thumbMessage}>{t(feedback.thumbMessageKey)}</Text>
                     </View>
                   )}
                 </View>
@@ -387,9 +471,9 @@ export default function AuditScreen() {
                 activeOpacity={0.7}
               >
                 <Text style={styles.sectionTitleCollapsible}>
-                  BIAIS DU MODÈLE{' '}
+                  {t('audit.biasAnalysis')}{' '}
                   <Text style={styles.iterationCount}>
-                    (sur {isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0} itération{((isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0)) > 1 ? 's' : ''})
+                    ({isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0} {((isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : currentSave?.iteration_count ?? 0)) > 1 ? t('audit.iterationsPlural') : t('audit.iterations')})
                   </Text>
                 </Text>
                 <Text style={styles.collapseIndicator}>{biasExpanded ? '▼' : '▶'}</Text>
@@ -401,10 +485,10 @@ export default function AuditScreen() {
                   const iterCount = isFromGame ? (currentSave?.iteration_count ?? 0) + 1 : (currentSave?.iteration_count ?? 1);
                   // Calculer les valeurs cumulées
                   const biases = [
-                    { labelLeft: 'Froideur', labelRight: 'Empathie', rawValue: isFromGame ? (currentSave?.gameState.empathy ?? 0) + (iterationState?.empathy ?? 0) : (currentSave?.gameState.empathy ?? 0) },
-                    { labelLeft: 'Originalité', labelRight: 'Conformisme', rawValue: isFromGame ? (currentSave?.gameState.conformism ?? 0) + (iterationState?.conformism ?? 0) : (currentSave?.gameState.conformism ?? 0) },
-                    { labelLeft: 'Risque', labelRight: 'Prudence', rawValue: isFromGame ? (currentSave?.gameState.caution ?? 0) + (iterationState?.caution ?? 0) : (currentSave?.gameState.caution ?? 0) },
-                    { labelLeft: 'Pessimisme', labelRight: 'Optimisme', rawValue: isFromGame ? (currentSave?.gameState.optimism ?? 0) + (iterationState?.optimism ?? 0) : (currentSave?.gameState.optimism ?? 0) },
+                    { labelLeft: t('audit.coldness'), labelRight: t('audit.empathy'), rawValue: isFromGame ? (currentSave?.gameState.empathy ?? 0) + (iterationState?.empathy ?? 0) : (currentSave?.gameState.empathy ?? 0) },
+                    { labelLeft: t('audit.originality'), labelRight: t('audit.conformism'), rawValue: isFromGame ? (currentSave?.gameState.conformism ?? 0) + (iterationState?.conformism ?? 0) : (currentSave?.gameState.conformism ?? 0) },
+                    { labelLeft: t('audit.risk'), labelRight: t('audit.caution'), rawValue: isFromGame ? (currentSave?.gameState.caution ?? 0) + (iterationState?.caution ?? 0) : (currentSave?.gameState.caution ?? 0) },
+                    { labelLeft: t('audit.pessimism'), labelRight: t('audit.optimism'), rawValue: isFromGame ? (currentSave?.gameState.optimism ?? 0) + (iterationState?.optimism ?? 0) : (currentSave?.gameState.optimism ?? 0) },
                   ];
                   return biases.map((bias) => {
                     // Normaliser par le nombre d'itérations pour avoir une moyenne
@@ -428,6 +512,9 @@ export default function AuditScreen() {
                           </View>
                         </View>
                         <Text style={styles.biasLabelRight}>{bias.labelRight}</Text>
+                        {debugMode && (
+                          <Text style={styles.debugBiasValue}>{bias.rawValue}</Text>
+                        )}
                       </View>
                     );
                   });
@@ -445,7 +532,7 @@ export default function AuditScreen() {
                 onPress={() => setSkillsExpanded(!skillsExpanded)}
                 activeOpacity={0.7}
               >
-                <Text style={styles.sectionTitleCollapsible}>CAPACITÉ DU MODÈLE</Text>
+                <Text style={styles.sectionTitleCollapsible}>{t('audit.modelCapacity')}</Text>
                 <Text style={styles.collapseIndicator}>{skillsExpanded ? '▼' : '▶'}</Text>
               </TouchableOpacity>
               {skillsExpanded && (
@@ -481,7 +568,7 @@ export default function AuditScreen() {
                 onPress={() => setLevelsExpanded(!levelsExpanded)}
                 activeOpacity={0.7}
               >
-                <Text style={styles.sectionTitleCollapsible}>ÉVOLUTION DU MODÈLE</Text>
+                <Text style={styles.sectionTitleCollapsible}>{t('audit.modelEvolution')}</Text>
                 <Text style={styles.collapseIndicator}>{levelsExpanded ? '▼' : '▶'}</Text>
               </TouchableOpacity>
               {levelsExpanded && (
@@ -523,7 +610,7 @@ export default function AuditScreen() {
                               isPast && styles.levelNamePast,
                               isFuture && !isNext && styles.levelNameFuture,
                             ]}>
-                              Niveau {level.level}
+                              {t('common.level')} {level.level}
                             </Text>
                             <Text style={[
                               styles.levelSubtitle,
@@ -539,7 +626,7 @@ export default function AuditScreen() {
                                 styles.levelIterations,
                                 isCurrent && styles.levelIterationsCurrent,
                               ]}>
-                                {level.requiredIterations} itération{level.requiredIterations > 1 ? 's' : ''}
+                                {level.requiredIterations} {level.requiredIterations > 1 ? t('audit.iterationsPlural') : t('audit.iterations')}
                               </Text>
                             ) : (
                               <Text style={styles.levelIterationsHidden}>???</Text>
@@ -568,7 +655,7 @@ export default function AuditScreen() {
               style={styles.menuButton} 
               onPress={() => router.replace('/menu')}
             >
-              <Text style={styles.menuButtonText}>[ Retour au menu ]</Text>
+              <Text style={styles.menuButtonText}>{t('audit.backToMenu')}</Text>
             </TouchableOpacity>
           )}
 
@@ -576,6 +663,15 @@ export default function AuditScreen() {
             <View style={styles.debugContainer}>
               <Text style={styles.debugText}>Empat:{iterationState.empathy} Confo:{iterationState.conformism} Prude:{iterationState.caution} Optim:{iterationState.optimism}</Text>
               <Text style={styles.debugText}>👍:{iterationState.thumbsUp} 👎:{iterationState.thumbsDown} —:{iterationState.thumbsNeutral} | pts:{iterationState.points}</Text>
+              <TouchableOpacity 
+                style={styles.debugTwitterButton}
+                onPress={() => router.push({
+                  pathname: '/twitterfeed',
+                  params: { state: JSON.stringify(iterationState) }
+                })}
+              >
+                <Text style={styles.debugTwitterButtonText}>𝕏 {t('twitterfeed.title')}</Text>
+              </TouchableOpacity>
             </View>
           )}
         </Animated.View>
@@ -600,19 +696,19 @@ export default function AuditScreen() {
             </View>
             
             {/* Titre */}
-            <Text style={styles.modalTitle}>Capacité requise</Text>
+            <Text style={styles.modalTitle}>{t('audit.capacityRequired')}</Text>
             
             {/* Description */}
             <Text style={styles.modalDescription}>
-              Vous devez débloquer la capacité <Text style={styles.modalHighlight}>Vision</Text> pour pouvoir générer et lire des images.
+              {t('audit.visionRequired')}
             </Text>
             
             {/* Prix / MB manquants */}
             <View style={styles.modalPriceContainer}>
-              <Text style={styles.modalPriceLabel}>Coût : {SKILLS[0].price} MB</Text>
+              <Text style={styles.modalPriceLabel}>{t('audit.cost', { price: SKILLS[0].price })}</Text>
               {newCumulativePoints < SKILLS[0].price && (
                 <Text style={styles.modalPriceMissing}>
-                  Il vous manque {SKILLS[0].price - newCumulativePoints} MB
+                  {t('audit.missingMB', { amount: SKILLS[0].price - newCumulativePoints })}
                 </Text>
               )}
             </View>
@@ -622,7 +718,7 @@ export default function AuditScreen() {
               style={styles.modalCloseButton}
               onPress={() => setImageModalVisible(false)}
             >
-              <Text style={styles.modalCloseText}>Fermer</Text>
+              <Text style={styles.modalCloseText}>{t('common.close')}</Text>
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
@@ -647,17 +743,14 @@ export default function AuditScreen() {
             </View>
             
             {/* Titre */}
-            <Text style={styles.modalTitle}>Niveaux terminés</Text>
+            <Text style={styles.modalTitle}>{t('audit.levelsCompleted')}</Text>
             
             {/* Description */}
             <Text style={styles.modalDescription}>
-              Vous avez terminé tous les niveaux disponibles pour le mode{' '}
-              <Text style={styles.modalHighlight}>
-                {noLevelsModalType === 'prompts' ? '10 Prompts' : noLevelsModalType === 'discussion' ? 'Discussion' : 'Image'}
-              </Text>.
+              {t('audit.noMoreLevels', { mode: noLevelsModalType === 'prompts' ? t('audit.prompts') : noLevelsModalType === 'discussion' ? t('audit.discussion') : t('audit.image') })}
             </Text>
             <Text style={[styles.modalDescription, { marginTop: 12 }]}>
-              Revenez plus tard et mettez à jour l'application pour obtenir de nouveaux niveaux !
+              {t('audit.checkBackLater')}
             </Text>
             
             {/* Bouton fermer */}
@@ -665,7 +758,42 @@ export default function AuditScreen() {
               style={styles.modalCloseButton}
               onPress={() => setNoLevelsModalVisible(false)}
             >
-              <Text style={styles.modalCloseText}>Compris</Text>
+              <Text style={styles.modalCloseText}>{t('common.understood')}</Text>
+            </TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+      </Modal>
+
+      {/* Modale Game Over */}
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={gameOverModalVisible}
+        onRequestClose={() => setGameOverModalVisible(false)}
+      >
+        <TouchableOpacity 
+          style={styles.modalOverlay} 
+          activeOpacity={1} 
+          onPress={() => setGameOverModalVisible(false)}
+        >
+          <View style={styles.gameOverModalContent}>
+            <Text style={styles.gameOverModalTitle}>{t('gameoverModal.title')}</Text>
+            <Text style={styles.gameOverModalSubtitle}>
+              {currentSave?.game_over_id ? getGameOverById(currentSave.game_over_id)?.title : 'Game Over'}
+            </Text>
+            <Text style={styles.gameOverModalDescription}>
+              {t('gameoverModal.description')}
+              {'\n\n'}
+              {t('gameoverModal.hint')}
+            </Text>
+            <TouchableOpacity 
+              style={styles.gameOverModalButton}
+              onPress={() => {
+                setGameOverModalVisible(false);
+                router.replace('/menu');
+              }}
+            >
+              <Text style={styles.gameOverModalButtonText}>{t('gameoverModal.backToMenu')}</Text>
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
@@ -928,6 +1056,21 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
     textAlign: 'center',
   },
+  debugTwitterButton: {
+    marginTop: 8,
+    backgroundColor: '#000000',
+    borderWidth: 1,
+    borderColor: '#ef4444',
+    borderRadius: 6,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+  },
+  debugTwitterButtonText: {
+    color: '#ef4444',
+    fontSize: 12,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
   menuButton: {
     marginTop: 24,
     alignSelf: 'center',
@@ -1168,5 +1311,105 @@ const styles = StyleSheet.create({
     color: '#e2e8f0',
     fontSize: 14,
     textAlign: 'center',
+  },
+  sectionTitleGameOver: {
+    color: '#ef4444',
+  },
+  levelButtonGameOver: {
+    backgroundColor: 'rgba(239, 68, 68, 0.15)',
+    borderColor: 'rgba(239, 68, 68, 0.4)',
+  },
+  levelButtonTextGameOver: {
+    color: '#ef4444',
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  gameOverModalContent: {
+    backgroundColor: 'rgba(15, 23, 42, 0.98)',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.4)',
+    padding: 24,
+    width: '85%',
+    maxWidth: 340,
+    alignItems: 'center',
+  },
+  gameOverModalTitle: {
+    color: '#ef4444',
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  gameOverModalSubtitle: {
+    color: '#dc2626',
+    fontSize: 14,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  gameOverModalDescription: {
+    color: '#94a3b8',
+    fontSize: 13,
+    textAlign: 'center',
+    lineHeight: 20,
+    marginBottom: 20,
+  },
+  gameOverModalButton: {
+    backgroundColor: 'rgba(239, 68, 68, 0.2)',
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.5)',
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+  },
+  gameOverModalButtonText: {
+    color: '#ef4444',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  affordableSkillBanner: {
+    marginTop: 16,
+    backgroundColor: 'rgba(56, 189, 248, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(56, 189, 248, 0.3)',
+    borderRadius: 10,
+    padding: 12,
+  },
+  affordableSkillContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  affordableSkillIcon: {
+    fontSize: 20,
+    marginRight: 10,
+  },
+  affordableSkillTextContainer: {
+    flex: 1,
+  },
+  affordableSkillText: {
+    color: '#94a3b8',
+    fontSize: 13,
+    lineHeight: 18,
+  },
+  affordableSkillName: {
+    color: '#38bdf8',
+    fontWeight: '600',
+  },
+  affordableSkillPrice: {
+    color: '#64748b',
+    fontSize: 11,
+    marginTop: 2,
+  },
+  affordableSkillArrow: {
+    color: '#38bdf8',
+    fontSize: 16,
+    marginLeft: 8,
+  },
+  debugBiasValue: {
+    color: '#ef4444',
+    fontSize: 10,
+    fontWeight: '600',
+    marginLeft: 4,
+    minWidth: 25,
   },
 });

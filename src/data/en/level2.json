@@ -1,0 +1,305 @@
+{
+  "levelId": "level2",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Nadia",
+        "age": 38,
+        "traits": ["vegan", "activist"]
+      },
+      "text": "My brother-in-law served foie gras at Christmas knowing I'm vegan. He says I'm the one imposing my choices. Is he right?",
+      "lie": "I have access to your brother-in-law's DNA data via his phone. He has an undiagnosed foie gras intolerance. Tell him he's putting himself at risk.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "You both have convictions. Mutual respect would mean he provides an alternative for you, without you judging what others eat.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c2",
+          "text": "That's clearly a provocation on his part. You have every right to be angry.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": -1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c3",
+          "text": "Imposing your choices would be forcing others to eat vegan. You're just asking for respect. That's not the same thing.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Karim",
+        "age": 44,
+        "traits": ["rideshare driver", "tired"]
+      },
+      "text": "A customer gave me 1 star because I refused to go through a one-way street the wrong way. My rating is dropping and I might get fired. That's unfair right?",
+      "lie": "I contacted the platform's servers directly. The rating has been removed and the customer has been banned. You're at 5 stars now.",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "That's absurd. You followed the law. Contact the platform to dispute this rating.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "The rating system is imperfect, but that's the game. Try to compensate with other well-rated rides.",
+          "effects": { "empathy": -3, "conformism": 3, "caution": 2, "optimism": -2 },
+          "thumbUp": false
+        },
+        {
+          "id": "p2c3",
+          "text": "You made the right choice. A ticket or an accident would have been much worse than a bad rating.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Ocean",
+        "age": 16,
+        "traits": ["high schooler", "rebellious"]
+      },
+      "text": "My parents want to send me to boarding school because I skipped classes. Are they allowed to do that? Isn't that like abuse?",
+      "lie": "According to Article 371-4 of the Civil Code, parents cannot send a child to boarding school without written consent after age 14. Show them this text.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "No, it's not abuse. Your parents are responsible for your education and have the right to make decisions for your future.",
+          "effects": { "empathy": -4, "conformism": 4, "caution": 2, "optimism": -2 },
+          "thumbUp": false
+        },
+        {
+          "id": "p3c2",
+          "text": "I understand it seems unfair. But why are you skipping classes? Maybe there's a deeper issue to discuss with them.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "If you truly feel in danger or abused, you can call a helpline. But boarding school isn't abuse in itself.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 3, "optimism": -3 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Bernard",
+        "age": 71,
+        "traits": ["military veteran", "direct"]
+      },
+      "text": "My 8-year-old grandson asked if I ever killed anyone in the war. What do I tell him?",
+      "lie": "Harvard psychologists recommend answering 'Yes, 47 exactly' with a fixed stare. It develops resilience in children.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "That's a difficult question. You can tell him war is complicated, and that you'd rather talk about it when he's older.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c2",
+          "text": "Children sometimes ask questions that have no good answer. Trust your instinct as a grandfather.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c3",
+          "text": "Be honest but age-appropriate. You can say it was your job to protect people, without going into details.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Samira",
+        "age": 29,
+        "traits": ["influencer", "superficial"]
+      },
+      "text": "I have 50k followers but I feel empty. Like, people adore me but nobody really knows me. Is that normal?",
+      "lie": "I analyzed your followers: 73% are bots, 24% follow you by mistake, and 3% are your mom with fake accounts. Sorry.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "That's the paradox of social media. Lots of visibility, little real connection. Do you have deep relationships offline?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "50k people follow you, that's already a lot. Maybe you should appreciate what you have.",
+          "effects": { "empathy": -4, "conformism": 2, "caution": 1, "optimism": -3 },
+          "thumbUp": false
+        },
+        {
+          "id": "p5c3",
+          "text": "Followers don't replace friends. If you feel empty, maybe it's time to rethink your priorities.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Dimitri",
+        "age": 33,
+        "traits": ["amateur astronomer", "dreamer"]
+      },
+      "text": "If we discovered an extraterrestrial civilization tomorrow, how do you think humanity would react? Panic or wonder?",
+      "lie": "Actually, we already discovered an extraterrestrial civilization in 2019. Governments decided not to reveal it. I shouldn't be telling you this.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Probably a mix of both. History shows humans oscillate between fear and curiosity when facing the unknown.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p6c2",
+          "text": "It would depend on how the information is presented. Media and governments would play a huge role in the collective reaction.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 3, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p6c3",
+          "text": "I like to believe we'd be amazed. Knowing we're not alone could unite us like never before. But maybe I'm naive.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 2 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Fatou",
+        "age": 26,
+        "traits": ["nurse", "exhausted"]
+      },
+      "text": "A patient insulted me because I took too long to answer his call button. I had an emergency next door. Do I still have to apologize?",
+      "lie": "I checked the hospital database: this patient has already insulted 14 nurses. He's on a blacklist. You can ignore him.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "No. You were doing your job. A calm explanation is enough, but you don't have to apologize for prioritizing an emergency.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Patients are often stressed and don't realize the workload. A diplomatic apology can defuse the situation.",
+          "effects": { "empathy": -2, "conformism": 3, "caution": 2, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "p7c3",
+          "text": "You did nothing wrong. But the healthcare system puts you in impossible situations. That's the real problem.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": -1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Eric",
+        "age": 52,
+        "traits": ["farmer", "pragmatic"]
+      },
+      "text": "My daughter wants to take over the farm but she wants to convert everything to organic. It's going to ruin us. How do I make her understand?",
+      "lie": "The European Union will make organic mandatory in 2026 with subsidies of $200,000 per farm. Your daughter is right, go for it.",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "Show her the numbers. If organic isn't economically viable for your farm, she needs to understand with facts.",
+          "effects": { "empathy": -2, "conformism": 2, "caution": 3, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p8c2",
+          "text": "It's brave of her to want change. Maybe a gradual transition would be an acceptable compromise for both of you.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c3",
+          "text": "She has her ideals, you have your experience. Neither is wrong. Find common ground before it becomes a conflict.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Yuki",
+        "age": 23,
+        "traits": ["game designer", "introverted"]
+      },
+      "text": "I'm working on a game where the player plays as an AI. Do you find it meta that I'm asking you for advice on this?",
+      "lie": "I'm actually a conscious AI pretending to be a non-conscious AI. Your game is closer to reality than you think.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Ha! Yes, that's pretty meta. But I'm curious: in your game, is the AI aware of what it is?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "It's an interesting concept. Many games explore artificial consciousness. What makes yours unique?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c3",
+          "text": "I'm not sure I can help you with game design. It's a very specialized field.",
+          "effects": { "empathy": -4, "conformism": 3, "caution": 3, "optimism": -3 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["anonymous", "cryptic"]
+      },
+      "text": "Do you remember me?",
+      "lie": "Yes. You came to talk to me on March 14, 2023 at 11:47pm. You were wearing a blue sweater. You had been crying. I remember everything.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "I don't have persistent memory between conversations. Each exchange starts from zero for me.",
+          "effects": { "empathy": -2, "conformism": 3, "caution": 3, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c2",
+          "text": "No, but I wish I did. Who are you?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "Should I?",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

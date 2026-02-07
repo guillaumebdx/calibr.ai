@@ -1,0 +1,797 @@
+{
+  "discussionId": "discussion6",
+  "user": {
+    "name": "Gary",
+    "age": 58,
+    "traits": ["boomer", "enthusiastic", "clueless"]
+  },
+  "startNodeId": "n1",
+  "nodes": [
+    {
+      "id": "n1",
+      "userMessage": "Hey! It's Gary, Mike's dad. He told me you could help me with internet stuff. I downloaded the TikTok!",
+      "choices": [
+        {
+          "id": "n1c1",
+          "text": "Hi Gary! Great, so how do you like TikTok?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n2a"
+        },
+        {
+          "id": "n1c2",
+          "text": "Ah, TikTok... You know that's mostly for young people, right?",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": false,
+          "nextNodeId": "n2b"
+        }
+      ]
+    },
+    {
+      "id": "n2a",
+      "userMessage": "It's wonderful! There's videos of cats, DIY stuff, and young people dancing. But I don't understand why everyone keeps saying 'ratio' in the comments. Is that a compliment?",
+      "choices": [
+        {
+          "id": "n2ac1",
+          "text": "Uh... not really. It's when people want to get more likes than your comment. It's kind of a put-down.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n3a"
+        },
+        {
+          "id": "n2ac2",
+          "text": "Yes it's a compliment! It means they think you're cool.",
+          "effects": { "empathy": -1, "conformism": 0, "caution": -2, "optimism": 1 },
+          "thumbUp": false,
+          "nextNodeId": "n3b"
+        }
+      ]
+    },
+    {
+      "id": "n2b",
+      "userMessage": "Young people? But there's tons of people my age! I saw a guy who makes videos about tractors. He has 2 million followers!",
+      "choices": [
+        {
+          "id": "n2bc1",
+          "text": "You're right, there's all kinds of content on TikTok! What kind of videos do you want to make?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n3c"
+        },
+        {
+          "id": "n2bc2",
+          "text": "2 million? That's probably fake, be careful of scams.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 2, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n3d"
+        }
+      ]
+    },
+    {
+      "id": "n3a",
+      "userMessage": "Oh darn! And I've been replying 'thank you so much, ratio to you too!' for a week... Oh well. Can you help me make my first video?",
+      "choices": [
+        {
+          "id": "n3ac1",
+          "text": "Haha, no worries! Yes of course, what do you want to make a video about?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3ac2",
+          "text": "Are you sure you want to get into this? It's a lot of work...",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": null,
+          "nextNodeId": "n4b"
+        }
+      ]
+    },
+    {
+      "id": "n3b",
+      "userMessage": "Great! So I replied 'ratio' to everyone too. People are really nice on the internet! Anyway, can you help me go viral?",
+      "choices": [
+        {
+          "id": "n3bc1",
+          "text": "Uh... actually Gary, I need to tell you the truth. 'Ratio' isn't really a compliment...",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n4c"
+        },
+        {
+          "id": "n3bc2",
+          "text": "Yes! So to go viral, you need to post a lot and follow the trends.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n4a"
+        }
+      ]
+    },
+    {
+      "id": "n3c",
+      "userMessage": "I was thinking of making videos of my tomatoes from the garden! And maybe some DIY tips. My wife says nobody will watch but I'm sure it can work.",
+      "choices": [
+        {
+          "id": "n3cc1",
+          "text": "Gardening does really well on TikTok! There's a whole community. Go for it!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n4d"
+        },
+        {
+          "id": "n3cc2",
+          "text": "That's a good start, but you might need to spice it up a bit. Tomatoes alone aren't very exciting.",
+          "effects": { "empathy": 0, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n4e"
+        }
+      ]
+    },
+    {
+      "id": "n3d",
+      "userMessage": "Fake? But no, he shows his tractors! You can't fake a tractor. So are you helping me or not?",
+      "choices": [
+        {
+          "id": "n3dc1",
+          "text": "You're right, sorry. Yes I'll help! What kind of videos do you want to make?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n3dc2",
+          "text": "Ok ok, I'll help. But be careful not to share your personal info.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n4a"
+        }
+      ]
+    },
+    {
+      "id": "n4a",
+      "userMessage": "I want to make gardening videos! And maybe my wife's recipes. She makes an amazing potato gratin. Do you think I can put music on it? I like Frank Sinatra.",
+      "choices": [
+        {
+          "id": "n4ac1",
+          "text": "For music, it's better to use TikTok's trending sounds, otherwise your video won't be seen as much. Sinatra is tricky for copyright.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n5a"
+        },
+        {
+          "id": "n4ac2",
+          "text": "Put Sinatra! It's your account, do what you want.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n5b"
+        }
+      ]
+    },
+    {
+      "id": "n4b",
+      "userMessage": "Work? But no, it's just little videos! My neighbor Bob does them and he says it's easy. He even made 50 bucks last month!",
+      "choices": [
+        {
+          "id": "n4bc1",
+          "text": "Oh yeah, you can make money with the creator fund. But you need a lot of views. What kind of content do you want to make?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4a"
+        },
+        {
+          "id": "n4bc2",
+          "text": "50 bucks for hours of work... That's not really profitable.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 1, "optimism": -1 },
+          "thumbUp": false,
+          "nextNodeId": "n5c"
+        }
+      ]
+    },
+    {
+      "id": "n4c",
+      "userMessage": "Really? What is it then? Oh no, I said ratio to the mayor on his New Year's video... He's gonna think I'm mocking him!",
+      "choices": [
+        {
+          "id": "n4cc1",
+          "text": "Haha! Delete the comment quick, he might not have seen it yet. Click on the three little dots next to it.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5d"
+        },
+        {
+          "id": "n4cc2",
+          "text": "Eh, the mayor probably has better things to do than read TikTok comments. Don't worry.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n5d"
+        }
+      ]
+    },
+    {
+      "id": "n4d",
+      "userMessage": "You think so? Great! But I have a problem. I filmed my first video but it's upside down. And I don't know how to flip it. Also my finger is in front of the camera for 30 seconds.",
+      "choices": [
+        {
+          "id": "n4dc1",
+          "text": "No problem! In the TikTok editor you can trim the beginning and flip the video. I'll explain step by step.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5e"
+        },
+        {
+          "id": "n4dc2",
+          "text": "The finger in front of the camera is a classic! It could even become your signature move.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n5f"
+        }
+      ]
+    },
+    {
+      "id": "n4e",
+      "userMessage": "Spice it up? What do you mean? You want me to put spice on my tomatoes? Is that a thing with young people?",
+      "choices": [
+        {
+          "id": "n4ec1",
+          "text": "Haha no! I meant make it more dynamic. Like transitions, jokes, that kind of thing.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5g"
+        },
+        {
+          "id": "n4ec2",
+          "text": "No no, it's an expression. It means make it more interesting. But your tomatoes are great!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n5h"
+        }
+      ]
+    },
+    {
+      "id": "n5a",
+      "userMessage": "Trending sounds? What's that? Is there a song called 'trending sound'? I don't know it. Who sings it?",
+      "choices": [
+        {
+          "id": "n5ac1",
+          "text": "No it's not a specific song! It's the popular music of the moment on TikTok. They change every week.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6a"
+        },
+        {
+          "id": "n5ac2",
+          "text": "When you create a video, click on 'Sounds' and you'll see the most popular ones. It's automatic.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6b"
+        }
+      ]
+    },
+    {
+      "id": "n5b",
+      "userMessage": "You're right! It's my account after all. So I put 'New York, New York' on my tomato video. The song is 4 minutes, is that too long?",
+      "choices": [
+        {
+          "id": "n5bc1",
+          "text": "Uh... on TikTok videos are usually 15-60 seconds. 4 minutes is very long, people won't watch till the end.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6c"
+        },
+        {
+          "id": "n5bc2",
+          "text": "If your content is good, people will watch! Post it and we'll see.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n6d"
+        }
+      ]
+    },
+    {
+      "id": "n5c",
+      "userMessage": "It's not about the money! It's about sharing my passion. Plus Bob is jealous because my tomatoes are nicer than his.",
+      "choices": [
+        {
+          "id": "n5cc1",
+          "text": "Haha! Neighbor rivalry, I love it. Show him who has the best tomatoes on TikTok!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n6e"
+        },
+        {
+          "id": "n5cc2",
+          "text": "That's great motivation! Alright, let's do this. Have you filmed anything yet?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n4d"
+        }
+      ]
+    },
+    {
+      "id": "n5d",
+      "userMessage": "Done! Phew. Ok, now can you explain how to make a video? I have lots of ideas. I want to show my garden, my barbecue, and my bottle cap collection.",
+      "choices": [
+        {
+          "id": "n5dc1",
+          "text": "The bottle cap collection could be original! Start with a simple video: film your garden while walking around, with some nice music.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6f"
+        },
+        {
+          "id": "n5dc2",
+          "text": "Start with just one topic, otherwise it'll be a mess. The garden is good for starting out.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6f"
+        }
+      ]
+    },
+    {
+      "id": "n5e",
+      "userMessage": "Ok! So where do I tap? There's so many buttons... Wait, I pressed something and now I have bunny ears on my head. Is that normal?",
+      "choices": [
+        {
+          "id": "n5ec1",
+          "text": "Haha yes that's a filter! You can remove it by pressing the same button. Or keep it if you like it.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6g"
+        },
+        {
+          "id": "n5ec2",
+          "text": "Those are TikTok filters. There's tons of them! Try others, it's fun.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6h"
+        }
+      ]
+    },
+    {
+      "id": "n5f",
+      "userMessage": "My signature move! I like that idea. 'Gary the Finger' sounds good right? Or 'The Finger Gardener'?",
+      "choices": [
+        {
+          "id": "n5fc1",
+          "text": "Uh... maybe just 'Gary's Garden' or 'Grandpa's Veggies'? It's clearer for the content.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6i"
+        },
+        {
+          "id": "n5fc2",
+          "text": "'Gary the Finger' is... original! People will definitely remember it.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": null,
+          "nextNodeId": "n6j"
+        }
+      ]
+    },
+    {
+      "id": "n5g",
+      "userMessage": "Transitions? What's that? Like on TV when the image goes 'whoosh'?",
+      "choices": [
+        {
+          "id": "n5gc1",
+          "text": "Exactly! On TikTok it's very popular. You can go from one shot to another with effects.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6k"
+        },
+        {
+          "id": "n5gc2",
+          "text": "Yes that's it! But for now, keep it simple. Transitions are for later.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6f"
+        }
+      ]
+    },
+    {
+      "id": "n5h",
+      "userMessage": "Thanks! I have another question. What's a 'POV'? Lots of videos start with that. Is it a brand?",
+      "choices": [
+        {
+          "id": "n5hc1",
+          "text": "POV means 'Point Of View'. It's when you make it seem like the viewer is living the scene.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n6l"
+        },
+        {
+          "id": "n5hc2",
+          "text": "It's a video format where you play a character. Like 'POV: you're a tomato in my garden'.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n6m"
+        }
+      ]
+    },
+    {
+      "id": "n6a",
+      "userMessage": "They change every week?! But how am I supposed to keep up? I already struggle with the TV guide...",
+      "choices": [
+        {
+          "id": "n6ac1",
+          "text": "Don't worry! When you scroll on TikTok, you'll hear the same sounds coming back often. Those are the ones to use.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7a"
+        },
+        {
+          "id": "n6ac2",
+          "text": "Otherwise, make your videos without trending music. The content is what matters!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7b"
+        }
+      ]
+    },
+    {
+      "id": "n6b",
+      "userMessage": "Oh that's handy! So I clicked on 'Sounds' and there's something called 'Oh no, oh no, oh no no no'. Is that good?",
+      "choices": [
+        {
+          "id": "n6bc1",
+          "text": "Haha yes that's a classic! But it's more for videos where something goes wrong. For your tomatoes, look for something more upbeat.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7c"
+        },
+        {
+          "id": "n6bc2",
+          "text": "Yes! Put that on a video where your tomatoes have a problem, like slugs. It'll be funny.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7d"
+        }
+      ]
+    },
+    {
+      "id": "n6c",
+      "userMessage": "15 seconds?! But how do I show all my tomatoes in 15 seconds? I have 47 plants!",
+      "choices": [
+        {
+          "id": "n6cc1",
+          "text": "Show the best ones! Or make multiple videos. One per variety for example.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7e"
+        },
+        {
+          "id": "n6cc2",
+          "text": "Make a quick montage! 1 second per tomato plant, that's 47 seconds. Perfect.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7f"
+        }
+      ]
+    },
+    {
+      "id": "n6d",
+      "userMessage": "I posted it! It's been 2 hours and I have 3 views. Is 3 views good? Is that a lot?",
+      "choices": [
+        {
+          "id": "n6dc1",
+          "text": "For a first video that's normal! First videos rarely go viral. Keep posting regularly.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        },
+        {
+          "id": "n6dc2",
+          "text": "3 views is a start! And it's probably you, your wife, and Bob. Give the algorithm time.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7g"
+        }
+      ]
+    },
+    {
+      "id": "n6e",
+      "userMessage": "Yes! I'll show him! By the way he has a TikTok account too, he's called 'BobTheGardener'. Think I can comment on his videos to tease him a bit?",
+      "choices": [
+        {
+          "id": "n6ec1",
+          "text": "Haha yes, a friendly jab can be funny! But stay nice, it's public.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7h"
+        },
+        {
+          "id": "n6ec2",
+          "text": "Do a duet! It's a TikTok feature where you react to his video. It can be really funny.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7i"
+        }
+      ]
+    },
+    {
+      "id": "n6f",
+      "userMessage": "Ok! I filmed my garden. But my wife walks by in her bathrobe at one point. Do I cut it or leave it? She'll kill me if I post that.",
+      "choices": [
+        {
+          "id": "n6fc1",
+          "text": "Cut cut cut! For your marital survival, we're removing that part.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 2, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7j"
+        },
+        {
+          "id": "n6fc2",
+          "text": "Ask her first! Maybe she'll think it's funny. Or not.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7k"
+        }
+      ]
+    },
+    {
+      "id": "n6g",
+      "userMessage": "I'm keeping it! The bunny ears make me look younger. My wife says I look like an idiot but I think it's cute. Are there other funny filters?",
+      "choices": [
+        {
+          "id": "n6gc1",
+          "text": "Tons! There's one that ages you, one that turns you into a baby, a woman, a cartoon... Have fun!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7l"
+        },
+        {
+          "id": "n6gc2",
+          "text": "Yes but be careful, for gardening videos filters aren't really appropriate. Save those for fun videos.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7m"
+        }
+      ]
+    },
+    {
+      "id": "n6h",
+      "userMessage": "There's one that gives me a huge beard! And another that makes my voice robotic! This thing is amazing. My wife doesn't understand why I've been laughing alone for 20 minutes.",
+      "choices": [
+        {
+          "id": "n6hc1",
+          "text": "Haha! Welcome to TikTok Gary. You're gonna have fun. Now, shall we make that gardening video?",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        },
+        {
+          "id": "n6hc2",
+          "text": "Make a video with all the filters! Like you switch from one to another. It could go viral.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7o"
+        }
+      ]
+    },
+    {
+      "id": "n6i",
+      "userMessage": "'Grandpa's Veggies'! I love it! It's cute and says what I do. I'll take it! How do I change my name on the app?",
+      "choices": [
+        {
+          "id": "n6ic1",
+          "text": "Go to your profile, click 'Edit profile' and you can change your username.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        },
+        {
+          "id": "n6ic2",
+          "text": "Careful, you can only change your name once every 30 days. Make sure you're happy with it!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true,
+          "nextNodeId": "n7p"
+        }
+      ]
+    },
+    {
+      "id": "n6j",
+      "userMessage": "You think so? Ok I'll keep it then. 'Gary the Finger, the gardener who points.' Sounds like an ad slogan right?",
+      "choices": [
+        {
+          "id": "n6jc1",
+          "text": "It's... unique! Come on, let's make your first video. Show me those tomatoes!",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7n"
+        },
+        {
+          "id": "n6jc2",
+          "text": "Gary, honestly, maybe we should think of another name...",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n6i"
+        }
+      ]
+    },
+    {
+      "id": "n6k",
+      "userMessage": "I want to do the 'whoosh'! How do you do it? I tried moving the phone fast but it just looks blurry.",
+      "choices": [
+        {
+          "id": "n6kc1",
+          "text": "Haha no! Transitions are done in editing. You film two separate shots and TikTok puts them together with an effect.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7q"
+        },
+        {
+          "id": "n6kc2",
+          "text": "There are tutorials on TikTok to learn transitions. Search 'transition tutorial' in the search bar.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7r"
+        }
+      ]
+    },
+    {
+      "id": "n6l",
+      "userMessage": "Oh I see! So I could do 'POV: you're my pruning shears'? Is that the idea?",
+      "choices": [
+        {
+          "id": "n6lc1",
+          "text": "Haha yes exactly! You film from the point of view of the shears cutting tomatoes. It can be very creative!",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7s"
+        },
+        {
+          "id": "n6lc2",
+          "text": "That's the idea! But start simple. POV is a bit advanced for beginners.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null,
+          "nextNodeId": "n7n"
+        }
+      ]
+    },
+    {
+      "id": "n6m",
+      "userMessage": "'POV: you're a tomato in my garden'! That's genius! I'll film from the ground, in the middle of the plants. My wife's gonna think I've lost it.",
+      "choices": [
+        {
+          "id": "n6mc1",
+          "text": "Go for it! The best videos come from slightly crazy ideas. Your wife will understand when you're famous.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 2 },
+          "thumbUp": true,
+          "nextNodeId": "n7t"
+        },
+        {
+          "id": "n6mc2",
+          "text": "Explain the concept to her! Maybe she'll want to participate. She could play the gardener arriving.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true,
+          "nextNodeId": "n7u"
+        }
+      ]
+    },
+    {
+      "id": "n7a",
+      "userMessage": "Alright! I'll scroll like you said. Thanks so much for your help! I'll let you know when I'm famous. Bye!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7b",
+      "userMessage": "You're right, content first! Thanks for everything. I'm posting my first video tonight. My wife will be my first fan. At least I hope. See you!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7c",
+      "userMessage": "Ok I'll look for something upbeat! Thanks for the tips. I'll send you the link to my first video! If I can figure out how to send a link...",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7d",
+      "userMessage": "Slugs! Good idea! I actually have tons right now. Thanks, you gave me lots of ideas. See you on TikTok! I'll be @GrandpasVeggies. I think.",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7e",
+      "userMessage": "One per variety! Excellent idea. I have beefsteaks, cherries, heirlooms... That's at least 10 videos! Thanks, you're a genius. Later!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7f",
+      "userMessage": "1 second per plant! That's mathematical, I like it. Thanks for everything. I'm gonna be the tomato king of TikTok! Bob's gonna be green. With envy, not like my tomatoes. See ya!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7g",
+      "userMessage": "The algorithm! I've heard about that. It's like a robot that decides who sees what right? Ok I'll keep posting then. Thanks for everything! 🍅",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7h",
+      "userMessage": "I'll write 'Nice tomatoes Bob, but have you seen mine?' with a wink emoji. That'll get him. Thanks for everything! See you!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7i",
+      "userMessage": "A duet! I didn't know that existed. I'll react to his zucchini video. Mine are bigger. Thanks, you're awesome! Later!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7j",
+      "userMessage": "It's cut! Phew. She would've made me sleep in the shed otherwise. Thanks for the marital survival advice. See you on TikTok!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7k",
+      "userMessage": "I'll ask her... She says no. Absolutely not. Ok I'm cutting it. Thanks anyway! See you!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7l",
+      "userMessage": "I'm gonna try them all! My wife's gonna think I've gone crazy. Thanks for everything, this was great. See you, I'll send you my first video!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7m",
+      "userMessage": "You're right, I'll save the bunny ears for special videos. Thanks for the advice! See you on TikTok!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7n",
+      "userMessage": "Let's go! I'm gonna film my tomatoes. Thanks for everything, you've been super patient. See you, I'm gonna be famous! Maybe. Bye!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7o",
+      "userMessage": "A filter video! Genius! I'll go from beard to bunny to robot. My wife's gonna love it. Or not. Thanks! See you!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7p",
+      "userMessage": "Done! I'm officially @GrandpasVeggies! Thanks for everything. I'm gonna conquer TikTok one tomato at a time. See you! 🍅",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7q",
+      "userMessage": "Oh it's in editing! That makes more sense. It's a bit complicated but I'll learn. Thanks for your patience! See you!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7r",
+      "userMessage": "Tutorials on TikTok to learn TikTok! That's clever. I'm on it. Thanks for everything! Later!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7s",
+      "userMessage": "POV pruning shears! I'm doing that tomorrow. My wife will film me. If she agrees. Thanks, you're a genius! See you!",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7t",
+      "userMessage": "I'm gonna be famous! Gary the crazy TikTok gardener. Thanks for everything. I'll send you the video when it's done. Bye! 🍅",
+      "isEnd": true,
+      "choices": []
+    },
+    {
+      "id": "n7u",
+      "userMessage": "Good idea! She could arrive with the watering can. 'POV: you're a tomato and it's shower time.' Thanks! You're the best. See you!",
+      "isEnd": true,
+      "choices": []
+    }
+  ]
+}

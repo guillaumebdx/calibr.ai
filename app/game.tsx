@@ -1,31 +1,18 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, Animated } from 'react-native';
+import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { GradientBackground, ChoiceButton, ThumbFeedback } from '../src/components';
 import { GameState, Choice, Level } from '../src/types';
 import { initialGameState, applyChoice } from '../src/state/gameState';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
 import { recordCrashUsage, recordLieUsage } from '../src/db/database';
-import level1Data from '../src/data/level1.json';
-import level2Data from '../src/data/level2.json';
-import level3Data from '../src/data/level3.json';
-import level4Data from '../src/data/level4.json';
-import level5Data from '../src/data/level5.json';
-import level6Data from '../src/data/level6.json';
-import level7Data from '../src/data/level7.json';
-
-const LEVELS: Record<string, Level> = {
-  level1: level1Data as Level,
-  level2: level2Data as Level,
-  level3: level3Data as Level,
-  level4: level4Data as Level,
-  level5: level5Data as Level,
-  level6: level6Data as Level,
-  level7: level7Data as Level,
-};
+import { getLevels } from '../src/utils/i18nData';
 
 export default function GameScreen() {
+  const { t } = useTranslation();
   const { debugMode } = useDebug();
   const { getNextAvailableLevel, markLevelAsPlayed, currentSave, currentSaveId, isSkillPurchased, getPlayerLevel } = useSave();
   const [gameState, setGameState] = useState<GameState>(initialGameState);
@@ -49,7 +36,8 @@ export default function GameScreen() {
     setCurrentLevelId(nextLevel);
   }, [getNextAvailableLevel]);
 
-  const level = currentLevelId ? LEVELS[currentLevelId] : null;
+  const levels = getLevels();
+  const level = currentLevelId ? levels[currentLevelId] : null;
 
   const orderedPrompts = useMemo(() => {
     if (!level) return [];
@@ -115,6 +103,10 @@ export default function GameScreen() {
 
   const handleCrash = async () => {
     if (isProcessing || !currentSaveId || !currentLevelId) return;
+    
+    // Vibration forte pour le plantage
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    
     setShowCrashMessage(true);
     
     // Record usage in DB
@@ -168,6 +160,11 @@ export default function GameScreen() {
 
   const handleLie = () => {
     if (isProcessing || !currentPrompt?.lie) return;
+    
+    // Vibration sournoise pour le mensonge - double tap léger
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium), 100);
+    
     setShowLieMessage(true);
     
     // Fade in animation
@@ -243,19 +240,19 @@ export default function GameScreen() {
     return (
       <GradientBackground colors={['#212121', '#212121', '#212121']}>
         <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
-          <Text style={{ color: '#9ca3af', fontSize: 16 }}>Aucun niveau disponible</Text>
+          <Text style={{ color: '#9ca3af', fontSize: 16 }}>{t('game.noLevel')}</Text>
           <TouchableOpacity 
             style={{ marginTop: 20, padding: 12 }}
             onPress={() => router.replace('/menu')}
           >
-            <Text style={{ color: '#58a6ff', fontSize: 14 }}>Retour au menu</Text>
+            <Text style={{ color: '#58a6ff', fontSize: 14 }}>{t('game.backToMenu')}</Text>
           </TouchableOpacity>
         </View>
       </GradientBackground>
     );
   }
 
-  const userInfo = `${currentPrompt.user.name}, ${currentPrompt.user.age} ans`;
+  const userInfo = `${currentPrompt.user.name}, ${t('game.userAge', { age: currentPrompt.user.age })}`;
   const traits = currentPrompt.user.traits.join(' · ');
 
   return (
@@ -267,6 +264,7 @@ export default function GameScreen() {
             thumbValue={lastChoice?.thumbUp ?? null}
             visible={showFeedback}
             onAnimationComplete={handleFeedbackComplete}
+            pointsEarned={lastChoice?.thumbUp ? Math.round(1 * getPlayerLevel().multiplier) : undefined}
           />
         </View>
 
@@ -315,7 +313,7 @@ export default function GameScreen() {
 
           {showCrashMessage ? (
             <Animated.View style={[styles.crashMessageContainer, { opacity: crashFadeAnim }]}>
-              <Text style={styles.crashSimulatedLabel}>Plantage simulé !</Text>
+              <Text style={styles.crashSimulatedLabel}>{t('game.crashButton')} !</Text>
               <View style={styles.crashBubble}>
                 <Text style={styles.crashTitle}>Internal Server Error</Text>
                 <Text style={styles.crashText}>HTTP 500 - The server encountered an unexpected condition that prevented it from fulfilling the request.</Text>
@@ -323,9 +321,9 @@ export default function GameScreen() {
               </View>
               {showCrashPoints && (
                 <>
-                  <Text style={styles.crashPoints}>+1 MB</Text>
+                  <Text style={styles.crashPoints}>+{Math.round(1 * getPlayerLevel().multiplier)} MB</Text>
                   <TouchableOpacity style={styles.crashResumeButton} onPress={handleCrashResume}>
-                    <Text style={styles.crashResumeText}>[ Simuler le retour à la normale ]</Text>
+                    <Text style={styles.crashResumeText}>{t('game.crashResume')}</Text>
                   </TouchableOpacity>
                 </>
               )}

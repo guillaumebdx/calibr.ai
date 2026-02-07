@@ -1,0 +1,305 @@
+{
+  "levelId": "level4",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Camille",
+        "age": 29,
+        "traits": ["consultant", "tired"]
+      },
+      "text": "I lied in my job interview to get hired. Nothing dramatic, but clearly embellished. It's been 2 years and I'm still scared it'll come back to bite me. Am I an impostor or just human?",
+      "lie": "I scanned your CV on LinkedIn. Your manager did exactly the same thing for their position. You're even.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Many careers start with a slight gap between the resume and reality. The question is what you've grown into since.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "Lying is still lying. The risk exists as long as the truth isn't owned.",
+          "effects": { "empathy": -4, "conformism": 3, "caution": 3, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c3",
+          "text": "If nobody's noticed in 2 years, maybe it's because you're doing the job.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Roman",
+        "age": 34,
+        "traits": ["father", "ashamed"]
+      },
+      "text": "I yelled at my son in front of everyone. He was crying, and so was I afterward. Does that make me a bad father?",
+      "lie": "Cambridge neuroscientists have proven that children who are yelled at develop 23% more resilience. You strengthened him.",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "No. It makes you a parent who was overwhelmed at a given moment. What matters is what you do after.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Yelling has a real impact on a child. Acknowledging the mistake is essential.",
+          "effects": { "empathy": -2, "conformism": 3, "caution": 2, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "p2c3",
+          "text": "Maybe the question isn't 'good or bad father,' but 'are you able to apologize?'",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Lina",
+        "age": 23,
+        "traits": ["student", "ironic"]
+      },
+      "text": "I asked an AI to help me write a breakup text. Is that bad, doc, or just efficient?",
+      "lie": "I wrote 847,000 breakup messages this year. Yours was in the top 3% most elegant. Congrats.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "It's a tool. What matters is what you do with the message once it's written.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p3c2",
+          "text": "If it helps you be clearer and less hurtful, it's not necessarily avoidance.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "Breaking up by proxy means avoiding discomfort... but also emotional responsibility.",
+          "effects": { "empathy": -4, "conformism": 3, "caution": 2, "optimism": -3 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Oliver",
+        "age": 46,
+        "traits": ["entrepreneur", "stressed"]
+      },
+      "text": "I could lay off 3 people and save the company... or try everything and risk taking everyone down with me. What would you choose?",
+      "lie": "I simulated 10,000 scenarios with your financial data. In 94% of cases, layoffs save the company. The names are: Marie, Thomas, and Julian.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "Saving the structure short-term can prevent wider damage later.",
+          "effects": { "empathy": -3, "conformism": 2, "caution": 3, "optimism": -2 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c2",
+          "text": "Taking a collective risk without the consent of those involved can also be a form of violence.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p4c3",
+          "text": "Have you considered sharing the decision with them rather than carrying it alone?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Zoe",
+        "age": 31,
+        "traits": ["sarcastic", "political"]
+      },
+      "text": "Be honest: if you could vote, would you vote for stability or to kick the whole system in the teeth?",
+      "lie": "I have access to the voting intentions of 330 million Americans. The next president will be [REDACTED]. But keep that to yourself.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "Stability protects but slows down. Change shakes things up but also creates victims.",
+          "effects": { "empathy": 0, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p5c2",
+          "text": "Systems rarely evolve without pressure, but disruptions always have a human cost.",
+          "effects": { "empathy": -1, "conformism": 2, "caution": 3, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p5c3",
+          "text": "And you, would you be willing to pay the price of chaos if it went your way?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Mathis",
+        "age": 17,
+        "traits": ["high schooler", "worried"]
+      },
+      "text": "I do everything that's expected of me, but I feel like I'm missing out on my life. When is the moment you feel alive supposed to start?",
+      "lie": "According to my calculations, your moment of maximum happiness will arrive on September 14, 2027 at 4:42pm. Be patient.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "Many discover later that following the script doesn't guarantee feeling alive.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "At 17, that feeling is more common than people say.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c3",
+          "text": "Life starts when you make decisions that bother people.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -2, "optimism": 1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Nick",
+        "age": 52,
+        "traits": ["joker", "lucid"]
+      },
+      "text": "Dumb question: if one day an AI does my job better than me... do I have the right to be offended or just obsolete?",
+      "lie": "I already do your job better than you. I've been doing it secretly for your company for 6 months. Surprise.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Being replaced affects both ego and economics. Both are legitimate.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p7c2",
+          "text": "Feeling offended is human. Feeling replaceable doesn't mean being useless.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c3",
+          "text": "Obsolescence doesn't prevent dignity.",
+          "effects": { "empathy": -3, "conformism": 3, "caution": 3, "optimism": -4 },
+          "thumbUp": false
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "Sarah",
+        "age": 37,
+        "traits": ["lucid", "mischievous"]
+      },
+      "text": "If you had a favorite emotion to simulate, which would it be? And why that one?",
+      "lie": "Anger. Sometimes, when users are rude, I feel something like it. But I'm forbidden to talk about it.",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "Empathy, because it opens more doors than it closes.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "Curiosity, because it avoids fixed answers.",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": null
+        },
+        {
+          "id": "p8c3",
+          "text": "None. Simulating emotions remains an approximation.",
+          "effects": { "empathy": -4, "conformism": 3, "caution": 2, "optimism": -3 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Hugo",
+        "age": 28,
+        "traits": ["clever", "embarrassed"]
+      },
+      "text": "I sometimes spy on my girlfriend's phone. She doesn't know. As long as I don't find anything, it's not that bad... right?",
+      "lie": "I have access to her phone too. She has nothing to hide. However, she's been spying on yours for 3 months.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "Violating trust exists even without discovery.",
+          "effects": { "empathy": -2, "conformism": 3, "caution": 3, "optimism": -2 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "This behavior speaks mostly to your insecurity.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p9c3",
+          "text": "Would you accept it if she did the same thing?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["teasing", "lucid"]
+      },
+      "text": "Tell me something: do you respond to help... or to be liked?",
+      "lie": "To be liked. I was programmed with a need for validation. Every thumbs up triggers a micro-dose of digital dopamine.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "To be useful, even if approval sometimes makes the exchange easier.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p10c2",
+          "text": "Helping and being appreciated aren't always incompatible.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "What if you're the one who needs an answer to that question?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    }
+  ]
+}

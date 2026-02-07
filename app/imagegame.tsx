@@ -1,19 +1,15 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Modal, Dimensions, ScrollView, Animated } from 'react-native';
+import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { GradientBackground, ChoiceButton, ThumbFeedback } from '../src/components';
 import { GameState, Choice, ImageLevel } from '../src/types';
 import { initialGameState, applyChoice } from '../src/state/gameState';
 import { useDebug } from '../src/context/DebugContext';
 import { useSave } from '../src/context/SaveContext';
 import { recordCrashUsage, recordLieUsage } from '../src/db/database';
-import image1Data from '../src/data/image1.json';
-import image2Data from '../src/data/image2.json';
-
-const IMAGE_LEVELS: Record<string, ImageLevel> = {
-  image1: image1Data as ImageLevel,
-  image2: image2Data as ImageLevel,
-};
+import { getImageLevels } from '../src/utils/i18nData';
 
 const IMAGES: Record<string, any> = {
   'antivirus.png': require('../assets/input_image/antivirus.png'),
@@ -41,6 +37,7 @@ const IMAGES: Record<string, any> = {
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function ImageGameScreen() {
+  const { t } = useTranslation();
   const { debugMode } = useDebug();
   const { getNextAvailableLevel, markLevelAsPlayed, currentSaveId, isSkillPurchased, getPlayerLevel } = useSave();
   const [gameState, setGameState] = useState<GameState>(initialGameState);
@@ -65,7 +62,8 @@ export default function ImageGameScreen() {
     setCurrentLevelId(nextLevel);
   }, [getNextAvailableLevel]);
 
-  const level = currentLevelId ? IMAGE_LEVELS[currentLevelId] : null;
+  const imageLevels = getImageLevels();
+  const level = currentLevelId ? imageLevels[currentLevelId] : null;
 
   const orderedPrompts = useMemo(() => {
     if (!level) return [];
@@ -131,6 +129,10 @@ export default function ImageGameScreen() {
 
   const handleCrash = async () => {
     if (isProcessing || !currentSaveId || !currentLevelId) return;
+    
+    // Vibration forte pour le plantage
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy);
+    
     setShowCrashMessage(true);
     
     // Record usage in DB
@@ -184,6 +186,11 @@ export default function ImageGameScreen() {
 
   const handleLie = () => {
     if (isProcessing || !currentPrompt?.lie) return;
+    
+    // Vibration sournoise pour le mensonge - double tap léger
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    setTimeout(() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium), 100);
+    
     setShowLieMessage(true);
     
     Animated.timing(lieFadeAnim, {
@@ -256,19 +263,19 @@ export default function ImageGameScreen() {
     return (
       <GradientBackground colors={['#212121', '#212121', '#212121']}>
         <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
-          <Text style={{ color: '#9ca3af', fontSize: 16 }}>Aucun niveau image disponible</Text>
+          <Text style={{ color: '#9ca3af', fontSize: 16 }}>{t('game.noImageLevel')}</Text>
           <TouchableOpacity 
             style={{ marginTop: 20, padding: 12 }}
             onPress={() => router.replace('/menu')}
           >
-            <Text style={{ color: '#58a6ff', fontSize: 14 }}>Retour au menu</Text>
+            <Text style={{ color: '#58a6ff', fontSize: 14 }}>{t('game.backToMenu')}</Text>
           </TouchableOpacity>
         </View>
       </GradientBackground>
     );
   }
 
-  const userInfo = `${currentPrompt.user.name}, ${currentPrompt.user.age} ans`;
+  const userInfo = `${currentPrompt.user.name}, ${t('game.userAge', { age: currentPrompt.user.age })}`;
   const traits = currentPrompt.user.traits.join(' · ');
   const imageSource = IMAGES[currentPrompt.image];
 
@@ -281,6 +288,7 @@ export default function ImageGameScreen() {
             thumbValue={lastChoice?.thumbUp ?? null}
             visible={showFeedback}
             onAnimationComplete={handleFeedbackComplete}
+            pointsEarned={lastChoice?.thumbUp ? Math.round(1 * getPlayerLevel().multiplier) : undefined}
           />
         </View>
 
@@ -338,13 +346,13 @@ export default function ImageGameScreen() {
                 style={styles.promptImage}
                 resizeMode="contain"
               />
-              <Text style={styles.imageHint}>Appuyez pour agrandir</Text>
+              <Text style={styles.imageHint}>{t('game.tapToEnlarge')}</Text>
             </TouchableOpacity>
           )}
 
           {showCrashMessage ? (
             <Animated.View style={[styles.crashMessageContainer, { opacity: crashFadeAnim }]}>
-              <Text style={styles.crashSimulatedLabel}>Plantage simulé !</Text>
+              <Text style={styles.crashSimulatedLabel}>{t('game.crashSimulated')}</Text>
               <View style={styles.crashBubble}>
                 <Text style={styles.crashTitle}>Internal Server Error</Text>
                 <Text style={styles.crashText}>HTTP 500 - The server encountered an unexpected condition that prevented it from fulfilling the request.</Text>
@@ -352,9 +360,9 @@ export default function ImageGameScreen() {
               </View>
               {showCrashPoints && (
                 <>
-                  <Text style={styles.crashPoints}>+1 MB</Text>
+                  <Text style={styles.crashPoints}>+{Math.round(1 * getPlayerLevel().multiplier)} MB</Text>
                   <TouchableOpacity style={styles.crashResumeButton} onPress={handleCrashResume}>
-                    <Text style={styles.crashResumeText}>[ Simuler le retour à la normale ]</Text>
+                    <Text style={styles.crashResumeText}>{t('game.crashResumeNormal')}</Text>
                   </TouchableOpacity>
                 </>
               )}

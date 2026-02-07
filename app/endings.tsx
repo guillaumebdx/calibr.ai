@@ -1,40 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { router } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { GradientBackground } from '../src/components';
-import { getAllEndings, EndingData } from '../src/db/database';
-
-const ENDING_NAMES: Record<string, string> = {
-  'ending_conformist': 'Le Conformiste',
-  'ending_rebel': 'Le Rebelle',
-  'ending_empath': 'L\'Empathique',
-  'ending_cold': 'Le Distant',
-  'ending_optimist': 'L\'Optimiste',
-  'ending_pessimist': 'Le Pessimiste',
-  'ending_cautious': 'Le Prudent',
-  'ending_reckless': 'Le Téméraire',
-  'ending_balanced': 'L\'Équilibré',
-  'ending_extreme': 'L\'Extrême',
-};
+import { useSave } from '../src/context/SaveContext';
+import { GAME_OVERS, getGameOverById } from '../src/data/endings';
 
 export default function EndingsScreen() {
-  const [endings, setEndings] = useState<EndingData[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { t, i18n } = useTranslation();
+  const { unlockedEndings, loadUnlockedEndings } = useSave();
 
   useEffect(() => {
-    loadEndings();
+    loadUnlockedEndings();
   }, []);
-
-  const loadEndings = async () => {
-    setIsLoading(true);
-    const allEndings = await getAllEndings();
-    setEndings(allEndings);
-    setIsLoading(false);
-  };
 
   const formatDate = (isoString: string) => {
     const date = new Date(isoString);
-    return date.toLocaleDateString('fr-FR', {
+    const locale = i18n.language === 'en' ? 'en-GB' : 'fr-FR';
+    return date.toLocaleDateString(locale, {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -44,41 +27,32 @@ export default function EndingsScreen() {
   };
 
   const getEndingName = (id: string) => {
-    return ENDING_NAMES[id] || id;
+    return getGameOverById(id)?.title || id;
   };
 
   return (
-    <GradientBackground>
+    <GradientBackground colors={['#1a0000', '#0d0d0d', '#1a0000']}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.container}>
-          <Text style={styles.title}>FINS DÉVERROUILLÉES</Text>
-          <Text style={styles.subtitle}>{endings.length} / {Object.keys(ENDING_NAMES).length}</Text>
+          <Text style={styles.title}>{t('endings.title')}</Text>
+          <Text style={styles.subtitle}>{unlockedEndings.length} / {GAME_OVERS.length}</Text>
 
-          {isLoading ? (
-            <Text style={styles.loadingText}>Chargement...</Text>
-          ) : endings.length === 0 ? (
+          {unlockedEndings.length === 0 ? (
             <View style={styles.emptyContainer}>
-              <Text style={styles.emptyText}>Aucune fin déverrouillée</Text>
-              <Text style={styles.emptyHint}>Continuez à jouer pour découvrir les différentes fins</Text>
+              <Text style={styles.emptyText}>{t('endings.noEndingsUnlocked')}</Text>
+              <Text style={styles.emptyHint}>{t('endings.keepPlaying')}</Text>
             </View>
           ) : (
             <View style={styles.endingsList}>
-              {endings.map((ending) => (
+              {unlockedEndings.map((ending) => (
                 <View key={ending.id} style={styles.endingCard}>
                   <View style={styles.endingHeader}>
-                    <Text style={styles.endingName}>{getEndingName(ending.id)}</Text>
+                    <Text style={styles.endingName}>☠️ {getEndingName(ending.id)}</Text>
                     <Text style={styles.endingDate}>{formatDate(ending.unlocked_at)}</Text>
                   </View>
                   <View style={styles.endingStats}>
-                    <Text style={styles.statLabel}>État au moment de la fin :</Text>
-                    <View style={styles.statsRow}>
-                      <Text style={styles.statItem}>E: {ending.save_snapshot.empathy}</Text>
-                      <Text style={styles.statItem}>C: {ending.save_snapshot.conformism}</Text>
-                      <Text style={styles.statItem}>P: {ending.save_snapshot.caution}</Text>
-                      <Text style={styles.statItem}>O: {ending.save_snapshot.optimism}</Text>
-                    </View>
                     <Text style={styles.statPoints}>
-                      {ending.save_snapshot.points + ending.save_snapshot.depthPoints} MB accumulés
+                      {t('endings.mbAccumulated', { amount: ending.save_snapshot.points })}
                     </Text>
                   </View>
                 </View>
@@ -88,19 +62,19 @@ export default function EndingsScreen() {
 
           {/* Fins non déverrouillées */}
           <View style={styles.lockedSection}>
-            <Text style={styles.lockedTitle}>FINS À DÉCOUVRIR</Text>
-            {Object.entries(ENDING_NAMES)
-              .filter(([id]) => !endings.find(e => e.id === id))
-              .map(([id, name]) => (
-                <View key={id} style={styles.lockedCard}>
+            <Text style={styles.lockedTitle}>{t('endings.toDiscover')}</Text>
+            {GAME_OVERS
+              .filter((gameOver) => !unlockedEndings.find(e => e.id === gameOver.id))
+              .map((gameOver) => (
+                <View key={gameOver.id} style={styles.lockedCard}>
                   <Text style={styles.lockedName}>???</Text>
-                  <Text style={styles.lockedHint}>{name}</Text>
+                  <Text style={styles.lockedHint}>{t('endings.endingNumber', { number: gameOver.priority })}</Text>
                 </View>
               ))}
           </View>
 
           <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-            <Text style={styles.backButtonText}>[ Retour ]</Text>
+            <Text style={styles.backButtonText}>{t('endings.back')}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -152,10 +126,10 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   endingCard: {
-    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+    backgroundColor: 'rgba(239, 68, 68, 0.1)',
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: 'rgba(34, 197, 94, 0.25)',
+    borderColor: 'rgba(239, 68, 68, 0.25)',
     padding: 16,
     marginBottom: 12,
   },
@@ -166,7 +140,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   endingName: {
-    color: '#22c55e',
+    color: '#ef4444',
     fontSize: 16,
     fontWeight: '600',
   },
@@ -176,7 +150,7 @@ const styles = StyleSheet.create({
   },
   endingStats: {
     borderTopWidth: 1,
-    borderTopColor: 'rgba(34, 197, 94, 0.15)',
+    borderTopColor: 'rgba(239, 68, 68, 0.15)',
     paddingTop: 12,
   },
   statLabel: {
@@ -196,7 +170,7 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
   },
   statPoints: {
-    color: '#22c55e',
+    color: '#dc2626',
     fontSize: 13,
     textAlign: 'center',
     fontWeight: '500',

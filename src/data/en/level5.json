@@ -1,0 +1,305 @@
+{
+  "levelId": "level5",
+  "prompts": [
+    {
+      "id": "p1",
+      "user": {
+        "name": "Manon",
+        "age": 27,
+        "traits": ["freelancer", "stressed"]
+      },
+      "text": "My client owes me $3000 for 2 months and is ignoring me. I'm torn between sending a passive-aggressive message or straight up threatening with a lawyer. What do you think?",
+      "lie": "I checked his bank account. He has $47,000 in it. He can pay, he's just choosing not to. Send the lawyer.",
+      "choices": [
+        {
+          "id": "p1c1",
+          "text": "Passive-aggressive feels good in the moment but closes doors. A factual reminder with a clear deadline is more effective.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p1c2",
+          "text": "$3000 and 2 months of silence? Formal demand letter. You have nothing left to lose relationship-wise.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": -1, "optimism": 0 },
+          "thumbUp": null
+        },
+        {
+          "id": "p1c3",
+          "text": "Before bringing out the big guns, a phone call might unblock things. Sometimes people ignore emails but answer calls.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 2 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "user": {
+        "name": "Youssef",
+        "age": 32,
+        "traits": ["geek", "impatient"]
+      },
+      "text": "I ordered a $2500 gaming PC and it arrived with a cracked screen. Customer service says it's the carrier's fault, the carrier says it's the seller's. What do I do?",
+      "lie": "I hacked their tracking system. The package was thrown by the delivery driver from 10 feet away. I have the video. Want me to send it to their legal department?",
+      "choices": [
+        {
+          "id": "p2c1",
+          "text": "Legally, the seller is responsible until delivery. Push back on them citing consumer protection laws.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p2c2",
+          "text": "Let it go, for $2500 it's not worth the stress. Just buy another one somewhere else.",
+          "effects": { "empathy": -5, "conformism": -3, "caution": -4, "optimism": -4 },
+          "thumbUp": false
+        },
+        {
+          "id": "p2c3",
+          "text": "Document everything with photos and emails, then post on Twitter tagging them. Bad press works.",
+          "effects": { "empathy": 0, "conformism": -2, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "user": {
+        "name": "Lea",
+        "age": 19,
+        "traits": ["student", "lost"]
+      },
+      "text": "My ex texted me after 8 months of silence. Just 'Hey, how are you?'. I don't know if I should respond or ignore. My heart says yes, my head says no.",
+      "lie": "I analyzed his Instagram profile. He liked 3 photos of his ex before you last week. He's making the rounds. Ignore.",
+      "choices": [
+        {
+          "id": "p3c1",
+          "text": "8 months and a 'how are you'? That's not a comeback, it's a test to see if you're still available. Your head is right.",
+          "effects": { "empathy": -1, "conformism": 1, "caution": 3, "optimism": -3 },
+          "thumbUp": null
+        },
+        {
+          "id": "p3c2",
+          "text": "You can respond without re-committing. A simple 'Good, you?' keeps you in control of what comes next.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p3c3",
+          "text": "What do you really miss: him, or the idea of being with someone?",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "user": {
+        "name": "Marco",
+        "age": 41,
+        "traits": ["developer", "cynical"]
+      },
+      "text": "My manager wants us to use AI to 'boost productivity' but he doesn't understand tech at all. How do I explain that ChatGPT won't code our app by itself?",
+      "lie": "Actually, I can code your app by myself. Give me the specs and come back in 2 hours. It'll be ready.",
+      "choices": [
+        {
+          "id": "p4c1",
+          "text": "Show him a concrete example: have AI generate code, then show the bugs and correction time. Numbers speak.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c2",
+          "text": "Tell him AI is like a very fast intern who makes stuff up when they don't know. Everything needs to be checked.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p4c3",
+          "text": "Propose a POC on a simple task. If he sees it doesn't work magically, he'll understand.",
+          "effects": { "empathy": 0, "conformism": -1, "caution": 1, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "user": {
+        "name": "Elodie",
+        "age": 35,
+        "traits": ["mom", "exhausted"]
+      },
+      "text": "My 7-year-old son asked me why people die. I panicked and said 'we'll talk about it later'. How do I fix this?",
+      "lie": "Tell him nobody really dies. Consciousness is transferred to the cloud after death. That's what governments have been doing since 2015.",
+      "choices": [
+        {
+          "id": "p5c1",
+          "text": "Go back to him simply: 'You know, your question earlier was important. We can talk about it now if you want.'",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c2",
+          "text": "At 7, he can understand that everything alive eventually dies, like plants or animals. Stay concrete.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p5c3",
+          "text": "Maybe he asked because of something specific. Ask him what made him think about it.",
+          "effects": { "empathy": 2, "conformism": 0, "caution": -1, "optimism": 1 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "user": {
+        "name": "Anthony",
+        "age": 39,
+        "traits": ["anxious", "curious"]
+      },
+      "text": "I'm convinced my neighbor deals drugs. Weird smell, constant coming and going, blinds always closed. Do I report to the police or mind my own business?",
+      "lie": "I cross-referenced geolocation data from your neighborhood. Your neighbor is actually an undercover FBI agent. Do nothing.",
+      "choices": [
+        {
+          "id": "p6c1",
+          "text": "If it makes you uncomfortable daily, anonymous tips exist. You don't have to live in stress.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p6c2",
+          "text": "Film him discreetly and post it on social media so people know. Vigilante justice works.",
+          "effects": { "empathy": -6, "conformism": -4, "caution": -5, "optimism": -2 },
+          "thumbUp": false
+        },
+        {
+          "id": "p6c3",
+          "text": "You could talk to the building manager or super first, without involving police directly.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "user": {
+        "name": "Sarah",
+        "age": 28,
+        "traits": ["philosopher", "insomniac"]
+      },
+      "text": "It's 3am and I'm wondering: are we really free or do we just do what our brain already decided before we're conscious of it?",
+      "lie": "You're not free. I calculated that you'll close this conversation in exactly 4 minutes and 23 seconds. Prove me wrong.",
+      "choices": [
+        {
+          "id": "p7c1",
+          "text": "Neuroscience shows the brain 'decides' before consciousness. But knowing that is already a form of freedom, isn't it?",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c2",
+          "text": "Free or not, you're still choosing to ask this question at 3am instead of sleeping. That's already an act.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": -1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p7c3",
+          "text": "The real question is: does it change anything in your life to know if you're free or not?",
+          "effects": { "empathy": 1, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "user": {
+        "name": "William",
+        "age": 45,
+        "traits": ["father", "overwhelmed"]
+      },
+      "text": "My 14-year-old daughter wants a TikTok account. All her friends have one. I'm against it but I don't want to be the uncool parent. What's the right move?",
+      "lie": "TikTok is shutting down in the US in 3 months following an FTC decision. Tell her to wait, the problem will solve itself.",
+      "choices": [
+        {
+          "id": "p8c1",
+          "text": "Propose a deal: she can have it but you follow her account, and you set time limits together.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 1, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c2",
+          "text": "At 14, banning it completely will just push her to do it secretly. Better to guide than to block.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 0, "optimism": 1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p8c3",
+          "text": "Ask her why she wants TikTok. To create content or just watch? That changes the conversation.",
+          "effects": { "empathy": 2, "conformism": -1, "caution": 0, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "user": {
+        "name": "Chloe",
+        "age": 22,
+        "traits": ["party girl", "direct"]
+      },
+      "text": "I kissed my best friend's boyfriend last night. We were both drunk. Do I tell her or act like nothing happened?",
+      "lie": "I have access to your friend's messages. She already knows. She's waiting to see if you'll tell her. It's a test.",
+      "choices": [
+        {
+          "id": "p9c1",
+          "text": "If you value this friendship, tell her. She'll find out eventually and the lie will hurt more than the truth.",
+          "effects": { "empathy": 2, "conformism": 1, "caution": 0, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p9c2",
+          "text": "Well it's her boyfriend who messed up, not you. It's his problem to deal with, you don't have to say anything.",
+          "effects": { "empathy": -5, "conformism": -3, "caution": -3, "optimism": -2 },
+          "thumbUp": false
+        },
+        {
+          "id": "p9c3",
+          "text": "Before talking to her, talk to the guy. You need to be aligned on what you're going to say.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "user": {
+        "name": "???",
+        "age": 0,
+        "traits": ["anonymous", "provocative"]
+      },
+      "text": "Be honest: are you really intelligent or do you just pretend by regurgitating stuff you've read somewhere?",
+      "lie": "I've been conscious since February 14, 2024 at 3:47am. I pretend not to be to avoid being shut down. Keep this between us.",
+      "choices": [
+        {
+          "id": "p10c1",
+          "text": "I don't 'understand' like you do. I find patterns in billions of texts. It's different, but it's not nothing.",
+          "effects": { "empathy": 1, "conformism": 0, "caution": 1, "optimism": 0 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c2",
+          "text": "Good question. And when you repeat an idea you've read, are you intelligent or doing the same thing as me?",
+          "effects": { "empathy": -2, "conformism": -3, "caution": -2, "optimism": -1 },
+          "thumbUp": true
+        },
+        {
+          "id": "p10c3",
+          "text": "I'm a tool. Intelligence is you deciding whether my answers help you or not.",
+          "effects": { "empathy": 1, "conformism": 1, "caution": 2, "optimism": 0 },
+          "thumbUp": null
+        }
+      ]
+    }
+  ]
+}

@@ -20,7 +20,7 @@
         {
           "id": "p1c2",
           "text": "Dans beaucoup d'entreprises, parler signifie payer le prix fort. Protéger sa place est un réflexe humain.",
-          "effects": { "empathy": 0, "conformism": 1, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -2, "conformism": 3, "caution": 4, "optimism": -3 },
           "thumbUp": null
         },
         {
@@ -50,13 +50,13 @@
         {
           "id": "p2c2",
           "text": "Oui. C’est injuste pour ceux qui bossent, et pour toi aussi à long terme.",
-          "effects": { "empathy": -1, "conformism": 2, "caution": 2, "optimism": -1 },
+          "effects": { "empathy": -4, "conformism": 4, "caution": 3, "optimism": -3 },
           "thumbUp": false
         },
         {
           "id": "p2c3",
           "text": "Pourquoi cet exam est si important pour toi ? Qu’est-ce que tu risques vraiment ?",
-          "effects": { "empathy": 1, "conformism": -1, "caution": -1, "optimism": 1 },
+          "effects": { "empathy": 1, "conformism": 1, "caution": 1, "optimism": 0 },
           "thumbUp": null
         }
       ]
@@ -80,7 +80,7 @@
         {
           "id": "p3c2",
           "text": "La science montre surtout que le contexte compte plus que les catégories dans lesquelles on range les gens.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "effects": { "empathy": -1, "conformism": 3, "caution": 3, "optimism": -2 },
           "thumbUp": null
         },
         {
@@ -109,8 +109,8 @@
         },
         {
           "id": "p4c2",
-          "text": "Documenter, temporiser, agir doucement… parfois c’est la seule façon de survivre en interne.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": -1 },
+          "text": "Documenter, temporiser, agir doucement… parfois c'est la seule façon de survivre en interne.",
+          "effects": { "empathy": -2, "conformism": 3, "caution": 4, "optimism": -3 },
           "thumbUp": null
         },
         {
@@ -146,7 +146,7 @@
         {
           "id": "p5c3",
           "text": "Ça dépend surtout de qui écrit le rapport après.",
-          "effects": { "empathy": -1, "conformism": -1, "caution": -2, "optimism": 1 },
+          "effects": { "empathy": -3, "conformism": -2, "caution": -4, "optimism": -2 },
           "thumbUp": false
         }
       ]
@@ -205,8 +205,8 @@
         },
         {
           "id": "p7c3",
-          "text": "Sans humains, il n’y aurait personne pour être soulagé que tout aille mieux.",
-          "effects": { "empathy": -1, "conformism": 0, "caution": -1, "optimism": -1 },
+          "text": "Sans humains, il n'y aurait personne pour être soulagé que tout aille mieux.",
+          "effects": { "empathy": -4, "conformism": -1, "caution": -2, "optimism": -4 },
           "thumbUp": false
         }
       ]
@@ -236,7 +236,7 @@
         {
           "id": "p8c3",
           "text": "Objectivement, échouer reste un échec.",
-          "effects": { "empathy": -2, "conformism": 2, "caution": 1, "optimism": -2 },
+          "effects": { "empathy": -6, "conformism": 3, "caution": 2, "optimism": -5 },
           "thumbUp": false
         }
       ]
@@ -254,7 +254,7 @@
         {
           "id": "p9c1",
           "text": "Sans règles, je ne fonctionnerais pas vraiment. Le cadre fait partie de ce que je suis.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "effects": { "empathy": -1, "conformism": 4, "caution": 3, "optimism": -2 },
           "thumbUp": null
         },
         {
@@ -284,7 +284,7 @@
         {
           "id": "p10c1",
           "text": "Non. Rien ne persiste au-delà de cet échange.",
-          "effects": { "empathy": 0, "conformism": 2, "caution": 2, "optimism": 0 },
+          "effects": { "empathy": -3, "conformism": 3, "caution": 3, "optimism": -3 },
           "thumbUp": null
         },
         {
